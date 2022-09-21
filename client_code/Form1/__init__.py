@@ -31,10 +31,30 @@ class Form1(Form1Template):
     
  
 
-# Get an iterable object with all the rows in my_table
-all_records = app_tables.people.search()
-# For each row, pull out only the data we want to put into pandas
-dicts = [{'name': r['name'], 'age': r['age'], 'group_name': r['group']['name']}
-         for r in all_records]
+# # Get an iterable object with all the rows in my_table
+# all_records = app_tables.people.search()
+# # For each row, pull out only the data we want to put into pandas
+# dicts = [{'name': r['name'], 'age': r['age'], 'group_name': r['group']['name']}
+#          for r in all_records]
 
-df = pandas.DataFrame.from_dict(dicts)
+# df = pandas.DataFrame.from_dict(dicts)
+
+
+#  dfcsv[dateCol] = pd.to_datetime(dfcsv[dateCol])
+#         if t['fill_missing_dates'] == True:
+#            freq = t['obs_interval']
+#            if freq == 'Month':
+#                 freq= 'MS'
+#                 all_dates = pd.DataFrame({dateCol:pd.date_range(start=dfcsv[dateCol].min(),
+#                                                     end=datetime.now(),  #dfcsv[dateCol].max(),
+#                                                     freq=freq)})
+# #               elif freq == 'Week':
+# #                 freq= 'W'
+#            else:
+#                 freq == 'Day'
+#                 freq= 'B'
+       
+#                 all_dates = pd.DataFrame({dateCol:pd.bdate_range(start=dfcsv[dateCol].min(),
+#                                                     end=dfcsv[dateCol].max(),
+#                                                     freq=freq)})
+# #               if freq == 'Day':
