@@ -31,4 +31,10 @@ class Form1(Form1Template):
     
  
 
+# Get an iterable object with all the rows in my_table
+all_records = app_tables.people.search()
+# For each row, pull out only the data we want to put into pandas
+dicts = [{'name': r['name'], 'age': r['age'], 'group_name': r['group']['name']}
+         for r in all_records]
 
+df = pandas.DataFrame.from_dict(dicts)
