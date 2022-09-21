@@ -58,3 +58,17 @@ class Form1(Form1Template):
 #                                                     end=dfcsv[dateCol].max(),
 #                                                     freq=freq)})
 # #               if freq == 'Day':
+
+# else:
+#                 freq == 'Day'
+#                 freq= 'B'
+       
+#                 all_dates = pd.DataFrame({dateCol:pd.bdate_range(start=dfcsv[dateCol].min(),
+#                                                     end=dfcsv[dateCol].max(),
+#                                                     freq=freq)})
+# #               if freq == 'Day':
+#                 all_dates = pd.tseries.offsets.CustomBusinessDay( weekmask = 'Mon Tues Wed')
+                
+#            print(all_dates) 
+
+#            dfcsv = pd.merge(all_dates, dfcsv, how="left", on=dateCol).fillna(0)
