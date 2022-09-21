@@ -10,8 +10,9 @@ class Form1(Form1Template):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
-    
+ 
     self.repeating_panel_1.items = anvil.server.call('get_Sales_Existing_and_New')
+    self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['YM'], reverse=False )
 #     build_Sales_Existing_and_New_graph(self)
     
     
