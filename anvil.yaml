@@ -1,8 +1,15 @@
-allow_embedding: false
+services:
+- source: /runtime/services/anvil/secrets.yml
+  client_config: {}
+  server_config: {}
 package_name: CRM_SPC
-db_schema: {}
+allow_embedding: false
 name: CRM SPC
-startup_form: Form1
-renamed: true
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-services: []
+startup_form: Form1
+db_schema: {}
+secrets:
+  CRM:
+    value: {? '' : 7w87QJIpcSMHPYq7AJfsCDOcHcIi/NsD0G1G442MjaPZi9BYWIAqujQt+elxbFL6ZXxSuVUiUP+DlgxxwVgK/sxoIna/rDgecuLmmoiT5lexWZ2hsx/9X8wWBcGPpqnjeueIrtP6KINOBw==}
+    type: secret
+renamed: true
