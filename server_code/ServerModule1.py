@@ -20,7 +20,7 @@ def get_Sales_Existing_and_New():
   conn = connect()
   with conn.cursor() as cur:
     cur.execute(
-                "Select Date_Format(invoice.date_entered, '%01/%m/%Y') As YM \
+                "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
                       , Sum(invoice.amount_usdollar) As \
                       NewandExisting_Invoice_total \
                 From invoice Inner Join \
