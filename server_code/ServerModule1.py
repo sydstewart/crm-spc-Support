@@ -29,7 +29,7 @@ def get_Sales_Existing_and_New():
                 Where (invoice_cstm.newexistingormaintenance_c = 'New') Or \
                   (invoice_cstm.newexistingormaintenance_c = 'Existing') \
                 Group By YM \
-                Order By YM")  
+                Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
     
     return cur.fetchall()
 
