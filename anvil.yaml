@@ -2,12 +2,26 @@ services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
   server_config: {}
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {auto_create_missing_columns: false}
 package_name: CRM_SPC
 allow_embedding: false
 name: CRM SPC
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 startup_form: Form1
-db_schema: {}
+db_schema:
+  charts:
+    title: charts
+    client: none
+    server: full
+    columns:
+    - name: Chart_Name
+      admin_ui: {width: 200}
+      type: string
+    - name: ChartSQL
+      admin_ui: {width: 200}
+      type: string
 secrets:
   CRM:
     value: {? '' : 7w87QJIpcSMHPYq7AJfsCDOcHcIi/NsD0G1G442MjaPZi9BYWIAqujQt+elxbFL6ZXxSuVUiUP+DlgxxwVgK/sxoIna/rDgecuLmmoiT5lexWZ2hsx/9X8wWBcGPpqnjeueIrtP6KINOBw==}

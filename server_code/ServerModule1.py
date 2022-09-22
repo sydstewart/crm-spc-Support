@@ -1,3 +1,6 @@
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 import anvil.secrets
 import anvil.server
 import pymysql
@@ -43,18 +46,19 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
     print(startdate)
     print(enddate)
     conn = connect()
+    t= app_tables.charts.search()
     with conn.cursor() as cur:
-     cur.execute(
-                "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
-                      , Sum(invoice.amount_usdollar) As \
-                      NewandExisting_Invoice_total \
-                From invoice Inner Join \
-                  invoice_cstm On invoice_cstm.id_c = invoice.id Inner Join \
-                  accounts On invoice.shipping_account_id = accounts.id \
-                Where (invoice_cstm.newexistingormaintenance_c = 'New') Or \
-                  (invoice_cstm.newexistingormaintenance_c = 'Existing') \
-                Group By YM \
-                Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
+     cur.execute(t['ChartSQL'])
+#                 "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
+#                       , Sum(invoice.amount_usdollar) As \
+#                       NewandExisting_Invoice_total \
+#                 From invoice Inner Join \
+#                   invoice_cstm On invoice_cstm.id_c = invoice.id Inner Join \
+#                   accounts On invoice.shipping_account_id = accounts.id \
+#                 Where (invoice_cstm.newexistingormaintenance_c = 'New') Or \
+#                   (invoice_cstm.newexistingormaintenance_c = 'Existing') \
+#                 Group By YM \
+#                 Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
      
     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
             for r in cur.fetchall()]
