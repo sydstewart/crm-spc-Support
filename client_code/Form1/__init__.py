@@ -2,7 +2,7 @@ from ._anvil_designer import Form1Template
 from anvil import *
 import anvil.server
 import plotly.graph_objects as go
- 
+from datetime import datetime, time 
 
 class Form1(Form1Template):
 
@@ -22,21 +22,21 @@ class Form1(Form1Template):
     db_data = anvil.server.call('get_Sales_Existing_and_New')
   
     # Create a Scatter plot with this data, and change the colour of the markers
-#     self.Sales_Existing_and_New_Chart.data = go.Scatter(
-#       x = [x['YM'] for x in db_data],
-#       y = [x['NewandExisting_Invoice_total'] for x in db_data],
-#       mode ='markers + lines')
-
-    df = anvil.server.call('get_df_Sales_Existing_and_New', db_data)
-    print(df)
-
     self.Sales_Existing_and_New_Chart.data = go.Scatter(
-      x = df['YM'] ,
-      y = df['NewandExisting_Invoice_total'],
+      x = [x['YM'] for x in db_data],
+      y = [x['NewandExisting_Invoice_total'] for x in db_data],
       mode ='markers + lines')
+    self.Sales_Existing_and_New_Chart.layout.title = ' sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+    anvil.server.call('get_df_Sales_Existing_and_New', db_data)
 #     print(df)
 
+#     self.Sales_Existing_and_New_Chart.data = go.Scatter(
+#       x = df['YM'] ,
+#       y = df['NewandExisting_Invoice_total'],
+#       mode ='markers + lines')
+#     print(df)
 
+     
 #  dfcsv[dateCol] = pd.to_datetime(dfcsv[dateCol])
 #         if t['fill_missing_dates'] == True:
 #            freq = t['obs_interval']

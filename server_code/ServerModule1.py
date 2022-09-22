@@ -34,15 +34,6 @@ def get_Sales_Existing_and_New():
                 Group By YM \
                 Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
     
-        # Get an iterable object with all the rows in my_table
-#     all_records = cur.fetchall()
-# #    For each row, pull out only the data we want to put into pandas
-#     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
-#             for r in all_records]
-    
-#     df = pandas.DataFrame.from_dict(dicts)
-    
-#     print (df)
     
     return cur.fetchall() 
   
@@ -71,4 +62,4 @@ def get_df_Sales_Existing_and_New(db_data):
     print (df)
     df = pandas.DataFrame.to_dict(df)
 #     print(all_dates)
-    return df
+#     return df
