@@ -70,6 +70,16 @@ def get_df_Sales_Existing_and_New():
       x = df['YM'] ,
       y = df['NewandExisting_Invoice_total'],
       mode ='markers + lines')
+    fig.add_trace(go.Scatter(x=df['YM'],
+                        y = df['Mean'] ,
+                          mode='lines',
+                          name= ' New and Existing Sales' + ' ' + 'average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color=green,
+                          width=1,
+                          dash='dash'                   
+                            ))
+                                )
 #     print(dfx)
     print (df)
 #     df = pandas.DataFrame.from_dict(dicts)
