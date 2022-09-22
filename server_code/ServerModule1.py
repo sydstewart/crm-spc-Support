@@ -52,8 +52,8 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
     for row in t:
        print(row['ChartSQL'])
        chartsql = row['ChartSQL']
-       row['StartDate'] =  datetime.strptime(startdate, '%Y-%M-%d').date()
-       row['EndDate'] = datetime.strptime(enddate, '%Y-%m-%d').date() 
+       row['StartDate'] =  datetime.strptime(startdate, '%Y-%m-%d').date()
+       row['EndDate'] = datetime.strptime(enddate, '%Y-%m-%d').date()
     with conn.cursor() as cur:
      cur.execute(chartsql
        
