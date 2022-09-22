@@ -2,6 +2,7 @@ import anvil.secrets
 import anvil.server
 import pymysql
 import pandas
+from datetime import datetime, time
 
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
@@ -54,11 +55,12 @@ def get_df_Sales_Existing_and_New(db_data):
             for r in db_data]
     
     df = pandas.DataFrame.from_dict(dicts)
-    
-    df['YM'] = pandas.to_datetime(df['YM'])
+    print(df['YM'])
+    df['Datecol'] = pandas.to_datetime(df['YM'])
+    print(df['YM'])
     freq= 'MS'
-    all_dates = pandas.DataFrame({df['YM']:pandas.date_range(start=df['YM'].min(),
-                                        end=datetime.now(),  #dfcsv[dateCol].max(),
+    all_dates = pandas.DataFrame({DateCol:pandas.date_range(start=df['YM'].min(),
+                                        end=df['YM'].max(), 
                                         freq=freq)})
     
     print (df)
