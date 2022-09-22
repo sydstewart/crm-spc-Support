@@ -14,7 +14,11 @@ class Form1(Form1Template):
  
     self.repeating_panel_1.items = anvil.server.call('get_Sales_Existing_and_New')
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['YM'], reverse=False )
-#     build_Sales_Existing_and_New_graph(self)
+    startdate = '2008-11-01'
+    enddate = '2022-08-01'
+    
+    
+    #     build_Sales_Existing_and_New_graph(self)
     
     
 #   def build_Sales_Existing_and_New_graph(self):
@@ -27,9 +31,9 @@ class Form1(Form1Template):
       y = [x['NewandExisting_Invoice_total'] for x in db_data],
       mode ='markers + lines')
     self.Sales_Existing_and_New_Chart.layout.title = ' sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
-   
+
 #     dfx = anvil.server.call('get_df_Sales_Existing_and_New')
-    self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New')
+    self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
       
 
 #     self.plot_1.data = go.Scatter(
@@ -71,3 +75,13 @@ class Form1(Form1Template):
 #            print(all_dates) 
 
 #            dfcsv = pd.merge(all_dates, dfcsv, how="left", on=dateCol).fillna(0)
+
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    
+    startdate = self.date_picker_1,date
+    print (startdate)
+    enddate = self.date_picker_2.date
+    self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
+    pass
+

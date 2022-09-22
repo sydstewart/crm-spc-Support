@@ -39,8 +39,9 @@ def get_Sales_Existing_and_New():
     return cur.fetchall() 
   
 @anvil.server.callable
-def get_df_Sales_Existing_and_New():
-  
+def get_df_Sales_Existing_and_New(startdate, enddate):
+    print(startdate)
+    print(enddate)
     conn = connect()
     with conn.cursor() as cur:
      cur.execute(
@@ -61,7 +62,7 @@ def get_df_Sales_Existing_and_New():
     df = pandas.DataFrame.from_dict(dicts)
     df['YM'] = pandas.to_datetime(df['YM'])
     df = (df.set_index('YM')
-      .reindex(pandas.date_range('2008-11-01', '2022-08-01', freq='MS'))
+      .reindex(pandas.date_range(startdate, enddate, freq='MS'))
       .rename_axis(['YM'])
       .fillna(0)
       .reset_index())
