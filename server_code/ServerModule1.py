@@ -66,6 +66,8 @@ def get_df_Sales_Existing_and_New():
       .fillna(0)
       .reset_index())
     df['Mean'] = df['NewandExisting_Invoice_total'].mean()
+    fig = df
+
     fig.add_Trace(go.Scatter(
       x = df['YM'] ,
       y = df['NewandExisting_Invoice_total'],
