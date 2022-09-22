@@ -66,26 +66,30 @@ def get_df_Sales_Existing_and_New():
       .fillna(0)
       .reset_index())
     df['Mean'] = df['NewandExisting_Invoice_total'].mean()
-    fig = df
-
-    fig.add_Trace(go.Scatter(
+    mean1 = df['Mean']
+    Scatter=[
+    
+    go.Scatter(
       x = df['YM'] ,
       y = df['NewandExisting_Invoice_total'],
-      mode ='markers + lines'))
-    fig.add_trace(go.Scatter(x=df['YM'],
+      mode ='markers + lines',
+      name= ' New and Existing Sales'),
+    go.Scatter(
+                        x=df['YM'],
                         y = df['Mean'] ,
                           mode='lines',
-                          name= ' New and Existing Sales' + ' ' + 'average  =' + str(round(mean1,0)),
+                          name= ' New and Existing Sales Mean' + ' ' + 'average  =' + str(round(mean1,0)),
                           line=dict(
-                          color=green,
-                          width=1,
+                          color= 'green',
+                          width=2,
                           dash='dash'                   
                             ))
-                                )
+                                
+    ]
 #     print(dfx)
     print (df)
 #     df = pandas.DataFrame.from_dict(dicts)
-    return fig
+    return Scatter
      
 #    For each row, pull out only the data we want to put into pandas
 #     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
