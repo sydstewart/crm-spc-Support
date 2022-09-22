@@ -9,6 +9,7 @@ package_name: CRM_SPC
 allow_embedding: false
 name: CRM SPC
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+metadata: {}
 startup_form: Form1
 db_schema:
   charts:

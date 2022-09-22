@@ -48,21 +48,21 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
     conn = connect()
     t = app_tables.charts.search(chartid=1)
     for row in t:
-       print(row['ChartSQL'])
-    chartsql = t['ChartSQL']
+#        print(row['ChartSQL'])
+       chartsql = row['ChartSQL']
     print (chartsql)
     with conn.cursor() as cur:
-     cur.execute(chartsql)
-#                 "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
-#                       , Sum(invoice.amount_usdollar) As \
-#                       NewandExisting_Invoice_total \
-#                 From invoice Inner Join \
-#                   invoice_cstm On invoice_cstm.id_c = invoice.id Inner Join \
-#                   accounts On invoice.shipping_account_id = accounts.id \
-#                 Where (invoice_cstm.newexistingormaintenance_c = 'New') Or \
-#                   (invoice_cstm.newexistingormaintenance_c = 'Existing') \
-#                 Group By YM \
-#                 Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
+     cur.execute( 
+                "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
+                      , Sum(invoice.amount_usdollar) As \
+                      NewandExisting_Invoice_total \
+                From invoice Inner Join \
+                  invoice_cstm On invoice_cstm.id_c = invoice.id Inner Join \
+                  accounts On invoice.shipping_account_id = accounts.id \
+                Where (invoice_cstm.newexistingormaintenance_c = 'New') Or \
+                  (invoice_cstm.newexistingormaintenance_c = 'Existing') \
+                Group By YM \
+                Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
      
     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
             for r in cur.fetchall()]
@@ -112,7 +112,71 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
 #     print (df)
 #     df = pandas.DataFrame.from_dict(dicts)
     return Scatter
+
+@anvil.server.callable
+def get_daily_cases_arriving(startdate, enddate):
+    print(startdate)
+    print(enddate)
+    conn = connect()
+#     t = app_tables.charts.search(chartid=1)
+#     for row in t:
+# #        print(row['ChartSQL'])
+#        chartsql = row['ChartSQL']
+#     print (chartsql)
+    with conn.cursor() as cur:
+     cur.execute( " Select  Date(cases.date_entered) As Date_Entered,  Count(cases.id) As All_Cases \
+                  From cases Inner Join \
+                                cases_cstm On cases_cstm.id_c = cases.id \
+                                  Group By (Date(cases.date_entered))")  
      
+    dicts = [{'Date_Entered': r['Date_Entered'], 'All_Cases': r['All_Cases']}
+            for r in cur.fetchall()]
+    
+    df = pandas.DataFrame.from_dict(dicts)
+    df['Date_Entered'] = pandas.to_datetime(df['Date_Entered'])
+    df = (df.set_index('Date_Entered')
+      .reindex(pandas.date_range(startdate, enddate, freq='B'))
+      .rename_axis(['Date_Entered'])
+      .fillna(0)
+      .reset_index())
+    df['Mean'] = df['All_Cases'].mean()
+#     df['SD'] = df['All_Cases'].stdev()
+    mean1 = df['All_Cases'].mean()
+    SD1 = df['All_Cases'].std()
+  
+    Scatter=[
+    
+    go.Scatter(
+                        x = df['Date_Entered'] ,
+                        y = df['All_Cases'],
+                        mode ='markers + lines',
+                        name= ' All_Cases'),
+    go.Scatter(
+                        x=df['Date_Entered'],
+                        y = df['Mean'] ,
+                          mode='lines',
+                          name= ' All_Cases Average' + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'green',
+                          width=2
+#                           dash='dash'                   
+                            )),
+    go.Scatter(
+                        x=df['Date_Entered'],
+                        y = df['Mean'] +  3 * SD1  ,
+                          mode='lines',
+                          name= ' All_Cases 3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'red',
+                          width=2
+#                           dash='dash'                   
+                            ))
+                                
+    ]
+#     print(dfx)
+#     print (df)
+#     df = pandas.DataFrame.from_dict(dicts)
+    return Scatter
 #    For each row, pull out only the data we want to put into pandas
 #     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
 # #             for r in db_data]

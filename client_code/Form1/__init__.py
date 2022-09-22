@@ -38,7 +38,8 @@ class Form1(Form1Template):
 #     dfx = anvil.server.call('get_df_Sales_Existing_and_New')
     self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
     self.plot_1.layout.title = ' New and Existing Monthly Sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
-
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving',startdate, enddate)
+    self.plot_2.layout.title = ' Daily Cases Arriving' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
       
 
 #     self.plot_1.data = go.Scatter(
@@ -88,5 +89,6 @@ class Form1(Form1Template):
     print (startdate)
     enddate = self.date_picker_2.date
     self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate, enddate)
     pass
 
