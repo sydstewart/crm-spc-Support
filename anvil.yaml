@@ -16,15 +16,15 @@ db_schema:
     client: full
     server: full
     columns:
+    - name: chartid
+      admin_ui: {width: 200}
+      type: number
     - name: Chart_Name
       admin_ui: {width: 200}
       type: string
     - name: ChartSQL
       admin_ui: {width: 200}
       type: string
-    - name: chartid
-      admin_ui: {width: 200}
-      type: number
 secrets:
   CRM:
     value: {? '' : 7w87QJIpcSMHPYq7AJfsCDOcHcIi/NsD0G1G442MjaPZi9BYWIAqujQt+elxbFL6ZXxSuVUiUP+DlgxxwVgK/sxoIna/rDgecuLmmoiT5lexWZ2hsx/9X8wWBcGPpqnjeueIrtP6KINOBw==}

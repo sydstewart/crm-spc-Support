@@ -47,7 +47,10 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
     print(enddate)
     conn = connect()
     t = app_tables.charts.search(chartid=1)
+    for row in t:
+       print(row['ChartSQL'])
     chartsql = t['ChartSQL']
+    print (chartsql)
     with conn.cursor() as cur:
      cur.execute(chartsql)
 #                 "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
