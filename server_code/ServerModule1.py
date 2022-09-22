@@ -5,7 +5,7 @@ import anvil.secrets
 import anvil.server
 import pymysql
 import pandas
-from datetime import datetime, time
+from datetime import datetime, time , date
 import plotly.graph_objects as go
 
 # This is a server module. It runs on the Anvil server,
@@ -46,23 +46,28 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
     print(startdate)
     print(enddate)
     conn = connect()
-    t = app_tables.charts.search(chartid=1)
+    t = app_tables.charts.search(chartid = 1)
+#     t.update(Start_Date  = date(startdate), End_Date = date(enddate))
+    
     for row in t:
-#        print(row['ChartSQL'])
+       print(row['ChartSQL'])
        chartsql = row['ChartSQL']
-    print (chartsql)
+       row['StartDate'] =  datetime.strptime(startdate, '%Y-%M-%d').date()
+       row['EndDate'] = datetime.strptime(enddate, '%Y-%m-%d').date() 
     with conn.cursor() as cur:
-     cur.execute( 
-                "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
-                      , Sum(invoice.amount_usdollar) As \
-                      NewandExisting_Invoice_total \
-                From invoice Inner Join \
-                  invoice_cstm On invoice_cstm.id_c = invoice.id Inner Join \
-                  accounts On invoice.shipping_account_id = accounts.id \
-                Where (invoice_cstm.newexistingormaintenance_c = 'New') Or \
-                  (invoice_cstm.newexistingormaintenance_c = 'Existing') \
-                Group By YM \
-                Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
+     cur.execute(chartsql
+       
+#                 "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
+#                       , Sum(invoice.amount_usdollar) As \
+#                       NewandExisting_Invoice_total \
+#                 From invoice Inner Join \
+#                   invoice_cstm On invoice_cstm.id_c = invoice.id Inner Join \
+#                   accounts On invoice.shipping_account_id = accounts.id \
+#                 Where (invoice_cstm.newexistingormaintenance_c = 'New') Or \
+#                   (invoice_cstm.newexistingormaintenance_c = 'Existing') \
+#                 Group By YM \
+#                 Order By Date_Format(Date(invoice.date_entered), '%Y/%m')"
+     )  
      
     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
             for r in cur.fetchall()]
@@ -118,16 +123,18 @@ def get_daily_cases_arriving(startdate, enddate):
     print(startdate)
     print(enddate)
     conn = connect()
-#     t = app_tables.charts.search(chartid=1)
-#     for row in t:
-# #        print(row['ChartSQL'])
-#        chartsql = row['ChartSQL']
-#     print (chartsql)
+    t = app_tables.charts.search(chartid=2)
+    for row in t:
+#        print(row['ChartSQL'])
+       chartsql = row['ChartSQL']
+    print (chartsql)
     with conn.cursor() as cur:
-     cur.execute( " Select  Date(cases.date_entered) As Date_Entered,  Count(cases.id) As All_Cases \
-                  From cases Inner Join \
-                                cases_cstm On cases_cstm.id_c = cases.id \
-                                  Group By (Date(cases.date_entered))")  
+     cur.execute( chartsql
+#        " Select  Date(cases.date_entered) As Date_Entered,  Count(cases.id) As All_Cases \
+#                   From cases Inner Join \
+#                                 cases_cstm On cases_cstm.id_c = cases.id \
+#                                   Group By (Date(cases.date_entered))"
+     )  
      
     dicts = [{'Date_Entered': r['Date_Entered'], 'All_Cases': r['All_Cases']}
             for r in cur.fetchall()]

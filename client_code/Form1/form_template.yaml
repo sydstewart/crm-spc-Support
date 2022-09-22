@@ -54,6 +54,47 @@ components:
       tooltip: '', interactive: true}
     name: plot_2
     layout_properties: {grid_position: 'UKZGXX,ZJHOAQ', full_width_row: true}
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    name: column_panel_1
+    layout_properties: {grid_position: 'OXLWUM,ZIKQJQ'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Start Date, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_3
+      layout_properties: {grid_position: 'QYGRII,TBBNDN'}
+    - type: DatePicker
+      properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
+        placeholder: '', border: '', enabled: true, foreground: '', visible: true,
+        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+        date: '', min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
+      name: date_picker_3
+      layout_properties: {grid_position: 'QYGRII,IURMHL'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: End date, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties: {grid_position: 'OXLWUM,UTSPIY'}
+  - type: DatePicker
+    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
+      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
+      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
+    name: date_picker_4
+    layout_properties: {grid_position: 'OXLWUM,HVNAKJ'}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: REDRAW CHART, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: button_2
+    layout_properties: {grid_position: 'OXLWUM,USGAIO'}
+    event_bindings: {click: button_2_click}
   - type: Plot
     properties: {spacing_above: small, spacing_below: small, height: 450, visible: true,
       tooltip: '', interactive: true}

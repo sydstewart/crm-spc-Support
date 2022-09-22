@@ -82,13 +82,20 @@ class Form1(Form1Template):
 
 #            dfcsv = pd.merge(all_dates, dfcsv, how="left", on=dateCol).fillna(0)
 
+  def button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    startdate2 = self.date_picker_3.date
+    enddate2 = self.date_picker_4.date
+    
+    self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate2, enddate2)
+    
+    pass
+
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
-    
-    startdate = self.date_picker_1.date
-    print (startdate)
-    enddate = self.date_picker_2.date
-    self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
-    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate, enddate)
+    startdate1 = self.date_picker_1.date
+    enddate1 = self.date_picker_2.date
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate1, enddate1)
     pass
+
 
