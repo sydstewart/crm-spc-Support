@@ -1,6 +1,8 @@
 import anvil.secrets
 import anvil.server
 import pymysql
+import pandas
+
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -31,6 +33,33 @@ def get_Sales_Existing_and_New():
                 Group By YM \
                 Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
     
-    return cur.fetchall()
-
+        # Get an iterable object with all the rows in my_table
+#     all_records = cur.fetchall()
+# #    For each row, pull out only the data we want to put into pandas
+#     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
+#             for r in all_records]
+    
+#     df = pandas.DataFrame.from_dict(dicts)
+    
+#     print (df)
+    
+    return cur.fetchall() 
   
+@anvil.server.callable
+def get_df_Sales_Existing_and_New(db_data):
+  
+
+#    For each row, pull out only the data we want to put into pandas
+    dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
+            for r in db_data]
+    
+    df = pandas.DataFrame.from_dict(dicts)
+    
+    df['YM'] = pandas.to_datetime(df['YM'])
+    freq= 'MS'
+    all_dates = pandas.DataFrame({df['YM']:pandas.date_range(start=df['YM'].min(),
+                                        end=datetime.now(),  #dfcsv[dateCol].max(),
+                                        freq=freq)})
+    
+    print (df)
+    print(all_dates)

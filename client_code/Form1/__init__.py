@@ -28,16 +28,10 @@ class Form1(Form1Template):
       mode ='markers + lines')
 #       marker=dict(size=([x['IPS'] for x in db_data])),  
 #       hovertext =  ([x['Project_Name'] for x in db_data])#  + ' ' + ([x['Accounts'] for x in db_data])
+    df = anvil.server.call('get_df_Sales_Existing_and_New', db_data)
     
- 
+    print(df)
 
-# # Get an iterable object with all the rows in my_table
-# all_records = app_tables.people.search()
-# # For each row, pull out only the data we want to put into pandas
-# dicts = [{'name': r['name'], 'age': r['age'], 'group_name': r['group']['name']}
-#          for r in all_records]
-
-# df = pandas.DataFrame.from_dict(dicts)
 
 
 #  dfcsv[dateCol] = pd.to_datetime(dfcsv[dateCol])
