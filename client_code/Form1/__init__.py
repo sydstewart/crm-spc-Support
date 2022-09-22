@@ -22,19 +22,21 @@ class Form1(Form1Template):
     db_data = anvil.server.call('get_Sales_Existing_and_New')
   
     # Create a Scatter plot with this data,
-#     self.Sales_Existing_and_New_Chart.data = go.Scatter(
-#       x = [x['YM'] for x in db_data],
-#       y = [x['NewandExisting_Invoice_total'] for x in db_data],
-#       mode ='markers + lines')
-    self.Sales_Existing_and_New_Chart.layout.title = ' sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
-    dfx = anvil.server.call('get_df_Sales_Existing_and_New', db_data)
-    print('dfx',dfx)
-
     self.Sales_Existing_and_New_Chart.data = go.Scatter(
-      x = dfx['YM'] ,
-      y = dfx['NewandExisting_Invoice_total'],
+      x = [x['YM'] for x in db_data],
+      y = [x['NewandExisting_Invoice_total'] for x in db_data],
       mode ='markers + lines')
-    print(dfx)
+    self.Sales_Existing_and_New_Chart.layout.title = ' sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+   
+#     dfx = anvil.server.call('get_df_Sales_Existing_and_New')
+    self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New')
+      
+
+#     self.plot_1.data = go.Scatter(
+#       x = dfx['YM'] ,
+#       y = dfx['NewandExisting_Invoice_total'],
+#       mode ='markers + lines')
+#     print(dfx)
 
      
 #  dfcsv[dateCol] = pd.to_datetime(dfcsv[dateCol])
