@@ -65,7 +65,7 @@ def get_df_Sales_Existing_and_New():
       .rename_axis(['YM'])
       .fillna(0)
       .reset_index())
-    
+    df['Mean'] = df['NewandExisting_Invoice_total'].mean()
     Scatter = go.Scatter(
       x = df['YM'] ,
       y = df['NewandExisting_Invoice_total'],
