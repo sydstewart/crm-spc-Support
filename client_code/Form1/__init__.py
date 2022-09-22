@@ -34,6 +34,8 @@ class Form1(Form1Template):
 
 #     dfx = anvil.server.call('get_df_Sales_Existing_and_New')
     self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
+    self.plot_1.layout.title = ' New and Existing Monthly Sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+
       
 
 #     self.plot_1.data = go.Scatter(
@@ -79,7 +81,7 @@ class Form1(Form1Template):
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     
-    startdate = self.date_picker_1,date
+    startdate = self.date_picker_1.date
     print (startdate)
     enddate = self.date_picker_2.date
     self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)

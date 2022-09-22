@@ -50,16 +50,16 @@ components:
     layout_properties: {grid_position: 'ULTNIB,UZSTMW'}
     event_bindings: {click: button_1_click}
   - type: Plot
+    properties: {spacing_above: small, spacing_below: small, height: 450, visible: true,
+      tooltip: '', interactive: true}
+    name: plot_1
+    layout_properties: {grid_position: 'XTTELN,DXLDCO', full_width_row: true}
+  - type: Plot
     properties: {spacing_above: small, spacing_below: small, height: 611, visible: true,
       tooltip: '', interactive: true}
     name: Sales_Existing_and_New_Chart
     layout_properties: {grid_position: 'ULBGOP,GIVAIK', full_width_row: true}
     event_bindings: {}
-  - type: Plot
-    properties: {spacing_above: small, spacing_below: small, height: 450, visible: true,
-      tooltip: '', interactive: true}
-    name: plot_1
-    layout_properties: {grid_position: 'IRGWMS,WWZMSD', full_width_row: true}
   - type: DataGrid
     properties:
       role: null

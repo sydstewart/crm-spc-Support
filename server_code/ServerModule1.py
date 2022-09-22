@@ -101,7 +101,7 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
                                 
     ]
 #     print(dfx)
-    print (df)
+#     print (df)
 #     df = pandas.DataFrame.from_dict(dicts)
     return Scatter
      
