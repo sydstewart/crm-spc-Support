@@ -61,28 +61,41 @@ def get_df_Sales_Existing_and_New():
     df = pandas.DataFrame.from_dict(dicts)
     df['YM'] = pandas.to_datetime(df['YM'])
     df = (df.set_index('YM')
-      .reindex(pandas.date_range('2008-01-01', '2022-08-01', freq='MS'))
+      .reindex(pandas.date_range('2008-11-01', '2022-08-01', freq='MS'))
       .rename_axis(['YM'])
       .fillna(0)
       .reset_index())
     df['Mean'] = df['NewandExisting_Invoice_total'].mean()
-    mean1 = df['Mean']
+#     df['SD'] = df['NewandExisting_Invoice_total'].stdev()
+    mean1 = df['NewandExisting_Invoice_total'].mean()
+    SD1 = df['NewandExisting_Invoice_total'].std()
+  
     Scatter=[
     
     go.Scatter(
-      x = df['YM'] ,
-      y = df['NewandExisting_Invoice_total'],
-      mode ='markers + lines',
-      name= ' New and Existing Sales'),
+                        x = df['YM'] ,
+                        y = df['NewandExisting_Invoice_total'],
+                        mode ='markers + lines',
+                        name= ' New and Existing Sales'),
     go.Scatter(
                         x=df['YM'],
                         y = df['Mean'] ,
                           mode='lines',
-                          name= ' New and Existing Sales Mean' + ' ' + 'average  =' + str(round(mean1,0)),
+                          name= ' New and Existing Sales Average' + ' ' + 'Average  =' + str(round(mean1,0)),
                           line=dict(
                           color= 'green',
-                          width=2,
-                          dash='dash'                   
+                          width=2
+#                           dash='dash'                   
+                            )),
+    go.Scatter(
+                        x=df['YM'],
+                        y = df['Mean'] +  3 * SD1  ,
+                          mode='lines',
+                          name= ' New and Existing Sales 3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'red',
+                          width=2
+#                           dash='dash'                   
                             ))
                                 
     ]
