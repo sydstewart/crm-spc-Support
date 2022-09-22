@@ -59,9 +59,7 @@ def get_df_Sales_Existing_and_New(db_data):
     df['YM'] = pandas.to_datetime(df['YM'])
     print(df['YM'])
     freq= 'MS'
-#     all_dates = pandas.DataFrame({df['YM']:pandas.date_range(start=df['YM'].min(),
-#                                         end=df['YM'].max(), 
-#                                         freq=freq)})
+
 
     df['YM'] = pandas.to_datetime(df['YM'])
     df = (df.set_index('YM')
@@ -71,5 +69,6 @@ def get_df_Sales_Existing_and_New(db_data):
       .reset_index())
     
     print (df)
+    df = pandas.DataFrame.to_dict(df)
 #     print(all_dates)
     return df
