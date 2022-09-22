@@ -46,20 +46,21 @@ def get_df_Sales_Existing_and_New(db_data):
             for r in db_data]
     
     df = pandas.DataFrame.from_dict(dicts)
-    print(df['YM'])
-    df['YM'] = pandas.to_datetime(df['YM'])
-    print(df['YM'])
-    freq= 'MS'
+#     print(df['YM'])
+#     df['YM'] = pandas.to_datetime(df['YM'])
+#     print(df['YM'])
+#     freq= 'MS'
 
 
-    df['YM'] = pandas.to_datetime(df['YM'])
-    df = (df.set_index('YM')
-      .reindex(pandas.date_range(df['YM'].min(), df['YM'].max(), freq='MS'))
-      .rename_axis(['YM'])
-      .fillna(0)
-      .reset_index())
+  
+#     df = (df.set_index('YM')
+#       .reindex(pandas.date_range('2008-02-01', '2022-08-01', freq='MS'))
+#       .rename_axis(['YM'])
+#       .fillna(0)
+#       .reset_index())
     
-    print (df)
+    print ('from server',df)
     df = pandas.DataFrame.to_dict(df)
 #     print(all_dates)
 #     return df
+    return  df 
