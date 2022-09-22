@@ -22,17 +22,19 @@ class Form1(Form1Template):
     db_data = anvil.server.call('get_Sales_Existing_and_New')
   
     # Create a Scatter plot with this data, and change the colour of the markers
-    self.Sales_Existing_and_New_Chart.data = go.Scatter(
-      x = [x['YM'] for x in db_data],
-      y = [x['NewandExisting_Invoice_total'] for x in db_data],
-#       name = 'PICK Chart',
-      mode ='markers + lines')
-#       marker=dict(size=([x['IPS'] for x in db_data])),  
-#       hovertext =  ([x['Project_Name'] for x in db_data])#  + ' ' + ([x['Accounts'] for x in db_data])
+#     self.Sales_Existing_and_New_Chart.data = go.Scatter(
+#       x = [x['YM'] for x in db_data],
+#       y = [x['NewandExisting_Invoice_total'] for x in db_data],
+#       mode ='markers + lines')
+
     df = anvil.server.call('get_df_Sales_Existing_and_New', db_data)
-    
     print(df)
 
+    self.Sales_Existing_and_New_Chart.data = go.Scatter(
+      x = df['YM'] ,
+      y = df['NewandExisting_Invoice_total'],
+      mode ='markers + lines')
+#     print(df)
 
 
 #  dfcsv[dateCol] = pd.to_datetime(dfcsv[dateCol])
