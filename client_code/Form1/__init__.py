@@ -19,8 +19,12 @@ class Form1(Form1Template):
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['YM'], reverse=False )
     startdate = '2008-11-01'
     enddate = '2022-08-01'
-    
-    
+    t = app_tables.charts.get(chartid = 2)
+    self.date_picker_1.date = t['StartDate']
+    self.date_picker_2.date = t['EndDate']
+    t = app_tables.charts.get(chartid = 1)
+    self.date_picker_3.date = t['StartDate']
+    self.date_picker_4.date = t['EndDate']
     #     build_Sales_Existing_and_New_graph(self)
     
     
@@ -38,7 +42,7 @@ class Form1(Form1Template):
 #     dfx = anvil.server.call('get_df_Sales_Existing_and_New')
     self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
     self.plot_1.layout.title = ' New and Existing Monthly Sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
-    self.plot_2.data = anvil.server.call('get_daily_cases_arriving',startdate, enddate)
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving',self.date_picker_1.date, self.date_picker_2.date)
     self.plot_2.layout.title = ' Daily Cases Arriving' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
       
 
@@ -97,5 +101,29 @@ class Form1(Form1Template):
     enddate1 = self.date_picker_2.date
     self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate1, enddate1)
     pass
+
+  def date_picker_1_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    t = app_tables.charts.get(chartid = 2)
+    t['StartDate'] =  self.date_picker_1.date 
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', self.date_picker_1.date , self.date_picker_2.date )
+
+    
+    pass
+
+  def date_picker_2_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    t = app_tables.charts.get(chartid = 2)
+    t['EndDate'] =  self.date_picker_2.date 
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', self.date_picker_1.date , self.date_picker_2.date)
+    pass
+
+
+
+
+
+
+
+
 
 

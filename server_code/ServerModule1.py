@@ -50,7 +50,7 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
 #     t.update(Start_Date  = date(startdate), End_Date = date(enddate))
     
     for row in t:
-       print(row['ChartSQL'])
+#        print(row['ChartSQL'])
        chartsql = row['ChartSQL']
 #        row['StartDate'] =  datetime.strptime(startdate, '%Y-%m-%d').date()
 #        row['EndDate'] = datetime.strptime(enddate, '%Y-%m-%d').date()
