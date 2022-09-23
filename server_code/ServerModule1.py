@@ -196,6 +196,86 @@ def get_daily_cases_arriving(startdate, enddate, show_dropped):
 #     print (df)
 #     df = pandas.DataFrame.from_dict(dicts)
     return Scatter
+
+
+@anvil.server.callable
+def get_daily_cases_closed(startdate, enddate, show_dropped):
+    print(startdate)
+    print(enddate)
+    conn = connect()
+    t = app_tables.charts.search(chartid=3)
+    for row in t:
+#        print(row['ChartSQL'])
+       chartsql = row['ChartSQL']
+#     print (chartsql)
+    with conn.cursor() as cur:
+     cur.execute( chartsql
+#        " Select  Date(cases.date_entered) As Date_Entered,  Count(cases.id) As All_Cases \
+#                   From cases Inner Join \
+#                                 cases_cstm On cases_cstm.id_c = cases.id \
+#                                   Group By (Date(cases.date_entered))"
+     )  
+     
+    dicts = [{'Date_Closed': r['Date_Closed'], 'All_Cases_Closed': r['All_Cases_Closed']}
+            for r in cur.fetchall()]
+    
+    df = pandas.DataFrame.from_dict(dicts)
+    df['Date_Closed'] = pandas.to_datetime(df['Date_Closed'])
+    df = (df.set_index('Date_Closed')
+      .reindex(pandas.date_range(startdate, enddate, freq='B'))
+      .rename_axis(['Date_Closed'])
+      .fillna(0)
+      .reset_index())
+    print(df)
+    if show_dropped == False:
+          missd= df[df['Date_Closed']=='2022-09-19'].index.values.astype(int)
+          missd1= df[df['Date_Closed']=='2022-08-29'].index.values.astype(int)
+          missd2= df[df['Date_Closed']=='2022-06-02'].index.values.astype(int)
+          missd3= df[df['Date_Closed']=='2022-06-03'].index.values.astype(int)
+          missd4= df[df['Date_Closed']=='2022-05-02'].index.values.astype(int)
+          df = df.drop(labels = missd, axis=0)
+          df = df.drop(labels = missd1, axis=0)
+          df = df.drop(labels = missd2, axis=0)
+          df = df.drop(labels = missd3, axis=0)
+          df = df.drop(labels = missd4, axis=0)
+    df['Mean'] = df['All_Cases_Closed'].mean()
+#     df['SD'] = df['All_Cases'].stdev()
+    mean1 = df['All_Cases_Closed'].mean()
+    SD1 = df['All_Cases_Closed'].std()
+  
+    Scatter=[
+    
+    go.Scatter(
+                        x = df['Date_Closed'] ,
+                        y = df['All_Cases_Closed'],
+                        mode ='markers + lines',
+                        name= ' All_Cases_Closed'),
+    go.Scatter(
+                        x=df['Date_Closed'],
+                        y = df['Mean'] ,
+                          mode='lines',
+                          name= ' All_Cases_Closed Average' + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'green',
+                          width=2
+#                           dash='dash'                   
+                            )),
+    go.Scatter(
+                        x=df['Date_Closed'],
+                        y = df['Mean'] +  3 * SD1  ,
+                          mode='lines',
+                          name= ' All_Cases_Closed 3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'red',
+                          width=2
+#                           dash='dash'                   
+                            ))
+                                
+    ]
+#     print(dfx)
+#     print (df)
+#     df = pandas.DataFrame.from_dict(dicts)
+    return Scatter
 #    For each row, pull out only the data we want to put into pandas
 #     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
 # #             for r in db_data]

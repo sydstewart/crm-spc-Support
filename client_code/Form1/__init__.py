@@ -48,7 +48,9 @@ class Form1(Form1Template):
     self.plot_1.layout.title = ' New and Existing Monthly Sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
     self.plot_2.data = anvil.server.call('get_daily_cases_arriving',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked)
     self.plot_2.layout.title = ' Daily Cases Arriving' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
-      
+    self.plot_3.data = anvil.server.call('get_daily_cases_closed',self.date_picker_5.date, self.date_picker_6.date, self.check_box_1.checked)
+    self.plot_3.layout.title = ' Daily Cases Closed' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+        
 
 #     self.plot_1.data = go.Scatter(
 #       x = dfx['YM'] ,
@@ -132,6 +134,11 @@ class Form1(Form1Template):
     show_dropped = self.check_box_1.checked
     self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate1, enddate1, show_dropped)
     pass
+
+  def date_picker_5_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    pass
+
 
 
 
