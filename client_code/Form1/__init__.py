@@ -137,7 +137,34 @@ class Form1(Form1Template):
 
   def date_picker_5_change(self, **event_args):
     """This method is called when the selected date changes"""
+    t = app_tables.charts.get(chartid = 3)
+    t['StartDate'] =  self.date_picker_5.date 
+    self.plot_3.data = anvil.server.call('get_daily_cases_closed',self.date_picker_5.date, self.date_picker_6.date, self.check_box_1.checked)
+    self.plot_3.layout.title = ' Daily Cases Closed' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+    
     pass
+
+  def date_picker_6_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    t = app_tables.charts.get(chartid = 3)
+    t['EndDate'] =  self.date_picker_6.date 
+    self.plot_3.data = anvil.server.call('get_daily_cases_closed',self.date_picker_5.date, self.date_picker_6.date, self.check_box_1.checked)
+    self.plot_3.layout.title = ' Daily Cases Closed' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+    pass
+
+  def check_box_2_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    
+    startdate1 = self.date_picker_5.date
+    enddate1 = self.date_picker_6.date
+    show_dropped = self.check_box_1.checked
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate1, enddate1, show_dropped)
+    pass
+    
+    
+    pass
+
+
 
 
 
