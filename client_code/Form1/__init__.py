@@ -22,12 +22,16 @@ class Form1(Form1Template):
     t = app_tables.charts.get(chartid = 2)
     self.date_picker_1.date = t['StartDate']
     self.date_picker_2.date = t['EndDate']
+    
     t = app_tables.charts.get(chartid = 1)
     self.date_picker_3.date = t['StartDate']
     self.date_picker_4.date = t['EndDate']
     #     build_Sales_Existing_and_New_graph(self)
     
-    
+    t = app_tables.charts.get(chartid = 3)
+    self.date_picker_5.date = t['StartDate']
+    self.date_picker_6.date = t['EndDate']
+    #     build_Sales_Existing_and_New_graph(self)
 #   def build_Sales_Existing_and_New_graph(self):
     # self.plot_1.data = go.Bar(y=[100,400,200,300,500])
     db_data = anvil.server.call('get_Sales_Existing_and_New')
