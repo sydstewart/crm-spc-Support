@@ -42,7 +42,7 @@ class Form1(Form1Template):
 #     dfx = anvil.server.call('get_df_Sales_Existing_and_New')
     self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
     self.plot_1.layout.title = ' New and Existing Monthly Sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
-    self.plot_2.data = anvil.server.call('get_daily_cases_arriving',self.date_picker_1.date, self.date_picker_2.date)
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked)
     self.plot_2.layout.title = ' Daily Cases Arriving' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
       
 
@@ -99,14 +99,17 @@ class Form1(Form1Template):
     """This method is called when the button is clicked"""
     startdate1 = self.date_picker_1.date
     enddate1 = self.date_picker_2.date
-    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate1, enddate1)
+    show_dropped = self.check_box_1.checked
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate1, enddate1, show_dropped)
     pass
 
+  
+  # Daily Cases
   def date_picker_1_change(self, **event_args):
     """This method is called when the selected date changes"""
     t = app_tables.charts.get(chartid = 2)
     t['StartDate'] =  self.date_picker_1.date 
-    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', self.date_picker_1.date , self.date_picker_2.date )
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', self.date_picker_1.date , self.date_picker_2.date, self.check_box_1.checked)
 
     
     pass
@@ -115,8 +118,20 @@ class Form1(Form1Template):
     """This method is called when the selected date changes"""
     t = app_tables.charts.get(chartid = 2)
     t['EndDate'] =  self.date_picker_2.date 
-    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', self.date_picker_1.date , self.date_picker_2.date)
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', self.date_picker_1.date , self.date_picker_2.date,self.check_box_1.checked)
     pass
+
+  def check_box_1_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    startdate1 = self.date_picker_1.date
+    enddate1 = self.date_picker_2.date
+    show_dropped = self.check_box_1.checked
+    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate1, enddate1, show_dropped)
+    pass
+
+
+
+
 
 
 

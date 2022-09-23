@@ -119,7 +119,7 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
     return Scatter
 
 @anvil.server.callable
-def get_daily_cases_arriving(startdate, enddate):
+def get_daily_cases_arriving(startdate, enddate, show_dropped):
     print(startdate)
     print(enddate)
     conn = connect()
@@ -147,9 +147,17 @@ def get_daily_cases_arriving(startdate, enddate):
       .fillna(0)
       .reset_index())
     print(df)
-    missd= df[df['Date_Entered']=='2022-09-19'].index.values.astype(int)
-    missd1= df[df['Date_Entered']=='2022-08-28'].index.values.astype(int)
-    df = df.drop(labels = [missd,missd1], axis=0)
+    if show_dropped == False:
+          missd= df[df['Date_Entered']=='2022-09-19'].index.values.astype(int)
+          missd1= df[df['Date_Entered']=='2022-08-29'].index.values.astype(int)
+          missd2= df[df['Date_Entered']=='2022-06-02'].index.values.astype(int)
+          missd3= df[df['Date_Entered']=='2022-06-03'].index.values.astype(int)
+          missd4= df[df['Date_Entered']=='2022-05-02'].index.values.astype(int)
+          df = df.drop(labels = missd, axis=0)
+          df = df.drop(labels = missd1, axis=0)
+          df = df.drop(labels = missd2, axis=0)
+          df = df.drop(labels = missd3, axis=0)
+          df = df.drop(labels = missd4, axis=0)
     df['Mean'] = df['All_Cases'].mean()
 #     df['SD'] = df['All_Cases'].stdev()
     mean1 = df['All_Cases'].mean()

@@ -4,7 +4,7 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"GIVAIK":50,"DFGECF":45,"UZSTMW":15,"ZIKQJQ":20,"UTSPIY":10,"HVNAKJ":15,"USGAIO":15}'}
+  properties: {col_widths: '{"GIVAIK":50,"DFGECF":45,"UZSTMW":20,"ZIKQJQ":20,"UTSPIY":10,"HVNAKJ":15,"USGAIO":15,"CIVMPQ":15}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -51,6 +51,14 @@ components:
     name: button_1
     layout_properties: {grid_position: 'ULTNIB,UZSTMW'}
     event_bindings: {click: button_1_click}
+  - type: CheckBox
+    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', allow_indeterminate: false, visible: true, text: show Dropped,
+      font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+      background: '', bold: false, checked: false, underline: false}
+    name: check_box_1
+    layout_properties: {grid_position: 'ULTNIB,CIVMPQ'}
+    event_bindings: {change: check_box_1_change}
   - type: Plot
     properties: {spacing_above: small, spacing_below: small, height: 450, visible: true,
       tooltip: '', interactive: true}
