@@ -127,7 +127,7 @@ def get_daily_cases_arriving(startdate, enddate):
     for row in t:
 #        print(row['ChartSQL'])
        chartsql = row['ChartSQL']
-    print (chartsql)
+#     print (chartsql)
     with conn.cursor() as cur:
      cur.execute( chartsql
 #        " Select  Date(cases.date_entered) As Date_Entered,  Count(cases.id) As All_Cases \
@@ -146,6 +146,10 @@ def get_daily_cases_arriving(startdate, enddate):
       .rename_axis(['Date_Entered'])
       .fillna(0)
       .reset_index())
+    print(df)
+    missd= df[df['Date_Entered']=='2022-09-19'].index.values.astype(int)
+    missd1= df[df['Date_Entered']=='2022-08-28'].index.values.astype(int)
+    df = df.drop(labels = [missd,missd1], axis=0)
     df['Mean'] = df['All_Cases'].mean()
 #     df['SD'] = df['All_Cases'].stdev()
     mean1 = df['All_Cases'].mean()
