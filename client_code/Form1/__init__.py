@@ -46,7 +46,20 @@ class Form1(Form1Template):
 #     dfx = anvil.server.call('get_df_Sales_Existing_and_New')
     self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
     self.plot_1.layout.title = ' New and Existing Monthly Sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
-#     self.plot_2.data = anvil.server.call('get_daily_cases_arriving',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked)
+
+    # Daily Cases _ self.plot_2 ____________________________________________________________________________
+    t = app_tables.charts.get(chartid = 2)
+    Date_Column = t['Date_Column_Name']
+    Measure_Column = t['Measure_Column_Name']
+    chartid= t['chartid']
+    chart_title =t['Chart_Name']
+    self.plot_2.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column)
+    self.plot_2.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+    
+    
+    
+    
+    #     self.plot_2.data = anvil.server.call('get_daily_cases_arriving',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked)
 #     self.plot_2.layout.title = ' Daily Cases Arriving' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
     self.plot_3.data = anvil.server.call('get_daily_cases_closed',self.date_picker_5.date, self.date_picker_6.date, self.check_box_1.checked)
     self.plot_3.layout.title = ' Daily Cases Closed' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
@@ -113,21 +126,32 @@ class Form1(Form1Template):
     pass
 
   
-  # Daily Cases
+  # Daily Cases   #____________________________________________________________________________________________________
+  
   def date_picker_1_change(self, **event_args):
     """This method is called when the selected date changes"""
     t = app_tables.charts.get(chartid = 2)
     t['StartDate'] =  self.date_picker_1.date 
-    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', self.date_picker_1.date , self.date_picker_2.date, self.check_box_1.checked)
+    Date_Column = t['Date_Column_Name']
+    Measure_Column = t['Measure_Column_Name']
+    chart_title =t['Chart_Name']
+    chartid= t['chartid']
+    self.plot_2.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column)
+    self.plot_2.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
 
-    
     pass
 
   def date_picker_2_change(self, **event_args):
     """This method is called when the selected date changes"""
     t = app_tables.charts.get(chartid = 2)
-    t['EndDate'] =  self.date_picker_2.date 
-    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', self.date_picker_1.date , self.date_picker_2.date,self.check_box_1.checked)
+    t['EndDate'] =  self.date_picker_2.date
+    Date_Column = t['Date_Column_Name']
+    Measure_Column = t['Measure_Column_Name']
+    chart_title =t['Chart_Name']
+    chartid= t['chartid']
+    self.plot_2.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column)
+    self.plot_2.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+
     pass
 
   def check_box_1_change(self, **event_args):
@@ -135,13 +159,23 @@ class Form1(Form1Template):
     startdate1 = self.date_picker_1.date
     enddate1 = self.date_picker_2.date
     show_dropped = self.check_box_1.checked
-    self.plot_2.data = anvil.server.call('get_daily_cases_arriving', startdate1, enddate1, show_dropped)
-    pass
+    t = app_tables.charts.get(chartid = 2)
+    chart_title =t['Chart_Name']
+    Date_Column = t['Date_Column_Name']
+    Measure_Column = t['Measure_Column_Name']
+    chartid= t['chartid']
+    self.plot_2.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column)
+    self.plot_2.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
 
+    pass
+#_______________________________________________________________________________________
+  # Closed cases
+  
   def date_picker_5_change(self, **event_args):
     """This method is called when the selected date changes"""
     t = app_tables.charts.get(chartid = 3)
-    t['StartDate'] =  self.date_picker_5.date 
+    t['StartDate'] =  self.date_picker_5.date
+   
     self.plot_3.data = anvil.server.call('get_daily_cases_closed',self.date_picker_5.date, self.date_picker_6.date, self.check_box_1.checked)
     self.plot_3.layout.title = ' Daily Cases Closed' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
     

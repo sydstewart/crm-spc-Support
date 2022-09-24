@@ -43,8 +43,8 @@ def get_Sales_Existing_and_New():
   
 @anvil.server.callable
 def get_df_Sales_Existing_and_New(startdate, enddate):
-    print(startdate)
-    print(enddate)
+#     print(startdate)
+#     print(enddate)
     conn = connect()
     t = app_tables.charts.search(chartid = 1)
 #     t.update(Start_Date  = date(startdate), End_Date = date(enddate))
@@ -120,8 +120,8 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
 
 @anvil.server.callable
 def get_daily_cases_arriving(startdate, enddate, show_dropped):
-    print(startdate)
-    print(enddate)
+#     print(startdate)
+#     print(enddate)
     conn = connect()
     t = app_tables.charts.search(chartid=2)
     for row in t:
@@ -146,7 +146,7 @@ def get_daily_cases_arriving(startdate, enddate, show_dropped):
       .rename_axis(['Date_Entered'])
       .fillna(0)
       .reset_index())
-    print(df)
+#     print(df)
     if show_dropped == False:
           missd= df[df['Date_Entered']=='2022-09-19'].index.values.astype(int)
           missd1= df[df['Date_Entered']=='2022-08-29'].index.values.astype(int)
@@ -200,8 +200,8 @@ def get_daily_cases_arriving(startdate, enddate, show_dropped):
 
 @anvil.server.callable
 def get_daily_cases_closed(startdate, enddate, show_dropped):
-    print(startdate)
-    print(enddate)
+#     print(startdate)
+#     print(enddate)
     conn = connect()
     t = app_tables.charts.search(chartid=3)
     for row in t:
@@ -226,7 +226,7 @@ def get_daily_cases_closed(startdate, enddate, show_dropped):
       .rename_axis(['Date_Closed'])
       .fillna(0)
       .reset_index())
-    print(df)
+#     print(df)
     if show_dropped == False:
           missd= df[df['Date_Closed']=='2022-09-19'].index.values.astype(int)
           missd1= df[df['Date_Closed']=='2022-08-29'].index.values.astype(int)
@@ -269,6 +269,16 @@ def get_daily_cases_closed(startdate, enddate, show_dropped):
                           color= 'red',
                           width=2
 #                           dash='dash'                   
+                            )),
+    go.Scatter(
+                        x=df['Date_Closed'],
+                        y = df['Mean'] +  2 * SD1  ,
+                          mode='lines',
+                          name= ' All_Cases_Closed 2SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'black',
+                          width=2
+#                           dash='dash'                   
                             ))
                                 
     ]
@@ -302,8 +312,8 @@ def get_daily_cases_closed(startdate, enddate, show_dropped):
 
 @anvil.server.callable
 def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Column):
-    print(startdate)
-    print(enddate)
+#     print(startdate)
+#     print(enddate)
     conn = connect()
     t = app_tables.charts.search(chartid=chartid)
     for row in t:
@@ -314,7 +324,7 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
      cur.execute( chartsql)
 
 
-    dicts = [{'Date_Column': r[Date_Column], 'Measure_Column': r[Measure_Column]}
+    dicts = [{Date_Column: r[Date_Column], Measure_Column: r[Measure_Column]}
             for r in cur.fetchall()]
     
     df = pandas.DataFrame.from_dict(dicts)
@@ -324,18 +334,22 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
       .rename_axis([Date_Column])
       .fillna(0)
       .reset_index())
-    print(df)
+#     print(df)
     if show_dropped == False:
           missd= df[df[Date_Column]=='2022-09-19'].index.values.astype(int)
           missd1= df[df[Date_Column]=='2022-08-29'].index.values.astype(int)
           missd2= df[df[Date_Column]=='2022-06-02'].index.values.astype(int)
           missd3= df[df[Date_Column]=='2022-06-03'].index.values.astype(int)
           missd4= df[df[Date_Column]=='2022-05-02'].index.values.astype(int)
+          missd5= df[df[Date_Column]=='2022-04-15'].index.values.astype(int)
+          missd6= df[df[Date_Column]=='2022-04-18'].index.values.astype(int)
           df = df.drop(labels = missd, axis=0)
           df = df.drop(labels = missd1, axis=0)
           df = df.drop(labels = missd2, axis=0)
           df = df.drop(labels = missd3, axis=0)
           df = df.drop(labels = missd4, axis=0)
+          df = df.drop(labels = missd5, axis=0)
+          df = df.drop(labels = missd6, axis=0)
     df['Mean'] = df[Measure_Column].mean()
 #     df['SD'] = df['All_Cases'].stdev()
     mean1 = df[Measure_Column].mean()
@@ -345,9 +359,9 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
     
     go.Scatter(
                         x = df[Date_Column] ,
-                        y = df['All_Cases_Closed'],
+                        y = df[Measure_Column],
                         mode ='markers + lines',
-                        name= ' All_Cases_Closed'),
+                        name= Measure_Column),
     go.Scatter(
                         x=df[Date_Column],
                         y = df['Mean'] ,
@@ -362,10 +376,20 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
                         x=df[Date_Column],
                         y = df['Mean'] +  3 * SD1  ,
                           mode='lines',
-                          name= Date_Column + '3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          name= Measure_Column + ' 3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
                           line=dict(
                           color= 'red',
                           width=2
+#                           dash='dash'                   
+                               )),
+    go.Scatter(
+                        x=df[Date_Column],
+                        y = df['Mean'] +  2 * SD1  ,
+                          mode='lines',
+                          name= Measure_Column  + ' 2SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'black',
+                          width=1
 #                           dash='dash'                   
                             ))
                                 
