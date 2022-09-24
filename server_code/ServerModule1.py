@@ -299,3 +299,78 @@ def get_daily_cases_closed(startdate, enddate, show_dropped):
 #     print(all_dates)
 #     return df
 #     return  df 
+
+@anvil.server.callable
+def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Column):
+    print(startdate)
+    print(enddate)
+    conn = connect()
+    t = app_tables.charts.search(chartid=chartid)
+    for row in t:
+#        print(row['ChartSQL'])
+       chartsql = row['ChartSQL']
+#     print (chartsql)
+    with conn.cursor() as cur:
+     cur.execute( chartsql)
+
+
+    dicts = [{'Date_Column': r[Date_Column], 'Measure_Column': r[Measure_Column]}
+            for r in cur.fetchall()]
+    
+    df = pandas.DataFrame.from_dict(dicts)
+    df[Date_Column] = pandas.to_datetime(df[Date_Column])
+    df = (df.set_index(Date_Column)
+      .reindex(pandas.date_range(startdate, enddate, freq='B'))
+      .rename_axis([Date_Column])
+      .fillna(0)
+      .reset_index())
+    print(df)
+    if show_dropped == False:
+          missd= df[df[Date_Column]=='2022-09-19'].index.values.astype(int)
+          missd1= df[df[Date_Column]=='2022-08-29'].index.values.astype(int)
+          missd2= df[df[Date_Column]=='2022-06-02'].index.values.astype(int)
+          missd3= df[df[Date_Column]=='2022-06-03'].index.values.astype(int)
+          missd4= df[df[Date_Column]=='2022-05-02'].index.values.astype(int)
+          df = df.drop(labels = missd, axis=0)
+          df = df.drop(labels = missd1, axis=0)
+          df = df.drop(labels = missd2, axis=0)
+          df = df.drop(labels = missd3, axis=0)
+          df = df.drop(labels = missd4, axis=0)
+    df['Mean'] = df[Measure_Column].mean()
+#     df['SD'] = df['All_Cases'].stdev()
+    mean1 = df[Measure_Column].mean()
+    SD1 = df[Measure_Column].std()
+  
+    Scatter=[
+    
+    go.Scatter(
+                        x = df[Date_Column] ,
+                        y = df['All_Cases_Closed'],
+                        mode ='markers + lines',
+                        name= ' All_Cases_Closed'),
+    go.Scatter(
+                        x=df[Date_Column],
+                        y = df['Mean'] ,
+                          mode='lines',
+                          name= ' All_Cases_Closed Average' + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'green',
+                          width=2
+#                           dash='dash'                   
+                            )),
+    go.Scatter(
+                        x=df[Date_Column],
+                        y = df['Mean'] +  3 * SD1  ,
+                          mode='lines',
+                          name= Date_Column + '3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'red',
+                          width=2
+#                           dash='dash'                   
+                            ))
+                                
+    ]
+#     print(dfx)
+#     print (df)
+#     df = pandas.DataFrame.from_dict(dicts)
+    return Scatter

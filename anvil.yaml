@@ -24,7 +24,7 @@ db_schema:
       admin_ui: {width: 200}
       type: string
     - name: ChartSQL
-      admin_ui: {width: 200}
+      admin_ui: {width: 251}
       type: string
     - name: StartDate
       admin_ui: {width: 200}
@@ -32,6 +32,12 @@ db_schema:
     - name: EndDate
       admin_ui: {width: 200}
       type: date
+    - name: Date_Column_Name
+      admin_ui: {width: 200}
+      type: string
+    - name: Measure_Column_Name
+      admin_ui: {width: 200}
+      type: string
 secrets:
   CRM:
     value: {? '' : 7w87QJIpcSMHPYq7AJfsCDOcHcIi/NsD0G1G442MjaPZi9BYWIAqujQt+elxbFL6ZXxSuVUiUP+DlgxxwVgK/sxoIna/rDgecuLmmoiT5lexWZ2hsx/9X8wWBcGPpqnjeueIrtP6KINOBw==}
