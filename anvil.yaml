@@ -38,6 +38,9 @@ db_schema:
     - name: Measure_Column_Name
       admin_ui: {width: 200}
       type: string
+    - name: Start_Date_ITEM
+      admin_ui: {width: 200}
+      type: string
 secrets:
   CRM:
     value: {? '' : 7w87QJIpcSMHPYq7AJfsCDOcHcIi/NsD0G1G442MjaPZi9BYWIAqujQt+elxbFL6ZXxSuVUiUP+DlgxxwVgK/sxoIna/rDgecuLmmoiT5lexWZ2hsx/9X8wWBcGPpqnjeueIrtP6KINOBw==}

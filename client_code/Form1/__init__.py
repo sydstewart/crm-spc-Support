@@ -5,7 +5,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 import plotly.graph_objects as go
-from datetime import datetime, time 
+from datetime import datetime, time , date
 
 class Form1(Form1Template):
 
@@ -131,7 +131,6 @@ class Form1(Form1Template):
   def date_picker_1_change(self, **event_args):
     """This method is called when the selected date changes"""
     t = app_tables.charts.get(chartid = 2)
-    t['StartDate'] =  self.date_picker_1.date 
     Date_Column = t['Date_Column_Name']
     Measure_Column = t['Measure_Column_Name']
     chart_title =t['Chart_Name']
