@@ -7,7 +7,7 @@ import pymysql
 import pandas
 from datetime import datetime, time , date
 import plotly.graph_objects as go
-
+import anvil,media
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #

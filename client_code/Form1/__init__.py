@@ -6,6 +6,7 @@ from anvil.tables import app_tables
 import anvil.server
 import plotly.graph_objects as go
 from datetime import datetime, time , date
+import anvil.media
 
 class Form1(Form1Template):
 
