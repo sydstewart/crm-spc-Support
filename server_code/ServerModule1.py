@@ -352,9 +352,11 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
           df = df.drop(labels = missd6, axis=0)
     df['Mean'] = df[Measure_Column].mean()
 #     df['SD'] = df['All_Cases'].stdev()
+   
     mean1 = df[Measure_Column].mean()
     SD1 = df[Measure_Column].std()
-  
+    total_rows =  df[Measure_Column].count() - 1
+    
     Scatter=[
     
     go.Scatter(
@@ -394,7 +396,32 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
                             ))
                                 
     ]
+
+    
+# df,Date_Column,Measure_Column,total_rows,mean1,SD1 = get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Column)
+    
+# def outofcontrol1above(df, Date_Column,Measure_Column,total_rows,mean1,SD1 ):
+#         import pandas as pd
+
+#         print()
+#         print ('Find 1 above 3 sd')
+#         print ('-------------------------------------------')
+#         print()
+
+#         outofcontrol1above = pd.DataFrame()
+#         for i in range(0,total_rows):
+#             countx = 0
+#             if (df[Measure_Column].iloc[i]  > ((3 * sd) +mean1)):
+#                 countx = 1
+
+#             if countx == 1:
+#                    outofcontrol1above = outofcontrol1above.append({Date_Column: df[Measure_Column].iloc[i],Measure_Column:df[Measure_Column].iloc[i]}, ignore_index=True)
+
+#         if outofcontrol1above.empty:
+#             print('Empty')
+#         print(outofcontrol1above)
+#         return outofcontrol1above
 #     print(dfx)
 #     print (df)
 #     df = pandas.DataFrame.from_dict(dicts)
-    return Scatter
+#     return Scatter
