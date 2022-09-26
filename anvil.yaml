@@ -43,7 +43,7 @@ db_schema:
       type: string
   waiting_on_4s:
     title: Waiting_on_4S
-    client: none
+    client: full
     server: full
     columns:
     - name: Date_Column
