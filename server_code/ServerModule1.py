@@ -4,7 +4,7 @@ from anvil.tables import app_tables
 import anvil.secrets
 import anvil.server
 import pymysql
-import pandas
+import pandas as pd
 from datetime import datetime, time , date
 import plotly.graph_objects as go
 import anvil.media
@@ -85,10 +85,10 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
             for r in cur.fetchall()]
     
-    df = pandas.DataFrame.from_dict(dicts)
-    df['YM'] = pandas.to_datetime(df['YM'])
+    df = pd.DataFrame.from_dict(dicts)
+    df['YM'] = pd.to_datetime(df['YM'])
     df = (df.set_index('YM')
-      .reindex(pandas.date_range(startdate, enddate, freq='MS'))
+      .reindex(pd.date_range(startdate, enddate, freq='MS'))
       .rename_axis(['YM'])
       .fillna(0)
       .reset_index())
@@ -128,7 +128,7 @@ def get_df_Sales_Existing_and_New(startdate, enddate):
     ]
 #     print(dfx)
 #     print (df)
-#     df = pandas.DataFrame.from_dict(dicts)
+#     df = pd.DataFrame.from_dict(dicts)
     return Scatter
 
 @anvil.server.callable
@@ -152,10 +152,10 @@ def get_daily_cases_arriving(startdate, enddate, show_dropped):
     dicts = [{'Date_Entered': r['Date_Entered'], 'All_Cases': r['All_Cases']}
             for r in cur.fetchall()]
     
-    df = pandas.DataFrame.from_dict(dicts)
-    df['Date_Entered'] = pandas.to_datetime(df['Date_Entered'])
+    df = pd.DataFrame.from_dict(dicts)
+    df['Date_Entered'] = pd.to_datetime(df['Date_Entered'])
     df = (df.set_index('Date_Entered')
-      .reindex(pandas.date_range(startdate, enddate, freq='B'))
+      .reindex(pd.date_range(startdate, enddate, freq='B'))
       .rename_axis(['Date_Entered'])
       .fillna(0)
       .reset_index())
@@ -207,7 +207,7 @@ def get_daily_cases_arriving(startdate, enddate, show_dropped):
     ]
 #     print(dfx)
 #     print (df)
-#     df = pandas.DataFrame.from_dict(dicts)
+#     df = pd.DataFrame.from_dict(dicts)
     return Scatter
 
 
@@ -232,10 +232,10 @@ def get_daily_cases_closed(startdate, enddate, show_dropped):
     dicts = [{'Date_Closed': r['Date_Closed'], 'All_Cases_Closed': r['All_Cases_Closed']}
             for r in cur.fetchall()]
     
-    df = pandas.DataFrame.from_dict(dicts)
-    df['Date_Closed'] = pandas.to_datetime(df['Date_Closed'])
+    df = pd.DataFrame.from_dict(dicts)
+    df['Date_Closed'] = pd.to_datetime(df['Date_Closed'])
     df = (df.set_index('Date_Closed')
-      .reindex(pandas.date_range(startdate, enddate, freq='B'))
+      .reindex(pd.date_range(startdate, enddate, freq='B'))
       .rename_axis(['Date_Closed'])
       .fillna(0)
       .reset_index())
@@ -297,28 +297,28 @@ def get_daily_cases_closed(startdate, enddate, show_dropped):
     ]
 #     print(dfx)
 #     print (df)
-#     df = pandas.DataFrame.from_dict(dicts)
+#     df = pd.DataFrame.from_dict(dicts)
     return Scatter
-#    For each row, pull out only the data we want to put into pandas
+#    For each row, pull out only the data we want to put into pd
 #     dicts = [{'YM': r['YM'], 'NewandExisting_Invoice_total': r['NewandExisting_Invoice_total']}
 # #             for r in db_data]
 #     print(dicts)
-#     df = pandas.DataFrame.from_dict(dicts)
+#     df = pd.DataFrame.from_dict(dicts)
 #     print(df['YM'])
-#     df['YM'] = pandas.to_datetime(df['YM'])
+#     df['YM'] = pd.to_datetime(df['YM'])
 #     print(df['YM'])
 #     freq= 'MS'
 
 
   
 #     df = (df.set_index('YM')
-#       .reindex(pandas.date_range('2008-02-01', '2022-08-01', freq='MS'))
+#       .reindex(pd.date_range('2008-02-01', '2022-08-01', freq='MS'))
 #       .rename_axis(['YM'])
 #       .fillna(0)
 #       .reset_index())
     
 #     print ('from server',df)
-#     df = pandas.DataFrame.to_dict(df)
+#     df = pd.DataFrame.to_dict(df)
 #     print(all_dates)
 #     return df
 #     return  df 
@@ -340,10 +340,10 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
     dicts = [{Date_Column: r[Date_Column], Measure_Column: r[Measure_Column]}
             for r in cur.fetchall()]
     
-    df = pandas.DataFrame.from_dict(dicts)
-    df[Date_Column] = pandas.to_datetime(df[Date_Column])
+    df = pd.DataFrame.from_dict(dicts)
+    df[Date_Column] = pd.to_datetime(df[Date_Column])
     df = (df.set_index(Date_Column)
-      .reindex(pandas.date_range(startdate, enddate, freq='B'))
+      .reindex(pd.date_range(startdate, enddate, freq='B'))
       .rename_axis([Date_Column])
       .fillna(0)
       .reset_index())
@@ -374,7 +374,7 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
     print ('-------------------------------------------')
     print()
 
-    outofcontrol1above = pandas.DataFrame()
+    outofcontrol1above = pd.DataFrame()
     for i in range(0,total_rows):
         countx = 0
         if (df[Measure_Column].iloc[i]  > ((3 * SD1) + mean1)):
@@ -409,7 +409,7 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
                                                 ))
                     )
       
-    outofcontrol6fall = pandas.DataFrame() 
+    outofcontrol6fall = pd.DataFrame() 
     for i in range(5,total_rows):
         countx = 0
         if (df[Measure_Column].iloc[i]  < df[Measure_Column].iloc[i-1]):
@@ -472,7 +472,7 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
     print()
 
 
-    outofcontrol9above = pandas.DataFrame() 
+    outofcontrol9above = pd.DataFrame() 
     for i in range(8,total_rows):
         countx = 0
         if (df[Measure_Column].iloc[i]  > (mean1)):
