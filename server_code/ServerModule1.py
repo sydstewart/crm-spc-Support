@@ -11,7 +11,18 @@ import plotly.graph_objects as go
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
-
+@anvil.server.callable
+def store_data(file):
+  with anvil.media.TempFile(file) as file_name:
+    if file.content_type == 'text/csv':
+      df = pd.read_csv(file_name)
+    else:
+      df = pd.read_excel(file_name)
+    for d in df.to_dict(orient="records"):
+      # d is now a dict of {columnname -> value} for this row
+      # We use Python's **kwargs syntax to pass the whole dict as
+      # keyword arguments
+      app_tables.waiting_on_4s.add_row(**d)
 
 def connect():
   connection = pymysql.connect(host='51.141.236.29',
