@@ -24,7 +24,7 @@ class Form1(Form1Template):
     self.date_picker_1.date = t['StartDate']
     self.date_picker_2.date = t['EndDate']
     
-    t = app_tables.charts.get(chartid = 1)
+    t = app_tables.charts.get(chartid = 4)
     self.date_picker_3.date = t['StartDate']
     self.date_picker_4.date = t['EndDate']
     #     build_Sales_Existing_and_New_graph(self)
@@ -45,8 +45,8 @@ class Form1(Form1Template):
     self.Sales_Existing_and_New_Chart.layout.title = ' sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
 
 #     dfx = anvil.server.call('get_df_Sales_Existing_and_New')
-    self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
-    self.plot_1.layout.title = ' New and Existing Monthly Sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+#     self.plot_1.data = anvil.server.call('get_df_Sales_Existing_and_New', startdate, enddate)
+#     self.plot_1.layout.title = ' New and Existing Monthly Sales' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
 
     # Daily Cases _ self.plot_2 ____________________________________________________________________________
     t = app_tables.charts.get(chartid = 2)
@@ -58,7 +58,8 @@ class Form1(Form1Template):
     self.plot_2.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column )
     self.plot_2.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
     
-    
+    self.plot_1.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column )
+    self.plot_1.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
     
     
     #     self.plot_2.data = anvil.server.call('get_daily_cases_arriving',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked)

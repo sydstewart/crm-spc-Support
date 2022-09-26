@@ -331,17 +331,18 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
     t = app_tables.charts.search(chartid=chartid)
     for row in t:
 #        print(row['ChartSQL'])
-       chartsql = row['ChartSQL']
-#     print (chartsql)
-    with conn.cursor() as cur:
-     cur.execute( chartsql)
+        
+      chartsql = row['ChartSQL']
+      with conn.cursor() as cur:
+            cur.execute( chartsql)
 
+      dicts = [{Date_Column: r[Date_Column], Measure_Column: r[Measure_Column]}
+      for r in cur.fetchall()]
 
-    dicts = [{Date_Column: r[Date_Column], Measure_Column: r[Measure_Column]}
-            for r in cur.fetchall()]
+      df = pd.DataFrame.from_dict(dicts)
+      df[Date_Column] = pd.to_datetime(df[Date_Column])
+      
     
-    df = pd.DataFrame.from_dict(dicts)
-    df[Date_Column] = pd.to_datetime(df[Date_Column])
     df = (df.set_index(Date_Column)
       .reindex(pd.date_range(startdate, enddate, freq='B'))
       .rename_axis([Date_Column])

@@ -38,7 +38,7 @@ db_schema:
     - name: Measure_Column_Name
       admin_ui: {width: 200}
       type: string
-    - name: Start_Date_ITEM
+    - name: Source
       admin_ui: {width: 200}
       type: string
   waiting_on_4s:
@@ -46,10 +46,10 @@ db_schema:
     client: full
     server: full
     columns:
-    - name: Date_Column
+    - name: Date Entered
       admin_ui: {width: 200}
-      type: date
-    - name: Measure_Column
+      type: datetime
+    - name: All_Cases_with_4S
       admin_ui: {width: 200}
       type: number
 secrets:
