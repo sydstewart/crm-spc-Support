@@ -53,7 +53,8 @@ class Form1(Form1Template):
     Measure_Column = t['Measure_Column_Name']
     chartid= t['chartid']
     chart_title =t['Chart_Name']
-    self.plot_2.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column)
+     
+    self.plot_2.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column )
     self.plot_2.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
     
     

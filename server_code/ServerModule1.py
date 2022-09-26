@@ -354,32 +354,174 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
 #     df['SD'] = df['All_Cases'].stdev()
     mean1 = df[Measure_Column].mean()
     SD1 = df[Measure_Column].std()
-  
+    total_rows = df[Measure_Column].count() - 1
+    
     print()
     print ('Find 1 above 3 sd')
     print ('-------------------------------------------')
     print()
 
-    outofcontrol1above = pd.DataFrame()
+    outofcontrol1above = pandas.DataFrame()
     for i in range(0,total_rows):
         countx = 0
         if (df[Measure_Column].iloc[i]  > ((3 * SD1) + mean1)):
             countx = 1
 
         if countx == 1:
-                outofcontrol1above = outofcontrol1above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
+                outofcontrol1above = outofcontrol1above.append({Date_Column: df[Date_Column].iloc[i],Measure_Column:df[Measure_Column].iloc[i]}, ignore_index=True)
+
+#     if outofcontrol1above.empty:
+#         print('Empty')
+    print('outofcontrol1above',outofcontrol1above)
 
     if outofcontrol1above.empty:
+        print('empty')
+        outofcontrolabove1 = go.Scatter(
+            visible='legendonly',
+            name='One above 3 X SD')
+    
+    else:
+    
+        outofcontrolabove1 = go.Scatter(
+                          x=outofcontrol1above[Date_Column],
+                          y=outofcontrol1above[Measure_Column],
+                          mode='markers',
+                          name='One above 3 X SD',
+                          marker=dict(
+                                                color='red',
+                                                size=2,
+                                                line=dict(
+                                                    color='red',
+                                                    width=8
+                                                ))
+                    )
+      
+    outofcontrol6fall = pandas.DataFrame() 
+    for i in range(5,total_rows):
+        countx = 0
+        if (df[Measure_Column].iloc[i]  < df[Measure_Column].iloc[i-1]):
+                countx = 1
+#                 print(df[Measure_Column].iloc[i], i, countx)
+        if (df[Measure_Column].iloc[i-1]  < df[Measure_Column].iloc[i-2]):
+                countx = countx + 1
+#                 print(df[Measure_Column].iloc[i-1], i-1, countx)
+        if (df[Measure_Column].iloc[i-2]  < df[Measure_Column].iloc[i-3]):
+                countx = countx + 1
+#                 print(df[Measure_Column].iloc[i-2],i-2, countx)
+        if (df[Measure_Column].iloc[i-3]  < df[Measure_Column].iloc[i-4] ):
+                countx = countx + 1
+#                 print(df[Measure_Column].iloc[i-3], i-3, countx)
+        if (df[Measure_Column].iloc[i-4]  < df[Measure_Column].iloc[i - 5]):
+                countx = countx + 1
+#                 print(df[Measure_Column].iloc[i-4], i-4, countx)
+        if (df[Measure_Column].iloc[i - 5]  < df[Measure_Column].iloc[i-6] ):
+                countx = countx + 1
+#                 print(df[Measure_Column].iloc[i-5], i-5, countx)
+#                if (df[Measure_Column].iloc[i - 6]  < df[Measure_Column].iloc[i-7] ):
+#                        countx = countx + 1
+#         print(countx)
+        if countx == 6:
+                outofcontrol6fall = outofcontrol6fall.append({Date_Column: df[Date_Column].iloc[i-5],Measure_Column:df[Measure_Column].iloc[i-5]}, ignore_index=True)
+                outofcontrol6fall = outofcontrol6fall.append({Date_Column: df[Date_Column].iloc[i-4],Measure_Column:df[Measure_Column].iloc[i-4]}, ignore_index=True)
+                outofcontrol6fall = outofcontrol6fall.append({Date_Column: df[Date_Column].iloc[i-3],Measure_Column:df[Measure_Column].iloc[i-3]}, ignore_index=True)
+                outofcontrol6fall = outofcontrol6fall.append({Date_Column: df[Date_Column].iloc[i-2],Measure_Column:df[Measure_Column].iloc[i-2]}, ignore_index=True)
+                outofcontrol6fall = outofcontrol6fall.append({Date_Column: df[Date_Column].iloc[i-1],Measure_Column:df[Measure_Column].iloc[i-1]}, ignore_index=True)
+                outofcontrol6fall = outofcontrol6fall.append({Date_Column: df[Date_Column].iloc[i],Measure_Column:df[Measure_Column].iloc[i]}, ignore_index=True)
+    
+
+    if outofcontrol6fall.empty:
         print('Empty')
 
-  
-  
-  
-  
-  
-  
-  
-  
+    if outofcontrol6fall.empty:
+        down6 = go.Scatter(
+            visible='legendonly')
+
+    else:
+        down6 = go.Scatter(  # x=df[Date_Column],
+            # y=df[Measure_Column],
+            x=outofcontrol6fall[Date_Column],
+            y=outofcontrol6fall[Measure_Column],
+            mode='markers',
+            name='6 rising in sucession',
+            marker=dict(
+                             color='red',
+                size=2,
+                line=dict(
+                    color='lavender',
+                    width=8
+                ))
+        )
+    
+    
+    print()
+    print ('Nine or more Points on high side of the mean')
+    print ('-------------------------------------------')
+    print()
+
+
+    outofcontrol9above = pandas.DataFrame() 
+    for i in range(8,total_rows):
+        countx = 0
+        if (df[Measure_Column].iloc[i]  > (mean1)):
+            countx = 1
+            
+        if (df[Measure_Column].iloc[i-1]  > (mean1)):
+                countx = countx + 1
+                
+        if (df[Measure_Column].iloc[i-2]  > (mean1)):
+                countx = countx + 1
+                
+        if (df[Measure_Column].iloc[i-3]  > (mean1)):
+                countx = countx + 1
+                
+        if (df[Measure_Column].iloc[i-4]  > (mean1)):
+                countx = countx + 1
+
+        if (df[Measure_Column].iloc[i - 5]  > (mean1)):
+                countx = countx + 1
+              
+        if (df[Measure_Column].iloc[i-6]  > (mean1)):
+                countx = countx + 1
+                
+        if (df[Measure_Column].iloc[i-7]  > (mean1)):
+                countx = countx + 1
+            
+        if (df[Measure_Column].iloc[i-8]  > (mean1)):
+                countx = countx + 1
+
+        if countx == 9:
+                outofcontrol9above = outofcontrol9above.append({Date_Column: df[Date_Column].iloc[i-8],Measure_Column:df[Measure_Column].iloc[i-8]}, ignore_index=True)
+                outofcontrol9above = outofcontrol9above.append({Date_Column: df[Date_Column].iloc[i-7],Measure_Column:df[Measure_Column].iloc[i-7]}, ignore_index=True)
+                outofcontrol9above = outofcontrol9above.append({Date_Column: df[Date_Column].iloc[i-6],Measure_Column:df[Measure_Column].iloc[i-6]}, ignore_index=True)
+                outofcontrol9above = outofcontrol9above.append({Date_Column: df[Date_Column].iloc[i-5],Measure_Column:df[Measure_Column].iloc[i-5]}, ignore_index=True)
+                outofcontrol9above = outofcontrol9above.append({Date_Column: df[Date_Column].iloc[i-4],Measure_Column:df[Measure_Column].iloc[i-4]}, ignore_index=True)
+                outofcontrol9above = outofcontrol9above.append({Date_Column: df[Date_Column].iloc[i-3],Measure_Column:df[Measure_Column].iloc[i-3]}, ignore_index=True)
+                outofcontrol9above = outofcontrol9above.append({Date_Column: df[Date_Column].iloc[i-2],Measure_Column:df[Measure_Column].iloc[i-2]}, ignore_index=True)
+                outofcontrol9above = outofcontrol9above.append({Date_Column: df[Date_Column].iloc[i-1],Measure_Column:df[Measure_Column].iloc[i-1]}, ignore_index=True)
+                outofcontrol9above = outofcontrol9above.append({Date_Column: df[Date_Column].iloc[i],Measure_Column:df[Measure_Column].iloc[i]}, ignore_index=True)
+    print()
+
+    if outofcontrol9above.empty:
+        print('Empty')
+                
+    if outofcontrol9above.empty:
+        nineabove = go.Scatter(
+            visible='legendonly',
+            name='9 consecutively below mean')
+    else:
+        nineabove = go.Scatter(
+            x=outofcontrol9above[Date_Column],
+            y=outofcontrol9above[Measure_Column],
+            mode='markers',
+            name='9 consecutively above mean',
+            marker=dict(
+                color='red',
+                size=2,
+                line=dict(
+                    color='powderblue',
+                    width=8
+                ))
+        )
     Scatter=[
     
     go.Scatter(
@@ -416,10 +558,8 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
                           color= 'black',
                           width=1
 #                           dash='dash'                   
-                            ))
-                                
+                            )),
+     
+    outofcontrolabove1,down6, nineabove
     ]
-#     print(dfx)
-#     print (df)
-#     df = pandas.DataFrame.from_dict(dicts)
     return Scatter
