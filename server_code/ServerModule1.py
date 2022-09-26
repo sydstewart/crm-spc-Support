@@ -355,6 +355,31 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
     mean1 = df[Measure_Column].mean()
     SD1 = df[Measure_Column].std()
   
+    print()
+    print ('Find 1 above 3 sd')
+    print ('-------------------------------------------')
+    print()
+
+    outofcontrol1above = pd.DataFrame()
+    for i in range(0,total_rows):
+        countx = 0
+        if (df[Measure_Column].iloc[i]  > ((3 * SD1) + mean1)):
+            countx = 1
+
+        if countx == 1:
+                outofcontrol1above = outofcontrol1above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
+
+    if outofcontrol1above.empty:
+        print('Empty')
+
+  
+  
+  
+  
+  
+  
+  
+  
     Scatter=[
     
     go.Scatter(
