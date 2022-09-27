@@ -37,6 +37,30 @@ def get_4S_Waiting():
  
   return  swait
 
+
+@anvil.server.callable
+def get_Cases_Arriving():
+  conn = connect()
+  t = app_tables.charts.search(chartid = 2)
+ 
+    
+  for row in t:
+
+     chartsql = row['ChartSQL']
+
+     with conn.cursor() as cur:
+       cur.execute(chartsql)
+       dicts = [{'All_Cases_with_4S': r['All_Cases_with_4S']}
+            for r in cur.fetchall()]
+       print (dicts)
+     df = pd.DataFrame.from_dict(dicts)
+     print(df['All_Cases_with_4S'][0])
+     swait = df['All_Cases_with_4S'][0]
+     today=datetime.today()
+     app_tables.waiting_on_4s.add_row(Date_Entered = today,All_Cases_with_4S = swait)
+ 
+  return  swait
+
 @anvil.server.callable
 def get_Waiting_on_4S():
       return app_tables.waiting_on_4s.search()

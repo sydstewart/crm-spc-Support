@@ -1,4 +1,4 @@
-from ._anvil_designer import Form1Template
+from ._anvil_designer import ChartsTemplate
 from anvil import *
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -8,8 +8,7 @@ import plotly.graph_objects as go
 from datetime import datetime, time , date
 import anvil.media
 
-class Form1(Form1Template):
-
+class Charts(ChartsTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)

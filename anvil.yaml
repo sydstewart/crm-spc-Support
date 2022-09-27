@@ -12,7 +12,7 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {auto_create_missing_columns: false}
-startup: {type: form, module: All_Cases_with_4S}
+startup: {type: form, module: Charts}
 package_name: CRM_SPC
 allow_embedding: false
 name: CRM SPC
@@ -59,6 +59,11 @@ db_schema:
     - name: All_Cases_with_4S
       admin_ui: {width: 200}
       type: number
+  cases_arriving:
+    title: cases_arriving
+    client: none
+    server: full
+    columns: []
 secrets:
   CRM:
     value: {? '' : 7w87QJIpcSMHPYq7AJfsCDOcHcIi/NsD0G1G442MjaPZi9BYWIAqujQt+elxbFL6ZXxSuVUiUP+DlgxxwVgK/sxoIna/rDgecuLmmoiT5lexWZ2hsx/9X8wWBcGPpqnjeueIrtP6KINOBw==}
