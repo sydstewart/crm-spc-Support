@@ -46,11 +46,16 @@ components:
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
-- type: Button
-  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-    foreground: '', visible: true, text: Charts, font_size: null, font: '', spacing_above: small,
-    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-    underline: false, icon: ''}
-  name: button_1
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_2
   layout_properties: {slot: left-nav}
-  event_bindings: {click: button_1_click}
+  components:
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Cases Arriving, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: cases_arriving
+    layout_properties: {grid_position: 'CRIBMM,OIRPUC'}
+    event_bindings: {click: cases_arriving_click}

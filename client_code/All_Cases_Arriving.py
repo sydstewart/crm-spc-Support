@@ -18,19 +18,25 @@ class All_Cases_Arriving(All_Cases_ArrivingTemplate):
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
     self.plot_1.data = go.Scatter(x = [x['Date_Entered'] for x in waitinglist],
                             y = [x['Cases_Arriving'] for x in waitinglist],
-                            mode ='markers + lines',
+                            mode ='markers+lines',
                             name= ' All_Cases Arriving',
                             marker=dict(
-                                        color='red',
-                                        size=3),
-                                        line=dict(
-                                            color='blue',
-                                            width=2
+                                        color='green',
+                                        size=7),
+                            line=dict(
+                                        color='blue',
+                                        width=2
                                         ))
-    self.plot_1.layout.title = ' All_Cases_with_4S' + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+    self.plot_1.layout.title = ' All_Cases_Arriving' + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
-    open_form('Charts')
+    open_form('All_Cases_with_4S')
     pass
+
+  def Cases_with_4S_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('All_Cases_with_4S')
+    pass
+
 

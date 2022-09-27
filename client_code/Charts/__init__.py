@@ -27,4 +27,10 @@ class Charts(ChartsTemplate):
     open_form('All_Cases_Arriving')
     pass
 
+  def get_charts_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Charts_copy')
+    pass
+
+
 

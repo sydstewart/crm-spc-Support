@@ -44,12 +44,12 @@ components:
   layout_properties: {slot: nav-right}
 - type: Button
   properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-    foreground: '', visible: true, text: Charts, font_size: null, font: '', spacing_above: small,
-    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-    underline: false, icon: ''}
-  name: button_1
+    foreground: '', visible: true, text: Cases with 4S, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: Cases_with_4S
   layout_properties: {slot: left-nav}
-  event_bindings: {click: button_1_click}
+  event_bindings: {click: Cases_with_4S_click}
 container:
   type: HtmlTemplate
   properties: {html: '@theme:standard-page.html'}
