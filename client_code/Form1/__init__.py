@@ -218,6 +218,7 @@ class Form1(Form1Template):
 
 
     self.get_4S_Waiting.text = anvil.server.call('get_4S_Waiting')
+    open_form('All_Cases_with_4S')
     
     pass 
 
