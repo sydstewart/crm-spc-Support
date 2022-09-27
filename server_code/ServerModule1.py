@@ -13,6 +13,25 @@ import anvil.media
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
+
+@anvil.server.callable
+def get_4S_Waiting():
+  conn = connect()
+  t = app_tables.charts.search(chartid = 4)
+ 
+    
+  for row in t:
+
+     chartsql = row['ChartSQL']
+
+     with conn.cursor() as cur:
+       cur.execute(chartsql)
+#        dicts = [{'All_Cases_with_4S': r[' All_Cases_with_4S']}
+#             for r in cur.fetchall()]
+  return cur.fetchall()     
+
+
+
 @anvil.server.callable
 def store_data(file):
   with anvil.media.TempFile(file) as file_name:

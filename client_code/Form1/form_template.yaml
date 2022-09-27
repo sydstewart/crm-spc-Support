@@ -204,3 +204,15 @@ components:
     name: import_waiting_on_4s
     layout_properties: {grid_position: 'WWTRPG,CTXRJS'}
     event_bindings: {click: import_waiting_on_4s_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Get 4S Waiting, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: getting_4S_Waiting
+    layout_properties: {grid_position: 'ZZDDOM,WNOBYS'}
+    event_bindings: {click: getting_4S_Waiting_click}
+  - type: TextBox
+    properties: {}
+    name: get_4S_Waiting
+    layout_properties: {grid_position: 'HMOUDN,FCCQOM'}

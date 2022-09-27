@@ -212,6 +212,12 @@ class Form1(Form1Template):
     """This method is called when a new file is loaded into this FileLoader"""
     anvil.server.call('store_data',file)
     pass
+
+  def getting_4S_Waiting_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.get_4S_Waiting.text = anvil.server.call('get_4S_Waiting' )
+    pass
+
  
 
 
