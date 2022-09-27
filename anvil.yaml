@@ -18,6 +18,7 @@ allow_embedding: false
 name: CRM SPC
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {}
+startup_form: All_Cases_with_4S
 db_schema:
   charts:
     title: charts
@@ -63,7 +64,13 @@ db_schema:
     title: cases_arriving
     client: none
     server: full
-    columns: []
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 200}
+      type: datetime
+    - name: Cases_Arriving
+      admin_ui: {width: 200}
+      type: number
 secrets:
   CRM:
     value: {? '' : 7w87QJIpcSMHPYq7AJfsCDOcHcIi/NsD0G1G442MjaPZi9BYWIAqujQt+elxbFL6ZXxSuVUiUP+DlgxxwVgK/sxoIna/rDgecuLmmoiT5lexWZ2hsx/9X8wWBcGPpqnjeueIrtP6KINOBw==}

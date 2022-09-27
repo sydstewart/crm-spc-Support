@@ -50,32 +50,24 @@ def get_Cases_Arriving():
 
      with conn.cursor() as cur:
        cur.execute(chartsql)
-       dicts = [{'All_Cases_with_4S': r['All_Cases_with_4S']}
+       dicts = [{'All_Cases': r['All_Cases']}
             for r in cur.fetchall()]
        print (dicts)
      df = pd.DataFrame.from_dict(dicts)
-     print(df['All_Cases_with_4S'][0])
-     swait = df['All_Cases_with_4S'][0]
+     print(df['All_Cases'][0])
+     swait = df['All_Cases'][0]
      today=datetime.today()
-     app_tables.waiting_on_4s.add_row(Date_Entered = today,All_Cases_with_4S = swait)
+     app_tables.cases_arriving.add_row(Date_Entered = today,Cases_Arriving= swait)
  
   return  swait
 
 @anvil.server.callable
 def get_Waiting_on_4S():
       return app_tables.waiting_on_4s.search()
-#     df = pd.DataFrame.from_dict(waitinglist)
-#     print(df)
-#     df['Date_Entered'] = pd.to_datetime(df['Date_Entered'])
-#     print(df)
-#     Scatter=[
-#             go.Scatter(
-#                         x = df['Date_Entered'] ,
-#                         y = df['All_Cases_with_4S'],
-#                         mode ='markers + lines',
-#                         name= ' All_Cases_with_4S')]
-#     return waitinglist, Scatter
-
+@anvil.server.callable
+def get_Cases_Arriving():
+      return app_tables.cases_arriving.search()
+  
 @anvil.server.callable
 def store_data(file):
   with anvil.media.TempFile(file) as file_name:
@@ -87,7 +79,7 @@ def store_data(file):
       # d is now a dict of {columnname -> value} for this row
       # We use Python's **kwargs syntax to pass the whole dict as
       # keyword arguments
-      app_tables.waiting_on_4s.add_row(**d)
+      app_tables.cases_arriving.add_row(**d)
 
 def connect():
   connection = pymysql.connect(host='51.141.236.29',

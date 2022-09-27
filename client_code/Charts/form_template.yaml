@@ -4,184 +4,10 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"GIVAIK":50,"DFGECF":45,"ZIKQJQ":20,"UTSPIY":10,"HVNAKJ":15,"USGAIO":15,"CIVMPQ":15}'}
+  properties: {col_widths: '{}'}
   name: content_panel
   layout_properties: {slot: default}
-  components:
-  - type: ColumnPanel
-    properties: {col_widths: '{}'}
-    name: column_panel_2
-    layout_properties: {grid_position: 'ULTNIB,DFGECF'}
-    components:
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Start Date, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_1
-      layout_properties: {grid_position: 'IPOHEL,PMFTJP'}
-    - type: DatePicker
-      properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-        placeholder: '', border: '', enabled: true, foreground: '', visible: true,
-        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-        date: '', min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
-      name: date_picker_1
-      layout_properties: {grid_position: 'IPOHEL,JZDBOQ'}
-      event_bindings: {change: date_picker_1_change}
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: End Date, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_2
-      layout_properties: {grid_position: 'IPOHEL,BHUOBX'}
-    - type: DatePicker
-      properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-        placeholder: '', border: '', enabled: true, foreground: '', visible: true,
-        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-        date: '', min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
-      name: date_picker_2
-      layout_properties: {grid_position: 'IPOHEL,BVEOFC'}
-      event_bindings: {change: date_picker_2_change}
-  - type: CheckBox
-    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
-      foreground: '', allow_indeterminate: false, visible: true, text: show Dropped,
-      font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-      background: '', bold: false, checked: false, underline: false}
-    name: check_box_1
-    layout_properties: {grid_position: 'ULTNIB,CIVMPQ'}
-    event_bindings: {change: check_box_1_change}
-  - type: Plot
-    properties: {spacing_above: small, spacing_below: small, height: 450, visible: true,
-      tooltip: '', interactive: true}
-    name: plot_2
-    layout_properties: {grid_position: 'UKZGXX,ZJHOAQ', full_width_row: true}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Start Date, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_5
-    layout_properties: {grid_position: 'QSQDGV,NEFNTW'}
-  - type: DatePicker
-    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
-      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
-      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
-    name: date_picker_5
-    layout_properties: {grid_position: 'QSQDGV,QDDQGJ'}
-    event_bindings: {change: date_picker_5_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: End Date, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_6
-    layout_properties: {grid_position: 'QSQDGV,LKBVHR'}
-  - type: DatePicker
-    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
-      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
-      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
-    name: date_picker_6
-    layout_properties: {grid_position: 'QSQDGV,MGLRVN'}
-    event_bindings: {change: date_picker_6_change}
-  - type: CheckBox
-    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
-      foreground: '', allow_indeterminate: false, visible: true, text: show Dropped,
-      font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-      background: '', bold: false, checked: false, underline: false}
-    name: check_box_2
-    layout_properties: {grid_position: 'QSQDGV,KWTCMR'}
-    event_bindings: {change: check_box_2_change}
-  - type: Plot
-    properties: {spacing_above: small, spacing_below: small, height: 550, visible: true,
-      tooltip: '', interactive: true}
-    name: plot_3
-    layout_properties: {grid_position: 'TLQVPM,YLWFUR', full_width_row: true}
-  - type: ColumnPanel
-    properties: {col_widths: '{}'}
-    name: column_panel_1
-    layout_properties: {grid_position: 'OXLWUM,ZIKQJQ'}
-    components:
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Start Date, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_3
-      layout_properties: {grid_position: 'QYGRII,TBBNDN'}
-    - type: DatePicker
-      properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-        placeholder: '', border: '', enabled: true, foreground: '', visible: true,
-        font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-        date: '', min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
-      name: date_picker_3
-      layout_properties: {grid_position: 'QYGRII,IURMHL'}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: End date, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_4
-    layout_properties: {grid_position: 'OXLWUM,UTSPIY'}
-  - type: DatePicker
-    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
-      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
-      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
-    name: date_picker_4
-    layout_properties: {grid_position: 'OXLWUM,HVNAKJ'}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: REDRAW CHART, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: button_2
-    layout_properties: {grid_position: 'OXLWUM,USGAIO'}
-    event_bindings: {click: button_2_click}
-  - type: CheckBox
-    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
-      foreground: '', allow_indeterminate: false, visible: true, text: Show Dropped,
-      font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-      background: '', bold: false, checked: false, underline: false}
-    name: check_box_3
-    layout_properties: {grid_position: 'OXLWUM,SEQWPP'}
-  - type: Plot
-    properties: {spacing_above: small, spacing_below: small, height: 450, visible: true,
-      tooltip: '', interactive: true}
-    name: plot_1
-    layout_properties: {grid_position: 'XTTELN,DXLDCO', full_width_row: true}
-  - type: Plot
-    properties: {spacing_above: small, spacing_below: small, height: 611, visible: true,
-      tooltip: '', interactive: true}
-    name: Sales_Existing_and_New_Chart
-    layout_properties: {grid_position: 'ULBGOP,GIVAIK', full_width_row: true}
-    event_bindings: {}
-  - type: DataGrid
-    properties:
-      role: null
-      columns:
-      - {id: CWCTLS, title: YM, data_key: YM}
-      - {id: UHFXBG, title: New and  Existing Invoice total, data_key: NewandExisting_Invoice_total}
-      auto_header: true
-      tooltip: ''
-      border: ''
-      foreground: ''
-      rows_per_page: 20
-      visible: true
-      wrap_on: never
-      show_page_controls: true
-      spacing_above: small
-      spacing_below: small
-      background: ''
-    name: data_grid_1
-    layout_properties: {grid_position: 'TWYSIZ,HUJZHK'}
-    components:
-    - type: RepeatingPanel
-      properties: {spacing_above: none, spacing_below: none, item_template: Charts.RowTemplate1}
-      name: repeating_panel_1
-      layout_properties: {}
+  components: []
 - type: FlowPanel
   properties: {}
   name: navbar_links
@@ -220,3 +46,26 @@ components:
     name: get_4S_Waiting
     layout_properties: {grid_position: 'HMOUDN,FCCQOM'}
     event_bindings: {pressed_enter: get_4S_Waiting_pressed_enter}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Get Cases Arriving, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: get_cases_arriving
+    layout_properties: {grid_position: 'AAQIHQ,NEVTUZ'}
+    event_bindings: {click: get_cases_arriving_click}
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: cases_arriving
+    layout_properties: {grid_position: 'KCDJAK,FEVKFM'}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Get Charts, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: get_charts_button
+    layout_properties: {grid_position: 'ISFNUC,JRNTZW'}
+    event_bindings: {click: get_charts_button_click}
