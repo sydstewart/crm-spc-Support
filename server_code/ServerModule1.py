@@ -62,11 +62,10 @@ def get_waiting_on_4s():
        
      )  
      
-    dicts = [{'Date_Entered': r['Date_Entered'], 'All_Cases_with_4S': r['All_Cases_with_4S']}
+    dicts = [{'Date_Entered': today(), 'All_Cases_with_4S': r['All_Cases_with_4S']}
             for r in cur.fetchall()]
     
     return cur.fetchall() 
-
 
 
 anvil.server.callable
