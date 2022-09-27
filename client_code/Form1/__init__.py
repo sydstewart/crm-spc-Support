@@ -215,8 +215,17 @@ class Form1(Form1Template):
 
   def getting_4S_Waiting_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.get_4S_Waiting.text = anvil.server.call('get_4S_Waiting' )
+    dicts = anvil.server.call('get_4S_Waiting')
+     
+    
+    self.get_4S_Waiting.text = dicts['All_Cases_with_4S']
+   
     pass
+
+  def get_4S_Waiting_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass
+
 
  
 

@@ -216,3 +216,4 @@ components:
     properties: {}
     name: get_4S_Waiting
     layout_properties: {grid_position: 'HMOUDN,FCCQOM'}
+    event_bindings: {pressed_enter: get_4S_Waiting_pressed_enter}
