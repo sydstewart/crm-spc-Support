@@ -1,3 +1,10 @@
+scheduled_tasks:
+- task_name: get_4S_Waiting
+  time_spec:
+    n: 1
+    every: minute
+    at: {}
+  job_id: KZKZBAWL
 services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
@@ -46,7 +53,7 @@ db_schema:
     client: full
     server: full
     columns:
-    - name: Date Entered
+    - name: Date_Entered
       admin_ui: {width: 200}
       type: datetime
     - name: All_Cases_with_4S

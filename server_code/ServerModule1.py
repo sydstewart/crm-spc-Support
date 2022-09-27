@@ -32,6 +32,9 @@ def get_4S_Waiting():
      df = pd.DataFrame.from_dict(dicts)
      print(df['All_Cases_with_4S'][0])
      swait = df['All_Cases_with_4S'][0]
+     today=datetime.today()
+     app_tables.waiting_on_4s.add_row(Date_Entered = today,All_Cases_with_4S = swait)
+ 
   return  swait
 
 
