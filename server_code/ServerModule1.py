@@ -35,7 +35,41 @@ def connect():
                                cursorclass=pymysql.cursors.DictCursor)
   return connection
 
+
 @anvil.server.callable
+def get_waiting_on_4s():
+  conn = connect()
+  with conn.cursor() as cur:
+    cur.execute(
+                "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
+                      , Sum(invoice.amount_usdollar) As \
+                      NewandExisting_Invoice_total \
+                From invoice Inner Join \
+                  invoice_cstm On invoice_cstm.id_c = invoice.id Inner Join \
+                  accounts On invoice.shipping_account_id = accounts.id \
+                Where (invoice_cstm.newexistingormaintenance_c = 'New') Or \
+                  (invoice_cstm.newexistingormaintenance_c = 'Existing') \
+                Group By YM \
+                Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
+    t = app_tables.charts.search(chartid = 4)
+    
+    for row in t:
+
+       chartsql = row['ChartSQL']
+
+    with conn.cursor() as cur:
+     cur.execute(chartsql
+       
+     )  
+     
+    dicts = [{'Date_Entered': r['Date_Entered'], 'All_Cases_with_4S': r['All_Cases_with_4S']}
+            for r in cur.fetchall()]
+    
+    return cur.fetchall() 
+
+
+
+anvil.server.callable
 def get_Sales_Existing_and_New():
   conn = connect()
   with conn.cursor() as cur:
