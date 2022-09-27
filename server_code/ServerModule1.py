@@ -26,9 +26,13 @@ def get_4S_Waiting():
 
      with conn.cursor() as cur:
        cur.execute(chartsql)
-#        dicts = [{'All_Cases_with_4S': r[' All_Cases_with_4S']}
-#             for r in cur.fetchall()]
-  return cur.fetchall()     
+       dicts = [{'All_Cases_with_4S': r['All_Cases_with_4S']}
+            for r in cur.fetchall()]
+       print (dicts)
+     df = pd.DataFrame.from_dict(dicts)
+     print(df['All_Cases_with_4S'][0])
+     swait = df['All_Cases_with_4S'][0]
+  return  swait
 
 
 
