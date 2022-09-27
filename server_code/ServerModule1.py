@@ -39,18 +39,18 @@ def get_4S_Waiting():
 
 @anvil.server.callable
 def get_Waiting_on_4S():
-    waitinglist = app_tables.waiting_on_4s.search()
-    df = pd.DataFrame.from_dict(waitinglist)
-    print(df)
-    df['Date_Entered'] = pd.to_datetime(df['Date_Entered'])
-    print(df)
-    Scatter=[
-            go.Scatter(
-                        x = df['Date_Entered'] ,
-                        y = df['All_Cases_with_4S'],
-                        mode ='markers + lines',
-                        name= ' All_Cases_with_4S')]
-    return waitinglist, Scatter
+      return app_tables.waiting_on_4s.search()
+#     df = pd.DataFrame.from_dict(waitinglist)
+#     print(df)
+#     df['Date_Entered'] = pd.to_datetime(df['Date_Entered'])
+#     print(df)
+#     Scatter=[
+#             go.Scatter(
+#                         x = df['Date_Entered'] ,
+#                         y = df['All_Cases_with_4S'],
+#                         mode ='markers + lines',
+#                         name= ' All_Cases_with_4S')]
+#     return waitinglist, Scatter
 
 @anvil.server.callable
 def store_data(file):

@@ -12,6 +12,8 @@ class All_Cases_with_4S(All_Cases_with_4STemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    waitinglist, scatter = anvil.server.call('get_Waiting_on_4S')
+    waitinglist  = anvil.server.call('get_Waiting_on_4S')
     self.repeating_panel_1.items = waitinglist
-    self.plot_1,data = scatter
+    self.plot_1.data = go.Scatter(x = [x['Date_Entered'] for x in waitinglist],
+                            y = [x['All_Cases_with_4S'] for x in waitinglist],
+                            marker=dict(color='#2196f3'))
