@@ -39,7 +39,7 @@ def get_4S_Waiting():
 
 
 @anvil.server.callable
-def get_Cases_Arriving():
+def get_Cases_Arriving_update():
   conn = connect()
   t = app_tables.charts.search(chartid = 2)
  

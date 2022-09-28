@@ -23,6 +23,7 @@ class Charts(ChartsTemplate):
 
   def get_cases_arriving_click(self, **event_args):
     """This method is called when the button is clicked"""
+    anvil.server.call('get_Cases_Arriving_update')
     self.cases_arriving.text = anvil.server.call('get_Cases_Arriving')
     open_form('All_Cases_Arriving')
     pass

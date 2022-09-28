@@ -36,6 +36,8 @@ class All_Cases_with_4S(All_Cases_with_4STemplate):
 
   def cases_arriving_click(self, **event_args):
     """This method is called when the button is clicked"""
+    anvil.server.call('get_Cases_Arriving_update')
+    self.cases_arriving.text = anvil.server.call('get_Cases_Arriving')
     open_form('All_Cases_Arriving')
     pass
 
