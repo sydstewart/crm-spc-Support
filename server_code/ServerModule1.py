@@ -378,6 +378,12 @@ def get_daily_cases_closed(startdate, enddate, show_dropped):
 #     return df
 #     return  df 
 
+
+
+
+
+
+
 @anvil.server.callable
 def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Column):
 #     print(startdate)
