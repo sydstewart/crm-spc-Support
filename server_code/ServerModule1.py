@@ -288,6 +288,7 @@ def get_daily_cases_closed(startdate, enddate, show_dropped):
             for r in cur.fetchall()]
     
     df = pd.DataFrame.from_dict(dicts)
+    print(df)
     df['Date_Closed'] = pd.to_datetime(df['Date_Closed'])
     df = (df.set_index('Date_Closed')
       .reindex(pd.date_range(startdate, enddate, freq='B'))
@@ -431,6 +432,57 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
     SD1 = df[Measure_Column].std()
     total_rows = df[Measure_Column].count() - 1
     
+    print()
+    print ('Find 2 out 3 above 2 sd')
+    print ('-------------------------------------------')
+    print()
+
+    outofcontrol23above = pd.DataFrame()
+    for i in range(2,total_rows):
+        countx = 0
+        if (df[Measure_Column].iloc[i]  > (2 * SD1 + mean1)):
+            countx = 1
+            print(df[Measure_Column].iloc[i],i)
+        if (df[Measure_Column].iloc[i-1]  > (2 * SD1 + mean1)):
+                countx = countx + 1
+                print(df[Measure_Column].iloc[i -1], i-1)
+        if (df[Measure_Column].iloc[i-2]  > (2 * SD1 + mean1)):
+                countx = countx + 1
+                print(df[Measure_Column].iloc[i - 2],1-2)
+        if countx == 2:
+                outofcontrol23above = outofcontrol23above.append({Date_Column: df[Date_Column].iloc[i-2],Measure_Column:df[Measure_Column].iloc[i-2]}, ignore_index=True)
+                outofcontrol23above = outofcontrol23above.append({Date_Column: df[Date_Column].iloc[i-1],Measure_Column:df[Measure_Column].iloc[i-1]}, ignore_index=True)
+                outofcontrol23above = outofcontrol23above.append({Date_Column: df[Date_Column].iloc[i],Measure_Column:df[Measure_Column].iloc[i]}, ignore_index=True)
+    print('outofcontrol23above', outofcontrol23above)
+    
+#     if not outofcontrol23above.empty: 
+#             #Filter out Orders below (2 * SD1 + mean1)
+#             outofcontrol23abovefilter =  outofcontrol23above[Measure_Column] > (2 * SD1 + mean1)
+#             outofcontrol23above =  outofcontrol23above[outofcontrol23abovefilter] 
+#             print('outofcontrol23above with measures above 2 * SD1 filtered out')
+    
+    if outofcontrol23above.empty:
+        two3above = go.Scatter(
+            visible='legendonly',
+             name='2 out 3 above 2 X SD')
+
+    else:
+        two3above = go.Scatter(  # x=df[pointdate],
+            # y=df[pointname],
+            x=outofcontrol23above[Date_Column],
+            y=outofcontrol23above[Measure_Column],
+            mode='markers',
+            name='2 out 3 above 2 X SD',
+            marker=dict(
+                color='yellow',
+                size=2,
+                line=dict(
+                    color='yellow',
+                    width=8
+                ))
+        )
+            
+#     return outofcontrol23above
     print()
     print ('Find 1 above 3 sd')
     print ('-------------------------------------------')
