@@ -23,9 +23,7 @@ class Charts_copy(Charts_copyTemplate):
     self.date_picker_1.date = t['StartDate']
     self.date_picker_2.date = t['EndDate']
     
-    t = app_tables.charts.get(chartid = 4)
-    self.date_picker_3.date = t['StartDate']
-    self.date_picker_4.date = t['EndDate']
+
     #     build_Sales_Existing_and_New_graph(self)
     
     t = app_tables.charts.get(chartid = 3)
@@ -57,8 +55,32 @@ class Charts_copy(Charts_copyTemplate):
     self.plot_2.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column )
     self.plot_2.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
     
-    self.plot_1.data =anvil.server.call('get_data',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked, chartid, Date_Column, Measure_Column )
-    self.plot_1.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+    # Awaiting on 4S _plot 1 ________________________________________________________________________________________
+    waitinglist = app_tables.waiting_on_4s.search()
+#     df = pd.DataFrame.from_dict(waitinglist, orient='records')
+    self.plot_1.data = go.Scatter(
+                            x = [x['Date_Entered'] for x in waitinglist],
+                            y = [x['All_Cases_with_4S'] for x in waitinglist],
+                            mode ='markers+lines',
+                            name= ' All_Cases_with_4S',
+                            marker=dict(
+                                        color='green',
+                                        size=7),
+                                        line=dict(
+                                            color='blue',
+                                            width=2
+                                        ))
+    self.plot_1.layout.title = ' All_Cases_with_4S' + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+    
+#     t = app_tables.charts.get(chartid = 4)
+#     Date_Column = t['Date_Column_Name']
+#     Measure_Column = t['Measure_Column_Name']
+#     chartid= t['chartid']
+#     chart_title =t['Chart_Name']
+#     self.date_picker_3.date = t['StartDate']
+#     self.date_picker_4.date = t['EndDate']
+#     self.plot_1.data =anvil.server.call('get_data',self.date_picker_3.date, self.date_picker_4.date, self.check_box_3.checked, chartid, Date_Column, Measure_Column )
+#     self.plot_1.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
     
     
     #     self.plot_2.data = anvil.server.call('get_daily_cases_arriving',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked)
@@ -128,7 +150,7 @@ class Charts_copy(Charts_copyTemplate):
     pass
 
   
-  # Daily Cases   #____________________________________________________________________________________________________
+  # Daily Cases   #____Chart 2_______________________________________________________________________________________________
   
   def date_picker_1_change(self, **event_args):
     """This method is called when the selected date changes"""
@@ -170,7 +192,7 @@ class Charts_copy(Charts_copyTemplate):
 
     pass
 #_______________________________________________________________________________________
-  # Closed cases
+  # Closed cases Chart 3
    
   def date_picker_5_change(self, **event_args):
     """This method is called when the selected date changes"""
@@ -211,6 +233,54 @@ class Charts_copy(Charts_copyTemplate):
     self.plot_3.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
 
     pass
+  
+#_______________________________________________________________________________________
+  # Awaing on 4S cases Chart 4
+   
+#   def date_picker_5_change(self, **event_args):
+#     """This method is called when the selected date changes"""
+#     t = app_tables.charts.get(chartid = 4)
+#     Date_Column = t['Date_Column_Name']
+#     Measure_Column = t['Measure_Column_Name']
+#     chart_title =t['Chart_Name']
+#     chartid= t['chartid']
+#     self.plot_1.data =anvil.server.call('get_data',self.date_picker_3.date, self.date_picker_3.date, self.check_box_3.checked, chartid, Date_Column, Measure_Column)
+#     self.plot_1.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+
+#     pass
+
+#   def date_picker_6_change(self, **event_args):
+#     """This method is called when the selected date changes"""
+#     t = app_tables.charts.get(chartid = 4)
+#     t['EndDate'] =  self.date_picker_2.date
+#     Date_Column = t['Date_Column_Name']
+#     Measure_Column = t['Measure_Column_Name']
+#     chart_title =t['Chart_Name']
+#     chartid= t['chartid']
+#     self.plot_1.data =anvil.server.call('get_data',self.date_picker_3.date, self.date_picker_4.date, self.check_box_3.checked, chartid, Date_Column, Measure_Column)
+#     self.plot_1.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+
+#     pass
+
+#   def check_box_3_change(self, **event_args):
+#     """This method is called when this checkbox is checked or unchecked"""
+#     startdate1 = self.date_picker_3.date
+#     enddate1 = self.date_picker_4.date
+#     show_dropped = self.check_box_3.checked
+#     t = app_tables.charts.get(chartid = 4)
+#     chart_title =t['Chart_Name']
+#     Date_Column = t['Date_Column_Name']
+#     Measure_Column = t['Measure_Column_Name']
+#     chartid= t['chartid']
+#     self.plot_1.data =anvil.server.call('get_data',self.date_picker_3.date, self.date_picker_4.date, self.check_box_3.checked, chartid, Date_Column, Measure_Column)
+#     self.plot_1.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+
+#     pass  
+  
+  
+  
+  
+  
 #   def date_picker_5_change(self, **event_args):
 #     """This method is called when the selected date changes"""
 #     t = app_tables.charts.get(chartid = 3)

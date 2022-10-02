@@ -63,7 +63,9 @@ def get_Cases_Arriving_update():
 
 @anvil.server.callable
 def get_Waiting_on_4S():
+  
       return app_tables.waiting_on_4s.search()
+  
 @anvil.server.callable
 def get_Cases_Arriving():
       return app_tables.cases_arriving.search()
@@ -404,7 +406,7 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
       df = pd.DataFrame.from_dict(dicts)
       df[Date_Column] = pd.to_datetime(df[Date_Column])
       
-    
+    print(df) 
     df = (df.set_index(Date_Column)
       .reindex(pd.date_range(startdate, enddate, freq='B'))
       .rename_axis([Date_Column])
@@ -455,11 +457,11 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
                 outofcontrol23above = outofcontrol23above.append({Date_Column: df[Date_Column].iloc[i],Measure_Column:df[Measure_Column].iloc[i]}, ignore_index=True)
     print('outofcontrol23above', outofcontrol23above)
     
-#     if not outofcontrol23above.empty: 
-#             #Filter out Orders below (2 * SD1 + mean1)
-#             outofcontrol23abovefilter =  outofcontrol23above[Measure_Column] > (2 * SD1 + mean1)
-#             outofcontrol23above =  outofcontrol23above[outofcontrol23abovefilter] 
-#             print('outofcontrol23above with measures above 2 * SD1 filtered out')
+    if not outofcontrol23above.empty: 
+            #Filter out Orders below (2 * SD1 + mean1)
+            outofcontrol23abovefilter =  outofcontrol23above[Measure_Column] > (2 * SD1 + mean1)
+            outofcontrol23above =  outofcontrol23above[outofcontrol23abovefilter] 
+            print('outofcontrol23above with measures above 2 * SD1 filtered out')
     
     if outofcontrol23above.empty:
         two3above = go.Scatter(
@@ -687,6 +689,6 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
 #                           dash='dash'                   
                             )),
      
-    outofcontrolabove1,down6, nineabove
+    outofcontrolabove1,two3above, down6, nineabove
     ]
     return Scatter

@@ -1,6 +1,6 @@
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"GIVAIK":50,"DFGECF":45,"ZIKQJQ":20,"UTSPIY":10,"HVNAKJ":15,"USGAIO":15,"CIVMPQ":15}'}
+  properties: {col_widths: '{"GIVAIK":50,"DFGECF":45,"ZIKQJQ":20,"UTSPIY":10,"HVNAKJ":15,"CIVMPQ":15}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -128,14 +128,6 @@ components:
       min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
     name: date_picker_4
     layout_properties: {grid_position: 'OXLWUM,HVNAKJ'}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: REDRAW CHART, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: button_2
-    layout_properties: {grid_position: 'OXLWUM,USGAIO'}
-    event_bindings: {click: button_2_click}
   - type: CheckBox
     properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
       foreground: '', allow_indeterminate: false, visible: true, text: Show Dropped,
