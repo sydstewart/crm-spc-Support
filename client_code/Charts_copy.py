@@ -63,8 +63,9 @@ class Charts_copy(Charts_copyTemplate):
     
     #     self.plot_2.data = anvil.server.call('get_daily_cases_arriving',self.date_picker_1.date, self.date_picker_2.date, self.check_box_1.checked)
 #     self.plot_2.layout.title = ' Daily Cases Arriving' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
-    self.plot_3.data = anvil.server.call('get_daily_cases_closed',self.date_picker_5.date, self.date_picker_6.date, self.check_box_1.checked)
-    self.plot_3.layout.title = ' Daily Cases Closed' + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+    self.plot_3.data =anvil.server.call('get_data',self.date_picker_5.date, self.date_picker_6.date, self.check_box_2.checked, chartid, Date_Column, Measure_Column)
+    self.plot_3.layout.title = chart_title + " "  +  " created at " + datetime.now().strftime('%d %B %Y %H:%M') 
+
     t = app_tables.charts.get(chartid = 2)
     Date_Column = t['Date_Column_Name']
     Measure_Column = t['Measure_Column_Name']
