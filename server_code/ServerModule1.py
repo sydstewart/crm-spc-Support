@@ -687,6 +687,6 @@ def get_data(startdate, enddate, show_dropped, chartid, Date_Column, Measure_Col
 #                           dash='dash'                   
                             )),
      
-    outofcontrolabove1,down6, nineabove
+    outofcontrolabove1,outofcontrol23above, down6, nineabove
     ]
     return Scatter
