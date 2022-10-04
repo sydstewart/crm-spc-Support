@@ -12,18 +12,17 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    t = app_tables.charts.get(chartid = 4)
+    chartid = 2
+    t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
     self.date_picker_2.date =t['EndDate']
-    tablename ='waiting_on_4s'
-    rows = getattr(app_tables, tablename).search()
-    for r in rows:
-       print (r['Date_Entered'])
-#     chartid= 4
-    Scatter = anvil.server.call('get_Waiting_on_4S',self.date_picker_1.date,  self.date_picker_2.date)
+    tablename =t['tablename']
+    columnname = t['Measure_Column_Name']
+
+    Scatter = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date)
 
     self.plot_1.data = Scatter
-    self.plot_1.layout.title = ' All_Cases_with_4S' + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+    self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
 
 
   def button_1_click(self, **event_args):
@@ -33,9 +32,16 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 
   def date_picker_1_change(self, **event_args):
     """This method is called when the selected date changes"""
-    Scatter = anvil.server.call('get_Waiting_on_4S',  self.date_picker_1.date,  self.date_picker_2.date)
+    if self.drop_down_2.selected_value == 'Cases Waiting on 4S':
+         chartid = 4
+    if self.drop_down_2.selected_value == 'Cases Arriving':
+         chartid = 2
+    t = app_tables.charts.get(chartid = chartid)
+    tablename =t['tablename']
+    columnname = t['Measure_Column_Name']
+    Scatter = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date)
     self.plot_1.data = Scatter
-    self.plot_1.layout.title = ' All_Cases_with_4S' + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+    self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     t = app_tables.charts.get(chartid = 4)
     t['StartDate'] = self.date_picker_1.date
     t['EndDate'] = self.date_picker_2.date
@@ -45,14 +51,43 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 
   def date_picker_2_change(self, **event_args):
     """This method is called when the selected date changes"""
-    Scatter = anvil.server.call('get_Waiting_on_4S',  self.date_picker_1.date,  self.date_picker_2.date)
+    if self.drop_down_2.selected_value == 'Cases Waiting on 4S':
+         chartid = 4
+    if self.drop_down_2.selected_value == 'Cases Arriving':
+         chartid = 2
+    t = app_tables.charts.get(chartid = chartid)
+    tablename =t['tablename']
+    columnname = t['Measure_Column_Name']
+    Scatter = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date)
     self.plot_1.data = Scatter
-    self.plot_1.layout.title = ' All_Cases_with_4S' + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+    self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     t = app_tables.charts.get(chartid = 4)
     t['StartDate'] = self.date_picker_1.date
     t['EndDate'] = self.date_picker_2.date
     
     pass
+
+
+  def drop_down_2_change(self, **event_args):
+    """This method is called when an item is selected"""
+    if self.drop_down_2.selected_value == 'Cases Waiting on 4S':
+         chartid = 4
+    if self.drop_down_2.selected_value == 'Cases Arriving':
+         chartid = 2
+    t = app_tables.charts.get(chartid = chartid)
+    self.date_picker_1.date =t['StartDate']
+    self.date_picker_2.date =t['EndDate']
+    tablename =t['tablename']
+    columnname = t['Measure_Column_Name']
+ 
+    Scatter = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date)
+
+    self.plot_1.data = Scatter
+    self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+
+    pass
+
+
 
 
 

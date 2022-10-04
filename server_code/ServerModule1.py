@@ -62,7 +62,7 @@ def get_Cases_Arriving_update():
   return  swait
 
 @anvil.server.callable
-def get_Waiting_on_4S(startdate, enddate):
+def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
 #     t = app_tables.charts.get(chartid = chartid)
 #     tablename =t['Chart_Name']
 #     enddate =t['EndDate']
@@ -70,33 +70,34 @@ def get_Waiting_on_4S(startdate, enddate):
 #     startdate =  datetime(day=1, month=10, year=2022)
 #     enddate =  datetime(day=1, month=9, year=2022)
     enddate = enddate + timedelta(days=1)
+    
 #     print(enddate)
-    waitinglist= app_tables.waiting_on_4s.search(
+    waitinglist= getattr(app_tables, tablename).search(
                                                  Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
                                                                          q.greater_than_or_equal_to(startdate                                        )
                                                                          )
                                                  )
-    dicts = [{'Date_Entered': r['Date_Entered'],'All_Cases_with_4S': r['All_Cases_with_4S']}
+    dicts = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname]}
             for r in waitinglist]
 #     print (dicts)
 
     df = pd.DataFrame.from_dict(dicts)
     df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc= True)                                            
-    df['Mean']= df['All_Cases_with_4S'].mean()
-    Mean = df['All_Cases_with_4S'].mean()
-    SD = df['All_Cases_with_4S'].std()
+    df['Mean']= df[columnname].mean()
+    Mean = df[columnname].mean()
+    SD = df[columnname].std()
     Scatter=[
     
     go.Scatter(
                         x = df['Date_Entered'] ,
-                        y = df['All_Cases_with_4S'],
+                        y = df[columnname],
                         mode ='markers + lines',
-                        name= 'All_Cases_with_4S'),
+                        name= columnname),
     go.Scatter(
                         x=df['Date_Entered'],
                         y = df['Mean'] ,
                           mode='lines',
-                          name= ' All_Cases_with_4S Average' + ' ' + 'Average  =' + str(round(Mean,0)),
+                          name= columnname + ' ' + 'Average' + ' ' + 'Average  =' + str(round(Mean,0)),
                           line=dict(
                           color= 'green',
                           width=2
@@ -106,7 +107,7 @@ def get_Waiting_on_4S(startdate, enddate):
                         x=df['Date_Entered'],
                         y = df['Mean'] +  3 * SD  ,
                           mode='lines',
-                          name= ' All_Cases_with_4S 3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          name= columnname + ' ' + '3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
                           line=dict(
                           color= 'red',
                           width=2

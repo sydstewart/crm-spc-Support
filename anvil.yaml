@@ -49,6 +49,9 @@ db_schema:
     - name: Source
       admin_ui: {width: 200}
       type: string
+    - name: tablename
+      admin_ui: {width: 200}
+      type: string
   waiting_on_4s:
     title: Waiting_on_4S
     client: full
