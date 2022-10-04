@@ -112,8 +112,17 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
                           color= 'red',
                           width=2
 #                           dash='dash'                   
-                            ))
-                                
+                            )),
+    go.Scatter(
+                        x=df['Date_Entered'],
+                        y = df['Mean'] +  2 * SD  ,
+                          mode='lines',
+                          name= columnname + ' ' + '2SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'black',
+                          width=2
+#                           dash='dash'                   
+                            ))                            
     ]
 #     print('mean= ',Mean)
     return Scatter

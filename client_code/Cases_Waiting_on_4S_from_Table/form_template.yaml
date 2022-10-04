@@ -17,7 +17,7 @@ components:
       border: ''
       enabled: true
       foreground: ''
-      items: [Cases Arriving, Cases Waiting on 4S]
+      items: [Cases Arriving, All_Cases_with_4S]
       visible: true
       font_size: null
       font: ''
