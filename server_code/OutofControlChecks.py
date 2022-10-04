@@ -3,6 +3,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.secrets
 import anvil.server
+import plotly.graph_objects as go
 
 def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd ):
         import pandas as pd
@@ -289,8 +290,27 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd ):
                 outofcontrol23above =  outofcontrol23above[outofcontrol23abovefilter] 
                 print('outofcontrol23above with orders below 2 * SD filtered out')
 
-                
-        return outofcontrol23above
+        if outofcontrol23above.empty:
+             two3above = go.Scatter(
+             visible='legendonly',
+             name='2 out 3 above 2 X SD')
+
+        else:
+            two3above = go.Scatter(  # x=df[pointdate],
+            # y=df[pointname],
+            x=outofcontrol23above[pointdate],
+            y=outofcontrol23above[pointname],
+            mode='markers',
+            name='2 out 3 above 2 X SD',
+            marker=dict(
+                color='yellow',
+                size=2,
+                line=dict(
+                    color='yellow',
+                    width=8
+                ))
+        )        
+        return two3above
 
     
 def outofcontrol23below(df, pointdate, pointname, total_rows, pointmean, sd ):

@@ -8,7 +8,7 @@ import pandas as pd
 from datetime import datetime, time , date , timedelta
 import plotly.graph_objects as go
 import anvil.media
-
+from  OutofControlChecks import outofcontrol23above
 
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
@@ -82,10 +82,15 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
 #     print (dicts)
 
     df = pd.DataFrame.from_dict(dicts)
-    df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc= True)                                            
+    df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc= True)
+    df.sort_values(by=['Date_Entered'], inplace=True , ascending=True)
     df['Mean']= df[columnname].mean()
+    pointdate= 'Date_Entered'
+    pointname = columnname
     Mean = df[columnname].mean()
     SD = df[columnname].std()
+    total_rows = total_rows = df[columnname].count() - 1
+    two3above = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD )
     Scatter=[
     
     go.Scatter(
@@ -122,7 +127,8 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
                           color= 'black',
                           width=2
 #                           dash='dash'                   
-                            ))                            
+                            )),
+    two3above
     ]
 #     print('mean= ',Mean)
     return Scatter
