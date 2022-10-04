@@ -37,6 +37,12 @@ class Charts(ChartsTemplate):
     """This method is called when the button is clicked"""
     pass
 
+  def button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Cases_Waiting_on_4S_from_Table')
+    pass
+
+
 
 
 

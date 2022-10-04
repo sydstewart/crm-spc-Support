@@ -63,9 +63,24 @@ def get_Cases_Arriving_update():
 
 @anvil.server.callable
 def get_Waiting_on_4S():
+      waitinglist= app_tables.waiting_on_4s.search()
   
-      return app_tables.waiting_on_4s.search()
-  
+      df = pd.DataFrame.from_dict(waitinglist)
+      print(df)
+      return waitinglist
+    
+@anvil.server.callable
+def get_Waiting_on_4S_df():
+      waitinglist= app_tables.waiting_on_4s.search()
+      dicts = [{'Date_Entered': r['Date_Entered'],'All_Cases_with_4S': r['All_Cases_with_4S']}
+            for r in waitinglist]
+      print (dicts)
+      df = pd.DataFrame.from_dict(dicts)
+      df['Date_Entered'] = pd.to_datetime(df['Date_Entered'])
+#       df = pd.DataFrame.from_dict(waitinglist)
+      print(df)
+      return df
+    
 @anvil.server.callable
 def get_Cases_Arriving():
       return app_tables.cases_arriving.search()
