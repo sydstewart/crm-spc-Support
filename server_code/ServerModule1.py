@@ -63,11 +63,51 @@ def get_Cases_Arriving_update():
 
 @anvil.server.callable
 def get_Waiting_on_4S():
-      waitinglist= app_tables.waiting_on_4s.search()
-  
-      df = pd.DataFrame.from_dict(waitinglist)
-      print(df)
-      return waitinglist
+    waitinglist= app_tables.waiting_on_4s.search(
+                                                 Date_Entered = q.all_of(q.less_than_or_equal_to(datetime(day=1, month=10, year=2022)),
+                                                                         q.greater_than_or_equal_to(datetime(day=1, month=9, year=2022)                                        )
+                                                                         )
+                                                 )
+    dicts = [{'Date_Entered': r['Date_Entered'],'All_Cases_with_4S': r['All_Cases_with_4S']}
+            for r in waitinglist]
+    print (dicts)
+
+    df = pd.DataFrame.from_dict(dicts)
+    df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc=True)                                            
+    df['Mean']= df['All_Cases_with_4S'].mean()
+    Mean = df['All_Cases_with_4S'].mean()
+    SD = df['All_Cases_with_4S'].std()
+    Scatter=[
+    
+    go.Scatter(
+                        x = df['Date_Entered'] ,
+                        y = df['All_Cases_with_4S'],
+                        mode ='markers + lines',
+                        name= 'All_Cases_with_4S'),
+    go.Scatter(
+                        x=df['Date_Entered'],
+                        y = df['Mean'] ,
+                          mode='lines',
+                          name= ' All_Cases_with_4S Average' + ' ' + 'Average  =' + str(round(Mean,0)),
+                          line=dict(
+                          color= 'green',
+                          width=2
+#                           dash='dash'                   
+                            )),
+    go.Scatter(
+                        x=df['Date_Entered'],
+                        y = df['Mean'] +  3 * SD  ,
+                          mode='lines',
+                          name= ' All_Cases_with_4S 3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'red',
+                          width=2
+#                           dash='dash'                   
+                            ))
+                                
+    ]
+    print('mean= ',Mean)
+    return Scatter
     
 @anvil.server.callable
 def get_Waiting_on_4S_df():
@@ -75,9 +115,14 @@ def get_Waiting_on_4S_df():
       dicts = [{'Date_Entered': r['Date_Entered'],'All_Cases_with_4S': r['All_Cases_with_4S']}
             for r in waitinglist]
       print (dicts)
+
       df = pd.DataFrame.from_dict(dicts)
-      df['Date_Entered'] = pd.to_datetime(df['Date_Entered'])
-#       df = pd.DataFrame.from_dict(waitinglist)
+      df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc=True)
+#       df = (df.set_index('Date_Entered')
+#       .reindex(pd.date_range(startdate, enddate, freq='MS'))
+#       .rename_axis(['Date_Entered'])
+#       .fillna(0)
+#       .reset_index())
       print(df)
       return df
     
