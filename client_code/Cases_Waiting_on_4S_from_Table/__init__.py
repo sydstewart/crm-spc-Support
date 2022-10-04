@@ -12,32 +12,42 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    startdate = '2008-11-01'
-    enddate = '2022-08-01'
+    t = app_tables.charts.get(chartid = 4)
+    self.date_picker_1.date =t['StartDate']
+    self.date_picker_2.date =t['EndDate']
+    Scatter = anvil.server.call('get_Waiting_on_4S',  self.date_picker_1.date,  self.date_picker_2.date)
 
-    Scatter = anvil.server.call('get_Waiting_on_4S')
-#     self.repeating_panel_1.items = waitinglist
-#     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
     self.plot_1.data = Scatter
-  
-#   go.Scatter(x = [x['Date_Entered'] for x in waitinglist],
-#                             y = [x['All_Cases_with_4S'] for x in waitinglist],
-#                             mode ='markers+lines',
-#                             name= ' All_Cases_with_4S',
-#                             marker=dict(
-#                                         color='green',
-#                                         size=7),
-#                                         line=dict(
-#                                             color='blue',
-#                                             width=2
-#                                         ))
     self.plot_1.layout.title = ' All_Cases_with_4S' + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
-#     df = anvil.server.call('get_Waiting_on_4S_df')
-    # Any code you write here will run before the form opens.
-#     print(df)
+
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Charts')
     pass
+
+  def date_picker_1_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    Scatter = anvil.server.call('get_Waiting_on_4S',  self.date_picker_1.date,  self.date_picker_2.date)
+    self.plot_1.data = Scatter
+    self.plot_1.layout.title = ' All_Cases_with_4S' + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+    t = app_tables.charts.get(chartid = 4)
+    t['StartDate'] = self.date_picker_1.date
+    t['EndDate'] = self.date_picker_2.date
+    
+    
+    pass
+
+  def date_picker_2_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    Scatter = anvil.server.call('get_Waiting_on_4S',  self.date_picker_1.date,  self.date_picker_2.date)
+    self.plot_1.data = Scatter
+    self.plot_1.layout.title = ' All_Cases_with_4S' + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+    t = app_tables.charts.get(chartid = 4)
+    t['StartDate'] = self.date_picker_1.date
+    t['EndDate'] = self.date_picker_2.date
+    
+    pass
+
+
 

@@ -5,7 +5,7 @@ import anvil.secrets
 import anvil.server
 import pymysql
 import pandas as pd
-from datetime import datetime, time , date
+from datetime import datetime, time , date , timedelta
 import plotly.graph_objects as go
 import anvil.media
 
@@ -62,18 +62,26 @@ def get_Cases_Arriving_update():
   return  swait
 
 @anvil.server.callable
-def get_Waiting_on_4S():
+def get_Waiting_on_4S(startdate, enddate):
+#     t = app_tables.charts.get(chartid = 4)
+#     startdate =t['StartDate']
+#     enddate =t['EndDate']
+#     print(enddate)
+#     startdate =  datetime(day=1, month=10, year=2022)
+#     enddate =  datetime(day=1, month=9, year=2022)
+    enddate = enddate + timedelta(days=1)
+#     print(enddate)
     waitinglist= app_tables.waiting_on_4s.search(
-                                                 Date_Entered = q.all_of(q.less_than_or_equal_to(datetime(day=1, month=10, year=2022)),
-                                                                         q.greater_than_or_equal_to(datetime(day=1, month=9, year=2022)                                        )
+                                                 Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
+                                                                         q.greater_than_or_equal_to(startdate                                        )
                                                                          )
                                                  )
     dicts = [{'Date_Entered': r['Date_Entered'],'All_Cases_with_4S': r['All_Cases_with_4S']}
             for r in waitinglist]
-    print (dicts)
+#     print (dicts)
 
     df = pd.DataFrame.from_dict(dicts)
-    df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc=True)                                            
+    df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc= True)                                            
     df['Mean']= df['All_Cases_with_4S'].mean()
     Mean = df['All_Cases_with_4S'].mean()
     SD = df['All_Cases_with_4S'].std()
@@ -106,25 +114,9 @@ def get_Waiting_on_4S():
                             ))
                                 
     ]
-    print('mean= ',Mean)
+#     print('mean= ',Mean)
     return Scatter
-    
-@anvil.server.callable
-def get_Waiting_on_4S_df():
-      waitinglist= app_tables.waiting_on_4s.search()
-      dicts = [{'Date_Entered': r['Date_Entered'],'All_Cases_with_4S': r['All_Cases_with_4S']}
-            for r in waitinglist]
-      print (dicts)
 
-      df = pd.DataFrame.from_dict(dicts)
-      df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc=True)
-#       df = (df.set_index('Date_Entered')
-#       .reindex(pd.date_range(startdate, enddate, freq='MS'))
-#       .rename_axis(['Date_Entered'])
-#       .fillna(0)
-#       .reset_index())
-      print(df)
-      return df
     
 @anvil.server.callable
 def get_Cases_Arriving():

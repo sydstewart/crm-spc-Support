@@ -16,9 +16,13 @@ components:
     name: label_1
     layout_properties: {grid_position: 'WVNRKE,RUGWIQ'}
   - type: DatePicker
-    properties: {}
+    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
+      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
+      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
     name: date_picker_1
     layout_properties: {grid_position: 'WVNRKE,ELIOZB'}
+    event_bindings: {change: date_picker_1_change}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Finish date, font_size: null, font: '', spacing_above: small,
@@ -27,9 +31,13 @@ components:
     name: label_2
     layout_properties: {grid_position: 'WVNRKE,YLPJUV'}
   - type: DatePicker
-    properties: {}
+    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
+      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
+      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
     name: date_picker_2
     layout_properties: {grid_position: 'WVNRKE,ASABYJ'}
+    event_bindings: {change: date_picker_2_change}
   - type: Plot
     properties: {spacing_above: small, spacing_below: small, height: 450, visible: true,
       tooltip: '', interactive: true}
