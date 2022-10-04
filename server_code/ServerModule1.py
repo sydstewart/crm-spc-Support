@@ -63,8 +63,8 @@ def get_Cases_Arriving_update():
 
 @anvil.server.callable
 def get_Waiting_on_4S(startdate, enddate):
-#     t = app_tables.charts.get(chartid = 4)
-#     startdate =t['StartDate']
+#     t = app_tables.charts.get(chartid = chartid)
+#     tablename =t['Chart_Name']
 #     enddate =t['EndDate']
 #     print(enddate)
 #     startdate =  datetime(day=1, month=10, year=2022)
