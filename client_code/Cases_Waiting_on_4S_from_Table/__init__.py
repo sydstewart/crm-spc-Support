@@ -44,7 +44,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     Scatter = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date)
     self.plot_1.data = Scatter
     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
-    t = app_tables.charts.get(chartid = 4)
+    t = app_tables.charts.get(chartid = chartid)
     t['StartDate'] = self.date_picker_1.date
     t['EndDate'] = self.date_picker_2.date
     
@@ -65,7 +65,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     Scatter = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date)
     self.plot_1.data = Scatter
     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
-    t = app_tables.charts.get(chartid = 4)
+    t = app_tables.charts.get(chartid = chartid)
     t['StartDate'] = self.date_picker_1.date
     t['EndDate'] = self.date_picker_2.date
     
