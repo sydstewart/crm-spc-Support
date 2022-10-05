@@ -12,6 +12,7 @@ from  OutofControlChecks import outofcontrol23above
 from .OutofControlChecks import outofcontrol9below
 from .OutofControlChecks import outofcontrol9above
 from .OutofControlChecks import outofcontrol1above
+from .OutofControlChecks import outofcontrol6fall
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -97,6 +98,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
     ninebelow = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD )
     nineabove = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD )
     oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD )
+    down6 = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD )
     Scatter=[
     
     go.Scatter(
@@ -114,11 +116,24 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
                           width=2
 #                           dash='dash'                   
                             )),
-    go.Scatter(
+    
+          go.Scatter(
+                        x=df['Date_Entered'],
+                        y = df['Mean'] -  2 * SD  ,
+                          mode='lines',
+                          name= columnname + ' ' + '2SD below', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'black',
+                          width=2,
+                          dash='dash'                   
+                            )),
+      
+  
+      go.Scatter(
                         x=df['Date_Entered'],
                         y = df['Mean'] +  3 * SD  ,
                           mode='lines',
-                          name= columnname + ' ' + '3SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          name= columnname + ' ' + '3SD above', # + ' ' + 'Average  =' + str(round(mean1,0)),
                           line=dict(
                           color= 'red',
                           width=2
@@ -128,13 +143,13 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
                         x=df['Date_Entered'],
                         y = df['Mean'] +  2 * SD  ,
                           mode='lines',
-                          name= columnname + ' ' + '2SD', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          name= columnname + ' ' + '2SD above', # + ' ' + 'Average  =' + str(round(mean1,0)),
                           line=dict(
                           color= 'black',
                           width=2
 #                           dash='dash'                   
                             )),
-    two3above, ninebelow, nineabove, oneabove3
+    two3above, ninebelow, nineabove, oneabove3, down6
     ]
 #     print('mean= ',Mean)
     return Scatter
