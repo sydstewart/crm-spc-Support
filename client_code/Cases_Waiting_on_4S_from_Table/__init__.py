@@ -12,7 +12,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    chartid = 2
+    chartid = 5
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
     self.date_picker_2.date =t['EndDate']

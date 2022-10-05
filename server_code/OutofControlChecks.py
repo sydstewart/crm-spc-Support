@@ -123,6 +123,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd ):
             outofcontrol9below = pd.DataFrame()
             for i in range(8,total_rows):
                 countx = 0
+                print(df[pointname].iloc[i],i)
                 if (df[pointname].iloc[i]  < (pointmean)):
                     countx = 1
                    
@@ -149,7 +150,9 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd ):
                         
                 if (df[pointname].iloc[i-8]  < (pointmean)):
                         countx = countx + 1
-                print (countx)       
+                print ('countx=',countx)
+                 
+                
                 if countx == 9:
 
                         outofcontrol9below = outofcontrol9below.append({pointdate: df[pointdate].iloc[i-8],pointname:df[pointname].iloc[i-8]}, ignore_index=True)
@@ -162,27 +165,38 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd ):
                         outofcontrol9below = outofcontrol9below.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                         outofcontrol9below = outofcontrol9below.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
                                                                      
-                print(outofcontrol9below)
+                        countx = 0
 
-                if outofcontrol9below.empty:
-                        ninebelow = go.Scatter(
-                        visible='legendonly',
-                        name='9 consecutively below mean')
-                else:
+#             if not outofcontrol9below.empty: 
+#                 #Filter out  below (9 below mean)
+#                 outofcontrol9belowfilter =  outofcontrol9below[pointname] < (pointmean)
+#                 outofcontrol9below =  outofcontrol9below[outofcontrol9belowfilter] 
+#                 print('outofcontrol9below with 9 consequtive measures below mean')
+            
+            
+            print('outofcontrol9below',outofcontrol9below)
+            
+            
+            
+            if outofcontrol9below.empty:
                     ninebelow = go.Scatter(
-                        x=outofcontrol9below[pointdate],
-                        y=outofcontrol9below[pointname],
-                        mode='markers',
-                        name='9 consecutively below mean',
-                        marker=dict(
-                            color='red',
-                            size=2,
-                            line=dict(
-                                color='pink',
-                                width=8
-                            ))
-                    ) 
-                return  ninebelow
+                    visible='legendonly',
+                    name='9 consecutively below mean')
+            else:
+                ninebelow = go.Scatter(
+                    x=outofcontrol9below[pointdate],
+                    y=outofcontrol9below[pointname],
+                    mode='markers',
+                    name='9 consecutively below mean',
+                    marker=dict(
+                        color='red',
+                        size=2,
+                        line=dict(
+                            color='pink',
+                            width=8
+                        ))
+                ) 
+            return  ninebelow
           
           
 def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd ):

@@ -91,9 +91,9 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
     SD = df[columnname].std()
     total_rows = total_rows = df[columnname].count() - 1
     two3above = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD )
-    print(df)
+     
     ninebelow = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD )
-    print(df)
+ 
     Scatter=[
     
     go.Scatter(
