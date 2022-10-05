@@ -118,7 +118,7 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd ):
                         outofcontrol9above = outofcontrol9above.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                         outofcontrol9above = outofcontrol9above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
                         countx = 0
-            print(outofcontrol9above)
+            print('outofcontrol9above',outofcontrol9above)
 
             if outofcontrol9above.empty:
                     ninebelow = go.Scatter(
