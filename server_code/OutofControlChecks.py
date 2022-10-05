@@ -23,9 +23,26 @@ def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd ):
                    outofcontrol1above = outofcontrol1above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
 
         if outofcontrol1above.empty:
-            print('Empty')
+            oneabove3 = go.Scatter(
+            visible='legendonly',
+            name='One above 3 X SD')
+        else:
+            oneabove3 = go.Scatter(  # x=df[pointdate],
+            # y=df[pointname],
+            x=outofcontrol1above[pointdate],
+            y=outofcontrol1above[pointname],
+            mode='markers',
+            name='One above 3 X SD',
+            marker=dict(
+                                 color='red',
+                                 size=2,
+                                 line=dict(
+                                     color='red',
+                                     width=8
+                                 ))
+            )
 
-        return outofcontrol1above
+        return oneabove3
 
 def outofcontrol1below(df, pointdate, pointname, total_rows, pointmean, sd ):
         import pandas as pd
@@ -100,12 +117,28 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd ):
                         outofcontrol9above = outofcontrol9above.append({pointdate: df[pointdate].iloc[i-2],pointname:df[pointname].iloc[i-2]}, ignore_index=True)
                         outofcontrol9above = outofcontrol9above.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                         outofcontrol9above = outofcontrol9above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
-            print()
+                        countx = 0
+            print(outofcontrol9above)
 
             if outofcontrol9above.empty:
-                print('Empty')
-               
-            return outofcontrol9above
+                    ninebelow = go.Scatter(
+                    visible='legendonly',
+                    name='9 consecutively above mean')
+            else:
+                nineabove = go.Scatter(
+                    x=outofcontrol9above[pointdate],
+                    y=outofcontrol9above[pointname],
+                    mode='markers',
+                    name='9 consecutively above mean',
+                    marker=dict(
+                        color='red',
+                        size=5,
+                        line=dict(
+                            color='orange',
+                            width=8
+                        ))
+                ) 
+            return  nineabove
 
         
 
@@ -190,7 +223,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd ):
                     name='9 consecutively below mean',
                     marker=dict(
                         color='red',
-                        size=2,
+                        size=5,
                         line=dict(
                             color='pink',
                             width=8

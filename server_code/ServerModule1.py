@@ -10,6 +10,8 @@ import plotly.graph_objects as go
 import anvil.media
 from  OutofControlChecks import outofcontrol23above
 from .OutofControlChecks import outofcontrol9below
+from .OutofControlChecks import outofcontrol9above
+from .OutofControlChecks import outofcontrol1above
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -93,7 +95,8 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
     two3above = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD )
      
     ninebelow = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD )
- 
+    nineabove = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD )
+    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD )
     Scatter=[
     
     go.Scatter(
@@ -131,7 +134,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
                           width=2
 #                           dash='dash'                   
                             )),
-    two3above
+    two3above, ninebelow, nineabove, oneabove3
     ]
 #     print('mean= ',Mean)
     return Scatter
