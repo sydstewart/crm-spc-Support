@@ -13,6 +13,8 @@ from .OutofControlChecks import outofcontrol9below
 from .OutofControlChecks import outofcontrol9above
 from .OutofControlChecks import outofcontrol1above
 from .OutofControlChecks import outofcontrol6fall
+from .OutofControlChecks import outofcontrol6rise
+from .OutofControlChecks import outofcontrol45above
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -90,15 +92,18 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
     df['Mean']= df[columnname].mean()
     pointdate= 'Date_Entered'
     pointname = columnname
+    
     Mean = df[columnname].mean()
     SD = df[columnname].std()
     total_rows = total_rows = df[columnname].count() - 1
+    
     two3above = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD )
-     
     ninebelow = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD )
     nineabove = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD )
     oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD )
     down6 = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD )
+    up6 = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD )
+    four5above = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD )
     Scatter=[
     
     go.Scatter(
@@ -149,7 +154,18 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
                           width=2
 #                           dash='dash'                   
                             )),
-    two3above, ninebelow, nineabove, oneabove3, down6
+      
+    go.Scatter(
+                        x=df['Date_Entered'],
+                        y = df['Mean'] +  1 * SD  ,
+                          mode='lines',
+                          name= columnname + ' ' + '1SD above', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          line=dict(
+                          color= 'black',
+                          width=2,
+                          dash='dash'                   
+                            )),
+    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above
     ]
 #     print('mean= ',Mean)
     return Scatter
