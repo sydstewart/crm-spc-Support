@@ -240,14 +240,14 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd ):
                       # y=df[pointname],
                       x=outofcontrol9below[pointdate],
                       y=outofcontrol9below['Mean9below'],
-                      mode='lines',
+                      mode='markers + lines',
                       name='New Mean',
                       marker=dict(
-                          color='red',
+                          color='white',
                           size=8,
                           line=dict(
                               color='orange',
-                              width=12
+                              width=6
                           )) )
             return  ninebelow, mean9belowline
           
