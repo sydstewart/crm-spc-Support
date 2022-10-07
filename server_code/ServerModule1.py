@@ -103,7 +103,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
     oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD )
     down6 = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD )
     up6 = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD )
-    four5above, newmeanline = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD )
+    four5above = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD )
     Scatter=[
     
     go.Scatter(
@@ -165,7 +165,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
                           width=2,
                           dash='dash'                   
                             )),
-    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, newmeanline
+    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above#, newmeanline
     ]
 #     print('mean= ',Mean)
     return Scatter

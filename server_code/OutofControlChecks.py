@@ -515,23 +515,23 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd):
                 line=dict(
                     color='orange',
                     width=8
-                )), 
+                )) 
               
-            newmeanline  = go.Scatter(
-                      x=outofcontrol45above[pointdate],
-                      y=outofcontrol45above[Newmean],
-                      mode='line',
-                      name='New Mean',
-                      marker=dict(
-                          color='red',
-                          size=2,
-                          line=dict(
-                              color='red',
-                              width=8
-                          )) )
+#             newmeanline  = go.Scatter(
+#                       x=outofcontrol45above[pointdate],
+#                       y=outofcontrol45above[Newmean],
+#                       mode='line',
+#                       name='New Mean',
+#                       marker=dict(
+#                           color='red',
+#                           size=2,
+#                           line=dict(
+#                               color='red',
+#                               width=8
+#                           )) )
         )
         #print (outofcontrol45above)
-        return four5above, newmeanline
+        return four5above #, newmeanline
 
 
 def outofcontrol45below(df, pointdate, pointname, total_rows, pointmean, sd):
