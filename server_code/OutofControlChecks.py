@@ -487,7 +487,8 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd):
             outofcontrol45above = outofcontrol45above.append({pointdate: df[pointdate].iloc[i-1], pointname: df[pointname].iloc[i-1]}, ignore_index=True)
             outofcontrol45above = outofcontrol45above.append({pointdate: df[pointdate].iloc[i], pointname: df[pointname].iloc[i]}, ignore_index=True)
             countx = 0
-            Mean =
+            Mean45 =outofcontrol45above[pointname].mean()
+            outofcontrol45above['Mean45'] = Mean45
             print ('outofcontrol45above', outofcontrol45above)
 #     if not outofcontrol45above.empty:
 #         # Filter out Orders below (sd + pointmean)
@@ -501,6 +502,10 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd):
             four5above = go.Scatter(
             visible='legendonly',
             name='4 out 5 above 1SD')
+            mean45line = go.Scatter(
+            visible='legendonly',
+            name='New Mean')
+      
         else:
             four5above = go.Scatter(  # x=df[pointdate],
             # y=df[pointname],
@@ -515,9 +520,24 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd):
                     color='orange',
                     width=8
                 ))
-        )
+                          )
+            
+            mean45line = go.Scatter(  # x=df[pointdate],
+            # y=df[pointname],
+            x=outofcontrol45above[pointdate],
+            y=outofcontrol45above['Mean45'],
+            mode='lines',
+            name='New Mean',
+            marker=dict(
+                color='red',
+                size=2,
+                line=dict(
+                    color='orange',
+                    width=8
+                ))
+                               )
         #print (outofcontrol45above)
-    return four5above
+    return four5above,mean45line
 
 
 def outofcontrol45below(df, pointdate, pointname, total_rows, pointmean, sd):
