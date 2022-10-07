@@ -41,6 +41,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     t = app_tables.charts.get(chartid = chartid)
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
+    showmeans = self.check_box_1.checked
     Scatter = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
     self.plot_1.data = Scatter
     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
@@ -62,6 +63,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     t = app_tables.charts.get(chartid = chartid)
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
+    showmeans = self.check_box_1.checked
     Scatter = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date)
     self.plot_1.data = Scatter
     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
@@ -84,12 +86,13 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
     self.date_picker_2.date =t['EndDate']
+    showmeans = self.check_box_1.checked
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
 #     print(self.plot_1.layout.title)
 #     print(columnname )
-    Scatter = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date)
+    Scatter = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
     print(columnname )
     self.plot_1.data = Scatter
 #     print(columnname )
