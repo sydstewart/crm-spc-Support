@@ -9,12 +9,12 @@ from datetime import datetime, time , date , timedelta
 import plotly.graph_objects as go
 import anvil.media
 from  OutofControlChecks import outofcontrol23above
-from .OutofControlChecks import outofcontrol9below
+from .outofcontrol.outofcontrol9below  import outofcontrol9below
 from .OutofControlChecks import outofcontrol9above
 from .OutofControlChecks import outofcontrol1above
 from .OutofControlChecks import outofcontrol6fall
-from .OutofControlChecks import outofcontrol6rise
-from .OutofControlChecks import outofcontrol45above
+from .outofcontrol.outofcontrol6rise import outofcontrol6rise
+from .outofcontrol.outofcontrol45above import outofcontrol45above
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -67,7 +67,7 @@ def get_Cases_Arriving_update():
   return  swait
 
 @anvil.server.callable
-def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
+def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
 #     t = app_tables.charts.get(chartid = chartid)
 #     tablename =t['Chart_Name']
 #     enddate =t['EndDate']
@@ -98,7 +98,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate):
     total_rows = total_rows = df[columnname].count() - 1
     
     two3above = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD )
-    ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD )
+    ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showmeans)
     nineabove = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD )
     oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD )
     down6 = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD )
