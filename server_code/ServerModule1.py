@@ -8,11 +8,11 @@ import pandas as pd
 from datetime import datetime, time , date , timedelta
 import plotly.graph_objects as go
 import anvil.media
-from  OutofControlChecks import outofcontrol23above
+from .outofcontrol.outofcontroltwo3above import outofcontrol23above
 from .outofcontrol.outofcontrol9below  import outofcontrol9below
 from .outofcontrol.outofcontrol9above import outofcontrol9above
 from .OutofControlChecks import outofcontrol1above
-from .OutofControlChecks import outofcontrol6fall
+from .outofcontrol.outofcontrol6fall import outofcontrol6fall
 from .outofcontrol.outofcontrol6rise import outofcontrol6rise
 from .outofcontrol.outofcontrol45above import outofcontrol45above
 # This is a server module. It runs on the Anvil server,
@@ -97,11 +97,11 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     SD = df[columnname].std()
     total_rows = total_rows = df[columnname].count() - 1
     
-    two3above = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD )
+    two3above, mean23aboveline  = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showmeans)
     nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD )
-    down6 = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD )
+    down6, mean6fallline = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     up6 , mean6riseline = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     Scatter=[
@@ -165,7 +165,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
                           width=2,
                           dash='dash'                   
                             )),
-    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline ,mean9belowline, mean9aboveline
+    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline ,mean9belowline, mean9aboveline, mean23aboveline,mean6fallline
     ]
 #     print('mean= ',Mean)
     return Scatter

@@ -64,7 +64,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     showmeans = self.check_box_1.checked
-    Scatter = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date)
+    Scatter = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date, showmeans)
     self.plot_1.data = Scatter
     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     t = app_tables.charts.get(chartid = chartid)

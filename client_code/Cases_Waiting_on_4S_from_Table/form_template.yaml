@@ -70,7 +70,7 @@ components:
     layout_properties: {grid_position: 'WVNRKE,BRNRCN'}
     event_bindings: {change: check_box_1_change}
   - type: Plot
-    properties: {spacing_above: small, spacing_below: small, height: 519, visible: true,
+    properties: {spacing_above: small, spacing_below: small, height: 628, visible: true,
       tooltip: '', interactive: true}
     name: plot_1
     layout_properties: {grid_position: 'DLCCLZ,ECUAEK', full_width_row: true}

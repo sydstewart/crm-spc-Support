@@ -78,11 +78,11 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
             # y=df[pointname],
             x=outofcontrol45above[pointdate],
             y=outofcontrol45above['Mean45'],
-                      mode='markers + lines',
-                      name='New Mean from 45 above =' + str(Mean45),
+                      mode='markers',
+                      name='New Mean from 45 above =' + str(round(Mean45, 1)),
                       marker=dict(
-                          color='white',
-                          size=5,
+                          color='orange',
+                          size=7,
                           line=dict(
                               color='black',
                               width=2

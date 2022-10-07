@@ -76,11 +76,11 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                       # y=df[pointname],
                       x=outofcontrol6rise[pointdate],
                       y=outofcontrol6rise['Mean6rise'],
-                      mode='markers + lines',
-                      name='New Mean',
+                      mode='markers',
+                      name='New Mean from 6 rising =' + str(round(Mean6rise,1)),
                       marker=dict(
-                          color='white',
-                          size=5,
+                          color='green',
+                          size=7,
                           line=dict(
                               color='black',
                               width=2
