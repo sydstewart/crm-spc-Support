@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 import anvil.media
 from  OutofControlChecks import outofcontrol23above
 from .outofcontrol.outofcontrol9below  import outofcontrol9below
-from .OutofControlChecks import outofcontrol9above
+from .outofcontrol.outofcontrol9above import outofcontrol9above
 from .OutofControlChecks import outofcontrol1above
 from .OutofControlChecks import outofcontrol6fall
 from .outofcontrol.outofcontrol6rise import outofcontrol6rise
@@ -99,11 +99,11 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     
     two3above = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD )
     ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showmeans)
-    nineabove = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD )
+    nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD )
     down6 = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD )
-    up6 , mean6riseline = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD )
-    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD )
+    up6 , mean6riseline = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
+    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     Scatter=[
     
     go.Scatter(
@@ -165,7 +165,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
                           width=2,
                           dash='dash'                   
                             )),
-    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline ,mean9belowline
+    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline ,mean9belowline, mean9aboveline
     ]
 #     print('mean= ',Mean)
     return Scatter

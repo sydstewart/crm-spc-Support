@@ -5,7 +5,7 @@ import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
 
-def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd ):
+def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showmeans ):
             import pandas as pd
 
 
