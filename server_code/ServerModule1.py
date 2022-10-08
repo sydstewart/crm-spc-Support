@@ -96,7 +96,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     Mean = df[columnname].mean()
     SD = df[columnname].std()
     total_rows = total_rows = df[columnname].count() - 1
-    
+#     if total_rows > 5:
     two3above, mean23aboveline  = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showmeans)
     nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
@@ -104,6 +104,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     down6, mean6fallline = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     up6 , mean6riseline = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
+    
     Scatter=[
     
     go.Scatter(
