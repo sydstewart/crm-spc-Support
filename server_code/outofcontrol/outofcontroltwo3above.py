@@ -16,6 +16,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
         print()
 
         outofcontrol23above = pd.DataFrame()
+        meanline =pd.DataFrame()
         for i in range(2,total_rows):
             countx = 0
             if (df[pointname].iloc[i]  > (2 * sd + pointmean)):
@@ -37,8 +38,11 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
 #                 outofcontrol23abovefilter =  outofcontrol23above[pointname] > (2 * sd + pointmean)
 #                 outofcontrol23above =  outofcontrol23above[outofcontrol23abovefilter] 
 #                 print('outofcontrol23above with orders below 2 * SD filtered out')
+                
+                
                 Mean23above =outofcontrol23above[pointname].mean()
                 outofcontrol23above['Mean23above'] = Mean23above
+#                 meanline = outofcontrol23above
                 print ('outofcontrol23above', outofcontrol23above)  
 
         if outofcontrol23above.empty:

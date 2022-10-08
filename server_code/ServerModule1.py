@@ -80,8 +80,10 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     waitinglist= getattr(app_tables, tablename).search(
                                                  Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
                                                                          q.greater_than_or_equal_to(startdate                                        )
-                                                                         )
-                                                 )
+                                                                        )
+                                              )
+  
+    total_rows = len(waitinglist)  
     dicts = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname]}
             for r in waitinglist]
 #     print (dicts)
@@ -169,7 +171,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline ,mean9belowline, mean9aboveline, mean23aboveline,mean6fallline
     ]
 #     print('mean= ',Mean)
-    return Scatter
+    return Scatter, total_rows
 
     
 @anvil.server.callable

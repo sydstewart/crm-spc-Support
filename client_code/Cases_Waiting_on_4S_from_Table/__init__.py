@@ -19,10 +19,15 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     showmeans = self.check_box_1.checked
-    Scatter = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+#     total_rows = anvil.server.call('get_total_rows',tablename, columnname)
 
-    self.plot_1.data = Scatter
-    self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+    Scatter, total_rows = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    if total_rows <=10:
+          alert('10 or more data points needed to produce a chart')
+    else:
+    
+        self.plot_1.data = Scatter
+        self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     
 
   def button_1_click(self, **event_args):
@@ -42,12 +47,19 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     showmeans = self.check_box_1.checked
-    Scatter = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
-    self.plot_1.data = Scatter
-    self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
-    t = app_tables.charts.get(chartid = chartid)
-    t['StartDate'] = self.date_picker_1.date
-    t['EndDate'] = self.date_picker_2.date
+    Scatter , total_rows = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    
+    if total_rows < 10:
+        alert('10 or more data points needed to produce a chart')
+    
+    else: 
+    
+        self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+        self.plot_1.data = Scatter 
+
+        t = app_tables.charts.get(chartid = chartid)
+        t['StartDate'] = self.date_picker_1.date
+        t['EndDate'] = self.date_picker_2.date
     
     
     pass
@@ -64,12 +76,18 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     showmeans = self.check_box_1.checked
-    Scatter = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date, showmeans)
-    self.plot_1.data = Scatter
-    self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
-    t = app_tables.charts.get(chartid = chartid)
-    t['StartDate'] = self.date_picker_1.date
-    t['EndDate'] = self.date_picker_2.date
+    Scatter, total_rows = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    if total_rows < 10:
+                    alert('10 or more data points needed to produce a chart')
+    
+    else: 
+    
+      self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+      self.plot_1.data = Scatter
+  
+      t = app_tables.charts.get(chartid = chartid)
+      t['StartDate'] = self.date_picker_1.date
+      t['EndDate'] = self.date_picker_2.date
     
     pass
 
@@ -89,12 +107,17 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     showmeans = self.check_box_1.checked
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
-    self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+   
 #     print(self.plot_1.layout.title)
 #     print(columnname )
-    Scatter = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    Scatter, total_rows = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
     print(columnname )
-    self.plot_1.data = Scatter
+    if total_rows < 10:
+                    alert('10 or more data points needed to produce a chart')
+    
+    else: 
+       self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+       self.plot_1.data = Scatter
 #     print(columnname )
 #     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
 #     print(self.plot_1.layout.title)
