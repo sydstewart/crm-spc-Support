@@ -54,6 +54,7 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
             four5above = go.Scatter(
             visible='legendonly',
             name='4 out 5 above 1SD')
+      
             mean45line = go.Scatter(
             visible='legendonly',
             name='New Mean')
@@ -89,4 +90,4 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
                 ))
                                )
         #print (outofcontrol45above)
-    return four5above,mean45line
+        return four5above,mean45line
