@@ -120,18 +120,41 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     go.Scatter(
                         x = df['Date_Entered'] ,
                         y = df[columnname],
-                        mode='text',
-                        name='Annotations', 
-                        text=df['NoteCol'],
-#                   showarrow=True,
-#             arrowhead=1
-#                                 showarrow=True,
-# #                                 arrowhead=1
-                       textposition='top left',
-                       textfont=dict(
-                                  family="sans serif",
-                                  size=14,
-                                  color="black")
+        xref="x",
+        yref="y",
+        text=df['NoteCol'],
+        showarrow=True,
+        font=dict(
+            family="Courier New, monospace",
+            size=16,
+            color="#ffffff"
+            )
+    ),
+#         align="center",
+#         arrowhead=2,
+#         arrowsize=1,
+#         arrowwidth=2,
+#         arrowcolor="#636363",
+#         ax=20,
+#         ay=-30,
+#         bordercolor="#c7c7c7",
+#         borderwidth=2,
+#         borderpad=4,
+#         bgcolor="#ff7f0e",
+#         opacity=0.8
+#         ),
+#                         mode='text',
+#                         name='Annotations', 
+#                         text=df['NoteCol'],
+# #                   showarrow=True,
+# #             arrowhead=1
+# #                                 showarrow=True,
+# # #                                 arrowhead=1
+#                        textposition='top left',
+#                        textfont=dict(
+#                                   family="sans serif",
+#                                   size=14,
+#                                   color="black")
 #                         arrowhead= 4,
 #                       arrowhead=2,
 #                         arrowsize=6,
@@ -143,7 +166,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
 #                       borderwidth=2,
 #                       borderpad=4,
 #                       bgcolor="#ff7f0e",
-                      ),
+                      
           
     go.Scatter(
                         x=df['Date_Entered'],
