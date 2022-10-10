@@ -128,7 +128,18 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
                        textfont=dict(
                                   family="sans serif",
                                   size=14,
-                                  color="black")),
+                                  color="black"),
+#                       arrowhead=2,
+#                       arrowsize=1,
+#                       arrowwidth=2,
+#                       arrowcolor="#636363",
+#                       ax=20,
+#                       ay=-30,
+#                       bordercolor="#c7c7c7",
+#                       borderwidth=2,
+#                       borderpad=4,
+#                       bgcolor="#ff7f0e",
+                      ),
           
     go.Scatter(
                         x=df['Date_Entered'],
