@@ -96,7 +96,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     df['Mean']= df[columnname].mean()
     pointdate= 'Date_Entered'
     pointname = columnname
-    noteCol = df['NoteCol']
+    notecol = df['NoteCol']
     Mean = df[columnname].mean()
     SD = df[columnname].std()
     total_rows = total_rows = df[columnname].count() - 1
@@ -114,6 +114,8 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     go.Scatter(
                         x = df['Date_Entered'] ,
                         y = df[columnname],
+                        text =df['NoteCol'],
+                        textposition='top center',
                         mode ='markers + lines',
                         name= columnname),
 #     go.Scatter(          x = df['Date_Entered'], 

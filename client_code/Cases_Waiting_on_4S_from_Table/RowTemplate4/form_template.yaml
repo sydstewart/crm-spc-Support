@@ -28,4 +28,6 @@ components:
   properties: {}
   name: text_box_3
   layout_properties: {column: AGMLFT}
+  data_bindings:
+  - {property: text, code: 'self.item[''noteCol'']', writeback: true}
 is_package: true
