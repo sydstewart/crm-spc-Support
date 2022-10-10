@@ -1,4 +1,7 @@
-container: {type: DataRowPanel}
+container:
+  type: DataRowPanel
+  data_bindings:
+  - {property: tag, code: 'self.item[''noteCol'']'}
 components:
 - type: TextBox
   properties: {}
@@ -21,4 +24,8 @@ components:
   layout_properties: {column: LMHNCC}
   data_bindings:
   - {property: checked, code: 'self.item[''exclude_point'']', writeback: true}
+- type: TextBox
+  properties: {}
+  name: text_box_3
+  layout_properties: {column: AGMLFT}
 is_package: true

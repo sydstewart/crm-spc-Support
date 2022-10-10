@@ -89,6 +89,7 @@ components:
       - {id: CESTNQ, title: Date Entered, data_key: Date_Entered}
       - {id: AJUMAY, title: Test Result, data_key: Test_Result}
       - {id: LMHNCC, title: Exclude Point, data_key: exclude_point}
+      - {id: AGMLFT, title: Notecol, data_key: noteCol}
       auto_header: true
       tooltip: ''
       border: ''

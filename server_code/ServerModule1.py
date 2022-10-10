@@ -86,7 +86,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
                                               )
   
     total_rows = len(waitinglist)  
-    dicts = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname]}
+    dicts = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname],'NoteCol':r['noteCol']}
             for r in waitinglist]
 #     print (dicts)
 
@@ -96,7 +96,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     df['Mean']= df[columnname].mean()
     pointdate= 'Date_Entered'
     pointname = columnname
-    
+    noteCol = df['NoteCol']
     Mean = df[columnname].mean()
     SD = df[columnname].std()
     total_rows = total_rows = df[columnname].count() - 1
@@ -116,6 +116,9 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
                         y = df[columnname],
                         mode ='markers + lines',
                         name= columnname),
+    go.Scatter(          x = df['Date_Entered'], 
+                         y = df[columnname], mode='text',
+                         name='Annotations', text=df[noteCol], textposition='top left'),
     go.Scatter(
                         x=df['Date_Entered'],
                         y = df['Mean'] ,
