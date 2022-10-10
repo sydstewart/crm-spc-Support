@@ -79,7 +79,8 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
 #     print(enddate)
     waitinglist= getattr(app_tables, tablename).search(
                                                  Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
-                                                                         q.greater_than_or_equal_to(startdate                                        )
+                                                                         q.greater_than_or_equal_to(startdate),
+#                                                                          exclude_point =False 
                                                                         )
                                               )
   
@@ -185,11 +186,12 @@ def store_data(file):
       df = pd.read_csv(file_name)
     else:
       df = pd.read_excel(file_name)
+    df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], format='%d/%m/%Y')
     for d in df.to_dict(orient="records"):
       # d is now a dict of {columnname -> value} for this row
       # We use Python's **kwargs syntax to pass the whole dict as
       # keyword arguments
-      app_tables.cases_arriving.add_row(**d)
+      app_tables.waiting_on_4s.add_row(**d)
 
 def connect():
   connection = pymysql.connect(host='51.141.236.29',

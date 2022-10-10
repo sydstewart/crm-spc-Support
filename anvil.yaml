@@ -62,6 +62,9 @@ db_schema:
     - name: All_Cases_with_4S
       admin_ui: {width: 200}
       type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
   cases_arriving:
     title: cases_arriving
     client: none

@@ -49,6 +49,23 @@ class Charts(ChartsTemplate):
     open_form('Cases_Waiting_on_4S_from_Table')
     pass
 
+  def import_waiting_on_4s_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def file_loader_1_change(self, file, **event_args):
+    """This method is called when a new file is loaded into this FileLoader"""
+    anvil.server.call('store_data',file)
+    pass
+
+  def file_loader_2_change(self, file, **event_args):
+    """This method is called when a new file is loaded into this FileLoader"""
+    anvil.server.call('store_data',file)
+    pass
+
+
+
+
 
 
 
