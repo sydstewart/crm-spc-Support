@@ -65,6 +65,9 @@ db_schema:
     - name: exclude_point
       admin_ui: {width: 200}
       type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
   cases_arriving:
     title: cases_arriving
     client: none
@@ -76,6 +79,12 @@ db_schema:
     - name: Cases_Arriving
       admin_ui: {width: 200}
       type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
   test:
     title: Test
     client: full
