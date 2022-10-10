@@ -114,11 +114,22 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     go.Scatter(
                         x = df['Date_Entered'] ,
                         y = df[columnname],
-                        text =df['NoteCol'],
-                        textposition='top center',
                         mode ='markers + lines',
                         name= columnname),
-
+      
+    go.Scatter(
+                        x = df['Date_Entered'] ,
+                        y = df[columnname],
+                        mode='text',
+                        name='Annotations', 
+                        text=df['NoteCol'],
+#                         showarrow=True,
+                       textposition='top left',
+                       textfont=dict(
+                                  family="sans serif",
+                                  size=14,
+                                  color="black")),
+          
     go.Scatter(
                         x=df['Date_Entered'],
                         y = df['Mean'] ,

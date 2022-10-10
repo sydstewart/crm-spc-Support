@@ -82,7 +82,7 @@ db_schema:
     server: full
     columns:
     - name: Date_Entered
-      admin_ui: {width: 200}
+      admin_ui: {width: 175}
       type: datetime
     - name: Test_Result
       admin_ui: {width: 200}
