@@ -78,7 +78,7 @@ db_schema:
       type: number
   test:
     title: Test
-    client: none
+    client: full
     server: full
     columns:
     - name: Date_Entered

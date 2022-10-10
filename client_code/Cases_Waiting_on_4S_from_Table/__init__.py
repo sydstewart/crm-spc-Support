@@ -29,7 +29,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
         self.plot_1.data = Scatter
         self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     self.repeating_panel_1.items = app_tables.test.search()
-
+    self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Charts')
@@ -152,7 +152,30 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 
   def button_2_click(self, **event_args):
     """This method is called when the button is clicked"""
+    if self.drop_down_2.selected_value == 'All_Cases_with_4S':
+         chartid = 4
+    if self.drop_down_2.selected_value == 'Cases Arriving':
+         chartid = 2
+    if self.drop_down_2.selected_value == 'Test':
+         chartid = 5
+#     self.plot_1.layout.title = ""
+    t = app_tables.charts.get(chartid = chartid)
+    self.date_picker_1.date =t['StartDate']
+    self.date_picker_2.date =t['EndDate']
+    showmeans = self.check_box_1.checked
+    tablename =t['tablename']
+    columnname = t['Measure_Column_Name']
+   
+#     print(self.plot_1.layout.title)
+#     print(columnname )
+    Scatter, total_rows = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    print(columnname )
+    if total_rows < 10:
+                    alert('10 or more data points needed to produce a chart')
     
+    else: 
+       self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+       self.plot_1.data = Scatter
     pass
 
 
