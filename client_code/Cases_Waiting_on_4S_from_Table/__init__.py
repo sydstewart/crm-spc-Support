@@ -28,7 +28,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     
         self.plot_1.data = Scatter
         self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
-    
+    self.repeating_panel_1.items = app_tables.test.search()
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -149,6 +149,12 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 #     print(self.plot_1.layout.title)
     pass
     pass
+
+  def button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    
+    pass
+
 
 
 

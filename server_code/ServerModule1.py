@@ -11,10 +11,11 @@ import anvil.media
 from .outofcontrol.outofcontroltwo3above import outofcontrol23above
 from .outofcontrol.outofcontrol9below  import outofcontrol9below
 from .outofcontrol.outofcontrol9above import outofcontrol9above
-from .OutofControlChecks import outofcontrol1above
+# from .OutofControlChecks import outofcontrol1above
 from .outofcontrol.outofcontrol6fall import outofcontrol6fall
 from .outofcontrol.outofcontrol6rise import outofcontrol6rise
 from .outofcontrol.outofcontrol45above import outofcontrol45above
+from .outofcontrol.outofcontrol1above3SD import outofcontrol1above
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -77,10 +78,10 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     enddate = enddate + timedelta(days=1)
     
 #     print(enddate)
-    waitinglist= getattr(app_tables, tablename).search(
+    waitinglist= getattr(app_tables, tablename).search(q.all_of(
                                                  Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
-                                                                         q.greater_than_or_equal_to(startdate),
-#                                                                          exclude_point =False 
+                                                                         q.greater_than_or_equal_to(startdate)) ,
+                                                 exclude_point = False 
                                                                         )
                                               )
   
