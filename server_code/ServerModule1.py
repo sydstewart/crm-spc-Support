@@ -22,12 +22,15 @@ from .outofcontrol.outofcontrol1above3SD import outofcontrol1above
 
 
 @anvil.server.callable
-def add_test():
+def add_test(new_test):
+
+  app_tables.test.add_row(
+   
+    **new_test
+  )
 
 
-
-
-
+ 
 
 
 
