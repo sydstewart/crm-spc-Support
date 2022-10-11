@@ -152,6 +152,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 
   def button_2_click(self, **event_args):
     """This method is called when the button is clicked"""
+#     open_form('Cases_Waiting_on_4S_from_Table')
     if self.drop_down_2.selected_value == 'All_Cases_with_4S':
          chartid = 4
     if self.drop_down_2.selected_value == 'Cases Arriving':
