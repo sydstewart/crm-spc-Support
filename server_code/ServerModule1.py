@@ -17,7 +17,7 @@ from .outofcontrol.outofcontrol6rise import outofcontrol6rise
 from .outofcontrol.outofcontrol45above import outofcontrol45above
 from .outofcontrol.outofcontrol1above3SD import outofcontrol1above
 # This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
+# rather than in the user's browser.javascript:void(0)
 #
 
 
@@ -25,11 +25,11 @@ from .outofcontrol.outofcontrol1above3SD import outofcontrol1above
 def add_test(new_test):
 
   app_tables.test.add_row(
+#     new_test['exclude_point']== False,
 #   new_test['Date_Entered'] = datetime(new_test['Date_Entered'])
     **new_test
   )
-
-
+  self.repeating_panel.items = self.repeating_panel.items
  
 
 
