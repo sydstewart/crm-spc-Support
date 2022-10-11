@@ -178,6 +178,11 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
        self.plot_1.data = Scatter
     pass
 
+  def button_3_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+
 
 
 
