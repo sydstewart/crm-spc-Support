@@ -180,7 +180,29 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 
   def button_3_click(self, **event_args):
     """This method is called when the button is clicked"""
+      # Initialise an empty dictionary to store the user inputs
+
+
+  def add_row_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    new_test = {}
+    # Open an alert displaying the 'ArticleEdit' Form
+    save_clicked = alert(
+      content=Form1(item=new_new_test),
+      title="Add Result",
+      large=True,
+      buttons=[("Save", True), ("Cancel", False)]
+    )
+    print(new_article)
+    # If the alert returned 'True', the save button was clicked.
+    if save_clicked:
+      anvil.server.call('add_test', new_test)
+
+    self.refresh_articles()
+
     pass
+    pass
+
 
 
 
