@@ -6,8 +6,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from datetime import datetime, time , date
-from 
-
+from ..AddRow import AddRow
 class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
@@ -188,20 +187,20 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     new_test = {}
     # Open an alert displaying the 'ArticleEdit' Form
     save_clicked = alert(
-      content=Form1(item=new_new_test),
+      content=AddRow(item=new_test),
       title="Add Result",
       large=True,
       buttons=[("Save", True), ("Cancel", False)]
     )
-    print(new_article)
+  
     # If the alert returned 'True', the save button was clicked.
     if save_clicked:
       anvil.server.call('add_test', new_test)
 
-    self.refresh_articles()
+    self.refresh_test()
 
     pass
-    pass
+   
 
 
 
