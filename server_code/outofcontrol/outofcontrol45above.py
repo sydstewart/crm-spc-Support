@@ -14,7 +14,7 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
     print('-------------------------------------------')
     print()
     outofcontrol45above = pd.DataFrame()
-    for i in range(5, total_rows):
+    for i in range(5, total_rows + 1):
         countx = 0
         if (df[pointname].iloc[i] > (sd + pointmean)):
             countx = 1

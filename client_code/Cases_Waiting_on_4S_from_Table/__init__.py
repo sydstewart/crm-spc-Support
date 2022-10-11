@@ -11,6 +11,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
     chartid = 5
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
@@ -197,8 +198,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     if save_clicked:
       anvil.server.call('add_test', new_test)
 
-   
-
+    open_form('Cases_Waiting_on_4S_from_Table')
+#     date_picker_1_change(self, **event_args)
     pass
    
 

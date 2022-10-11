@@ -17,7 +17,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
 
         outofcontrol23above = pd.DataFrame()
         meanline =pd.DataFrame()
-        for i in range(2,total_rows):
+        for i in range(2,total_rows + 1):
             countx = 0
             if (df[pointname].iloc[i]  > (2 * sd + pointmean)):
                 countx = 1

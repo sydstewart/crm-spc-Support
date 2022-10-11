@@ -23,14 +23,13 @@ from .outofcontrol.outofcontrol1above3SD import outofcontrol1above
 
 @anvil.server.callable
 def add_test(new_test):
-
+  print('new_test',new_test)
   app_tables.test.add_row(
-#     new_test['exclude_point']== False,
+#     new_test['exclude_point'] == False,
 #   new_test['Date_Entered'] = datetime(new_test['Date_Entered'])
-    **new_test
+    **new_test,exclude_point= False
   )
-  self.repeating_panel.items = self.repeating_panel.items
- 
+#    t= app_tables.test.get()
 
 
 
