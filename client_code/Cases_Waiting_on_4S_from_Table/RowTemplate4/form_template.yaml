@@ -1,14 +1,8 @@
 container:
   type: DataRowPanel
   data_bindings:
-  - {property: tag, code: 'self.item[''noteCol'']'}
+  - {property: tag, code: 'self.item[''Date_Entered'']'}
 components:
-- type: TextBox
-  properties: {}
-  name: text_box_1
-  layout_properties: {column: CESTNQ}
-  data_bindings:
-  - {property: text, code: 'self.item[''Date_Entered'']', writeback: true}
 - type: TextBox
   properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
     border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,

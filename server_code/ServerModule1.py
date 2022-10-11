@@ -25,7 +25,7 @@ from .outofcontrol.outofcontrol1above3SD import outofcontrol1above
 def add_test(new_test):
 
   app_tables.test.add_row(
-   
+#   new_test['Date_Entered'] = datetime(new_test['Date_Entered'])
     **new_test
   )
 

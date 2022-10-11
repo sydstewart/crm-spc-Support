@@ -197,7 +197,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     if save_clicked:
       anvil.server.call('add_test', new_test)
 
-    self.refresh_test()
+   
 
     pass
    
