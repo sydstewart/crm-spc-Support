@@ -205,6 +205,11 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     open_form('Cases_Waiting_on_4S_from_Table')
 #     date_picker_1_change(self, **event_args)
     pass
+
+  def form_refreshing_data_bindings(self, **event_args):
+    """This method is called when refreshing_data_bindings is called"""
+    pass
+
    
 
 

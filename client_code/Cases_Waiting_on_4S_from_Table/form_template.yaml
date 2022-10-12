@@ -2,6 +2,7 @@ is_package: true
 container:
   type: HtmlTemplate
   properties: {html: '@theme:standard-page.html'}
+  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
 components:
 - type: ColumnPanel
   properties: {col_widths: '{"PGXXOR":10,"NVOVGM":35,"ZQDCRG":10,"ZAAODE":5}'}
