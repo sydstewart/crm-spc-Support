@@ -73,7 +73,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                             # y=df[pointname],
                             x=outofcontrol23above[pointdate],
                             y=outofcontrol23above['Mean23above'],
-                            mode='markers',
+                            mode='lines',
                             name='New Mean from 2 3 above='+str(round(Mean23above,1)),
                             marker=dict(
                                 color='yellow',

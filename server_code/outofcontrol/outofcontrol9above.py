@@ -91,14 +91,13 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                       nineabove = go.Scatter(
                           x=outofcontrol9above[pointdate],
                           y=outofcontrol9above[pointname],
-                          mode='markers',
+                          mode='lines',
                           name='9 consecutively above mean',
-                          marker=dict(
-                              color='red',
-                              size=5,
-                              line=dict(
-                                  color='orange',
-                                  width=8
-                              ))
+#                           marker=dict(
+#                               color='blue',
+#                               size=5,
+#                               line=dict(
+#                                   color='black',
+#                                   width=8)
                 ) 
             return  nineabove, mean9aboveline
