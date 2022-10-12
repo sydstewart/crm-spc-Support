@@ -97,8 +97,14 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
                                                  exclude_point = False 
                                                                         )
                                               )
-  
-    total_rows = len(waitinglist)  
+    excludedlist= getattr(app_tables, tablename).search(q.all_of(
+                                                 Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
+                                                                         q.greater_than_or_equal_to(startdate)) ,
+                                                 exclude_point = True 
+                                                                        )
+                                              )
+    total_rows = len(waitinglist) 
+    total_excluded = len(excludedlist)
     dicts = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname],'NoteCol':r['noteCol']}
             for r in waitinglist]
 #     print (dicts)
@@ -114,12 +120,13 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     SD = df[columnname].std()
     total_rows = total_rows = df[columnname].count() - 1
 #     if total_rows > 5:
+    
     two3above, mean23aboveline  = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showmeans)
     nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD )
-    down6, mean6fallline = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
-    up6 , mean6riseline = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
+    down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showmeans  )
+    up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showmeans   )
     four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
     
     Scatter=[
@@ -215,7 +222,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline ,mean9belowline, mean9aboveline, mean23aboveline,mean6fallline
     ]
 #     print('mean= ',Mean)
-    return Scatter, total_rows
+    return Scatter, total_rows, total_excluded
 
     
 # @anvil.server.callable

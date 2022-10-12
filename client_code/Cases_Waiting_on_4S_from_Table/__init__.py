@@ -20,16 +20,19 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     columnname = t['Measure_Column_Name']
     showmeans = self.check_box_1.checked
 #     total_rows = anvil.server.call('get_total_rows',tablename, columnname)
-
-    Scatter, total_rows = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    
+    Scatter, total_rows, total_excluded,  = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    self.number_excluded.text = total_excluded
     if total_rows <=10:
           alert('10 or more data points needed to produce a chart')
     else:
     
         self.plot_1.data = Scatter
         self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+    
     self.repeating_panel_1.items = app_tables.test.search()
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
+  
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Charts')
@@ -47,7 +50,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     showmeans = self.check_box_1.checked
-    Scatter , total_rows = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    Scatter , total_rows, total_excluded = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
     
     if total_rows < 10:
         alert('10 or more data points needed to produce a chart')
@@ -76,7 +79,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     showmeans = self.check_box_1.checked
-    Scatter, total_rows = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    Scatter, total_rows, total_excluded = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date, showmeans)
     if total_rows < 10:
                     alert('10 or more data points needed to produce a chart')
     

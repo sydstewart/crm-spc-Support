@@ -5,7 +5,7 @@ import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
 
-def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showmeans ):
+def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showmeans   ):
   import pandas as pd
 
 
@@ -46,10 +46,22 @@ def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showm
               outofcontrol6fall = outofcontrol6fall.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
               outofcontrol6fall = outofcontrol6fall.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
               print('countx',countx)
+              
+              
+              stagemean = (df[pointname].iloc[i - 5] + df[pointname].iloc[i-4] + df[pointname].iloc[i-3] + df[pointname].iloc[i-2] + df[pointname].iloc[i])/6
+              stagemeandict = pd.DataFrame() 
+              stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-5],pointmean:stagemean}, ignore_index=True)
+              stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-4],pointmean:stagemean}, ignore_index=True)
+              stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-3],pointmean:stagemean}, ignore_index=True)
+              stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
+              stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-1],pointmean:stagemean}, ignore_index=True)
+              stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i],pointmean:stagemean}, ignore_index=True)
+              print ('stagemeandict',stagemeandict)
+
               countx = 0
               mean6fall =outofcontrol6fall[pointname].mean()
               outofcontrol6fall['Mean6fall'] = mean6fall  
-              print('outofcontrol6fall',outofcontrol6fall)
+#               print('outofcontrol6fall',outofcontrol6fall)
       
   if outofcontrol6fall.empty:
         down6 = go.Scatter(
@@ -75,9 +87,9 @@ def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showm
     )
         mean6fallline = go.Scatter(  # x=df[pointdate],
             # y=df[pointname],
-            x=outofcontrol6fall[pointdate],
-            y=outofcontrol6fall['Mean6fall'],
-                      mode='markers',
+            x=stagemeandict[pointdate],
+            y=stagemeandict[pointmean],
+                      mode='lines',
                       name='New Mean from 6 falling =' + str(round(mean6fall, 1)),
                       marker=dict(
                           color='green',
@@ -89,6 +101,6 @@ def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showm
                                )
 #   if outofcontrol6fall.empty:
 #       print('Empty')
-
-  return down6, mean6fallline
+         
+  return down6, mean6fallline 
 

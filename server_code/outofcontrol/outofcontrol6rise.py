@@ -5,7 +5,7 @@ import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
 
-def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showmeans ):
+def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showmeans   ):
             import pandas as pd
 
 
@@ -15,7 +15,7 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
             print()
             
             outofcontrol6rise = pd.DataFrame() 
-            for i in range(6,total_rows):
+            for i in range(6,total_rows ):
                 countx = 0
                 if (df[pointname].iloc[i]  > df[pointname].iloc[i-1]):
                         countx = 1
@@ -45,9 +45,21 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                         outofcontrol6rise = outofcontrol6rise.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
                         print('outofcontrol6rise', outofcontrol6rise)
                         countx =0
+                    
+                    
+                        stagemean = (df[pointname].iloc[i - 5] + df[pointname].iloc[i-4] + df[pointname].iloc[i-3] + df[pointname].iloc[i-2] + df[pointname].iloc[i])/6
+                        print('Stagemean', stagemean) 
+                        stagemeandict = pd.DataFrame() 
+                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-5],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-4],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-3],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-1],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i],pointmean:stagemean}, ignore_index=True)
+                        print ('stagemeandict',stagemeandict)
                         Mean6rise =outofcontrol6rise[pointname].mean()
                         outofcontrol6rise['Mean6rise'] = Mean6rise
-                        print ('outofcontrol6rise', outofcontrol6rise)
+#                         print ('outofcontrol6rise', outofcontrol6rise)
                         print('countx', countx)
 
             if outofcontrol6rise.empty:
@@ -74,10 +86,10 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                 )
                 mean6riseline = go.Scatter(  # x=df[pointdate],
                       # y=df[pointname],
-                      x=outofcontrol6rise[pointdate],
-                      y=outofcontrol6rise['Mean6rise'],
-                      mode='markers',
-                      name='New Mean from 6 rising =' + str(round(Mean6rise,1)),
+                      x=stagemeandict[pointdate],
+                      y=stagemeandict[pointmean],
+                      mode='lines',
+                      name='New Mean from 6 rising =' + str(round(stagemean,1)),
                       marker=dict(
                           color='green',
                           size=7,
@@ -85,4 +97,4 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                               color='black',
                               width=2
                           )) )
-            return up6, mean6riseline
+            return up6, mean6riseline 

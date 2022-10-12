@@ -4,7 +4,7 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"PGXXOR":15,"NVOVGM":45}'}
+  properties: {col_widths: '{"PGXXOR":10,"NVOVGM":35,"ZQDCRG":10,"ZAAODE":5}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -94,6 +94,20 @@ components:
     properties: {}
     name: label_3
     layout_properties: {grid_position: 'MUWYTZ,NVOVGM'}
+  - type: Label
+    properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
+      visible: true, text: Number excluded, font_size: 14, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties: {grid_position: 'MUWYTZ,ZQDCRG'}
+  - type: TextBox
+    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: true, underline: false}
+    name: number_excluded
+    layout_properties: {grid_position: 'MUWYTZ,ZAAODE'}
   - type: DataGrid
     properties:
       role: null
