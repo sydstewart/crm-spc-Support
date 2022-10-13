@@ -81,7 +81,7 @@ def get_Cases_Arriving_update():
   return  swait
 
 @anvil.server.callable
-def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
+def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
 #     t = app_tables.charts.get(chartid = chartid)
 #     tablename =t['Chart_Name']
 #     enddate =t['EndDate']
@@ -89,31 +89,41 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
 #     startdate =  datetime(day=1, month=10, year=2022)
 #     enddate =  datetime(day=1, month=9, year=2022)
     enddate = enddate + timedelta(days=1)
-    
-#     print(enddate)
-    waitinglist= getattr(app_tables, tablename).search(q.all_of(
-                                                 Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
-                                                                         q.greater_than_or_equal_to(startdate)) ,
-                                                 exclude_point = False 
-                                                                        )
-                                              )
+      
+    if showexcluded == False:
+  #     print(enddate)
+          waitinglist= getattr(app_tables, tablename).search(q.all_of(
+                                                  Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
+                                                                          q.greater_than_or_equal_to(startdate)) ,
+                                                  exclude_point = False 
+                                                                          )
+                                                )
+
+    else:                                             
+      
+          waitinglist = getattr(app_tables, tablename).search(q.all_of(
+                                                  Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
+                                                                          q.greater_than_or_equal_to(startdate)) ,
+                                                  
+                                                                          )
+                                                )
+        
     excludedlist= getattr(app_tables, tablename).search(q.all_of(
-                                                 Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
-                                                                         q.greater_than_or_equal_to(startdate)) ,
-                                                 exclude_point = True 
-                                                                        )
-                                              )
+                                              Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
+                                                                      q.greater_than_or_equal_to(startdate)) ,
+                                              exclude_point = True 
+                                                                    ))
     total_rows = len(waitinglist) 
     total_excluded = len(excludedlist)
+    
     dicts = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname],'NoteCol':r['noteCol']}
             for r in waitinglist]
     
-    dictsexcl = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname],'NoteCol':r['noteCol']}
-            for r in waitinglist]
+ 
 #     print (dicts)
-
+ 
     df = pd.DataFrame.from_dict(dicts)
-    dfexcl = pd.DataFrame.from_dict(dictsexcl)
+ 
     df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc= True)
     df.sort_values(by=['Date_Entered'], inplace=True , ascending=True)
     df['Mean']= df[columnname].mean()
@@ -125,13 +135,13 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     total_rows = total_rows = df[columnname].count() - 1
 #     if total_rows > 5:
     
-    two3above, mean23aboveline  = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
-    ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showmeans)
-    nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
-    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD )
-    down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showmeans  )
-    up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showmeans   )
-    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showmeans )
+    two3above, mean23aboveline  = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
+    ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded)
+    nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
+    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded   )
+    down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showexcluded  )
+    up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showexcluded   )
+    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
     
     Scatter=[
     

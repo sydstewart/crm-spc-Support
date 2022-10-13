@@ -54,10 +54,10 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
             four5above = go.Scatter(
             visible='legendonly',
             name='4 out 5 above 1SD')
-            if showmeans == False:
-                mean45line = go.Scatter(
-                visible='legendonly',
-                name='New Mean')
+#             if showmeans == False:
+            mean45line = go.Scatter(
+            visible='legendonly',
+            name='New Mean')
       
         else:
             four5above = go.Scatter(  # x=df[pointdate],
@@ -74,20 +74,21 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
                     width=8
                 ))
                           )
-            if showmeans == False:
-                  mean45line = go.Scatter(  # x=df[pointdate],
-                  # y=df[pointname],
-                  x=outofcontrol45above[pointdate],
-                  y=outofcontrol45above['Mean45'],
-                            mode='lines',
-                            name='New Mean from 45 above =' + str(round(Mean45, 1)),
-                            marker=dict(
-                                color='orange',
-                                size=7,
-                                line=dict(
-                                    color='black',
-                                    width=2
-                      ))
-                                    )
+#             if showmeans == False:
+            
+            mean45line = go.Scatter(  # x=df[pointdate],
+        # y=df[pointname],
+                              x=outofcontrol45above[pointdate],
+                              y=outofcontrol45above['Mean45'],
+                                        mode='lines',
+                                        name='New Mean from 45 above =' + str(round(Mean45, 1)),
+                                        marker=dict(
+                                            color='orange',
+                                            size=7,
+                                            line=dict(
+                                                color='black',
+                                                width=2
+            ))
+                          )
               #print (outofcontrol45above)
     return four5above,mean45line

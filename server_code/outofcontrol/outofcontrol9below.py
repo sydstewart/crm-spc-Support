@@ -97,10 +97,10 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                     ninebelow = go.Scatter(
                     visible='legendonly',
                     name='9 consecutively below mean')
-                    if showmeans == False:
-                        mean9belowline = go.Scatter(
-                        visible='legendonly',
-                        name='New Mean')
+#                     i\f showmeans == False:
+                    mean9belowline = go.Scatter(
+                    visible='legendonly',
+                    name='New Mean')
             else:
                 ninebelow = go.Scatter(
                     x=outofcontrol9below[pointdate],
@@ -114,19 +114,19 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                             color='pink',
                             width=8
                         ))
-                ) 
-                if showmeans == False:
-                      mean9belowline = go.Scatter(  # x=df[pointdate],
-                            # y=df[pointname],
-                            x=stagemeandict[pointdate],
-                            y=stagemeandict[pointmean],
-                            mode='lines',
-                            name='New Mean from 9 below='+str(round(Mean9below,1)),
-                            marker=dict(
-                                color='pink',
-                                size=7,
-                                line=dict(
-                                    color='black',
-                                    width=2
-                                )) )
+                          ) 
+#                 if showmeans == False:
+                mean9belowline = go.Scatter(  # x=df[pointdate],
+                        # y=df[pointname],
+                        x=stagemeandict[pointdate],
+                        y=stagemeandict[pointmean],
+                        mode='lines',
+                        name='New Mean from 9 below='+str(round(Mean9below,1)),
+                        marker=dict(
+                            color='pink',
+                            size=7,
+                            line=dict(
+                                color='black',
+                                width=2
+                            )) )
             return  ninebelow, mean9belowline

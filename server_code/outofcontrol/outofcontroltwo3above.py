@@ -17,6 +17,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
 
         outofcontrol23above = pd.DataFrame()
         meanline =pd.DataFrame()
+#         numberfound = 0
         for i in range(2,total_rows + 1):
             countx = 0
             if (df[pointname].iloc[i]  > (2 * sd + pointmean)):
@@ -32,7 +33,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-2],pointname:df[pointname].iloc[i-2]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
-
+                    
         if not outofcontrol23above.empty: 
                 #Filter out Orders below (2 * sd + pointmean)
 #                 outofcontrol23abovefilter =  outofcontrol23above[pointname] > (2 * sd + pointmean)
@@ -49,10 +50,10 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
              two3above = go.Scatter(
              visible='legendonly',
              name='2 out 3 above 2 X SD')
-             if showmeans == False:
-                    mean23aboveline = go.Scatter(
-                    visible='legendonly',
-                    name='New Mean')
+#              if showmeans == False:
+             mean23aboveline = go.Scatter(
+             visible='legendonly',
+             name='New Mean')
         else:
             two3above = go.Scatter(  # x=df[pointdate],
             # y=df[pointname],
@@ -68,20 +69,20 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                     width=8
                 ))
         )
-            if showmeans == False:
-                      mean23aboveline = go.Scatter(  # x=df[pointdate],
-                            # y=df[pointname],
-                            x=outofcontrol23above[pointdate],
-                            y=outofcontrol23above['Mean23above'],
-                            mode='lines',
-                            name='New Mean from 2 3 above='+str(round(Mean23above,1)),
-                            marker=dict(
-                                color='blue',
-                                size=7,
-                                line=dict(
-                                    color='black',
-                                    width=2
-                                )) )
+#             if showmeans == False:
+            mean23aboveline = go.Scatter(  # x=df[pointdate],
+                  # y=df[pointname],
+                  x=outofcontrol23above[pointdate],
+                  y=outofcontrol23above['Mean23above'],
+                  mode='lines',
+                  name='New Mean from 2 3 above='+str(round(Mean23above,1)),
+                  marker=dict(
+                      color='blue',
+                      size=7,
+                      line=dict(
+                          color='black',
+                          width=2
+                      )) )
         return two3above, mean23aboveline 
 
 

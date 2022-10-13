@@ -65,40 +65,40 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                     nineabove = go.Scatter(
                     visible='legendonly',
                     name='9 consecutively above mean')
-                    if showmeans == False:
-                        mean9aboveline = go.Scatter(
-                        visible='legendonly',
-                        name='New Mean')
+#                     if showmeans == False:
+                    mean9aboveline = go.Scatter(
+                    visible='legendonly',
+                    name='New Mean')
             else:
                 
-                 if showmeans == False:
-                      mean9aboveline = go.Scatter(  # x=df[pointdate],
-                            # y=df[pointname],
-                            x=outofcontrol9above[pointdate],
-                            y=outofcontrol9above['Mean9above'],
-                            mode='lines',
-                            name='New Mean from 9 above =' + str(round(Mean9above,1)),
-                            marker=dict(
-                                color='pink',
-                                size=7,
-                                line=dict(
-                                    color='black',
-                                    width=2
-                                )) )
-                
-    
-                
-                      nineabove = go.Scatter(
+#                  if showmeans == False:
+                    mean9aboveline = go.Scatter(  # x=df[pointdate],
+                          # y=df[pointname],
                           x=outofcontrol9above[pointdate],
-                          y=outofcontrol9above[pointname],
-                          mode='markers',
-                          name='9 consecutively above mean',
+                          y=outofcontrol9above['Mean9above'],
+                          mode='lines',
+                          name='New Mean from 9 above =' + str(round(Mean9above,1)),
                           marker=dict(
-                              color='red',
-                              size=5,
+                              color='pink',
+                              size=7,
                               line=dict(
-                                  color='orange',
-                                  width=8
-                              ))
-                ) 
+                                  color='black',
+                                  width=2
+                              )) )
+              
+        
+              
+                    nineabove = go.Scatter(
+                        x=outofcontrol9above[pointdate],
+                        y=outofcontrol9above[pointname],
+                        mode='markers',
+                        name='9 consecutively above mean',
+                        marker=dict(
+                            color='red',
+                            size=5,
+                            line=dict(
+                                color='orange',
+                                width=8
+                            ))
+              ) 
             return  nineabove, mean9aboveline

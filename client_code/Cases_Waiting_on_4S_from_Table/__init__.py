@@ -18,10 +18,10 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     self.date_picker_2.date =t['EndDate']
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
-    showmeans = self.check_box_1.checked
+    showexcluded = self.check_box_1.checked
 #     total_rows = anvil.server.call('get_total_rows',tablename, columnname)
     
-    Scatter, total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    Scatter, total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     self.number_excluded.text = total_excluded
     self.mean.text = round(mean,2)
     self.SD.text = round(stdev,2)
@@ -51,8 +51,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     t = app_tables.charts.get(chartid = chartid)
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
-    showmeans = self.check_box_1.checked
-    Scatter , total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    showexcluded = self.check_box_1.checked
+    Scatter , total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     self.number_excluded.text = total_excluded
     self.mean.text = round(mean,2)
     self.SD.text = round(stdev,2)
@@ -82,8 +82,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     t = app_tables.charts.get(chartid = chartid)
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
-    showmeans = self.check_box_1.checked
-    Scatter, total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    showexcluded = self.check_box_1.checked
+    Scatter, total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',  tablename,columnname,  self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     self.number_excluded.text = total_excluded
     self.mean.text = round(mean,2)
     self.SD.text = round(stdev,2)
@@ -116,13 +116,13 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
     self.date_picker_2.date =t['EndDate']
-    showmeans = self.check_box_1.checked
+    showexcluded = self.check_box_1.checked
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
    
 #     print(self.plot_1.layout.title)
 #     print(columnname )
-    Scatter, total_rows ,total_excluded, mean, stdev= anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    Scatter, total_rows ,total_excluded, mean, stdev= anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     print(columnname )
     self.number_excluded.text = total_excluded
     self.mean.text = round(mean,2)
@@ -150,13 +150,13 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
     self.date_picker_2.date =t['EndDate']
-    showmeans = self.check_box_1.checked
+    showexcluded = self.check_box_1.checked
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
 #     print(self.plot_1.layout.title)
 #     print(columnname )
-    Scatter,total_rows ,total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    Scatter,total_rows ,total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     print(columnname )
     self.number_excluded.text = total_excluded
     self.mean.text = round(mean,2)
@@ -181,13 +181,13 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
     self.date_picker_2.date =t['EndDate']
-    showmeans = self.check_box_1.checked
+    showexcluded = self.check_box_1.checked
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
    
 #     print(self.plot_1.layout.title)
 #     print(columnname )
-    Scatter, total_rows,total_rows ,total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    Scatter,total_rows ,total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     print(columnname )
     self.number_excluded.text = total_excluded
     self.mean.text = round(mean,2)
@@ -232,12 +232,12 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 
   def show_excluded_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.repeating_panel_1.items = app_tables.test.search(exclude_point=True)
+    self.repeating_panel_1.items = app_tables.test.search(exclude_point=True, Date_Entered = q.between(self.date_picker_1.date,self.date_picker_2.date))
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
 
   def show_included_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.repeating_panel_1.items = app_tables.test.search(exclude_point=False)
+    self.repeating_panel_1.items = app_tables.test.search(exclude_point=False,  Date_Entered = q.between(self.date_picker_1.date,self.date_picker_2.date))
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
     pass
 
