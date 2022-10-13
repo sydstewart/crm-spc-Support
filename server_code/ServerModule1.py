@@ -107,9 +107,13 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     total_excluded = len(excludedlist)
     dicts = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname],'NoteCol':r['noteCol']}
             for r in waitinglist]
+    
+    dictsexcl = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname],'NoteCol':r['noteCol']}
+            for r in waitinglist]
 #     print (dicts)
 
     df = pd.DataFrame.from_dict(dicts)
+    dfexcl = pd.DataFrame.from_dict(dictsexcl)
     df['Date_Entered'] = pd.to_datetime(df['Date_Entered'], utc= True)
     df.sort_values(by=['Date_Entered'], inplace=True , ascending=True)
     df['Mean']= df[columnname].mean()

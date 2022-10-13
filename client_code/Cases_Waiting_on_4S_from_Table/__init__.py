@@ -230,6 +230,23 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 
    
 
+  def show_excluded_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.repeating_panel_1.items = app_tables.test.search(exclude_point=True)
+    self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
+
+  def show_included_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.repeating_panel_1.items = app_tables.test.search(exclude_point=False)
+    self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
+    pass
+
+
+
+
+
+
+
 
 
 
