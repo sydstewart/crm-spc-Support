@@ -222,7 +222,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showmeans):
     two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline ,mean9belowline, mean9aboveline, mean23aboveline,mean6fallline
     ]
 #     print('mean= ',Mean)
-    return Scatter, total_rows, total_excluded
+    return Scatter, total_rows, total_excluded, Mean, SD
 
     
 # @anvil.server.callable

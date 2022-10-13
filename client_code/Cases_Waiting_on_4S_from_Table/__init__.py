@@ -21,8 +21,10 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     showmeans = self.check_box_1.checked
 #     total_rows = anvil.server.call('get_total_rows',tablename, columnname)
     
-    Scatter, total_rows, total_excluded,  = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
+    Scatter, total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showmeans)
     self.number_excluded.text = total_excluded
+    self.mean.text = mean
+    self.SD.text = stdev
     if total_rows <=10:
           alert('10 or more data points needed to produce a chart')
     else:

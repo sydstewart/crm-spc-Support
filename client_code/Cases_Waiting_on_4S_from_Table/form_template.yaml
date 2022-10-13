@@ -5,7 +5,7 @@ container:
   event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"PGXXOR":10,"NVOVGM":35,"ZQDCRG":10,"ZAAODE":5}'}
+  properties: {col_widths: '{"PGXXOR":6,"NVOVGM":21,"ZQDCRG":6,"ZAAODE":3,"GDQJPQ":6,"VFQWBO":6,"FCHBQB":6,"UCZRDZ":6}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -95,6 +95,35 @@ components:
     properties: {}
     name: label_3
     layout_properties: {grid_position: 'MUWYTZ,NVOVGM'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Average, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_6
+    layout_properties: {grid_position: 'MUWYTZ,FCHBQB'}
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: mean
+    layout_properties: {grid_position: 'MUWYTZ,UCZRDZ'}
+    data_bindings: []
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Standard Deviation, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_5
+    layout_properties: {grid_position: 'MUWYTZ,GDQJPQ'}
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: SD
+    layout_properties: {grid_position: 'MUWYTZ,VFQWBO'}
   - type: Label
     properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
       visible: true, text: Number excluded, font_size: 14, font: '', spacing_above: small,
