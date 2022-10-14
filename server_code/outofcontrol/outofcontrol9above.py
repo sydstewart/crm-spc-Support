@@ -64,7 +64,7 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
             if outofcontrol9above.empty:
                     nineabove = go.Scatter(
                     visible='legendonly',
-                    name='9 consecutively above mean')
+                    name='9 above mean')
 #                     if showmeans == False:
                     mean9aboveline = go.Scatter(
                     visible='legendonly',
@@ -76,9 +76,11 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                           # y=df[pointname],
                           x=outofcontrol9above[pointdate],
                           y=outofcontrol9above['Mean9above'],
-                          mode='lines',
-                          name='New Mean from 9 above =' + str(round(Mean9above,1)),
-                          marker=dict(
+                          mode='markers',
+                          marker_symbol = 'line-ew',
+                          name='9 above mean',
+                          
+                           marker=dict(
                               color='pink',
                               size=7,
                               line=dict(
@@ -92,9 +94,10 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                         x=outofcontrol9above[pointdate],
                         y=outofcontrol9above[pointname],
                         mode='markers',
-                        name='9 consecutively above mean',
+                        name='9 above mean',
+                        marker_symbol = 'line-ew',
                         marker=dict(
-                            color='red',
+                            color='pink',
                             size=5,
                             line=dict(
                                 color='orange',

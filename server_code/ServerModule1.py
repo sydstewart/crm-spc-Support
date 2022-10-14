@@ -148,14 +148,14 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
     go.Scatter(
                         x = df['Date_Entered'] ,
                         y = df[columnname],
-                        mode ='markers + lines',
-                        name= columnname),
+                        mode ='markers + lines'),
+#                         name= columnname),
       
     go.Scatter(
                         x = df['Date_Entered'] ,
                         y = df[columnname],
                         mode='text',
-                        name='Annotations', 
+#                         name='Annotations', 
                         text=df['NoteCol'],
 #                   showarrow=True,
 #             arrowhead=1
@@ -218,7 +218,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                           mode='lines',
                           name= columnname + ' ' + '2SD above', # + ' ' + 'Average  =' + str(round(mean1,0)),
                           line=dict(
-                          color= 'black',
+                          color= 'orange',
                           width=2
 #                           dash='dash'                   
                             )),
@@ -229,7 +229,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                           mode='lines',
                           name= columnname + ' ' + '1SD above', # + ' ' + 'Average  =' + str(round(mean1,0)),
                           line=dict(
-                          color= 'black',
+                          color= 'greenyellow',
                           width=2,
                           dash='dash'                   
                             )),

@@ -108,7 +108,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                     x=outofcontrol9below[pointdate],
                     y=outofcontrol9below[pointname],
                     mode='markers',
-                    name='9 consecutively below mean',
+                    name='9 below mean',
                     marker=dict(
                         color='red',
                         size=5,
@@ -122,8 +122,9 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         # y=df[pointname],
                         x=stagemeandict9low[pointdate],
                         y=stagemeandict9low[pointmean],
-                        mode='lines',
-                        name='New Mean from 9 below='+str(round(Mean9below,1)),
+                        mode='markers',
+                        marker_symbol = 'line-ew',
+                        name='9 below mean',
                         marker=dict(
                             color='pink',
                             size=7,
@@ -136,7 +137,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                       x=stagemeandict9low[pointdate],
                       y=stagemeandict9low[pointmean],
                       mode='markers',
-                      name='New Mean from 9 below',
+                      name='9 below mean',
                       marker_symbol = 'line-ew',
                       
           #             text= str(round(pointmean,1)),

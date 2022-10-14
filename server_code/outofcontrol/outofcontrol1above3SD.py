@@ -32,7 +32,7 @@ def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd, show
             x=outofcontrol1above[pointdate],
             y=outofcontrol1above[pointname],
             mode='markers',
-            name='One above 3 X SD',
+            name='1 above 3 X SD',
             marker=dict(
                                  color='red',
                                  size=2,
