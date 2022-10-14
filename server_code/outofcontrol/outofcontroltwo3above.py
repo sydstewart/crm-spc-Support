@@ -66,7 +66,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
              mean23aboveline = go.Scatter(
              visible='legendonly',
              name='New Mean')
-             stagemeandict = go.Scatter(
+             stagemeandictline = go.Scatter(
              visible='legendonly',
              name='New Mean')
         else:

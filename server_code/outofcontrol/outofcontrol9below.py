@@ -17,6 +17,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
             print('pointmean=',pointmean)
             print('total_rows=', total_rows)
             outofcontrol9below = pd.DataFrame()
+            stagemeandict9low = pd.DataFrame() 
             for i in range(8,total_rows):
                 countx = 0
                 print(df[pointname].iloc[i],i)
@@ -63,23 +64,24 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
 #                         Mean9below =outofcontrol9below[pointname].mean()
 #                         outofcontrol9below['Mean9below'] = Mean9below
 #                         print ('outofcontrol9below', outofcontrol9below)                                              
-                        countx = 0
+                        
   
                         stagemean = (df[pointname].iloc[i-8] + df[pointname].iloc[i-7] + df[pointname].iloc[i-1] +
                                      df[pointname].iloc[i-6] + df[pointname].iloc[i-5] + df[pointname].iloc[i -4] + 
                                      df[pointname].iloc[i-3] + df[pointname].iloc[i-2] + df[pointname].iloc[i])/9
-                        print('Stagemean', stagemean) 
-                        stagemeandict = pd.DataFrame() 
-                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-5],pointmean:stagemean}, ignore_index=True)
-                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-4],pointmean:stagemean}, ignore_index=True)
-                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-3],pointmean:stagemean}, ignore_index=True)
-                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
-                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-1],pointmean:stagemean}, ignore_index=True)
-                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i],pointmean:stagemean}, ignore_index=True)
-                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-8],pointmean:stagemean}, ignore_index=True)
-                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-7],pointmean:stagemean}, ignore_index=True)
-                        stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-6],pointmean:stagemean}, ignore_index=True)
-           
+                        print('Stagemean 9low', stagemean) 
+#                         stagemeandict9low = pd.DataFrame() 
+                        stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-5],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-4],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-3],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-1],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-8],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-7],pointmean:stagemean}, ignore_index=True)
+                        stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-6],pointmean:stagemean}, ignore_index=True)
+                        print ('stagemeandict9low 9 low',stagemeandict9low)
+#                         countx = 0
             if not outofcontrol9below.empty: 
                 #Filter out  below (9 below mean)
                 outofcontrol9belowfilter =  outofcontrol9below[pointname] < (pointmean)
@@ -98,7 +100,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                     visible='legendonly',
                     name='9 consecutively below mean')
 #                     i\f showmeans == False:
-                    mean9belowline = go.Scatter(
+                    stagemeandictline9low = go.Scatter(
                     visible='legendonly',
                     name='New Mean')
             else:
@@ -118,8 +120,8 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
 #                 if showmeans == False:
                 mean9belowline = go.Scatter(  # x=df[pointdate],
                         # y=df[pointname],
-                        x=stagemeandict[pointdate],
-                        y=stagemeandict[pointmean],
+                        x=stagemeandict9low[pointdate],
+                        y=stagemeandict9low[pointmean],
                         mode='lines',
                         name='New Mean from 9 below='+str(round(Mean9below,1)),
                         marker=dict(
@@ -129,4 +131,25 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                                 color='black',
                                 width=2
                             )) )
-            return  ninebelow, mean9belowline
+                stagemeandictline9low = go.Scatter(  # x=df[pointdate],
+                      # y=df[pointname],
+                      x=stagemeandict9low[pointdate],
+                      y=stagemeandict9low[pointmean],
+                      mode='markers',
+                      name='New Mean from 9 below',
+                      marker_symbol = 'line-ew',
+                      
+          #             text= str(round(pointmean,1)),
+          #             textposition='top left',
+          #             textfont=dict(
+          #                       family="sans serif",
+          #                       size=11,
+          #                       color="black"),
+                      marker=dict(
+                          color='green',
+                          size=7,
+                          line=dict(
+                              color='pink',
+                              width=3
+                          )) )
+            return  ninebelow,  stagemeandictline9low
