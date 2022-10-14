@@ -135,7 +135,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
     total_rows = total_rows = df[columnname].count() - 1
 #     if total_rows > 5:
     
-    two3above, mean23aboveline  = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
+    two3above,stagemeandictline = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
     ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded)
     nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
     oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded   )
@@ -233,7 +233,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                           width=2,
                           dash='dash'                   
                             )),
-    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline ,mean9belowline, mean9aboveline, mean23aboveline,mean6fallline
+    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline ,mean9belowline, mean9aboveline, stagemeandictline,mean6fallline
     ]
 #     print('mean= ',Mean)
     return Scatter, total_rows, total_excluded, Mean, SD

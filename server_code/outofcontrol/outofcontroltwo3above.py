@@ -16,10 +16,12 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
         print()
 
         outofcontrol23above = pd.DataFrame()
+        stagemeandict = pd.DataFrame() 
         meanline =pd.DataFrame()
 #         numberfound = 0
         for i in range(2,total_rows + 1):
             countx = 0
+            numberfound = 0
             if (df[pointname].iloc[i]  > (2 * sd + pointmean)):
                 countx = 1
                 #print(df[pointname].iloc[i],i)
@@ -33,7 +35,16 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-2],pointname:df[pointname].iloc[i-2]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
+                    if numberfound > 1:
+                      stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-3],pointmean:stagemean}, ignore_index=True)
                     
+                    stagemean = (df[pointname].iloc[i-2] + df[pointname].iloc[i-1] + df[pointname].iloc[i])/3
+                    
+                    stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
+                    stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-1],pointmean:stagemean}, ignore_index=True)
+                    stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i],pointmean:stagemean}, ignore_index=True)
+                    print ('stagemeandict',stagemeandict)
+                    numberfound = 1 + numberfound
         if not outofcontrol23above.empty: 
                 #Filter out Orders below (2 * sd + pointmean)
 #                 outofcontrol23abovefilter =  outofcontrol23above[pointname] > (2 * sd + pointmean)
@@ -54,6 +65,9 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
              mean23aboveline = go.Scatter(
              visible='legendonly',
              name='New Mean')
+             stagemeandict = go.Scatter(
+             visible='legendonly',
+             name='New Mean')
         else:
             two3above = go.Scatter(  # x=df[pointdate],
             # y=df[pointname],
@@ -70,19 +84,32 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                 ))
         )
 #             if showmeans == False:
-            mean23aboveline = go.Scatter(  # x=df[pointdate],
-                  # y=df[pointname],
-                  x=outofcontrol23above[pointdate],
-                  y=outofcontrol23above['Mean23above'],
-                  mode='lines',
-                  name='New Mean from 2 3 above='+str(round(Mean23above,1)),
-                  marker=dict(
-                      color='blue',
-                      size=7,
-                      line=dict(
-                          color='black',
-                          width=2
-                      )) )
-        return two3above, mean23aboveline 
+#             mean23aboveline = go.Scatter(  # x=df[pointdate],
+#                   # y=df[pointname],
+#                   x=outofcontrol23above[pointdate],
+#                   y=outofcontrol23above['Mean23above'],
+#                   mode='lines',
+#                   name='New Mean from 2 3 above='+str(round(Mean23above,1)),
+#                   marker=dict(
+#                       color='blue',
+#                       size=7,
+#                       line=dict(
+#                           color='black',
+#                           width=1
+#                       )) )
+            stagemeandictline = go.Scatter(  # x=df[pointdate],
+            # y=df[pointname],
+            x=stagemeandict[pointdate],
+            y=stagemeandict[pointmean],
+            mode='lines',
+            name='New Mean from 2 3 above='+str(round(Mean23above,1)),
+            marker=dict(
+                color='green',
+                size=7,
+                line=dict(
+                    color='black',
+                    width=3
+                )) )
+        return two3above, stagemeandictline 
 
 
