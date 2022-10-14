@@ -35,12 +35,13 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-2],pointname:df[pointname].iloc[i-2]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
-                    if numberfound > 1:
-                      stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-3],pointmean:stagemean}, ignore_index=True)
+                    
+#                     if numberfound > 1:
+#                       stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-3],pointmean:stagemean}, ignore_index=True)
                     
                     stagemean = (df[pointname].iloc[i-2] + df[pointname].iloc[i-1] + df[pointname].iloc[i])/3
                     
-                    stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
+                    stagemeandict  = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
                     stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-1],pointmean:stagemean}, ignore_index=True)
                     stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i],pointmean:stagemean}, ignore_index=True)
                     print ('stagemeandict',stagemeandict)
@@ -101,13 +102,14 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
             # y=df[pointname],
             x=stagemeandict[pointdate],
             y=stagemeandict[pointmean],
-            mode='lines',
+            mode='markers',
+            marker_symbol = 'line-ew',
             name='New Mean from 2 3 above='+str(round(Mean23above,1)),
             marker=dict(
                 color='green',
                 size=7,
                 line=dict(
-                    color='black',
+                    color='green',
                     width=3
                 )) )
         return two3above, stagemeandictline 
