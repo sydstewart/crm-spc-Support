@@ -103,8 +103,15 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
             x=stagemeandict[pointdate],
             y=stagemeandict[pointmean],
             mode='markers',
+            name='New Mean from 2 3 above',
             marker_symbol = 'line-ew',
-            name='New Mean from 2 3 above='+str(round(Mean23above,1)),
+            
+#             text= str(round(pointmean,1)),
+#             textposition='top left',
+#             textfont=dict(
+#                       family="sans serif",
+#                       size=11,
+#                       color="black"),
             marker=dict(
                 color='green',
                 size=7,
