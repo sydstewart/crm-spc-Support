@@ -32,7 +32,7 @@ def add_test(new_test):
 #    t= app_tables.test.get()
 
 @anvil.server.callable
-def update_result(test, result_dict):
+def update_result(self_item):
   # check that the article given is really a row in the ‘articles’ table
   if app_tables.test.has_row(test):
 #     article_dict['updated'] = datetime.now()
@@ -40,6 +40,38 @@ def update_result(test, result_dict):
   else:
     raise Exception("Result does not exist")
 
+# @anvil.server.callable
+# def edit_test(Date_Entered, test_result, last_name, team, pay_grade):
+#   employee.update(first_name=first_name, last_name=last_name, team=team, pay_grade=pay_grade)    
+    
+    
+    
+    
+# @anvil.server.callable    
+# def edit_test(self):
+#     first_name, last_name = parse_employee_name(self.text_box_employee_edit.text)
+#     anvil.server.call(
+#       'edit_employee',
+#       self.item,
+#       first_name=first_name,
+#       last_name=last_name,
+#       team=self.drop_down_teams_edit.selected_value,
+#       pay_grade=self.text_box_grade_edit.text,
+#     )    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 @anvil.server.callable
 def delete_test(test):
   test.delete()  
