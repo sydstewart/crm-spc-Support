@@ -89,7 +89,7 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                       x=outofcontrol6rise[pointdate],
                       y=outofcontrol6rise['Mean6rise'],
                       mode='markers',
-                      name='6 rising =' ,
+                      name='New Mean 6 rising' ,
                       marker_symbol = 'line-ew',
                       marker=dict(
                           color='green',

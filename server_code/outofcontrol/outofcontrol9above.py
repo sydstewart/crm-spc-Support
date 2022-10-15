@@ -78,13 +78,13 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                           y=outofcontrol9above['Mean9above'],
                           mode='markers',
                           marker_symbol = 'line-ew',
-                          name='9 above mean',
+                          name='New Mean 9 above',
                           
                            marker=dict(
                               color='pink',
                               size=7,
                               line=dict(
-                                  color='black',
+                                  color='pink',
                                   width=2
                               )) )
               
@@ -95,12 +95,12 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                         y=outofcontrol9above[pointname],
                         mode='markers',
                         name='9 above mean',
-                        marker_symbol = 'line-ew',
+#                         marker_symbol = 'line-ew',
                         marker=dict(
                             color='pink',
-                            size=5,
+                            size=7,
                             line=dict(
-                                color='orange',
+                                color='pink',
                                 width=8
                             ))
               ) 

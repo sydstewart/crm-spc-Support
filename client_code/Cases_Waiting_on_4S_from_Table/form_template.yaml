@@ -170,6 +170,8 @@ components:
       - {id: AJUMAY, title: Test Result, data_key: Test_Result}
       - {id: LMHNCC, title: Exclude Point, data_key: exclude_point}
       - {id: AGMLFT, title: Notecol, data_key: noteCol}
+      - {id: YNVBEF, title: Edit, data_key: column_1}
+      - {id: ZZUMMW, title: Delete, data_key: column_2}
       auto_header: true
       tooltip: ''
       border: ''

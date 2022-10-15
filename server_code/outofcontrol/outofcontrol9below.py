@@ -124,7 +124,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         y=stagemeandict9low[pointmean],
                         mode='markers',
                         marker_symbol = 'line-ew',
-                        name='9 below mean',
+                        name='New Mean 9 below',
                         marker=dict(
                             color='pink',
                             size=7,

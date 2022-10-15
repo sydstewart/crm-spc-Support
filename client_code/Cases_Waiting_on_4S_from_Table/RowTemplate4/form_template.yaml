@@ -27,4 +27,29 @@ components:
   layout_properties: {column: AGMLFT}
   data_bindings:
   - {property: text, code: 'self.item[''noteCol'']', writeback: true}
+- type: Button
+  properties: {role: null, align: left, tooltip: '', border: '', enabled: true, foreground: '',
+    visible: true, text: Delete, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: delete_button
+  layout_properties: {column: ZZUMMW}
+  event_bindings: {click: delete_button_click}
+- type: DatePicker
+  properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
+    placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
+    font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
+    min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
+  name: date_picker_1
+  layout_properties: {column: CESTNQ}
+  data_bindings:
+  - {property: date, code: 'self.item[''Date_Entered'']', writeback: true}
+- type: Button
+  properties: {role: null, align: left, tooltip: '', border: '', enabled: true, foreground: '',
+    visible: true, text: Edit, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: edit_button
+  layout_properties: {column: YNVBEF}
+  event_bindings: {click: edit_button_click}
 is_package: true

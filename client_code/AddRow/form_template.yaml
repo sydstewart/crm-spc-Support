@@ -50,4 +50,17 @@ components:
   layout_properties: {grid_position: 'WIMUPM,EKZTOT'}
   data_bindings:
   - {property: checked, code: 'self.item[''exclude_point'']', writeback: true}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Annotation, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_3
+  layout_properties: {grid_position: 'TGPHNL,XSNPRA'}
+- type: TextBox
+  properties: {}
+  name: text_box_2
+  layout_properties: {grid_position: 'TGPHNL,LQTSLB'}
+  data_bindings:
+  - {property: text, code: 'self.item[''Annotation'']', writeback: true}
 is_package: true

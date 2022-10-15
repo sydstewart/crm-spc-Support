@@ -31,8 +31,22 @@ def add_test(new_test):
   )
 #    t= app_tables.test.get()
 
+@anvil.server.callable
+def update_result(test, result_dict):
+  # check that the article given is really a row in the ‘articles’ table
+  if app_tables.test.has_row(test):
+#     article_dict['updated'] = datetime.now()
+    test.update(**result_dict)
+  else:
+    raise Exception("Result does not exist")
 
-
+@anvil.server.callable
+def delete_test(test):
+  test.delete()  
+      
+def refresh_test(self, **event_args):
+    self.repeating_panel_1.items = app_tables.test.search()  
+    
 @anvil.server.callable
 def get_4S_Waiting():
   conn = connect()
@@ -135,27 +149,28 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
     total_rows = total_rows = df[columnname].count() - 1
 #     if total_rows > 5:
     
-    two3above,stagemeandictline = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
+    
     ninebelow , stagemeandictline9low = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded)
     nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
-    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded   )
     down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showexcluded  )
     up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showexcluded   )
     four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
-    
+    two3above,stagemeandictline = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
+    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded   )
     Scatter=[
     
     go.Scatter(
                         x = df['Date_Entered'] ,
                         y = df[columnname],
-                        mode ='markers + lines'),
-#                         name= columnname),
+                        mode =('markers + lines'),
+                        name= columnname
+    ),
       
     go.Scatter(
                         x = df['Date_Entered'] ,
                         y = df[columnname],
                         mode='text',
-#                         name='Annotations', 
+                        name='', 
                         text=df['NoteCol'],
 #                   showarrow=True,
 #             arrowhead=1
