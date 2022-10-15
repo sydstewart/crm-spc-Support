@@ -162,34 +162,37 @@ components:
     properties: {}
     name: label_3
     layout_properties: {grid_position: 'LGILOK,NXUZEW', full_width_row: true}
-  - type: DataGrid
-    properties:
-      role: null
-      columns:
-      - {id: CESTNQ, title: Date Entered, data_key: Date_Entered}
-      - {id: AJUMAY, title: Test Result, data_key: Test_Result}
-      - {id: LMHNCC, title: Exclude Point, data_key: exclude_point}
-      - {id: AGMLFT, title: Notecol, data_key: noteCol}
-      - {id: YNVBEF, title: Edit, data_key: column_1}
-      - {id: ZZUMMW, title: Delete, data_key: column_2}
-      auto_header: true
-      tooltip: ''
-      border: ''
-      foreground: ''
-      rows_per_page: 20
-      visible: true
-      wrap_on: never
-      show_page_controls: true
-      spacing_above: small
-      spacing_below: small
-      background: ''
-    name: data_grid_1
-    layout_properties: {grid_position: 'ICEPPE,QFLOHD', full_width_row: true}
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    name: column_panel_3
+    layout_properties: {grid_position: 'GHXMJJ,ZHIALT'}
     components:
-    - type: RepeatingPanel
-      properties: {spacing_above: none, spacing_below: none, item_template: Cases_Waiting_on_4S_from_Table.RowTemplate4}
-      name: repeating_panel_1
-      layout_properties: {}
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: MLMLHP, title: Date Entered, data_key: Date_Entered}
+        - {id: FZMKHX, title: Test Result, data_key: Test_Result}
+        - {id: LVRLQO, title: Exclude Point, data_key: exclude_point}
+        - {id: YFBYCD, title: NoteCol, data_key: noteCol}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 20
+        visible: true
+        wrap_on: never
+        show_page_controls: true
+        spacing_above: small
+        spacing_below: small
+        background: ''
+      name: data_grid_1
+      layout_properties: {grid_position: 'OWZPBZ,KZVHOD'}
+      components:
+      - type: RepeatingPanel
+        properties: {spacing_above: none, spacing_below: none, item_template: Cases_Waiting_on_4S_from_Table.RowTemplate5}
+        name: repeating_panel_1
+        layout_properties: {}
 - type: FlowPanel
   properties: {}
   name: navbar_links
