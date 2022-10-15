@@ -44,7 +44,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                     stagemeandict  = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
                     stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-1],pointmean:stagemean}, ignore_index=True)
                     stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i],pointmean:stagemean}, ignore_index=True)
-                    print ('stagemeandict',stagemeandict)
+#                     print ('stagemeandict',stagemeandict)
                     numberfound = 1 + numberfound
         if not outofcontrol23above.empty: 
                 #Filter out Orders below (2 * sd + pointmean)
@@ -56,7 +56,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                 Mean23above =outofcontrol23above[pointname].mean()
                 outofcontrol23above['Mean23above'] = Mean23above
 #                 meanline = outofcontrol23above
-                print ('outofcontrol23above', outofcontrol23above)  
+#                 print ('outofcontrol23above', outofcontrol23above)  
 
         if outofcontrol23above.empty:
              two3above = go.Scatter(

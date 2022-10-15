@@ -31,7 +31,7 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
         if (df[pointname].iloc[i-4] > (sd + pointmean)):
             countx = countx + 1
             #print(df[pointname].iloc[i -1], i-1)
-            print('countx', i, countx)
+#             print('countx', i, countx)
         if countx == 4:
             outofcontrol45above = outofcontrol45above.append({pointdate: df[pointdate].iloc[i-4], pointname: df[pointname].iloc[i-4]}, ignore_index=True)
             outofcontrol45above = outofcontrol45above.append({pointdate: df[pointdate].iloc[i-3], pointname: df[pointname].iloc[i-3]}, ignore_index=True)
@@ -41,7 +41,7 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
             countx = 0
             Mean45 =outofcontrol45above[pointname].mean()
             outofcontrol45above['Mean45'] = Mean45
-            print ('outofcontrol45above', outofcontrol45above)
+#             print ('outofcontrol45above', outofcontrol45above)
 #     if not outofcontrol45above.empty:
 #         # Filter out Orders below (sd + pointmean)
 #         outofcontrol45abovefilter = outofcontrol45above[pointname] > (sd + pointmean)

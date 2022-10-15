@@ -13,14 +13,14 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
             print ('Nine or more Points on low side of the mean')
             print ('-------------------------------------------')
             print()
-            print(df)
-            print('pointmean=',pointmean)
-            print('total_rows=', total_rows)
+#             print(df)
+#             print('pointmean=',pointmean)
+#             print('total_rows=', total_rows)
             outofcontrol9below = pd.DataFrame()
             stagemeandict9low = pd.DataFrame() 
             for i in range(8,total_rows):
                 countx = 0
-                print(df[pointname].iloc[i],i)
+#                 print(df[pointname].iloc[i],i)
                 if (df[pointname].iloc[i]  < (pointmean)):
                     countx = 1
                    
@@ -47,7 +47,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         
                 if (df[pointname].iloc[i-8]  < (pointmean)):
                         countx = countx + 1
-                print ('countx=',countx)
+#                 print ('countx=',countx)
                  
                 
                 if countx == 9:
@@ -69,7 +69,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         stagemean = (df[pointname].iloc[i-8] + df[pointname].iloc[i-7] + df[pointname].iloc[i-1] +
                                      df[pointname].iloc[i-6] + df[pointname].iloc[i-5] + df[pointname].iloc[i -4] + 
                                      df[pointname].iloc[i-3] + df[pointname].iloc[i-2] + df[pointname].iloc[i])/9
-                        print('Stagemean 9low', stagemean) 
+#                         print('Stagemean 9low', stagemean) 
 #                         stagemeandict9low = pd.DataFrame() 
                         stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-5],pointmean:stagemean}, ignore_index=True)
                         stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-4],pointmean:stagemean}, ignore_index=True)
@@ -80,18 +80,18 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-8],pointmean:stagemean}, ignore_index=True)
                         stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-7],pointmean:stagemean}, ignore_index=True)
                         stagemeandict9low = stagemeandict9low.append({pointdate: df[pointdate].iloc[i-6],pointmean:stagemean}, ignore_index=True)
-                        print ('stagemeandict9low 9 low',stagemeandict9low)
+#                         print ('stagemeandict9low 9 low',stagemeandict9low)
 #                         countx = 0
             if not outofcontrol9below.empty: 
                 #Filter out  below (9 below mean)
                 outofcontrol9belowfilter =  outofcontrol9below[pointname] < (pointmean)
                 outofcontrol9below =  outofcontrol9below[outofcontrol9belowfilter] 
-                print('outofcontrol9below with 9 consequtive measures below mean')
+#                 print('outofcontrol9below with 9 consequtive measures below mean')
                 Mean9below =outofcontrol9below[pointname].mean()
                 outofcontrol9below['Mean9below'] = Mean9below
-                print ('outofcontrol9below', outofcontrol9below)      
+#                 print ('outofcontrol9below', outofcontrol9below)      
             
-            print('outofcontrol9below',outofcontrol9below)
+#             print('outofcontrol9below',outofcontrol9below)
             
             
             

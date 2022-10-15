@@ -13,12 +13,12 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
             print ('Nine or more Points on high side of the mean')
             print ('-------------------------------------------')
             print()
-            print(df)
+#             print(df)
 
             outofcontrol9above = pd.DataFrame() 
             for i in range(8,total_rows):
                 countx = 0
-                print('point=', df[pointname].iloc[i])
+#                 print('point=', df[pointname].iloc[i])
                 if (df[pointname].iloc[i]  > (pointmean)):
                     countx = 1
                     
@@ -59,7 +59,7 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                         countx = 0
                         Mean9above =outofcontrol9above[pointname].mean()
                         outofcontrol9above['Mean9above'] = Mean9above
-                        print('outofcontrol9above',outofcontrol9above)
+#                         print('outofcontrol9above',outofcontrol9above)
 
             if outofcontrol9above.empty:
                     nineabove = go.Scatter(

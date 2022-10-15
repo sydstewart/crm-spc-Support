@@ -45,7 +45,7 @@ def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showm
               outofcontrol6fall = outofcontrol6fall.append({pointdate: df[pointdate].iloc[i-2],pointname:df[pointname].iloc[i-2]}, ignore_index=True)
               outofcontrol6fall = outofcontrol6fall.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
               outofcontrol6fall = outofcontrol6fall.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
-              print('countx',countx)
+#               print('countx',countx)
               
               
               stagemean = (df[pointname].iloc[i - 5] + df[pointname].iloc[i-4] + df[pointname].iloc[i-3] + df[pointname].iloc[i-2] + df[pointname].iloc[i])/6

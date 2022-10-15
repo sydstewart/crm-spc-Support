@@ -43,7 +43,7 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                         outofcontrol6rise = outofcontrol6rise.append({pointdate: df[pointdate].iloc[i-2],pointname:df[pointname].iloc[i-2]}, ignore_index=True)
                         outofcontrol6rise = outofcontrol6rise.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                         outofcontrol6rise = outofcontrol6rise.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
-                        print('outofcontrol6rise', outofcontrol6rise)
+#                         print('outofcontrol6rise', outofcontrol6rise)
                         countx =0
                     
                     
@@ -60,7 +60,7 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                         Mean6rise =outofcontrol6rise[pointname].mean()
                         outofcontrol6rise['Mean6rise'] = Mean6rise
 #                         print ('outofcontrol6rise', outofcontrol6rise)
-                        print('countx', countx)
+#                         print('countx', countx)
 
             if outofcontrol6rise.empty:
                 up6 = go.Scatter(
