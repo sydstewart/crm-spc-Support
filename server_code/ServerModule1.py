@@ -241,7 +241,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                         x=df['Date_Entered'],
                         y = df['Mean'] -  2 * SD  ,
                           mode='lines',
-                          name= columnname + ' ' + '2SD below', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          name=  '2SD below line', # + ' ' + 'Average  =' + str(round(mean1,0)),
                           line=dict(
                           color= 'black',
                           width=2,
@@ -265,7 +265,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                         x=df['Date_Entered'],
                         y = df['Mean'] +  2 * SD  ,
                           mode='lines',
-                          name= columnname + ' ' + '2SD above', # + ' ' + 'Average  =' + str(round(mean1,0)),
+                          name=  '2SD above line', # + ' ' + 'Average  =' + str(round(mean1,0)),
                           line=dict(
                           color= 'orange',
                           width=2
