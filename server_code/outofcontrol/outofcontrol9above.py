@@ -94,7 +94,7 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                         x=outofcontrol9above[pointdate],
                         y=outofcontrol9above[pointname],
                         mode='markers',
-                        name='9 above mean',
+                        name='9 in succesion above mean',
 #                         marker_symbol = 'line-ew',
                         marker=dict(
                             color='pink',

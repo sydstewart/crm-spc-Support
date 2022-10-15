@@ -118,26 +118,26 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         ))
                           ) 
 #                 if showmeans == False:
-                mean9belowline = go.Scatter(  # x=df[pointdate],
-                        # y=df[pointname],
-                        x=stagemeandict9low[pointdate],
-                        y=stagemeandict9low[pointmean],
-                        mode='markers',
-                        marker_symbol = 'line-ew',
-                        name='New Mean 9 below',
-                        marker=dict(
-                            color='pink',
-                            size=7,
-                            line=dict(
-                                color='black',
-                                width=2
-                            )) )
+#                 mean9belowline = go.Scatter(  # x=df[pointdate],
+#                         # y=df[pointname],
+#                         x=stagemeandict9low[pointdate],
+#                         y=stagemeandict9low[pointmean],
+#                         mode='markers',
+# #                         marker_symbol = 'line-ew',
+#                         name='New Mean 9 below',
+#                         marker=dict(
+#                             color='pink',
+#                             size=7,
+#                             line=dict(
+#                                 color='black',
+#                                 width=2
+#                             )) )
                 stagemeandictline9low = go.Scatter(  # x=df[pointdate],
                       # y=df[pointname],
                       x=stagemeandict9low[pointdate],
                       y=stagemeandict9low[pointmean],
                       mode='markers',
-                      name='9 below mean',
+                      name='9 in succession below mean',
                       marker_symbol = 'line-ew',
                       
           #             text= str(round(pointmean,1)),
