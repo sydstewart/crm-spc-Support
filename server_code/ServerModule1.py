@@ -304,7 +304,7 @@ def store_data(file):
       # d is now a dict of {columnname -> value} for this row
       # We use Python's **kwargs syntax to pass the whole dict as
       # keyword arguments
-      app_tables.waiting_on_4s.add_row(**d)
+      app_tables.problem_cases.add_row(**d)
 
 def connect():
   connection = pymysql.connect(host='51.141.236.29',

@@ -84,6 +84,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
          chartid = 2
     if self.drop_down_2.selected_value == 'Test':
          chartid = 5
+    if self.drop_down_2.selected_value == 'Problem Cases':
+         chartid = 6
     t = app_tables.charts.get(chartid = chartid)
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
@@ -117,6 +119,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
          chartid = 2
     if self.drop_down_2.selected_value == 'Test':
          chartid = 5
+    if self.drop_down_2.selected_value == 'Problem Cases':
+         chartid = 6
 #     self.plot_1.layout.title = ""
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
@@ -151,6 +155,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
          chartid = 2
     if self.drop_down_2.selected_value == 'Test':
          chartid = 5
+    if self.drop_down_2.selected_value == 'Problem Cases':
+         chartid = 6
 #     self.plot_1.layout.title = ""
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
@@ -182,6 +188,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
          chartid = 2
     if self.drop_down_2.selected_value == 'Test':
          chartid = 5
+    if self.drop_down_2.selected_value == 'Problem Cases':
+         chartid = 6
 #     self.plot_1.layout.title = ""
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
@@ -254,6 +262,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
          chartid = 2
     if self.drop_down_2.selected_value == 'Test':
          chartid = 5
+    if self.drop_down_2.selected_value == 'Problem Cases':
+         chartid = 6
 #     self.plot_1.layout.title = ""
     t = app_tables.charts.get(chartid = chartid)
     self.date_picker_1.date =t['StartDate']
