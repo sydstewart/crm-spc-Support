@@ -135,6 +135,10 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
 #     startdate =  datetime(day=1, month=10, year=2022)
 #     enddate =  datetime(day=1, month=9, year=2022)
     enddate = enddate + timedelta(days=1)
+    print(tablename)
+    print(columnname)
+    print(startdate)
+    print(enddate)
       
     if showexcluded == False:
   #     print(enddate)
@@ -161,12 +165,13 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                                                                     ))
     total_rows = len(waitinglist) 
     total_excluded = len(excludedlist)
+    print (waitinglist)
     
     dicts = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname],'NoteCol':r['noteCol']}
             for r in waitinglist]
     
  
-#     print (dicts)
+    print ('dicts',dicts)
  
     df = pd.DataFrame.from_dict(dicts)
  

@@ -53,6 +53,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
          chartid = 2
     if self.drop_down_2.selected_value == 'Test':
          chartid = 5
+    if self.drop_down_2.selected_value == 'Problem Cases':
+         chartid = 6
     t = app_tables.charts.get(chartid = chartid)
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
@@ -130,7 +132,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     columnname = t['Measure_Column_Name']
    
 #     print(self.plot_1.layout.title)
-#     print(columnname )
+    print(columnname )
+    print(t['Date_Column_Name'])
     Scatter, total_rows ,total_excluded, mean, stdev= anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     print(columnname )
     self.number_excluded.text = total_excluded
