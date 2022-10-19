@@ -17,5 +17,13 @@ class Problem_cases(Problem_casesTemplate):
     tablename =t['tablename']
     
     waitinglist= getattr(app_tables, tablename).search()
+
     self.repeating_panel_1.items = waitinglist
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
+
+    
+
+   
+    for row in waitinglist:
+          
+          row.update(exclude_point = False)
