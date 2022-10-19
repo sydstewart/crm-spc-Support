@@ -11,7 +11,7 @@ class Problem_cases(Problem_casesTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    chartid = 6
+    chartid = 7
     
     t=app_tables.charts.get(chartid = chartid)
     tablename =t['tablename']

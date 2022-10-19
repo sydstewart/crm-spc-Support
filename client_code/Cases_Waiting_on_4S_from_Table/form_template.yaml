@@ -18,7 +18,7 @@ components:
       border: ''
       enabled: true
       foreground: ''
-      items: [Test, Cases Arriving, All_Cases_with_4S, Problem Cases]
+      items: [Test, Cases Arriving, All_Cases_with_4S, Problem Cases, Printing Problems]
       visible: true
       font_size: null
       font: ''
