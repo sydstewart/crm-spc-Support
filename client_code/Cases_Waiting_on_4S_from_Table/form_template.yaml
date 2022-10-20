@@ -5,7 +5,7 @@ container:
   event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"CEBJWB":10,"FDOEVA":4,"ASMNKA":11,"AXVZVA":3,"RQYSZR":7,"BAVCXC":7,"PMZUGQ":6,"PNCKBJ":6,"IHJKEG":6}'}
+  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"CEBJWB":10,"FDOEVA":4,"ASMNKA":6,"AXVZVA":8,"RQYSZR":7,"BAVCXC":7,"PMZUGQ":6,"PNCKBJ":3,"IHJKEG":9}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
