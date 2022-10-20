@@ -5,7 +5,7 @@ container:
   event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4}'}
+  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"CEBJWB":10,"FDOEVA":4,"ASMNKA":11,"AXVZVA":3,"RQYSZR":7,"BAVCXC":7,"PMZUGQ":6,"PNCKBJ":6,"IHJKEG":6}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -18,7 +18,7 @@ components:
       border: ''
       enabled: true
       foreground: ''
-      items: [Test, Cases Arriving, All_Cases_with_4S, Problem Cases per Week, Printing Problems]
+      items: ['']
       visible: true
       font_size: null
       font: ''
@@ -28,12 +28,12 @@ components:
       background: ''
       bold: false
       underline: false
-      include_placeholder: false
+      include_placeholder: true
     name: chart_selection_dropdown
     layout_properties: {grid_position: 'IQDQRT,CEBJWB', full_width_row: true}
     event_bindings: {change: chart_selection_dropdown_change}
   - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+    properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
       visible: true, text: Start Date, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
@@ -48,7 +48,7 @@ components:
     layout_properties: {grid_position: 'IQDQRT,ASMNKA', full_width_row: true}
     event_bindings: {change: date_picker_1_change}
   - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+    properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
       visible: true, text: Finish date, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}

@@ -13,18 +13,19 @@ from datetime import datetime, time , date
 
 
 def selection(self, **event_args):
-    if self.chart_selection_dropdown.selected_value == 'All_Cases_with_4S':
-         chartid = 4
-    if self.chart_selection_dropdown.selected_value == 'Cases Arriving':
-         chartid = 2
-    if self.chart_selection_dropdown.selected_value == 'Test':
-         chartid = 5
-    if self.chart_selection_dropdown.selected_value == 'Problem Cases per Week':
-         chartid = 6
-    if self.chart_selection_dropdown.selected_value == 'Printing Problems':
-         chartid = 7
+  
+#     if self.chart_selection_dropdown.selected_value == 'All_Cases_with_4S':
+#          chartid = 4
+#     if self.chart_selection_dropdown.selected_value == 'Cases Arriving':
+#          chartid = 2
+#     if self.chart_selection_dropdown.selected_value == 'Test':
+#          chartid = 5
+#     if self.chart_selection_dropdown.selected_value == 'Problem Cases per Week':
+#          chartid = 6
+#     if self.chart_selection_dropdown.selected_value == 'Printing Problems':
+#          chartid = 7
     
-    t = app_tables.charts.get(chartid = chartid)
+    t = app_tables.charts.get(Chart_Name= self.chart_selection_dropdown.selected_value)
     self.date_picker_1.date =t['StartDate']
     self.date_picker_2.date =t['EndDate']
     showexcluded = self.excluded_checkbox.checked 
@@ -56,7 +57,7 @@ def selection(self, **event_args):
         self.repeating_panel_1.items = waitinglist
         self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
   
-        t = app_tables.charts.get(chartid = chartid)
+        t = app_tables.charts.get(Chart_Name= self.chart_selection_dropdown.selected_value)
         t['StartDate'] = self.date_picker_1.date
         t['EndDate'] = self.date_picker_2.date
       #     print(columnname )
@@ -65,18 +66,18 @@ def selection(self, **event_args):
         pass
 
 def selectiondate(self, **event_args):
-    if self.chart_selection_dropdown.selected_value == 'All_Cases_with_4S':
-         chartid = 4
-    if self.chart_selection_dropdown.selected_value == 'Cases Arriving':
-         chartid = 2
-    if self.chart_selection_dropdown.selected_value == 'Test':
-         chartid = 5
-    if self.chart_selection_dropdown.selected_value == 'Problem Cases per Week':
-         chartid = 6
-    if self.chart_selection_dropdown.selected_value == 'Printing Problems':
-         chartid = 7
+#     if self.chart_selection_dropdown.selected_value == 'All_Cases_with_4S':
+#          chartid = 4
+#     if self.chart_selection_dropdown.selected_value == 'Cases Arriving':
+#          chartid = 2
+#     if self.chart_selection_dropdown.selected_value == 'Test':
+#          chartid = 5
+#     if self.chart_selection_dropdown.selected_value == 'Problem Cases per Week':
+#          chartid = 6
+#     if self.chart_selection_dropdown.selected_value == 'Printing Problems':
+#          chartid = 7
     
-    t = app_tables.charts.get(chartid = chartid)
+    t = app_tables.charts.get(Chart_Name= self.chart_selection_dropdown.selected_value, Active = True)
 #     self.date_picker_1.date =t['StartDate']
 #     self.date_picker_2.date =t['EndDate']
     showexcluded = self.excluded_checkbox.checked 
@@ -108,7 +109,7 @@ def selectiondate(self, **event_args):
         self.repeating_panel_1.items = waitinglist
         self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
   
-        t = app_tables.charts.get(chartid = chartid)
+        t = app_tables.charts.get(Chart_Name= self.chart_selection_dropdown.selected_value, Active = True)
         t['StartDate'] = self.date_picker_1.date
         t['EndDate'] = self.date_picker_2.date
       #     print(columnname )

@@ -17,7 +17,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     
 #     self.data_row_view.visible = True
 #     self.data_row_edit.visible = False   
-    
+    self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(Active = True)]
 
   
     chartid = 5
