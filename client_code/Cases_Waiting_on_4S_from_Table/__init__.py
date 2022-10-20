@@ -18,7 +18,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 #     self.data_row_view.visible = True
 #     self.data_row_edit.visible = False   
     self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(Active = True)]
-
+    
   
     chartid = 5
     t = app_tables.charts.get(chartid = chartid)
@@ -26,6 +26,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     self.date_picker_2.date =t['EndDate']
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
+    chartname =t['Chart_Name']
     showexcluded = self.excluded_checkbox.checked  
 #     total_rows = anvil.server.call('get_total_rows',tablename, columnname)
     
@@ -40,7 +41,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     else:
     
         self.plot_1.data = Scatter
-        self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+        self.plot_1.layout.title = chartname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     
     self.repeating_panel_1.items = waitinglist
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )

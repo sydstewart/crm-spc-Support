@@ -31,7 +31,7 @@ def selection(self, **event_args):
     showexcluded = self.excluded_checkbox.checked 
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
-     
+    chartname = t['Chart_Name'] 
 #     print(self.plot_1.layout.title)
     print(columnname )
     print(t['Date_Column_Name'])
@@ -51,7 +51,7 @@ def selection(self, **event_args):
         self.SD.text = round(stdev,2)
                
     
-        self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+        self.plot_1.layout.title = chartname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
         self.plot_1.data = Scatter
 
         self.repeating_panel_1.items = waitinglist
@@ -103,7 +103,7 @@ def selectiondate(self, **event_args):
         self.SD.text = round(stdev,2)
                
     
-        self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+        self.plot_1.layout.title = chartname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
         self.plot_1.data = Scatter
        
         self.repeating_panel_1.items = waitinglist
