@@ -37,9 +37,11 @@ def selection(self, **event_args):
     
         
     total_rows = anvil.server.call('get_total_rows',tablename,columnname,  self.date_picker_1.date, self.date_picker_2.date, showexcluded)
-    if total_rows < 10:
-                    alert('10 or more data points needed to produce a chart')
-                    self.total_rows_text.text = str(total_rows)
+    print('total_rows=',total_rows)
+    self.total_rows_text.text = str(total_rows)
+    if total_rows <=10 or total_rows > 500:
+          alert('10 or more data points and not not more than 500 - please adjust the search dates')
+          
     else: 
         Scatter, total_rows ,total_excluded, mean, stdev= anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
         print(columnname )
