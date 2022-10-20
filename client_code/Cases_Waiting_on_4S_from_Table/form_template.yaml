@@ -36,9 +36,9 @@ components:
         bold: false
         underline: false
         include_placeholder: false
-      name: drop_down_2
+      name: chart_selection_dropdown
       layout_properties: {grid_position: 'OFKYAX,LQRUSR'}
-      event_bindings: {change: drop_down_2_change}
+      event_bindings: {change: chart_selection_dropdown_change}
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
         visible: true, text: Start Date, font_size: null, font: '', spacing_above: small,
@@ -74,9 +74,9 @@ components:
         foreground: '', allow_indeterminate: false, visible: true, text: Show Excluded,
         font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
         background: '', bold: false, checked: false, underline: false}
-      name: check_box_1
+      name: excluded_checkbox
       layout_properties: {grid_position: 'OFKYAX,AOGQLC'}
-      event_bindings: {change: check_box_1_change}
+      event_bindings: {change: excluded_checkbox_change}
     - type: Label
       properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
         visible: true, text: Total Rows, font_size: null, font: '', spacing_above: small,
@@ -96,9 +96,9 @@ components:
         foreground: '', visible: true, text: Refresh, font_size: null, font: '', spacing_above: small,
         icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
         underline: false, icon: ''}
-      name: button_2
+      name: refresh_button
       layout_properties: {grid_position: 'OFKYAX,QZYVEI', full_width_row: true}
-      event_bindings: {click: button_2_click}
+      event_bindings: {click: refresh_button_click}
   - type: Plot
     properties: {spacing_above: small, spacing_below: small, height: 628, visible: true,
       tooltip: '', interactive: true}
