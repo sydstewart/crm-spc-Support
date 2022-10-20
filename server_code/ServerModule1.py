@@ -126,6 +126,54 @@ def get_Cases_Arriving_update():
  
   return  swait
 
+
+@anvil.server.callable
+def get_total_rows(tablename,columnname, startdate, enddate, showexcluded):
+      
+    if showexcluded == False:
+  #     print(enddate)
+          waitinglist= getattr(app_tables, tablename).search(q.all_of(
+                                                  Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
+                                                                          q.greater_than_or_equal_to(startdate)) ,
+                                                  exclude_point = False 
+                                                                          )
+                                                )
+
+    else:                                             
+      
+          waitinglist = getattr(app_tables, tablename).search(q.all_of(
+                                                  Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
+                                                                          q.greater_than_or_equal_to(startdate)) ,
+                                                  
+                                                                          )
+                                                )
+        
+    excludedlist= getattr(app_tables, tablename).search(q.all_of(
+                                              Date_Entered = q.all_of(q.less_than_or_equal_to(enddate),
+                                                                      q.greater_than_or_equal_to(startdate)) ,
+                                              exclude_point = True 
+                                                                    ))
+    total_rows = len(waitinglist) 
+    total_excluded = len(excludedlist)
+
+    return total_rows
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @anvil.server.callable
 def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
 #     t = app_tables.charts.get(chartid = chartid)

@@ -63,8 +63,8 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     showexcluded = self.check_box_1.checked
-    Scatter , total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',    tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
-    self.number_excluded.text = total_excluded
+    total_rows = anvil.server.call('get_total_rows',tablename,columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
+    Scatter , total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S', tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     self.mean.text = round(mean,2)
     self.SD.text = round(stdev,2)
     if total_rows < 10:
@@ -139,17 +139,21 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     showexcluded = self.check_box_1.checked
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
-   
+    showexcluded = self.check_box_1.checked
 #     print(self.plot_1.layout.title)
     print(columnname )
     print(t['Date_Column_Name'])
+    
+        
+    total_rows = anvil.server.call('get_total_rows',tablename,columnname,  self.date_picker_1.date, self.date_picker_2.date, showexcluded)
+    self.total_rows_text.text = str(total_rows)
+    
     Scatter, total_rows ,total_excluded, mean, stdev= anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     print(columnname )
     self.number_excluded.text = total_excluded
     self.mean.text = round(mean,2)
     self.SD.text = round(stdev,2)
-    self.total_rows_text.text = str(total_rows)
-    print('total rows =',total_rows)
+
     if total_rows < 10:
                     alert('10 or more data points needed to produce a chart')
     
