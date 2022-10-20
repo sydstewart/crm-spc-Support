@@ -79,52 +79,52 @@ def delete_test(test):
 def refresh_test(self, **event_args):
     self.repeating_panel_1.items = app_tables.test.search()  
     
-@anvil.server.callable
-def get_4S_Waiting():
-  conn = connect()
-  t = app_tables.charts.search(chartid = 4)
+# @anvil.server.callable
+# def get_4S_Waiting():
+#   conn = connect()
+#   t = app_tables.charts.search(chartid = 4)
  
     
-  for row in t:
+#   for row in t:
 
-     chartsql = row['ChartSQL']
+#      chartsql = row['ChartSQL']
 
-     with conn.cursor() as cur:
-       cur.execute(chartsql)
-       dicts = [{'All_Cases_with_4S': r['All_Cases_with_4S']}
-            for r in cur.fetchall()]
-#        print (dicts)
-     df = pd.DataFrame.from_dict(dicts)
-#      print(df['All_Cases_with_4S'][0])
-     swait = df['All_Cases_with_4S'][0]
-     today=datetime.today()
-     app_tables.waiting_on_4s.add_row(Date_Entered = today,All_Cases_with_4S = swait)
+#      with conn.cursor() as cur:
+#        cur.execute(chartsql)
+#        dicts = [{'All_Cases_with_4S': r['All_Cases_with_4S']}
+#             for r in cur.fetchall()]
+# #        print (dicts)
+#      df = pd.DataFrame.from_dict(dicts)
+# #      print(df['All_Cases_with_4S'][0])
+#      swait = df['All_Cases_with_4S'][0]
+#      today=datetime.today()
+#      app_tables.waiting_on_4s.add_row(Date_Entered = today,All_Cases_with_4S = swait)
  
-  return  swait
+#   return  swait
 
 
-@anvil.server.callable
-def get_Cases_Arriving_update():
-  conn = connect()
-  t = app_tables.charts.search(chartid = 2)
+# # @anvil.server.callable
+# def get_Cases_Arriving_update():
+#   conn = connect()
+#   t = app_tables.charts.search(chartid = 2)
  
     
-  for row in t:
+#   for row in t:
 
-     chartsql = row['ChartSQL']
+#      chartsql = row['ChartSQL']
 
-     with conn.cursor() as cur:
-       cur.execute(chartsql)
-       dicts = [{'All_Cases': r['All_Cases']}
-            for r in cur.fetchall()]
-#        print (dicts)
-     df = pd.DataFrame.from_dict(dicts)
-#      print(df['All_Cases'][0])
-     swait = df['All_Cases'][0]
-     today=datetime.today()
-     app_tables.cases_arriving.add_row(Date_Entered = today,Cases_Arriving= swait)
+#      with conn.cursor() as cur:
+#        cur.execute(chartsql)
+#        dicts = [{'All_Cases': r['All_Cases']}
+#             for r in cur.fetchall()]
+# #        print (dicts)
+#      df = pd.DataFrame.from_dict(dicts)
+# #      print(df['All_Cases'][0])
+#      swait = df['All_Cases'][0]
+#      today=datetime.today()
+#      app_tables.cases_arriving.add_row(Date_Entered = today,Cases_Arriving= swait)
  
-  return  swait
+#   return  swait
 
 
 @anvil.server.callable
@@ -219,7 +219,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
             for r in waitinglist]
     
  
-    print ('dicts',dicts)
+#     print ('dicts',dicts)
  
     df = pd.DataFrame.from_dict(dicts)
  
@@ -338,7 +338,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
     two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline , mean9aboveline, stagemeandictline9low, stagemeandictline,mean6fallline
     ]
 #     print('mean= ',Mean)
-    return Scatter, total_rows, total_excluded, Mean, SD
+    return Scatter, total_rows, total_excluded, Mean, SD, waitinglist
 
     
 # @anvil.server.callable

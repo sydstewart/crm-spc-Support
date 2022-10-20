@@ -8,7 +8,7 @@ from anvil.tables import app_tables
 from datetime import datetime, time , date
 from ..AddRow import AddRow
 from .. selection import selection
-
+from .. selection  import selectiondate
 
 class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
   def __init__(self, **properties):
@@ -29,7 +29,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     showexcluded = self.excluded_checkbox.checked  
 #     total_rows = anvil.server.call('get_total_rows',tablename, columnname)
     
-    Scatter, total_rows, total_excluded, mean, stdev = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
+    Scatter, total_rows, total_excluded, mean, stdev, waitinglist = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
     self.number_excluded.text = total_excluded
     self.total_rows_text.text = str(total_rows)
     print('total rows =',total_rows)
@@ -42,7 +42,7 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
         self.plot_1.data = Scatter
         self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     
-    self.repeating_panel_1.items = app_tables.test.search()
+    self.repeating_panel_1.items = waitinglist
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
   
   def button_1_click(self, **event_args):
@@ -53,12 +53,12 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
 
   def date_picker_1_change(self, **event_args):
     """This method is called when the selected date changes"""
-    selection(self) 
+    selectiondate(self) 
     pass
 
   def date_picker_2_change(self, **event_args):
     """This method is called when the selected date changes"""
-    selection(self)
+    selectiondate(self)
     pass
 
   def excluded_checkbox_change(self, **event_args):
@@ -108,6 +108,11 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     self.repeating_panel_1.items = app_tables.test.search(exclude_point=False,  Date_Entered = q.between(self.date_picker_1.date,self.date_picker_2.date))
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
     pass
+
+  def total_rows_text_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass
+
 
 
 
