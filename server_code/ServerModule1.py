@@ -165,7 +165,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                                                                     ))
     total_rows = len(waitinglist) 
     total_excluded = len(excludedlist)
-    print (waitinglist)
+#     print (waitinglist)
     
     dicts = [{'Date_Entered': r['Date_Entered'],columnname: r[columnname],'NoteCol':r['noteCol']}
             for r in waitinglist]

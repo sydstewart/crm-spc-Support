@@ -5,7 +5,7 @@ container:
   event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"SWOLQY":9,"VCHTFV":9,"RPPPVA":9,"GAXNHO":18,"RXVZOW":5,"NYFGNZ":5,"GUFLSX":5,"NXUZEW":7}'}
+  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"NXUZEW":5,"PVDMZE":7,"RUGWIQ":7,"ELIOZB":7,"YLPJUV":7,"ASABYJ":7,"BRNRCN":7,"JQSZRT":9,"POZZTC":5}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -159,9 +159,19 @@ components:
     name: number_excluded
     layout_properties: {grid_position: 'LGILOK,GUFLSX', full_width_row: true}
   - type: Label
-    properties: {}
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Total Rows, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
     name: label_3
     layout_properties: {grid_position: 'LGILOK,NXUZEW', full_width_row: true}
+  - type: TextBox
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: total_rows_text
+    layout_properties: {grid_position: 'LGILOK,POZZTC', full_width_row: true}
   - type: ColumnPanel
     properties: {col_widths: '{}'}
     name: column_panel_3
