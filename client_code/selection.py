@@ -83,7 +83,7 @@ def selectiondate(self, **event_args):
     showexcluded = self.excluded_checkbox.checked 
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
-     
+    chartname = t['Chart_Name'] 
 #     print(self.plot_1.layout.title)
     print(columnname )
     print(t['Date_Column_Name'])
