@@ -12,7 +12,7 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {auto_create_missing_columns: false}
-startup: {type: form, module: Cases_Waiting_on_4S_from_Table}
+startup: {type: form, module: Dropdown_View_form}
 package_name: CRM_SPC
 allow_embedding: false
 name: CRM SPC

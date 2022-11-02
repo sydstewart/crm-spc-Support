@@ -1,4 +1,4 @@
-from ._anvil_designer import Cases_Waiting_on_4S_from_TableTemplate
+from ._anvil_designer import Dropdown_View_formTemplate
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
@@ -11,7 +11,7 @@ from .. selection import selection
 from .. selection  import selectiondate
 from .. selection import selectchart
 
-class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
+class Dropdown_View_form(Dropdown_View_formTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -122,6 +122,21 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     """This method is called when the button is clicked"""
     selectchart(self, 4)
     pass
+
+  def dropdown_view_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.cases_arriving_button.visible = False
+    self.waiting_on_4S_button.visible = False
+    pass
+
+  def button_view_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.cases_arriving_button.visible = True
+    self.waiting_on_4S_button.visible = True
+    open_form('Button_view_form')
+    pass
+
+
 
 
 

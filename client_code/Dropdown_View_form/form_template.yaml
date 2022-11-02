@@ -217,7 +217,7 @@ components:
       layout_properties: {grid_position: 'OWZPBZ,KZVHOD'}
       components:
       - type: RepeatingPanel
-        properties: {spacing_above: none, spacing_below: none, item_template: Cases_Waiting_on_4S_from_Table.RowTemplate5}
+        properties: {spacing_above: none, spacing_below: none, item_template: Dropdown_View_form.RowTemplate5}
         name: repeating_panel_1
         layout_properties: {}
 - type: FlowPanel
@@ -237,6 +237,22 @@ components:
     name: button_1
     layout_properties: {grid_position: 'XOXXIF,UJVMRD'}
     event_bindings: {click: button_1_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: DropDown View, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: dropdown_view_button
+    layout_properties: {grid_position: 'QMRSCR,QSRDEJ'}
+    event_bindings: {click: dropdown_view_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Button View, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: button_view_button
+    layout_properties: {grid_position: 'YFAKGA,ANQMGL'}
+    event_bindings: {click: button_view_button_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Waiting on 4S, font_size: null, font: '',
