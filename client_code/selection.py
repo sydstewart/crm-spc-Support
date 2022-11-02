@@ -24,7 +24,7 @@ def selection(self, **event_args):
 #          chartid = 6
 #     if self.chart_selection_dropdown.selected_value == 'Printing Problems':
 #          chartid = 7
-    
+    print('Start to find Chart Table '+str(datetime.now()))
     t = app_tables.charts.get(Chart_Name= self.chart_selection_dropdown.selected_value)
     self.date_picker_1.date =t['StartDate']
     self.date_picker_2.date =t['EndDate']
@@ -36,18 +36,23 @@ def selection(self, **event_args):
     print(columnname )
     print(t['Date_Column_Name'])
     
-        
+    print('End to find Chart Table '+str(datetime.now()))
+    print('Start to find Rows '+str(datetime.now()))    
     total_rows = anvil.server.call('get_total_rows',tablename,columnname,  self.date_picker_1.date, self.date_picker_2.date, showexcluded)
     print('total_rows=',total_rows)
     self.total_rows_text.text = str(total_rows)
-    
+    print('End to find Rows '+str(datetime.now())) 
     
     if total_rows <=10 or total_rows > 500:
           alert('10 or more data points and not not more than 500 - please adjust the search dates')
           
     else: 
+        print('Start to Create Scatter'+str(datetime.now())) 
         Scatter, total_rows ,total_excluded, mean, stdev, waitinglist= anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
         print(columnname )
+        
+        print('End to Create Scatter'+str(datetime.now())) 
+        
         self.number_excluded.text = total_excluded
         self.mean.text = round(mean,2)
         self.SD.text = round(stdev,2)
@@ -65,6 +70,7 @@ def selection(self, **event_args):
       #     print(columnname )
     #     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     #     print(self.plot_1.layout.title)
+        print('End to Create Scatter'+str(datetime.now())) 
         pass
 
 def selectiondate(self, **event_args):
