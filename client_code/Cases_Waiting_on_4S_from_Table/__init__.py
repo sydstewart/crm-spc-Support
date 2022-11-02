@@ -9,6 +9,7 @@ from datetime import datetime, time , date
 from ..AddRow import AddRow
 from .. selection import selection
 from .. selection  import selectiondate
+from .. selection import selectchart
 
 class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
   def __init__(self, **properties):
@@ -110,13 +111,20 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
     pass
 
-  def total_rows_text_pressed_enter(self, **event_args):
-    """This method is called when the user presses Enter in this text box"""
+
+
+  def cases_arriving_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    selectchart(self, 2)
     pass
 
-  def button_2_click(self, **event_args):
+  def waiting_on_4S_button_click(self, **event_args):
     """This method is called when the button is clicked"""
+    selectchart(self, 4)
     pass
+
+
+
 
 
 

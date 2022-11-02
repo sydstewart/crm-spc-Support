@@ -5,7 +5,7 @@ container:
   event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"CEBJWB":10,"FDOEVA":4,"ASMNKA":6,"AXVZVA":8,"RQYSZR":7,"BAVCXC":7,"PMZUGQ":6,"PNCKBJ":3,"IHJKEG":9}'}
+  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"CEBJWB":9,"FDOEVA":3,"ASMNKA":5,"AXVZVA":7,"RQYSZR":6,"BAVCXC":6,"PMZUGQ":5,"PNCKBJ":3,"IHJKEG":8,"APXXAD":4,"FKASDG":4}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -85,6 +85,22 @@ components:
     name: total_rows_text
     layout_properties: {grid_position: 'IQDQRT,PNCKBJ', full_width_row: true}
     event_bindings: {pressed_enter: total_rows_text_pressed_enter}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Chart ID, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_7
+    layout_properties: {grid_position: 'IQDQRT,APXXAD', full_width_row: true}
+  - type: TextBox
+    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: chartid_textbox
+    layout_properties: {grid_position: 'IQDQRT,FKASDG', full_width_row: true}
+    data_bindings:
+    - {property: text, code: 'self.item[''chartid'']', writeback: true}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Refresh, font_size: null, font: '', spacing_above: small,
@@ -223,9 +239,17 @@ components:
     event_bindings: {click: button_1_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Problem Cases, font_size: null, font: '',
+      foreground: '', visible: true, text: Waiting on 4S, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
-    name: button_2
+    name: waiting_on_4S_button
     layout_properties: {grid_position: 'KIXKCP,MIVNYR'}
-    event_bindings: {click: button_2_click}
+    event_bindings: {click: waiting_on_4S_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Cases Arriving, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: cases_arriving_button
+    layout_properties: {grid_position: 'FBKQHA,UFUHHA'}
+    event_bindings: {click: cases_arriving_button_click}
