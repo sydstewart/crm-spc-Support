@@ -114,6 +114,11 @@ class Cases_Waiting_on_4S_from_Table(Cases_Waiting_on_4S_from_TableTemplate):
     """This method is called when the user presses Enter in this text box"""
     pass
 
+  def button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+
 
 
 
