@@ -102,12 +102,16 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 
   def show_excluded_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.repeating_panel_1.items = app_tables.test.search(exclude_point=True, Date_Entered = q.between(self.date_picker_1.date,self.date_picker_2.date))
+    t = app_tables.charts.get(chartid = self.chartid_textbox.text)
+    tablename =t['tablename']
+    self.repeating_panel_1.items = getattr(app_tables, tablename).search(exclude_point=True,  Date_Entered = q.between(self.date_picker_1.date,self.date_picker_2.date))
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
 
   def show_included_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.repeating_panel_1.items = app_tables.test.search(exclude_point=False,  Date_Entered = q.between(self.date_picker_1.date,self.date_picker_2.date))
+    t = app_tables.charts.get(chartid = self.chartid_textbox.text)
+    tablename =t['tablename']
+    self.repeating_panel_1.items = getattr(app_tables, tablename).search(exclude_point=False,  Date_Entered = q.between(self.date_picker_1.date,self.date_picker_2.date))
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
     pass
 
@@ -115,11 +119,13 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 
   def cases_arriving_button_click(self, **event_args):
     """This method is called when the button is clicked"""
+    open_form('Button_view_form')
     selectchart(self, 2)
     pass
 
   def waiting_on_4S_button_click(self, **event_args):
     """This method is called when the button is clicked"""
+    open_form('Button_view_form')
     selectchart(self, 4)
     pass
 
