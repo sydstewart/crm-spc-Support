@@ -6,7 +6,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from datetime import datetime, time , date
-# from ..AddRow import AddRow
+from .AddRow import AddRow
 # from .. selection import selection
 from . selection  import selectiondate
 from . selection import selectchart
@@ -81,9 +81,10 @@ class Button_view_form(Button_view_formTemplate):
     pass
 
 
-  def add_row_click(self, **event_args):
+  def add_row_click(self,**event_args):
     """This method is called when the button is clicked"""
     new_test = {}
+   
     # Open an alert displaying the 'ArticleEdit' Form
     save_clicked = alert(
       content=AddRow(item=new_test),
@@ -94,11 +95,15 @@ class Button_view_form(Button_view_formTemplate):
   
     # If the alert returned 'True', the save button was clicked.
     if save_clicked:
-      anvil.server.call('add_test', new_test)
+      t = app_tables.charts.get(chartid = self.chartid_textbox.text)
+      tablename =t['tablename']
+      print('TableName', tablename) 
+      anvil.server.call('add_test', tablename, new_test)
 
-    open_form('Cases_Waiting_on_4S_from_Table')
+    open_form('Button_view_form')
 #     date_picker_1_change(self, **event_args)
     pass
+
 
   
 
