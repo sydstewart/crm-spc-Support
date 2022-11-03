@@ -15,7 +15,9 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    
+    self.cases_arriving_button.visible = False
+    self.waiting_on_4S_button.visible = False
+    self.button_view_button.visible = False   
 #     self.data_row_view.visible = True
 #     self.data_row_edit.visible = False   
     self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(Active = True)]
@@ -137,6 +139,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     """This method is called when the button is clicked"""
     self.cases_arriving_button.visible = False
     self.waiting_on_4S_button.visible = False
+    self.button_view_button.visible = False
     pass
 
   def button_view_button_click(self, **event_args):
