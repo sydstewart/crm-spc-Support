@@ -14,7 +14,9 @@ class Charts(ChartsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
-
+    self.select_table_dropdown.items = [row['tablename'] for row in app_tables.charts.search(Active = True)]
+  
+  
   def getting_4S_Waiting_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.get_4S_Waiting.text = anvil.server.call('get_4S_Waiting')
@@ -60,8 +62,14 @@ class Charts(ChartsTemplate):
 
   def file_loader_2_change(self, file, **event_args):
     """This method is called when a new file is loaded into this FileLoader"""
-    anvil.server.call('store_data',file)
+    anvil.server.call('store_data',file, self.select_table_dropdown.selected_value)
     pass
+
+  def return_to_charts_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Dropdown_View_form')
+    pass
+
 
 
 

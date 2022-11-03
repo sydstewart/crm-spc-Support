@@ -19,6 +19,40 @@ name: CRM SPC
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {}
 db_schema:
+  waiting_on_4s:
+    title: Waiting_on_4S
+    client: full
+    server: full
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 327}
+      type: datetime
+    - name: Measure_Value
+      admin_ui: {width: 200}
+      type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
+  problem_cases_per_week:
+    title: problem_cases_per_week
+    client: full
+    server: full
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 313}
+      type: datetime
+    - name: Measure_Value
+      admin_ui: {width: 200}
+      type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
   charts:
     title: charts
     client: full
@@ -28,7 +62,7 @@ db_schema:
       admin_ui: {width: 200}
       type: number
     - name: Chart_Name
-      admin_ui: {width: 200}
+      admin_ui: {width: 296}
       type: string
     - name: ChartSQL
       admin_ui: {width: 251}
@@ -54,13 +88,13 @@ db_schema:
     - name: tablename
       admin_ui: {width: 200}
       type: string
-  waiting_on_4s:
-    title: Waiting_on_4S
-    client: full
+  unassigned_cases:
+    title: unassigned_cases
+    client: none
     server: full
     columns:
     - name: Date_Entered
-      admin_ui: {width: 327}
+      admin_ui: {width: 200}
       type: datetime
     - name: Measure_Value
       admin_ui: {width: 200}
@@ -71,8 +105,59 @@ db_schema:
     - name: noteCol
       admin_ui: {width: 200}
       type: string
-  cases_arriving:
-    title: cases_arriving
+  problem_cases_per_day_with_4s:
+    title: problem_cases_per_day_with_4s
+    client: full
+    server: full
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 200}
+      type: datetime
+    - name: Measure_Value
+      admin_ui: {width: 200}
+      type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
+  problem_cases_with_customer:
+    title: problem_cases_with_customer
+    client: none
+    server: full
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 200}
+      type: datetime
+    - name: Measure_Value
+      admin_ui: {width: 200}
+      type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
+  printing_problems:
+    title: Printing_problems
+    client: full
+    server: full
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 200}
+      type: datetime
+    - name: Measure_Value
+      admin_ui: {width: 200}
+      type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
+  problem_cases_over_3_days:
+    title: problem_cases_over_3_days
     client: full
     server: full
     columns:
@@ -105,25 +190,8 @@ db_schema:
     - name: noteCol
       admin_ui: {width: 200}
       type: string
-  problem_cases:
-    title: problem_cases
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 313}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  printing_problems:
-    title: Printing_problems
+  cases_arriving:
+    title: cases_arriving
     client: full
     server: full
     columns:

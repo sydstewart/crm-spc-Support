@@ -238,7 +238,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
 #     if total_rows > 5:
     
     
-    ninebelow , stagemeandictline9low = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded)
+    ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded)
     nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
     down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showexcluded  )
     up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showexcluded   )
@@ -338,7 +338,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                           width=2,
                           dash='dash'                   
                             )),
-    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline , mean9aboveline, stagemeandictline9low, stagemeandictline,mean6fallline
+    two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline , mean9aboveline, mean9belowline, stagemeandictline,mean6fallline
     ]
 #     print('mean= ',Mean)
     return Scatter, total_rows, total_excluded, Mean, SD, waitinglist
@@ -349,7 +349,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
 #       return app_tables.cases_arriving.search()
   
 @anvil.server.callable
-def store_data(file):
+def store_data(file , tablename):
   with anvil.media.TempFile(file) as file_name:
     if file.content_type == 'text/csv':
       df = pd.read_csv(file_name)
@@ -360,7 +360,7 @@ def store_data(file):
       # d is now a dict of {columnname -> value} for this row
       # We use Python's **kwargs syntax to pass the whole dict as
       # keyword arguments
-      app_tables.printing_problems.add_row(**d)
+      getattr(app_tables, tablename).add_row(**d, exclude_point = False)
 
 def connect():
   connection = pymysql.connect(host='51.141.236.29',
