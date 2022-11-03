@@ -10,4 +10,5 @@ class AddRow(AddRowTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.check_box_1.checked = False
+    
     # Any code you write here will run when the form opens.

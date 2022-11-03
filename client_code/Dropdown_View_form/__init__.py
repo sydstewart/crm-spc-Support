@@ -82,6 +82,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
   def add_row_click(self, **event_args):
     """This method is called when the button is clicked"""
     new_test = {}
+   
     # Open an alert displaying the 'ArticleEdit' Form
     save_clicked = alert(
       content=AddRow(item=new_test),
@@ -94,7 +95,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     if save_clicked:
       anvil.server.call('add_test', new_test)
 
-    open_form('Cases_Waiting_on_4S_from_Table')
+    open_form('Dropdown_View_form')
 #     date_picker_1_change(self, **event_args)
     pass
 
