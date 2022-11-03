@@ -286,7 +286,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                         x=df['Date_Entered'],
                         y = df['Mean'] ,
                           mode='lines',
-                          name= columnname + ' ' + 'Average' + ' ' + 'Average  =' + str(round(Mean,0)),
+                          name= columnname + ' ' +  'Average  =' + str(round(Mean,0)),
                           line=dict(
                           color= 'green',
                           width=2

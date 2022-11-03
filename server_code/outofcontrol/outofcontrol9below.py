@@ -100,7 +100,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                     visible='legendonly',
                     name='9 consecutively below mean')
 #                     i\f showmeans == False:
-                    stagemeandictline9low = go.Scatter(
+                    mean9belowline = go.Scatter(
                     visible='legendonly',
                     name='New Mean')
             else:
