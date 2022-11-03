@@ -90,7 +90,7 @@ db_schema:
       type: string
   unassigned_cases:
     title: unassigned_cases
-    client: none
+    client: full
     server: full
     columns:
     - name: Date_Entered

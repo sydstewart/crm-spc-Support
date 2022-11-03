@@ -260,12 +260,10 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
                         mode='text',
                         name='', 
                         text=df['NoteCol'],
-#                   showarrow=True,
-#             arrowhead=1
-#                                 showarrow=True,
-# #                                 arrowhead=1
-                       textposition='top left',
-                       textfont=dict(
+#                         showarrow=True,
+#                         arrowhead= 2,                      
+                        textposition='top left',
+                        textfont=dict(
                                   family="sans serif",
                                   size=14,
                                   color="black")
