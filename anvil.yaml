@@ -124,11 +124,11 @@ db_schema:
       type: string
   problem_cases_with_customer:
     title: problem_cases_with_customer
-    client: none
+    client: full
     server: full
     columns:
     - name: Date_Entered
-      admin_ui: {width: 200}
+      admin_ui: {width: 285}
       type: datetime
     - name: Measure_Value
       admin_ui: {width: 200}
