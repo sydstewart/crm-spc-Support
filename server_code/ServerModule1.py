@@ -28,7 +28,7 @@ def add_test(tablename, new_test):
   getattr(app_tables, tablename).add_row(
 #     new_test['exclude_point'] == False,
 #   new_test['Date_Entered'] = datetime(new_test['Date_Entered'])
-    **new_test
+    **new_test, new_test['exclude_point'] == False
     
   )
 #    t= app_tables.test.get()
