@@ -21,31 +21,31 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(Active = True)]
     
   
-    chartid = 5
-    t = app_tables.charts.get(chartid = chartid)
-    self.date_picker_1.date =t['StartDate']
-    self.date_picker_2.date =t['EndDate']
-    tablename =t['tablename']
-    columnname = t['Measure_Column_Name']
-    chartname =t['Chart_Name']
-    showexcluded = self.excluded_checkbox.checked  
-#     total_rows = anvil.server.call('get_total_rows',tablename, columnname)
+#     chartid = 5
+#     t = app_tables.charts.get(chartid = chartid)
+#     self.date_picker_1.date =t['StartDate']
+#     self.date_picker_2.date =t['EndDate']
+#     tablename =t['tablename']
+#     columnname = t['Measure_Column_Name']
+#     chartname =t['Chart_Name']
+#     showexcluded = self.excluded_checkbox.checked  
+# #     total_rows = anvil.server.call('get_total_rows',tablename, columnname)
     
-    Scatter, total_rows, total_excluded, mean, stdev, waitinglist = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
-    self.number_excluded.text = total_excluded
-    self.total_rows_text.text = str(total_rows)
-    print('total rows =',total_rows)
-    self.mean.text = round(mean,2)
-    self.SD.text = round(stdev,2)
-    if total_rows <=10 or total_rows > 400:
-          alert('10 or more data points and not not more than 400 - please adjust the search dates')
-    else:
+#     Scatter, total_rows, total_excluded, mean, stdev, waitinglist = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
+#     self.number_excluded.text = total_excluded
+#     self.total_rows_text.text = str(total_rows)
+#     print('total rows =',total_rows)
+#     self.mean.text = round(mean,2)
+#     self.SD.text = round(stdev,2)
+#     if total_rows <=10 or total_rows > 400:
+#           alert('10 or more data points and not not more than 400 - please adjust the search dates')
+#     else:
     
-        self.plot_1.data = Scatter
-        self.plot_1.layout.title = chartname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
+#         self.plot_1.data = Scatter
+#         self.plot_1.layout.title = chartname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     
-    self.repeating_panel_1.items = waitinglist
-    self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
+#     self.repeating_panel_1.items = waitinglist
+#     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
   
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -79,7 +79,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     pass
 
 
-  def add_row_click(self, **event_args):
+  def add_row_click(self,**event_args):
     """This method is called when the button is clicked"""
     new_test = {}
    
@@ -93,7 +93,10 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
   
     # If the alert returned 'True', the save button was clicked.
     if save_clicked:
-      anvil.server.call('add_test', new_test)
+      t = app_tables.charts.get(chartid = self.chartid_textbox.text)
+      tablename =t['tablename']
+      print('TableName', tablename) 
+      anvil.server.call('add_test', tablename, new_test)
 
     open_form('Dropdown_View_form')
 #     date_picker_1_change(self, **event_args)
