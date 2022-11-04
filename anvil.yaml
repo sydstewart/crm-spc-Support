@@ -13,10 +13,13 @@ services:
   client_config: {}
   server_config: {auto_create_missing_columns: false}
 - source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: false, enable_automatically: true, use_email: true,
-    confirm_email: true, require_mfa: true, mfa_timeout_days: 0, require_secure_passwords: true,
-    allow_mfa_email_reset: true}
+  client_config: {mfa_timeout_days: 0, email_from_address: syd@4s-dawn.com, require_secure_passwords: true,
+    allow_mfa_email_reset: true, use_email: true, allow_signup: true, enable_automatically: true,
+    confirm_email: true, require_mfa: false, use_google: true}
   server_config: {user_table: users}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
 startup: {type: form, module: Dropdown_View_form}
 package_name: CRM_SPC
 allow_embedding: false

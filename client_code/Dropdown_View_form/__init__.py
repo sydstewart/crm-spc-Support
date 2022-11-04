@@ -1,5 +1,7 @@
 from ._anvil_designer import Dropdown_View_formTemplate
 from anvil import *
+import anvil.google.auth, anvil.google.drive
+from anvil.google.drive import app_files
 import anvil.users
 import plotly.graph_objects as go
 import anvil.server
@@ -16,6 +18,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    anvil.users.login_with_form()
     self.cases_arriving_button.visible = False
     self.waiting_on_4S_button.visible = False
     self.button_view_button.visible = False   
