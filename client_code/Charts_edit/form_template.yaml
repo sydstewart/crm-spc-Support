@@ -19,6 +19,7 @@ components:
         columns:
         - {id: WBRVQJ, title: Chartid, data_key: chartid}
         - {id: QZUQVJ, title: Chart Name, data_key: Chart_Name}
+        - {id: MLEBXY, title: Order, data_key: order}
         - {id: IPIDMM, title: Active, data_key: Active}
         - {id: SASNPR, title: StartDate, data_key: StartDate}
         - {id: LTBEOT, title: EndDate, data_key: EndDate}

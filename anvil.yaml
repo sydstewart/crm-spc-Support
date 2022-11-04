@@ -12,6 +12,11 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {auto_create_missing_columns: false}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: false, enable_automatically: true, use_email: true,
+    confirm_email: true, require_mfa: true, mfa_timeout_days: 0, require_secure_passwords: true,
+    allow_mfa_email_reset: true}
+  server_config: {user_table: users}
 startup: {type: form, module: Dropdown_View_form}
 package_name: CRM_SPC
 allow_embedding: false
@@ -64,6 +69,9 @@ db_schema:
     - name: Chart_Name
       admin_ui: {width: 296}
       type: string
+    - name: order
+      admin_ui: {width: 200}
+      type: number
     - name: ChartSQL
       admin_ui: {width: 251}
       type: string
@@ -107,6 +115,51 @@ db_schema:
       type: string
   problem_cases_per_day_with_4s:
     title: problem_cases_per_day_with_4s
+    client: full
+    server: full
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 200}
+      type: datetime
+    - name: Measure_Value
+      admin_ui: {width: 200}
+      type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
+  users:
+    title: Users
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {width: 100}
+      type: bool
+  projects_with_customers:
+    title: projects_with_customers
+    client: none
+    server: full
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 200}
+      type: datetime
+    - name: Measure_Value
+      admin_ui: {width: 200}
+      type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
+  projects_with_4s:
+    title: projects_with_4s
     client: full
     server: full
     columns:
@@ -180,6 +233,23 @@ db_schema:
     columns:
     - name: Date_Entered
       admin_ui: {width: 324}
+      type: datetime
+    - name: Measure_Value
+      admin_ui: {width: 200}
+      type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
+  problems_with_customers_over_7_days:
+    title: problems_with_customers_over_7_days
+    client: none
+    server: full
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 200}
       type: datetime
     - name: Measure_Value
       admin_ui: {width: 200}

@@ -1,5 +1,6 @@
 from ._anvil_designer import Dropdown_View_formTemplate
 from anvil import *
+import anvil.users
 import plotly.graph_objects as go
 import anvil.server
 import anvil.tables as tables
@@ -20,7 +21,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     self.button_view_button.visible = False   
 #     self.data_row_view.visible = True
 #     self.data_row_edit.visible = False   
-    self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(Active = True)]
+    self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(tables.order_by("order"), Active =True)]
     
   
 #     chartid = 5
