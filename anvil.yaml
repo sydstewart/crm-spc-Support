@@ -15,7 +15,7 @@ services:
 - source: /runtime/services/anvil/users.yml
   client_config: {mfa_timeout_days: 0, email_from_address: syd@4s-dawn.com, require_secure_passwords: true,
     allow_mfa_email_reset: true, use_email: true, allow_signup: false, enable_automatically: false,
-    confirm_email: true, require_mfa: false, use_google: false}
+    confirm_email: true, require_mfa: false, use_google: true}
   server_config: {user_table: users}
 - source: /runtime/services/google.yml
   client_config: {}
