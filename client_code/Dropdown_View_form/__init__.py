@@ -21,7 +21,8 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 #     configure_mfa_with_form()
     anvil.users.login_with_form()
 #     mfa_login_with_form()
-    
+    loggedinuser = anvil. users. get_user() 
+    self.loggedinuser.text = loggedinuser
     self.cases_arriving_button.visible = False
     self.waiting_on_4S_button.visible = False
     self.button_view_button.visible = False   

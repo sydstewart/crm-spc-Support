@@ -29,7 +29,7 @@ package_name: CRM_SPC
 allow_embedding: false
 name: CRM SPC
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-metadata: {}
+metadata: {logo_img: 'asset:4S logo small.png'}
 db_schema:
   waiting_on_4s:
     title: Waiting_on_4S

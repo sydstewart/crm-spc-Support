@@ -24,7 +24,6 @@ components:
         - {id: INYJHT, title: Last Login, data_key: last_login}
         - {id: KBZJGK, title: Confirmed Email, data_key: confirmed_email}
         - {id: NVPAPB, title: N Password_failures, data_key: n_password_failures}
-        - {id: MBHGNO, title: Invite, data_key: column_1}
         auto_header: true
         tooltip: ''
         border: ''
@@ -37,7 +36,7 @@ components:
         spacing_below: small
         background: ''
       name: data_grid_1
-      layout_properties: {grid_position: 'FFMNTU,LTBIRT'}
+      layout_properties: {grid_position: 'FFMNTU,LTBIRT', full_width_row: true}
       components:
       - type: RepeatingPanel
         properties: {spacing_above: none, spacing_below: none, item_template: Invite_Users.RowTemplate7}
