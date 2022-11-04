@@ -139,7 +139,7 @@ db_schema:
       type: string
   users:
     title: Users
-    client: none
+    client: full
     server: full
     columns:
     - name: email
@@ -160,6 +160,18 @@ db_schema:
     - name: n_password_failures
       admin_ui: {width: 200}
       type: number
+    - name: mfa
+      admin_ui: {width: 200}
+      type: simpleObject
+    - name: remembered_logins
+      admin_ui: {width: 200}
+      type: simpleObject
+    - name: signed_up
+      admin_ui: {width: 200}
+      type: datetime
+    - name: email_confirmation_key
+      admin_ui: {width: 200}
+      type: string
   projects_with_customers:
     title: projects_with_customers
     client: none
