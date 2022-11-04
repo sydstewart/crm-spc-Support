@@ -224,6 +224,15 @@ components:
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+  components:
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: 'theme:White', visible: true, text: Log Out, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: sign_out_button
+    layout_properties: {}
+    event_bindings: {click: sign_out_button_click}
 - type: ColumnPanel
   properties: {col_widths: '{}'}
   name: column_panel_1

@@ -132,6 +132,16 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 
 
 
+  def sign_out_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.users.logout()
+    open_form('Dropdown_View_form')
+    pass
+
+
+
+
+
 
 
 
