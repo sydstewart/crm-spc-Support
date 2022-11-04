@@ -18,7 +18,9 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
     anvil.users.login_with_form()
+    
     self.cases_arriving_button.visible = False
     self.waiting_on_4S_button.visible = False
     self.button_view_button.visible = False   
@@ -27,32 +29,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(tables.order_by("order"), Active =True)]
     
   
-#     chartid = 5
-#     t = app_tables.charts.get(chartid = chartid)
-#     self.date_picker_1.date =t['StartDate']
-#     self.date_picker_2.date =t['EndDate']
-#     tablename =t['tablename']
-#     columnname = t['Measure_Column_Name']
-#     chartname =t['Chart_Name']
-#     showexcluded = self.excluded_checkbox.checked  
-# #     total_rows = anvil.server.call('get_total_rows',tablename, columnname)
-    
-#     Scatter, total_rows, total_excluded, mean, stdev, waitinglist = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
-#     self.number_excluded.text = total_excluded
-#     self.total_rows_text.text = str(total_rows)
-#     print('total rows =',total_rows)
-#     self.mean.text = round(mean,2)
-#     self.SD.text = round(stdev,2)
-#     if total_rows <=10 or total_rows > 400:
-#           alert('10 or more data points and not not more than 400 - please adjust the search dates')
-#     else:
-    
-#         self.plot_1.data = Scatter
-#         self.plot_1.layout.title = chartname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
-    
-#     self.repeating_panel_1.items = waitinglist
-#     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
-  
+
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Charts')
@@ -152,6 +129,8 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     self.waiting_on_4S_button.visible = True
     open_form('Button_view_form')
     pass
+
+
 
 
 

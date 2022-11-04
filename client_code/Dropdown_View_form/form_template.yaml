@@ -2,7 +2,7 @@ is_package: true
 container:
   type: HtmlTemplate
   properties: {html: '@theme:standard-page.html'}
-  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
+  event_bindings: {}
 components:
 - type: ColumnPanel
   properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"CEBJWB":10,"FDOEVA":5,"ASMNKA":5,"AXVZVA":4,"RQYSZR":6,"BAVCXC":6,"PMZUGQ":5,"PNCKBJ":3,"IHJKEG":8,"APXXAD":4,"FKASDG":4}'}
@@ -84,7 +84,7 @@ components:
       background: '', bold: false, underline: false}
     name: total_rows_text
     layout_properties: {grid_position: 'IQDQRT,PNCKBJ', full_width_row: true}
-    event_bindings: {pressed_enter: total_rows_text_pressed_enter}
+    event_bindings: {}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Chart ID, font_size: null, font: '', spacing_above: small,
