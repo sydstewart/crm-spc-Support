@@ -285,3 +285,7 @@ components:
     name: cases_arriving_button
     layout_properties: {grid_position: 'FBKQHA,UFUHHA'}
     event_bindings: {click: cases_arriving_button_click}
+- type: Image
+  properties: {height: 56}
+  name: image_1
+  layout_properties: {slot: title}
