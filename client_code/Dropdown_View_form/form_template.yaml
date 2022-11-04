@@ -199,7 +199,7 @@ components:
         role: null
         columns:
         - {id: MLMLHP, title: Date Entered, data_key: Date_Entered}
-        - {id: FZMKHX, title: Test Result, data_key: Test_Result}
+        - {id: FZMKHX, title: Measure Value, data_key: Test_Result}
         - {id: LVRLQO, title: Exclude Point, data_key: exclude_point}
         - {id: YFBYCD, title: NoteCol, data_key: noteCol}
         auto_header: true
