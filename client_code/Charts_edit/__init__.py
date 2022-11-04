@@ -27,4 +27,10 @@ class Charts_edit(Charts_editTemplate):
     open_form('Charts')
     pass
 
+  def user_management_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Invite_Users')
+    pass
+
+
 
