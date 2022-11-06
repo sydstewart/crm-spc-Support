@@ -26,7 +26,10 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     
     self.cases_arriving_button.visible = False
     self.waiting_on_4S_button.visible = False
-    self.button_view_button.visible = False   
+    self.button_view_button.visible = False 
+    self.dropdown_view_button.visible = False
+    self.button_1.visible = False
+    self.refresh_button.visible= False
 #     self.data_row_view.visible = True
 #     self.data_row_edit.visible = False   
     self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(tables.order_by("order"), Active =True)]
@@ -61,18 +64,19 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 
   def chart_selection_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
+    self.refresh_button.visible= True
     selection(self)
     pass
 
 
-  def add_row_click(self,**event_args):
+  def add_row_click(self, **event_args):
     """This method is called when the button is clicked"""
     new_test = {}
    
     # Open an alert displaying the 'ArticleEdit' Form
     save_clicked = alert(
       content=AddRow(item=new_test),
-      title="Add Result",
+      title="Add Measure Value for:     " + self.chart_selection_dropdown.selected_value,
       large=True,
       buttons=[("Save", True), ("Cancel", False)]
     )
@@ -84,7 +88,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
       print('TableName', tablename) 
       anvil.server.call('add_test', tablename, new_test)
 
-    open_form('Dropdown_View_form')
+      selection(self)
 #     date_picker_1_change(self, **event_args)
     pass
 

@@ -102,10 +102,11 @@ components:
     data_bindings:
     - {property: text, code: 'self.item[''chartid'']', writeback: true}
   - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Refresh, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {role: null, align: center, tooltip: 'On changing exclude point or
+        adding or editing an annotation in table below,please click REFRESH  to refresh
+        chart', border: '', enabled: true, foreground: '', visible: true, text: Refresh,
+      font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: ''}
     name: refresh_button
     layout_properties: {grid_position: 'IQDQRT,IHJKEG', full_width_row: true}
     event_bindings: {click: refresh_button_click}
@@ -201,9 +202,9 @@ components:
         - {id: MLMLHP, title: Date Entered, data_key: Date_Entered}
         - {id: FZMKHX, title: Measure Value, data_key: Test_Result}
         - {id: LVRLQO, title: Exclude Point, data_key: exclude_point}
-        - {id: YFBYCD, title: NoteCol, data_key: noteCol}
+        - {id: YFBYCD, title: Annotaion, data_key: noteCol}
         auto_header: true
-        tooltip: ''
+        tooltip: On changing exclude point or adding or editing an annotation please click REFRESH in top right
         border: ''
         foreground: ''
         rows_per_page: 20

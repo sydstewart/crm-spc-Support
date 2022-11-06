@@ -11,7 +11,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from datetime import datetime, time , date
+from datetime import datetime, time , date, timedelta
 
 
 
@@ -29,8 +29,9 @@ def selection(self, **event_args):
 #          chartid = 7
     print('Start to find Chart Table '+str(datetime.now()))
     t = app_tables.charts.get(Chart_Name= self.chart_selection_dropdown.selected_value)
+      
     self.date_picker_1.date =t['StartDate']
-    self.date_picker_2.date =t['EndDate']
+    self.date_picker_2.date =t['EndDate'] + timedelta(days=1)
     showexcluded = self.excluded_checkbox.checked 
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
@@ -76,8 +77,9 @@ def selection(self, **event_args):
     #     self.plot_1.layout.title = columnname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
     #     print(self.plot_1.layout.title)
         print('End to Create Scatter'+str(datetime.now())) 
-        pass
-
+        
+    pass
+      
 def selectiondate(self, **event_args):
 #     if self.chart_selection_dropdown.selected_value == 'All_Cases_with_4S':
 #          chartid = 4

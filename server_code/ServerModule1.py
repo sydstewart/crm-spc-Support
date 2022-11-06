@@ -189,7 +189,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
 #     print(enddate)
 #     startdate =  datetime(day=1, month=10, year=2022)
 #     enddate =  datetime(day=1, month=9, year=2022)
-    enddate = enddate + timedelta(days=1)
+#     enddate = enddate + timedelta(days=1)
     print(tablename)
     print(columnname)
     print(startdate)
