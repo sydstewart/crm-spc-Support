@@ -89,13 +89,24 @@ components:
     name: setup_button
     layout_properties: {grid_position: 'NJMTZE,CVSFPI'}
     event_bindings: {click: setup_button_click}
-  - type: Label
-    properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-      visible: true, text: Charts, font_size: 14, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-      underline: false, icon: ''}
-    name: charts_link
-    layout_properties: {grid_position: 'JGYYHM,NVFVUN'}
+  - type: Link
+    properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: 'theme:Primary
+        500', visible: true, text: CHARTS, font_size: 14, wrap_on: mobile, font: '',
+      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+      spacing_below: small, italic: false, background: '', bold: true, underline: false,
+      icon: ''}
+    name: chart_table_link
+    layout_properties: {grid_position: 'JQLJOW,KLYYGG'}
+    event_bindings: {click: chart_table_link_click}
+  - type: Link
+    properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: 'theme:Primary
+        500', visible: true, text: USERS, font_size: 14, wrap_on: mobile, font: '',
+      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: user_table_link
+    layout_properties: {grid_position: 'ZJQFCB,MNGWPT'}
+    event_bindings: {click: user_table_link_click}
 - type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
     text: Maintenance Menu, font_size: null, font: '', spacing_above: small, icon_align: left,

@@ -246,10 +246,6 @@ components:
   name: column_panel_1
   layout_properties: {slot: left-nav}
   components:
-  - type: Label
-    properties: {}
-    name: label_8
-    layout_properties: {grid_position: 'JJJFWC,GIQJFQ'}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Main Menu, font_size: null, font: '', spacing_above: small,
