@@ -21,7 +21,6 @@ components:
       - {id: DDBRYW, title: EndDate, data_key: EndDate}
       - {id: KFQMZD, title: Date Column_Name, data_key: Date_Column_Name}
       - {id: NFIKWR, title: Measure Column_Name, data_key: Measure_Column_Name}
-      - {id: QUXONU, title: Source, data_key: Source}
       - {id: VXSICI, title: Tablename, data_key: tablename}
       auto_header: true
       tooltip: ''
