@@ -1,0 +1,32 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: ''}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Select Table to Upload, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'KGJZBF,CCFVWH'}
+  - type: DropDown
+    properties: {}
+    name: select_table_dropdown
+    layout_properties: {grid_position: 'KGJZBF,GCQREK'}
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_3
+  layout_properties: {slot: left-nav}
+  components:
+  - type: FileLoader
+    properties: {}
+    name: file_loader_1
+    layout_properties: {grid_position: 'WGPREL,GCTANH'}
+    event_bindings: {change: file_loader_1_change}

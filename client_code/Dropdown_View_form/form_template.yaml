@@ -248,9 +248,9 @@ components:
   components:
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Main Menu, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+      foreground: '', visible: true, text: Maintenance, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
     name: main_maintenance_button
     layout_properties: {grid_position: 'XOXXIF,UJVMRD'}
     event_bindings: {click: main_maintenance_button_click}

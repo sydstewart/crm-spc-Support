@@ -1,4 +1,4 @@
-from ._anvil_designer import ChartsTemplate
+from ._anvil_designer import Load_csvTemplate
 from anvil import *
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 from datetime import datetime, time , date
 import anvil.media
 
-class Charts(ChartsTemplate):
+class Load_csv(Load_csvTemplate):
   def __init__(self, **properties):
         # Set Form properties and Data Bindings.
     self.init_components(**properties)

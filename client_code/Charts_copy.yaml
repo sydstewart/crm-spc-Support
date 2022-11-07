@@ -167,7 +167,7 @@ components:
     layout_properties: {grid_position: 'TWYSIZ,HUJZHK'}
     components:
     - type: RepeatingPanel
-      properties: {spacing_above: none, spacing_below: none, item_template: Charts.RowTemplate1}
+      properties: {spacing_above: none, spacing_below: none, item_template: Load_csv.RowTemplate1}
       name: repeating_panel_1
       layout_properties: {}
 - type: FlowPanel

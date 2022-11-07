@@ -12,5 +12,5 @@ class Charts_Grid(Charts_GridTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
+    self.repeating_panel_1.items = app_tables.charts.search(Active = True)
     # Any code you write here will run when the form opens.
