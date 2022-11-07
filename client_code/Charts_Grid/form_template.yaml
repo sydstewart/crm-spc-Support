@@ -1,0 +1,43 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_1
+  layout_properties: {grid_position: 'BRVFFQ,WNMBBL'}
+  components:
+  - type: DataGrid
+    properties:
+      role: null
+      columns:
+      - {id: URIBRF, title: Chartid, data_key: chartid}
+      - {id: PJFNIZ, title: Chart Name, data_key: Chart_Name}
+      - {id: RZFECT, title: Order, data_key: order}
+      - {id: RCVOLZ, title: ChartSQL, data_key: ChartSQL}
+      - {id: NWQTBU, title: Active, data_key: Active}
+      - {id: WZRVSY, title: StartDate, data_key: StartDate}
+      - {id: DDBRYW, title: EndDate, data_key: EndDate}
+      - {id: KFQMZD, title: Date Column_Name, data_key: Date_Column_Name}
+      - {id: NFIKWR, title: Measure Column_Name, data_key: Measure_Column_Name}
+      - {id: QUXONU, title: Source, data_key: Source}
+      - {id: VXSICI, title: Tablename, data_key: tablename}
+      auto_header: true
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      wrap_on: never
+      show_page_controls: true
+      spacing_above: small
+      spacing_below: small
+      background: ''
+    name: data_grid_1
+    layout_properties: {grid_position: 'JHZIAM,FMFBYM'}
+    components:
+    - type: RepeatingPanel
+      properties: {spacing_above: none, spacing_below: none, item_template: Charts_Grid.RowTemplate8}
+      name: repeating_panel_1
+      layout_properties: {}
+is_package: true

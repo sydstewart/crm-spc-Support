@@ -7,6 +7,9 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ..Invite_Users import Invite_Users
+from ..Charts_Grid import Charts_Grid
+
 
 class Charts_edit(Charts_editTemplate):
   def __init__(self, **properties):
@@ -24,7 +27,9 @@ class Charts_edit(Charts_editTemplate):
 
   def setup_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    open_form('Charts')
+    self.content_panel.clear()
+    anvil.server.call('store_data',file)
+    
     pass
 
   def user_management_button_click(self, **event_args):
@@ -37,6 +42,7 @@ class Charts_edit(Charts_editTemplate):
 #     self.reset_links()
 #     self.chart_table_link.role = 'selected'
     self.content_panel.clear()
+    self.content_panel.add_component(Charts_Grid(), full_width_row=True)
     open_form('Charts_edit')
     pass
 
@@ -45,7 +51,7 @@ class Charts_edit(Charts_editTemplate):
 #     self.reset_links()
 #     self.user_table_link.role = 'selected'
     self.content_panel.clear()
-    open_form('Invite_Users')
+    self.content_panel.add_component(Invite_Users(), full_width_row=True)
     pass
   
   def reset_links(self, **event_args):
