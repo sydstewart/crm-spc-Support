@@ -63,13 +63,17 @@ class Maintenance(MaintenanceTemplate):
 
   def backup_link_click(self, **event_args):
     """This method is called when the link is clicked"""
-    csv = anvil.server.call('get_users_csv')
-    anvil.media.download(csv)
- 
+   
+    user_csv = anvil.server.call('get_users_csv')
+    anvil.media.download(user_csv)
+    
+    charts_csv = anvil.server.call('get_charts_csv')
+    anvil.media.download(charts_csv)
     pass
 
-
-
+    cases_arriving_csv = anvil.server.call('get_cases_arriving_csv')
+    anvil.media.download(cases_arriving_csv)
+    pass
 
 
 

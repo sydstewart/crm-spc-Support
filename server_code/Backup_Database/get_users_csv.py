@@ -10,6 +10,17 @@ import anvil.server
 
 @anvil.server.callable
 def get_users_csv():
-  csv = app_tables.users.search().to_csv()
-  return csv
-  
+  user_csv = app_tables.users.search().to_csv()
+  return user_csv
+ 
+
+@anvil.server.callable
+def get_charts_csv():
+  charts_csv = app_tables.charts.search().to_csv()
+  return charts_csv
+
+
+@anvil.server.callable
+def get_cases_arriving_csv():
+  cases_arriving_csv = app_tables.cases_arriving.search().to_csv()
+  return cases_arriving_csv
