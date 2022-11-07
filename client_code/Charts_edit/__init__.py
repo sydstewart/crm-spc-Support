@@ -27,7 +27,7 @@ class Charts_edit(Charts_editTemplate):
 
   def setup_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.content_panel.clear()
+#     self.content_panel.clear()
     anvil.server.call('store_data',file)
     
     pass
