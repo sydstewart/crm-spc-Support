@@ -11,3 +11,8 @@ from anvil.tables import app_tables
 #    from . import Module1
 #
 #    Module1.say_hello()
+
+
+rows = app_tables.charts.search(Active = True)
+for row in rows:
+    print(row['tablename'])

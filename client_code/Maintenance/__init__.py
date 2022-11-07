@@ -10,6 +10,7 @@ from anvil.tables import app_tables
 from ..Users_Grid import Users_Grid
 from ..Charts_Grid import Charts_Grid
 from ..Load_csv import Load_csv
+# from ..Backup import Backup
 # from ..Charts import Charts
 
 class Maintenance(MaintenanceTemplate):
@@ -75,5 +76,14 @@ class Maintenance(MaintenanceTemplate):
     anvil.media.download(cases_arriving_csv)
     pass
 
+  def list_tables_link_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    rows = app_tables.charts.search(Active = True)
+    for row in rows:
+        tablename = row['tablename']
+        filename = tablename + '_csv'
+        filename = getattr(app_tables, tablename).search().to_csv()
+        download(filename)
+     
 
 
