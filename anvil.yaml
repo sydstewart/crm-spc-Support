@@ -145,6 +145,9 @@ db_schema:
     - name: email
       admin_ui: {width: 200}
       type: string
+    - name: user_type
+      admin_ui: {width: 200}
+      type: string
     - name: enabled
       admin_ui: {width: 100}
       type: bool
@@ -170,9 +173,6 @@ db_schema:
       admin_ui: {width: 200}
       type: datetime
     - name: email_confirmation_key
-      admin_ui: {width: 200}
-      type: string
-    - name: user_type
       admin_ui: {width: 200}
       type: string
   projects_with_customers:
