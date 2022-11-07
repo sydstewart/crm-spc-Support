@@ -34,7 +34,7 @@ class Charts_edit(Charts_editTemplate):
 
   def chart_table_link_click(self, **event_args):
     """This method is called when the link is clicked"""
-   
+    self.reset_links()
     self.chart_table_link.role = 'selected'
     self.content_panel.clear()
     open_form('Charts_edit')
@@ -42,6 +42,7 @@ class Charts_edit(Charts_editTemplate):
 
   def user_table_link_click(self, **event_args):
     """This method is called when the link is clicked"""
+    self.reset_links()
     self.user_table_link.role = 'selected'
     self.content_panel.clear()
     open_form('Invite_Users')
