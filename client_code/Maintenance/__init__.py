@@ -61,6 +61,14 @@ class Maintenance(MaintenanceTemplate):
     self.user_table_link.role = ''
     self.chart_table_link.role = ''      
 
+  def backup_link_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    csv = anvil.server.call('get_users_csv')
+    anvil.media.download(csv)
+ 
+    pass
+
+
 
 
 
