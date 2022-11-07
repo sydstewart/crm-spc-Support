@@ -172,6 +172,9 @@ db_schema:
     - name: email_confirmation_key
       admin_ui: {width: 200}
       type: string
+    - name: user_type
+      admin_ui: {width: 200}
+      type: string
   projects_with_customers:
     title: projects_with_customers
     client: none
