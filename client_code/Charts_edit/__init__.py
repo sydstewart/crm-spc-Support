@@ -46,6 +46,10 @@ class Charts_edit(Charts_editTemplate):
     self.content_panel.clear()
     open_form('Invite_Users')
     pass
+  
+  def reset_links(self, **event_args):
+    self.user_table_link.role = ''
+    self.chart_table_link.role = ''      
 
 
 
