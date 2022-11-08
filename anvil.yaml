@@ -66,6 +66,23 @@ db_schema:
     - name: noteCol
       admin_ui: {width: 200}
       type: string
+  problem_cases_with_4s:
+    title: problem_cases_with_4s
+    client: full
+    server: full
+    columns:
+    - name: Date_Entered
+      admin_ui: {width: 200}
+      type: datetime
+    - name: Measure_Value
+      admin_ui: {width: 200}
+      type: number
+    - name: exclude_point
+      admin_ui: {width: 200}
+      type: bool
+    - name: noteCol
+      admin_ui: {width: 200}
+      type: string
   charts:
     title: charts
     client: full
@@ -102,27 +119,10 @@ db_schema:
       admin_ui: {width: 200}
       type: string
     - name: tablename
-      admin_ui: {width: 200}
+      admin_ui: {width: 236}
       type: string
   unassigned_cases:
     title: unassigned_cases
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 200}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  problem_cases_per_day_with_4s:
-    title: problem_cases_per_day_with_4s
     client: full
     server: full
     columns:

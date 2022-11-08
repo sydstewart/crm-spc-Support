@@ -43,7 +43,7 @@ def update_result(self_item):
   # check that the article given is really a row in the ‘articles’ table
   if app_tables.test.has_row(test):
 #     article_dict['updated'] = datetime.now()
-    test.update(**result_dict)
+    test.update(**result_dict, Date_Entered = datetime.now())
   else:
     raise Exception("Result does not exist")
 
