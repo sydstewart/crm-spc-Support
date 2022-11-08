@@ -166,10 +166,10 @@ def get_total_rows(tablename,columnname, startdate, enddate, showexcluded):
     return total_rows
 
 
-@anvil.server.callable
-def write_a_file(my_string):
-  with open('/CRMSPCBackup', 'w+') as f:
-    f.write(my_string)
+# @anvil.server.callable
+# def write_a_file(my_string):
+#   with open('/CRMSPCBackup', 'w+') as f:
+#     f.write(my_string)
 
 
 

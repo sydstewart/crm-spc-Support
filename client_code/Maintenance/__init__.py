@@ -90,8 +90,8 @@ class Maintenance(MaintenanceTemplate):
         tablename = row['tablename']
         filename = tablename + '_csv'
         filename = getattr(app_tables, tablename).search().to_csv()
-        anvil.server.call('write_a_file',filename)
-#         download(filename)
+#         anvil.server.call('write_a_file',filename)
+        download(filename)
 #         filename = os.path.join(my_dir, file_name)
 #         file = open(filename,'w')
 
