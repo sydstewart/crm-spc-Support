@@ -15,5 +15,8 @@ class AddRow(AddRowTemplate):
     self.init_components(**properties)
     self.check_box_1.checked = False
     self.date_picker_1.format = '%Y-%m-%d'
-    self.date_picker_1.date =  datetime.now()
+    self.date_picker_1.pick_time = True
+    self.item['Date_Entered'] =  datetime.now()
+    self.refresh_data_bindings()
+    print('self.date_picker_1.date=',self.date_picker_1.date)
     # Any code you write here will run when the form opens.
