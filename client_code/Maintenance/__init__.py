@@ -6,6 +6,8 @@ import anvil.users
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
+# import os
+
 from anvil.tables import app_tables
 from ..Users_Grid import Users_Grid
 from ..Charts_Grid import Charts_Grid
@@ -78,12 +80,21 @@ class Maintenance(MaintenanceTemplate):
 
   def list_tables_link_click(self, **event_args):
     """This method is called when the link is clicked"""
+#     import os
+#     my_dir = 'C:\Users\sydne\OneDrive\CRMPython'
+#     file_name = 'test.txt'
+#     fname = os.path.join(my_dir, file_name)
+    
     rows = app_tables.charts.search(Active = True)
     for row in rows:
         tablename = row['tablename']
         filename = tablename + '_csv'
         filename = getattr(app_tables, tablename).search().to_csv()
-        download(filename)
-     
+        anvil.server.call('write_a_file',filename)
+#         download(filename)
+#         filename = os.path.join(my_dir, file_name)
+#         file = open(filename,'w')
+
+
 
 

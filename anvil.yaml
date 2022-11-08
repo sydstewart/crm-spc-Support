@@ -178,7 +178,7 @@ db_schema:
       type: string
   projects_with_customers:
     title: projects_with_customers
-    client: none
+    client: full
     server: full
     columns:
     - name: Date_Entered
@@ -280,7 +280,7 @@ db_schema:
       type: string
   problems_with_customers_over_7_days:
     title: problems_with_customers_over_7_days
-    client: none
+    client: full
     server: full
     columns:
     - name: Date_Entered
