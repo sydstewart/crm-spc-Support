@@ -261,7 +261,7 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
     ),
       
     go.Scatter(
-                        x = df['Date_Entered'] ,
+                        x = df['Date_Entered']  ,
                         y = df[columnname],
                         mode='text',
                         name='', 
