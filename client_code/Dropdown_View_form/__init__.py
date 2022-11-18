@@ -163,7 +163,8 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
   def show_changes_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.content_panel.clear()
-    self.content_panel.add_component(changes_grid(), full_width_row=True)
+    open_form('changes_grid')
+
     pass
 
 

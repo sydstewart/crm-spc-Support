@@ -195,7 +195,7 @@ db_schema:
       type: string
   changes:
     title: changes
-    client: none
+    client: full
     server: full
     columns:
     - name: change_type
