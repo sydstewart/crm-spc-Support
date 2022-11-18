@@ -13,6 +13,8 @@ from ..AddRow import AddRow
 from .. selection import selection
 from .. selection  import selectiondate
 from .. selection import selectchart
+from ..changes_grid import changes_grid
+
 
 class Dropdown_View_form(Dropdown_View_formTemplate):
   def __init__(self, **properties):
@@ -157,6 +159,13 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     """This method is called when the button is clicked"""
     open_form('Maintenance')
     pass
+
+  def show_changes_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.content_panel.clear()
+    self.content_panel.add_component(changes_grid(), full_width_row=True)
+    pass
+
 
 
 

@@ -210,6 +210,9 @@ db_schema:
     - name: new_mean
       admin_ui: {width: 200}
       type: number
+    - name: reviewed
+      admin_ui: {width: 200}
+      type: bool
   projects_with_4s:
     title: projects_with_4s
     client: full
