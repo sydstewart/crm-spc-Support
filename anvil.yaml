@@ -193,6 +193,23 @@ db_schema:
     - name: noteCol
       admin_ui: {width: 200}
       type: string
+  changes:
+    title: changes
+    client: none
+    server: full
+    columns:
+    - name: change_type
+      admin_ui: {width: 200}
+      type: string
+    - name: tablename
+      admin_ui: {width: 200}
+      type: string
+    - name: change_date
+      admin_ui: {width: 200}
+      type: datetime
+    - name: new_mean
+      admin_ui: {width: 200}
+      type: number
   projects_with_4s:
     title: projects_with_4s
     client: full

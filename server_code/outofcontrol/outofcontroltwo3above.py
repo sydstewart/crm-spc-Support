@@ -10,7 +10,7 @@ import anvil.server
 import plotly.graph_objects as go
 
 
-def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, showmeans ):
+def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, showmeans, tablename ):
 
         import pandas as pd
 
@@ -39,7 +39,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-2],pointname:df[pointname].iloc[i-2]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
-                    
+                    print('2 out 3 at:', tablename, df[pointdate].iloc[i] )
 #                     if numberfound > 1:
 #                       stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-3],pointmean:stagemean}, ignore_index=True)
                     

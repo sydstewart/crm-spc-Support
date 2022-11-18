@@ -8,8 +8,9 @@ from anvil.tables import app_tables
 import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
+from datetime import datetime, time , date , timedelta
 
-def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, showmeans ):
+def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, showmeans, tablename ):
 
             import pandas as pd
 
@@ -64,7 +65,21 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                         Mean9above =outofcontrol9above[pointname].mean()
                         outofcontrol9above['Mean9above'] = Mean9above
 #                         print('outofcontrol9above',outofcontrol9above)
-
+                        print(' 9 above Mean for:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean9above,0))
+                        
+                        row = app_tables.changes.search(
+                                change_type="9 above Mean for",
+                                tablename= tablename,
+                                change_date= df[pointdate].iloc[i],
+                                new_mean=round(Mean9above,0))
+                        print(row['change_type'])
+                        if not row['change_type']:
+    
+                            row = app_tables.changes.add_row(
+                                    change_type="9 above Mean for",
+                                    tablename= tablename,
+                                    change_date= df[pointdate].iloc[i],
+                                    new_mean=round(Mean9above,0))
             if outofcontrol9above.empty:
                     nineabove = go.Scatter(
                     visible='legendonly',

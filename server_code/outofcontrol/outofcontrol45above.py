@@ -9,7 +9,7 @@ import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
 
-def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , showmeans):
+def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , showmeans, tablename):
     import pandas as pd
     import datetime
 
@@ -45,6 +45,7 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
             countx = 0
             Mean45 =outofcontrol45above[pointname].mean()
             outofcontrol45above['Mean45'] = Mean45
+            print(' 4 out of 5 for:' ,tablename,' at', df[pointdate].iloc[i], 'with New Mean=',Mean45)
 #             print ('outofcontrol45above', outofcontrol45above)
 #     if not outofcontrol45above.empty:
 #         # Filter out Orders below (sd + pointmean)

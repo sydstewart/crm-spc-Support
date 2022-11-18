@@ -245,12 +245,12 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
     
     
     ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded)
-    nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
+    nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename )
     down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showexcluded  )
     up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showexcluded   )
-    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
-    two3above,stagemeandictline = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded )
-    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded   )
+    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded , tablename)
+    two3above,stagemeandictline = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename )
+    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded  )
     Scatter=[
     
     go.Scatter(
