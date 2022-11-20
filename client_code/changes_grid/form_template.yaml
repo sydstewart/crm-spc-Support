@@ -20,7 +20,7 @@ components:
     enabled: true
     foreground: ''
     items: []
-    visible: true
+    visible: false
     font_size: null
     font: ''
     spacing_above: small
@@ -31,7 +31,7 @@ components:
     underline: false
     include_placeholder: false
   name: select_table_dropdown
-  layout_properties: {grid_position: 'ITCCMA,GXRRTC'}
+  layout_properties: {grid_position: 'ITCCMA,MLJNGN'}
   event_bindings: {change: select_table_dropdown_change}
 - type: ColumnPanel
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
@@ -65,6 +65,6 @@ components:
     components:
     - type: RepeatingPanel
       properties: {spacing_above: none, spacing_below: none, item_template: changes_grid.RowTemplate9}
-      name: repeating_panel_1
+      name: changes_repeating_panel_1
       layout_properties: {}
 is_package: true
