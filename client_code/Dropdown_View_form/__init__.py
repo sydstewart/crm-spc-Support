@@ -162,15 +162,15 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 
   def show_changes_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.content_panel.clear()
+    self.column_panel_3.clear()
    
     print('self.chartid_textbox.text)', self.chartid_textbox.text)
 #     get_changes(self.chartid_textbox.text)
     t = app_tables.charts.get(chartid = self.chartid_textbox.text)
     tablename =t['tablename']
-    open_form('changes_grid', tablename)
+#     open_form('changes_grid', tablename = tablename)
 #     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered']
-
+    self.column_panel_3.add_component(changes_grid( tablename = tablename))
     pass
 
 
