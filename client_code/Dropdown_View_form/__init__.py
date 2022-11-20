@@ -164,6 +164,10 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     """This method is called when the button is clicked"""
     self.content_panel.clear()
     open_form('changes_grid')
+    t = app_tables.charts.get(chartid = self.chartid_textbox.text)
+    tablename =t['tablename']
+    
+#     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered']
 
     pass
 

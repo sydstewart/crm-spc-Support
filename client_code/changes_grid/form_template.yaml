@@ -10,6 +10,29 @@ components:
   name: Return_to_Main_button
   layout_properties: {grid_position: 'BZYWQM,ONNPGL'}
   event_bindings: {click: Return_to_Main_button_click}
+- type: DropDown
+  properties:
+    role: null
+    align: full
+    tooltip: ''
+    placeholder: All
+    border: ''
+    enabled: true
+    foreground: ''
+    items: []
+    visible: true
+    font_size: null
+    font: ''
+    spacing_above: small
+    spacing_below: small
+    italic: false
+    background: ''
+    bold: false
+    underline: false
+    include_placeholder: false
+  name: select_table_dropdown
+  layout_properties: {grid_position: 'ITCCMA,GXRRTC'}
+  event_bindings: {change: select_table_dropdown_change}
 - type: ColumnPanel
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
     wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
@@ -38,7 +61,7 @@ components:
       spacing_below: small
       background: ''
     name: data_grid_1
-    layout_properties: {grid_position: 'IGKHEU,RRSWMR'}
+    layout_properties: {grid_position: 'IGKHEU,RRSWMR', full_width_row: true}
     components:
     - type: RepeatingPanel
       properties: {spacing_above: none, spacing_below: none, item_template: changes_grid.RowTemplate9}
