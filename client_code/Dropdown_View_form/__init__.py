@@ -40,7 +40,9 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     self.refresh_button.visible= False
 
 #     self.data_row_view.visible = True
-#     self.data_row_edit.visible = False   
+#     self.data_row_edit.visible = False
+    self.column_panel_3.clear()
+    self.column_panel_3.add_component(self.data_grid_1)
     self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(tables.order_by("order"), Active =True)]
     
   
@@ -74,6 +76,8 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
   def chart_selection_dropdown_change(self, **event_args):
     """This method is called when an item is selected"""
     self.refresh_button.visible= True
+    self.column_panel_3.clear()
+    self.column_panel_3.add_component(self.data_grid_1)
     selection(self)
     pass
 
@@ -105,15 +109,20 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 
   def show_excluded_button_click(self, **event_args):
     """This method is called when the button is clicked"""
+    self.column_panel_3.clear()
+    
     t = app_tables.charts.get(chartid = self.chartid_textbox.text)
     tablename =t['tablename']
+    self.column_panel_3.add_component(self.data_grid_1)
     self.repeating_panel_1.items = getattr(app_tables, tablename).search(exclude_point=True,  Date_Entered = q.between(self.date_picker_1.date,self.date_picker_2.date))
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
 
   def show_included_button_click(self, **event_args):
     """This method is called when the button is clicked"""
+    self.column_panel_3.clear()
     t = app_tables.charts.get(chartid = self.chartid_textbox.text)
     tablename =t['tablename']
+    self.column_panel_3.add_component(self.data_grid_1)
     self.repeating_panel_1.items = getattr(app_tables, tablename).search(exclude_point=False,  Date_Entered = q.between(self.date_picker_1.date,self.date_picker_2.date))
     self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
     pass

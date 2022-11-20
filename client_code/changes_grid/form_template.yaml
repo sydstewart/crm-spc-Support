@@ -14,7 +14,6 @@ components:
       role: null
       columns:
       - {id: UJCEIH, title: Change Type, data_key: change_type}
-      - {id: WWTIJN, title: Tablename, data_key: tablename}
       - {id: JWNWEJ, title: Change Date, data_key: change_date}
       - {id: JUYVMM, title: New Mean, data_key: new_mean}
       - {id: ZHOFVB, title: Reviewed, data_key: reviewed}
