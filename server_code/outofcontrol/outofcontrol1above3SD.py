@@ -9,7 +9,7 @@ import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
 
-def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd, showexluded ):
+def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd, showexluded , tablename):
         import pandas as pd
 
         print()
@@ -25,6 +25,20 @@ def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd, show
 
             if countx == 1:
                    outofcontrol1above = outofcontrol1above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
+                   print('1 above 3 sd:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")))
+                        
+                   row = app_tables.changes.get(
+                            change_type="1 above 3 sd",
+                            tablename= tablename,
+                            change_date= df[pointdate].iloc[i],
+                            new_mean=df[pointname].iloc[i])
+
+                   if not row:
+                          row = app_tables.changes.add_row(
+                                change_type="1 above 3 sd",
+                                tablename= tablename,
+                                change_date= df[pointdate].iloc[i],
+                                new_mean=df[pointname].iloc[i])
 
         if outofcontrol1above.empty:
             oneabove3 = go.Scatter(
