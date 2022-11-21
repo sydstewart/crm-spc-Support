@@ -13,4 +13,6 @@ class Changes_Today(Changes_TodayTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.changes_repeating_panel_1.items = app_tables.changes.search(change_date = (datetime.now())
+    today = datetime.today()
+    print('Today', today)
+    self.changes_repeating_panel_1.items = app_tables.changes.search(change_date = today)
