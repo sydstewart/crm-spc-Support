@@ -16,6 +16,8 @@ class changes_grid(changes_gridTemplate):
     self.init_components(**properties)
     tablename = properties['tablename']
     self.changes_repeating_panel_1.items = app_tables.changes.search(tablename = tablename)
+    self.changes_repeating_panel_1.items = sorted([r for r in self.changes_repeating_panel_1.items], key = lambda x: x['change_date'], reverse=True )
+
 
   def Return_to_Main_button_click(self, **event_args):
     """This method is called when the button is clicked"""

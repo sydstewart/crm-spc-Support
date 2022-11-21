@@ -39,17 +39,45 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-2],pointname:df[pointname].iloc[i-2]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                     outofcontrol23above = outofcontrol23above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
-                    print('2 out 3 at:', tablename, df[pointdate].iloc[i] )
+                    print('2 out 3 at:', tablename, df[pointdate].iloc[i] )                      
+
+                         
+                         
 #                     if numberfound > 1:
 #                       stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-3],pointmean:stagemean}, ignore_index=True)
                     
                     stagemean = (df[pointname].iloc[i-2] + df[pointname].iloc[i-1] + df[pointname].iloc[i])/3
-                    
+                  
+                    print('2 out 3 above:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(stagemean,0))
+                        
+                    row = app_tables.changes.get(
+                                change_type="2 out 3 above",
+                                tablename= tablename,
+                                change_date= df[pointdate].iloc[i],
+                                new_mean=round(stagemean,0))
+#                         print(row['change_type'])
+                    if not row:
+    
+                            row = app_tables.changes.add_row(
+                                    change_type="2 out 3 above",
+                                    tablename= tablename,
+                                    change_date= df[pointdate].iloc[i],
+                                    new_mean=round(stagemean,0))     
+
+      
                     stagemeandict  = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
                     stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-1],pointmean:stagemean}, ignore_index=True)
                     stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i],pointmean:stagemean}, ignore_index=True)
 #                     print ('stagemeandict',stagemeandict)
                     numberfound = 1 + numberfound
+  
+  
+  
+  
+  
+  
+  
+  
         if not outofcontrol23above.empty: 
                 #Filter out Orders below (2 * sd + pointmean)
 #                 outofcontrol23abovefilter =  outofcontrol23above[pointname] > (2 * sd + pointmean)

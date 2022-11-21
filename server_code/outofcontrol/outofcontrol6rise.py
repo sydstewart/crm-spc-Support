@@ -9,7 +9,7 @@ import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
 
-def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showmeans   ):
+def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showmeans, tablename   ):
             import pandas as pd
 
 
@@ -65,6 +65,21 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                         outofcontrol6rise['Mean6rise'] = Mean6rise
 #                         print ('outofcontrol6rise', outofcontrol6rise)
 #                         print('countx', countx)
+                        print(' 6 rising' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean6rise,0))
+                        
+                        row = app_tables.changes.get(
+                                change_type="6 rising",
+                                tablename= tablename,
+                                change_date= df[pointdate].iloc[i],
+                                new_mean=round(Mean6rise,0))
+#                         print(row['change_type'])
+                        if not row:
+    
+                            row = app_tables.changes.add_row(
+                                    change_type="6 rising",
+                                    tablename= tablename,
+                                    change_date= df[pointdate].iloc[i],
+                                    new_mean=round(Mean6rise,0))
 
             if outofcontrol6rise.empty:
                 up6 = go.Scatter(

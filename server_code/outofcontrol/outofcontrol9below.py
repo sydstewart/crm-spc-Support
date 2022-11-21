@@ -9,7 +9,7 @@ import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
 
-def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, showmeans):
+def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, showmeans , tablename):
 
             import pandas as pd
 
@@ -68,7 +68,21 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         Mean9below =outofcontrol9below[pointname].mean()
                         outofcontrol9below['Mean9below'] = Mean9below
                         print ('outofcontrol9below', outofcontrol9below)                                              
+                        print(' 9 below Mean for:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean9below,0))
                         
+                        row = app_tables.changes.get(
+                                change_type="9 Below Mean for",
+                                tablename= tablename,
+                                change_date= df[pointdate].iloc[i],
+                                new_mean=round(Mean9below,0))
+#                         print(row['change_type'])
+                        if not row:
+    
+                            row = app_tables.changes.add_row(
+                                    change_type="9 Below Mean for",
+                                    tablename= tablename,
+                                    change_date= df[pointdate].iloc[i],
+                                    new_mean=round(Mean9below,0))
   
 #                         stagemean = (df[pointname].iloc[i-8] + df[pointname].iloc[i-7] + df[pointname].iloc[i-1] +
 #                                      df[pointname].iloc[i-6] + df[pointname].iloc[i-5] + df[pointname].iloc[i -4] + 
