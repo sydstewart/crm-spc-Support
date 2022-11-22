@@ -20,11 +20,21 @@ class Changes_Today(Changes_TodayTemplate):
       
         print(table_name)
       
-        changes = app_tables.changes.search(tables.order_by('change_date', ascending=False), tablename = table_name)
-        if changes:  
-           for row1 in changes: 
-              print (row1['change_date'],row1['tablename'],row1['change_type'])
-        else:
-            print('No changes detected in ', table_name)
+        if len(app_tables.changes.search( tablename= table_name))  > 0 :
+            changes = app_tables.changes.search(tables.order_by('change_date', ascending=False), tablename = table_name)
+            latest = changes[0]
+       
+            self.repeating_panel_1.items = latest['change_date']
+         
+        
+#            latest = changes[0]
+        
+#            print (latest['change_date'],latest['tablename'],latest['change_type'])
+        
+#         if changes:  
+#            for row1 in changes: 
+#               print (row1['change_date'],row1['tablename'],row1['change_type'])
+#         else:
+#             print('No changes detected in ', table_name)
     
   
