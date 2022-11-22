@@ -79,7 +79,8 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                                     change_type="9 above Mean for",
                                     tablename= tablename,
                                     change_date= df[pointdate].iloc[i],
-                                    new_mean=round(Mean9above,0))
+                                    new_mean=round(Mean9above,0),
+                                    short_date = df[pointdate].iloc[i].date())
             if outofcontrol9above.empty:
                     nineabove = go.Scatter(
                     visible='legendonly',

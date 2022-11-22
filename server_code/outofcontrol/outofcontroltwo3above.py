@@ -62,7 +62,8 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                                     change_type="2 out 3 above",
                                     tablename= tablename,
                                     change_date= df[pointdate].iloc[i],
-                                    new_mean=round(stagemean,0))     
+                                    new_mean=round(stagemean,0),
+                                    short_date = df[pointdate].iloc[i].date())
 
       
                     stagemeandict  = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)

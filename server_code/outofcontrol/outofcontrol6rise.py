@@ -79,7 +79,8 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                                     change_type="6 rising",
                                     tablename= tablename,
                                     change_date= df[pointdate].iloc[i],
-                                    new_mean=round(Mean6rise,0))
+                                    new_mean=round(Mean6rise,0),
+                                    short_date = df[pointdate].iloc[i].date())
 
             if outofcontrol6rise.empty:
                 up6 = go.Scatter(

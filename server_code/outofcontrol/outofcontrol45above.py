@@ -45,7 +45,28 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
             countx = 0
             Mean45 =outofcontrol45above[pointname].mean()
             outofcontrol45above['Mean45'] = Mean45
-            print(' 4 out of 5 for:' ,tablename,' at', df[pointdate].iloc[i], 'with New Mean=',Mean45)
+          
+            print('4 out of 5 above:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean45,0))
+                        
+            row = app_tables.changes.get(
+                        change_type="4 out of 5 above",
+                        tablename= tablename,
+                        change_date= df[pointdate].iloc[i],
+                        new_mean=round(Mean45,0))
+#                         print(row['change_type'])
+            if not row:
+
+                    row = app_tables.changes.add_row(
+                            change_type="4 out of 5 above",
+                            tablename= tablename,
+                            change_date= df[pointdate].iloc[i],
+                            new_mean=round(Mean45,0),
+                            short_date = df[pointdate].iloc[i].date())
+            
+            
+            
+            
+            
 #             print ('outofcontrol45above', outofcontrol45above)
 #     if not outofcontrol45above.empty:
 #         # Filter out Orders below (sd + pointmean)

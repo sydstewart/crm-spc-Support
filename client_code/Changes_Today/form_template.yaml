@@ -9,6 +9,38 @@ components:
   name: column_panel_1
   layout_properties: {grid_position: 'MGEXPB,RQBABK', full_width_row: true}
   components:
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: TODAY, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: today_button
+    layout_properties: {grid_position: 'ZEVYGU,XJZAYX', full_width_row: true}
+    event_bindings: {click: today_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Last 3 Days, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: last_three_days_button
+    layout_properties: {grid_position: 'ZEVYGU,IQDZIB', full_width_row: true}
+    event_bindings: {click: last_three_days_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Last 7 Days, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: last_seven_days_button
+    layout_properties: {grid_position: 'ZEVYGU,ACWQZM', full_width_row: true}
+    event_bindings: {click: last_seven_days_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: REturn to Main menu, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: return_to_main_menu_button
+    layout_properties: {grid_position: 'ZEVYGU,OFQDEC', full_width_row: true}
+    event_bindings: {click: return_to_main_menu_button_click}
   - type: DataGrid
     properties:
       role: null
@@ -19,6 +51,7 @@ components:
       - {id: CELNWR, title: New Mean, data_key: new_mean}
       - {id: GUYAFL, title: Reviewed, data_key: reviewed}
       - {id: DMNWHP, title: Short Date, data_key: short_date}
+      - {id: LUSEXX, title: Chart, data_key: column_1}
       auto_header: true
       tooltip: ''
       border: ''

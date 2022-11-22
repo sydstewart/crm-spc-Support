@@ -7,6 +7,7 @@ import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ...selection import selection
 
 class RowTemplate11(RowTemplate11Template):
   def __init__(self, **properties):
@@ -14,3 +15,12 @@ class RowTemplate11(RowTemplate11Template):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
+
+  def see_chart_link_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    self.column_panel_1.clear()
+  
+    self.column_panel_1.add_component(Dropdown_View_Form)
+    
+    pass
+
