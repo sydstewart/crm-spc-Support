@@ -82,7 +82,8 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                                     change_type="9 Below Mean for",
                                     tablename= tablename,
                                     change_date= df[pointdate].iloc[i],
-                                    new_mean=round(Mean9below,0))
+                                    new_mean=round(Mean9below,0),
+                                    short_date = df[pointdate].iloc[i].date())
   
 #                         stagemean = (df[pointname].iloc[i-8] + df[pointname].iloc[i-7] + df[pointname].iloc[i-1] +
 #                                      df[pointname].iloc[i-6] + df[pointname].iloc[i-5] + df[pointname].iloc[i -4] + 

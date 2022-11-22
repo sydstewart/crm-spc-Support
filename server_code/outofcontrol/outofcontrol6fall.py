@@ -80,7 +80,8 @@ def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showm
                           change_type="6 falling",
                           tablename= tablename,
                           change_date= df[pointdate].iloc[i],
-                          new_mean=round(Mean6fall,0))
+                          new_mean=round(Mean6fall,0),
+                          short_date = df[pointdate].iloc[i].date())
       
   if outofcontrol6fall.empty:
         down6 = go.Scatter(

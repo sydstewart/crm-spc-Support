@@ -18,6 +18,7 @@ components:
       - {id: APSWRM, title: Change Date, data_key: change_date}
       - {id: CELNWR, title: New Mean, data_key: new_mean}
       - {id: GUYAFL, title: Reviewed, data_key: reviewed}
+      - {id: DMNWHP, title: Short Date, data_key: short_date}
       auto_header: true
       tooltip: ''
       border: ''

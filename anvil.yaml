@@ -24,7 +24,7 @@ services:
 - source: /runtime/services/anvil/email.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: Changes_Today}
+startup: {type: form, module: Dropdown_View_form}
 package_name: CRM_SPC
 allow_embedding: false
 name: CRM SPC
@@ -212,6 +212,9 @@ db_schema:
     - name: reviewed
       admin_ui: {width: 200}
       type: bool
+    - name: short_date
+      admin_ui: {width: 200}
+      type: date
   projects_with_4s:
     title: projects_with_4s
     client: full

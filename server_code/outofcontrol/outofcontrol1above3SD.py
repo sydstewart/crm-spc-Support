@@ -8,6 +8,7 @@ from anvil.tables import app_tables
 import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
+from datetime import datetime, time , date , timedelta
 
 def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd, showexluded , tablename):
         import pandas as pd
@@ -38,7 +39,8 @@ def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd, show
                                 change_type="1 above 3 sd",
                                 tablename= tablename,
                                 change_date= df[pointdate].iloc[i],
-                                new_mean=df[pointname].iloc[i])
+                                new_mean=df[pointname].iloc[i],
+                                short_date = df[pointdate].iloc[i].date())
 
         if outofcontrol1above.empty:
             oneabove3 = go.Scatter(
