@@ -7,13 +7,12 @@ import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from datetime import datetime, time , date, delta
+from datetime import datetime, time , date 
 
 class Changes_Today(Changes_TodayTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     
-    today = date.now()
-
-    self.repeating_panel_1.items = app_tables.changes.search()
+   
+    self.repeating_panel_1.items = app_tables.changes.search(tables.order_by('change_date', ascending=False))[0]
