@@ -14,5 +14,17 @@ class Changes_Today(Changes_TodayTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     
-   
-    self.repeating_panel_1.items = app_tables.changes.search(tables.order_by('change_date', ascending=False))[0]
+    t = app_tables.charts.search(Active= True)
+    for row in t:
+        table_name = row['tablename']
+      
+        print(table_name)
+      
+        changes = app_tables.changes.search(tables.order_by('change_date', ascending=False), tablename = table_name)
+        if changes:  
+           for row1 in changes: 
+              print (row1['change_date'],row1['tablename'],row1['change_type'])
+        else:
+            print('No changes detected in ', table_name)
+    
+  
