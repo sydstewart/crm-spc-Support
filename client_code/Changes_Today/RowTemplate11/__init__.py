@@ -18,9 +18,9 @@ class RowTemplate11(RowTemplate11Template):
 
   def see_chart_link_click(self, **event_args):
     """This method is called when the link is clicked"""
-    self.column_panel_1.clear()
-  
-    self.column_panel_1.add_component(Dropdown_View_Form)
-    
+#     self.column_panel_1.clear()
+    open_form('Dropdown_View_form', chart=self.item)
+#     self.column_panel_1.add_component(Dropdown_View_Form)
+
     pass
 
