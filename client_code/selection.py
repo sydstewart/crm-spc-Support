@@ -249,7 +249,7 @@ def selectchartdate(self, chartid):
         pass
 
     
-def selection_from_change(self, tablename):
+def selection_from_change(tablename):
   
 #     if self.chart_selection_dropdown.selected_value == 'All_Cases_with_4S':
 #          chartid = 4
@@ -261,6 +261,9 @@ def selection_from_change(self, tablename):
 #          chartid = 6
 #     if self.chart_selection_dropdown.selected_value == 'Printing Problems':
 #          chartid = 7
+#         self.chart = properties['chart'
+#         open_form('Dropdown_View_form')
+#         tablename = self.tablename
         print('Start to find Chart Table '+str(datetime.now()))
         t = app_tables.charts.get(tablename = tablename)
           
