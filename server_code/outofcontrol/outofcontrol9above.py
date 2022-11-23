@@ -63,24 +63,28 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                         outofcontrol9above = outofcontrol9above.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
                         countx = 0
                         Mean9above =outofcontrol9above[pointname].mean()
+                        mean = Mean9above
+                        change_type = '9 above Mean'
                         outofcontrol9above['Mean9above'] = Mean9above
+                        lastpointdate = df[pointdate].iloc[i]
+                        anvil.server.call('savechanges',tablename,lastpointdate,mean, change_type)
 #                         print('outofcontrol9above',outofcontrol9above)
-                        print(' 9 above Mean for:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean9above,0))
+#                         print(' 9 above Mean for:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean9above,0))
                         
-                        row = app_tables.changes.get(
-                                change_type="9 above Mean for",
-                                tablename= tablename,
-                                change_date= df[pointdate].iloc[i],
-                                new_mean=round(Mean9above,0))
-#                         print(row['change_type'])
-                        if not row:
+#                         row = app_tables.changes.get(
+#                                 change_type="9 above Mean for",
+#                                 tablename= tablename,
+#                                 change_date= df[pointdate].iloc[i],
+#                                 new_mean=round(Mean9above,0))
+# #                         print(row['change_type'])
+#                         if not row:
     
-                            row = app_tables.changes.add_row(
-                                    change_type="9 above Mean for",
-                                    tablename= tablename,
-                                    change_date= df[pointdate].iloc[i],
-                                    new_mean=round(Mean9above,0),
-                                    short_date = df[pointdate].iloc[i].date())
+#                             row = app_tables.changes.add_row(
+#                                     change_type="9 above Mean for",
+#                                     tablename= tablename,
+#                                     change_date= df[pointdate].iloc[i],
+#                                     new_mean=round(Mean9above,0),
+#                                     short_date = df[pointdate].iloc[i].date())
             if outofcontrol9above.empty:
                     nineabove = go.Scatter(
                     visible='legendonly',
