@@ -8,6 +8,7 @@ from anvil.tables import app_tables
 import anvil.secrets
 import anvil.server
 
+@anvil.server.callable
 def savechanges(tablename,lastpointdate,mean, change_type ):
             print(change_type,tablename,' at', (lastpointdate.strftime("%b %d, %Y")), 'with New Mean=',round(mean,0))
                         

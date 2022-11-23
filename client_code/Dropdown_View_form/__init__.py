@@ -187,7 +187,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 
 
     
-#     anvil.server.call('batch_detection')
+    anvil.server.call('batch_detection')
     open_form('Changes_Today')
     pass
 
