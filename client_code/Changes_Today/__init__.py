@@ -17,10 +17,14 @@ class Changes_Today(Changes_TodayTemplate):
 #     self.repeating_panel_1.items = app_tables.changes.search(tables.order_by('short_date', ascending=False))
     today = date.today()
 
-    current_date =  today.strftime("%Y-%m-%d")
+#     current_date =  today.strftime("%Y-%m-%d")
     
-    self.repeating_panel_1.items  = app_tables.changes.search(tables.order_by('short_date', ascending=False), short_date= today)
-    
+#     self.repeating_panel_1.items  = app_tables.changes.search(tables.order_by('short_date', ascending=False), short_date= today)
+#     today = date.today()
+    threedays = today - timedelta(days =3)
+    self.last_three_days_button.background = 'theme:Gray 300'
+    self.last_seven_days_button.background = 'White'
+    self.repeating_panel_1.items  = app_tables.changes.search(tables.order_by('short_date', ascending=False), short_date=q.greater_than_or_equal_to(threedays ))    
 #     t = app_tables.charts.search(Active= True)
 #     for row in t:
 #         table_name= row['tablename']
@@ -48,8 +52,13 @@ class Changes_Today(Changes_TodayTemplate):
     today = date.today()
     sevendays = today - timedelta(days =7)
     
+    self.last_three_days_button.background = 'White'
+    self.last_seven_days_button.background = 'theme:Gray 300'
+    self.today_button.background = 'White'
     
     self.repeating_panel_1.items  = app_tables.changes.search(tables.order_by('short_date', ascending=False), short_date=q.greater_than_or_equal_to(sevendays ))
+    
+    
     pass
 
   def return_to_main_menu_button_click(self, **event_args):
@@ -61,15 +70,19 @@ class Changes_Today(Changes_TodayTemplate):
     """This method is called when the button is clicked"""
     today = date.today()
     threedays = today - timedelta(days =3)
-    
-    
+      
+    self.last_three_days_button.background = 'theme:Gray 300'
+    self.last_seven_days_button.background = 'White'
+    self.today_button.background = 'White'
     self.repeating_panel_1.items  = app_tables.changes.search(tables.order_by('short_date', ascending=False), short_date=q.greater_than_or_equal_to(threedays ))
     pass
 
   def today_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     today = date.today()
-    
+    self.last_three_days_button.background = 'White'
+    self.last_seven_days_button.background = 'White'
+    self.today_button.background = 'theme:Gray 300'
     
     self.repeating_panel_1.items  = app_tables.changes.search(tables.order_by('short_date', ascending=False), short_date=today)
     pass

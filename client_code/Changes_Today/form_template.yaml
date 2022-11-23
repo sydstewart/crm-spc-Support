@@ -11,20 +11,20 @@ components:
   components:
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Last 3 Days, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: last_three_days_button
+    layout_properties: {grid_position: 'ZEVYGU,LRSQTJ', full_width_row: true}
+    event_bindings: {click: last_three_days_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: TODAY, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: today_button
     layout_properties: {grid_position: 'ZEVYGU,XJZAYX', full_width_row: true}
     event_bindings: {click: today_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Last 3 Days, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: last_three_days_button
-    layout_properties: {grid_position: 'ZEVYGU,IQDZIB', full_width_row: true}
-    event_bindings: {click: last_three_days_button_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Last 7 Days, font_size: null, font: '',

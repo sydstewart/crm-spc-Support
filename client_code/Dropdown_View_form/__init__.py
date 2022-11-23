@@ -187,9 +187,15 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 
 
     
-    anvil.server.call('batch_detection')
+#     anvil.server.call('batch_detection')
     open_form('Changes_Today')
     pass
+
+  def generate_changes_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.server.call('batch_detection')
+    pass
+
 
 
 
