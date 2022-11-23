@@ -8,6 +8,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from ...selection import selection
+from ...selection import selection_from_change
 
 class RowTemplate11(RowTemplate11Template):
   def __init__(self, **properties):
@@ -21,6 +22,7 @@ class RowTemplate11(RowTemplate11Template):
 #     self.column_panel_1.clear()
     open_form('Dropdown_View_form', chart=self.item)
 #     self.column_panel_1.add_component(Dropdown_View_Form)
+    selection_from_change(self, tablename)
 
     pass
 
