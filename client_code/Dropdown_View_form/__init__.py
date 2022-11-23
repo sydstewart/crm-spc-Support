@@ -20,6 +20,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+#     tablename = properties['tablename']
 #     configure_mfa_with_form()
     anvil.users.login_with_form()
 #     mfa_login_with_form()
