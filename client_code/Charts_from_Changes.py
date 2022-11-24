@@ -46,7 +46,7 @@ class Charts_from_Changes(Charts_from_ChangesTemplate):
 #     self.data_row_edit.visible = False
     self.column_panel_3.clear()
     self.column_panel_3.add_component(self.data_grid_1)
-    self.chart_selection_dropdown.items = [row['tablename'] for row in app_tables.charts.search(tables.order_by("order"), Active =True)]
+#     self.chart_selection_dropdown.items = [row['tablename'] for row in app_tables.charts.search(tables.order_by("order"), Active =True)]
     
     self.chart = properties['chart']
 #     self.text_box_1.text = self.chart['tablename']
@@ -61,7 +61,7 @@ class Charts_from_Changes(Charts_from_ChangesTemplate):
     columnname = t['Measure_Column_Name']
     chartname = t['Chart_Name'] 
     chartid = t['chartid']
-    self.chart_selection_dropdown.selected_value = tablename
+    self.chart_selection_dropdown.selected_value = chartname
     
     r = getattr(app_tables, tablename).search(exclude_point=True)
     

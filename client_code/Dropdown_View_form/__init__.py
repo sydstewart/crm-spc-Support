@@ -37,6 +37,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
           self.button_view_button.visible = False 
           self.dropdown_view_button.visible = False
           self.main_maintenance_button.visible =False
+          self.batch_detection_button.visible = True
     
     self.refresh_button.visible= False
 
