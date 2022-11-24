@@ -63,8 +63,8 @@ def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showm
               print ('stagemeandict',stagemeandict)
 
               countx = 0
-              mean6fall =outofcontrol6fall[pointname].mean()
-              outofcontrol6fall['Mean6fall'] = mean6fall  
+              Mean6fall =outofcontrol6fall[pointname].mean()
+              outofcontrol6fall['Mean6fall'] = Mean6fall  
 #               print('outofcontrol6fall',outofcontrol6fall)
               print(' 6 falling' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean6fall,0))
                         
@@ -110,7 +110,7 @@ def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showm
             x=stagemeandict[pointdate],
             y=stagemeandict[pointmean],
                       mode='lines',
-                      name='New Mean from 6 falling =' + str(round(mean6fall, 1)),
+                      name='New Mean from 6 falling =' + str(round(Mean6fall, 1)),
                       marker=dict(
                           color='green',
                           size=7,

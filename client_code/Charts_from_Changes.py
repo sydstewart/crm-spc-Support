@@ -11,7 +11,7 @@ from anvil.tables import app_tables
 from datetime import datetime, time , date, timedelta
 from .AddRow import AddRow
 # from ..AddRow import AddRow
-# from . selection import selection
+from . selection import selection
 from . selection  import selectiondate
 from . selection import selectchart
 from .selection import selection_from_change
@@ -39,6 +39,8 @@ class Charts_from_Changes(Charts_from_ChangesTemplate):
           self.button_view_button.visible = False 
           self.dropdown_view_button.visible = False
           self.main_maintenance_button.visible =False
+          self.generate_changes_button.visible = True
+          self.batch_detection_button.visible = True
     
     self.refresh_button.visible= False
 
@@ -88,7 +90,7 @@ class Charts_from_Changes(Charts_from_ChangesTemplate):
 
   def excluded_checkbox_change(self, **event_args):
     """This method is called when this checkbox is checked or unchecked"""
-    selection(self)
+    selection_from_change(self, tablename, columnname, showexcluded, chartid, chartname)
     pass
 
   def refresh_button_click(self, **event_args):
