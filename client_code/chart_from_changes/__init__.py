@@ -17,5 +17,5 @@ class chart_from_changes(chart_from_changesTemplate):
     self.chart = properties['chart']
     self.text_box_1.text = self.chart['tablename']
     tablename = self.chart['tablename']
-    selection_from_change(tablename )
+    open_form('Charts_from_Changes', chart =self.item )
     # Any code you write here will run when the form opens.
