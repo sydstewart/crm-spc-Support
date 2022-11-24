@@ -249,7 +249,7 @@ def selectchartdate(self, chartid):
         pass
 
     
-def selection_from_change(tablename):
+def selection_from_change(self):
   
 #     if self.chart_selection_dropdown.selected_value == 'All_Cases_with_4S':
 #          chartid = 4
@@ -264,22 +264,22 @@ def selection_from_change(tablename):
 #         self.chart = properties['chart'
 #         open_form('Dropdown_View_form')
 #         tablename = self.tablename
-        print('Start to find Chart Table '+str(datetime.now()))
-        t = app_tables.charts.get(tablename = tablename)
+#         print('Start to find Chart Table '+str(datetime.now()))
+#         t = app_tables.charts.get(tablename = tablename)
           
-        self.date_picker_1.date =t['StartDate']
-        self.date_picker_2.date =t['EndDate'] + timedelta(days=1)
-        showexcluded = self.excluded_checkbox.checked 
-        tablename =t['tablename']
-        columnname = t['Measure_Column_Name']
-        chartname = t['Chart_Name'] 
-        chartid = t['chartid']
-    #     print(self.plot_1.layout.title)
-        print(columnname )
-        print(t['Date_Column_Name'])
+#         self.date_picker_1.date =t['StartDate']
+#         self.date_picker_2.date =t['EndDate'] + timedelta(days=1)
+#         showexcluded = self.excluded_checkbox.checked 
+#         tablename =t['tablename']
+#         columnname = t['Measure_Column_Name']
+#         chartname = t['Chart_Name'] 
+#         chartid = t['chartid']
+#     #     print(self.plot_1.layout.title)
+#         print(columnname )
+#         print(t['Date_Column_Name'])
         
-        print('End to find Chart Table '+str(datetime.now()))
-        print('Start to find Rows '+str(datetime.now()))    
+#         print('End to find Chart Table '+str(datetime.now()))
+#         print('Start to find Rows '+str(datetime.now()))    
         Scatter, total_rows ,total_excluded, mean, stdev, waitinglist= anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
         print(columnname )
         print('total_rows=',total_rows)

@@ -8,12 +8,13 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from datetime import datetime, time , date
+from datetime import datetime, time , date, timedelta
 from .AddRow import AddRow
 # from ..AddRow import AddRow
-from . selection import selection
+# from . selection import selection
 from . selection  import selectiondate
 from . selection import selectchart
+from .selection import selection_from_change
 from .changes_grid import changes_grid
 
 
@@ -52,10 +53,18 @@ class Charts_from_Changes(Charts_from_ChangesTemplate):
     print( self.chart['tablename'])
     tablename = self.chart['tablename']
     
-    
-    
+    t = app_tables.charts.get(tablename= tablename)
+      
+    self.date_picker_1.date =t['StartDate']
+    self.date_picker_2.date =t['EndDate'] + timedelta(days=1)
+    showexcluded = self.excluded_checkbox.checked 
+    tablename =t['tablename']
+    columnname = t['Measure_Column_Name']
+    chartname = t['Chart_Name'] 
+    chartid = t['chartid']
     self.chart_selection_dropdown.selected_value = tablename
-
+  
+#     selection_from_change(self))
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Charts')
