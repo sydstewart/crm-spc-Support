@@ -249,7 +249,8 @@ def selectchartdate(self, chartid):
         pass
 
     
-def selection_from_change(self):
+def selection_from_change(self, tablename, columnname, showexcluded, chartid, chartname):
+  
   
 #     if self.chart_selection_dropdown.selected_value == 'All_Cases_with_4S':
 #          chartid = 4
@@ -307,7 +308,7 @@ def selection_from_change(self):
             self.repeating_panel_1.items = waitinglist
             self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
       
-    #         t = app_tables.charts.get(Chart_Name= self.chart_selection_dropdown.selected_value)
+            t = app_tables.charts.get(chartid=chartid)
             t['StartDate'] = self.date_picker_1.date
             t['EndDate'] = self.date_picker_2.date
           #     print(columnname )

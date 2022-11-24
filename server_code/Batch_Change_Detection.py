@@ -24,18 +24,18 @@ def batch_detection():
   rows = app_tables.charts.search(Active= True)
   for row in rows:
 #     print (row('Chart_Name'))
-#     t = app_tables.charts.get(chartid = chartid)
+    t = app_tables.charts.get(chartid = row['chartid'])
     tablename =row['tablename']
-#     startdate = datetime(row['StartDate'])
-#     enddate = datetime(row['EndDate'])
+    startdate = (row['StartDate'])
+    enddate = (row['EndDate'])
 #     print(enddate)
-    startdate =  datetime(day=1, month=8, year=2022)
-    enddate =  datetime.now()
+#     startdate =  datetime(day=1, month=8, year=2022)
+#     enddate =  datetime.now()
 #     enddate = enddate + timedelta(days=1)
-#     print(tablename)
+    print(tablename)
 #     print(columnname)
-#     print(startdate)
-#     print(enddate)
+    print(startdate)
+    print(enddate)
       
   
   #     print(enddate)

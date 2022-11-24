@@ -55,16 +55,21 @@ class Charts_from_Changes(Charts_from_ChangesTemplate):
     
     t = app_tables.charts.get(tablename= tablename)
       
-    self.date_picker_1.date =t['StartDate']
-    self.date_picker_2.date =t['EndDate'] + timedelta(days=1)
+
     showexcluded = self.excluded_checkbox.checked 
     tablename =t['tablename']
     columnname = t['Measure_Column_Name']
     chartname = t['Chart_Name'] 
     chartid = t['chartid']
     self.chart_selection_dropdown.selected_value = tablename
-  
-#     selection_from_change(self))
+    
+    r = getattr(app_tables, tablename).search(exclude_point=True)
+    
+   
+    self.date_picker_1.date = t['StartDate']
+    self.date_picker_2.date = t['EndDate']
+    selection_from_change(self, tablename, columnname, showexcluded, chartid, chartname)
+    
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Charts')
@@ -213,6 +218,12 @@ class Charts_from_Changes(Charts_from_ChangesTemplate):
     """This method is called when the button is clicked"""
     anvil.server.call('batch_detection')
     pass
+
+  def button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Dropdown_View_form')
+    pass
+
 
 
 
