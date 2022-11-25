@@ -33,9 +33,9 @@ def listprojects():
 #                   (invoice_cstm.newexistingormaintenance_c = 'Existing') \
 #                 Group By YM \
 #                 Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
-                  "Select * from projects")
+                  "Select * from projects where projectStatus LIKE 'active' AND projectStartDate iS NOT NULL")
     
 #     return cur.fetchall() 
-  dicts = [{'Name': r['projectname'],'Category':r['projectcategories']}
+  dicts = [{'Name': r['projectname'],'Start Date':r['projectStartDate'], 'End Date':r['projectEndDate'], 'Status': r['projectStatus']}
             for r in cur.fetchall()]
   return dicts

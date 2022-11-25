@@ -1,4 +1,33 @@
 container: {type: DataRowPanel}
-components: []
+components:
+- type: TextBox
+  properties: {}
+  name: text_box_1
+  layout_properties: {column: VRSYMV}
+  data_bindings:
+  - {property: text, code: 'self.item[''Name'']', writeback: true}
+- type: DatePicker
+  properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
+    placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
+    font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
+    min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
+  name: date_picker_1
+  layout_properties: {column: OQLSTC}
+  data_bindings:
+  - {property: date, code: 'self.item[''Start Date'']', writeback: true}
+- type: DatePicker
+  properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
+    placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
+    font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
+    min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
+  name: date_picker_2
+  layout_properties: {column: GVXIYK}
+  data_bindings:
+  - {property: date, code: 'self.item[''End Date'']', writeback: true}
+- type: TextBox
+  properties: {}
+  name: text_box_2
+  layout_properties: {column: NXPHWU}
+  data_bindings:
+  - {property: text, code: 'self.item[''Status'']', writeback: true}
 is_package: true
-untouched: true

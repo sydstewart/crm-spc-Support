@@ -3,15 +3,20 @@ container:
   properties: {col_widths: '{}'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
   name: column_panel_1
-  layout_properties: {grid_position: 'YVGKBU,QBBHUQ'}
+  layout_properties: {grid_position: 'YVGKBU,QBBHUQ', full_width_row: true}
   components:
   - type: DataGrid
     properties:
       role: null
       columns:
       - {id: VRSYMV, title: Project Name, data_key: Name}
+      - {id: OQLSTC, title: Start Date, data_key: projectStartDate}
+      - {id: GVXIYK, title: End Date, data_key: column_1}
+      - {id: NXPHWU, title: Status, data_key: projectStatus}
       auto_header: true
       tooltip: ''
       border: ''
@@ -24,7 +29,7 @@ components:
       spacing_below: small
       background: ''
     name: data_grid_1
-    layout_properties: {grid_position: 'QZYHWO,BAXKRP'}
+    layout_properties: {grid_position: 'QZYHWO,BAXKRP', full_width_row: true}
     components:
     - type: RepeatingPanel
       properties: {spacing_above: none, spacing_below: none, item_template: Projects.RowTemplate12}
