@@ -36,6 +36,6 @@ def listprojects():
                   "Select * from projects")
     
 #     return cur.fetchall() 
-  dicts = [{'Name': r['projectname'],'StartDate':r['startDate']}
+  dicts = [{'Name': r['projectname'],'Category':r['projectcategories']}
             for r in cur.fetchall()]
   return dicts
