@@ -35,7 +35,7 @@ components:
   name: text_box_3
   layout_properties: {column: HOYBVE}
   data_bindings:
-  - {property: text, code: 'self.item[''Board Name'']', writeback: true}
+  - {property: text, code: 'self.item[''BoardName'']', writeback: true}
 - type: TextBox
   properties: {}
   name: text_box_4

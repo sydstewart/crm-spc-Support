@@ -31,9 +31,9 @@ components:
       - {id: VDHIOM, title: Company, data_key: Company, width: 224, expand: false}
       - {id: VRSYMV, title: Project Name, data_key: Name, width: 253, expand: false}
       - {id: OQLSTC, title: Start Date, data_key: projectStartDate, width: 99, expand: false}
-      - {id: GVXIYK, title: End Date, data_key: column_1, width: 103, expand: false}
+      - {id: GVXIYK, title: End Date, data_key: projectEndDate, width: 103, expand: false}
       - {id: NXPHWU, title: Status, data_key: projectStatus, width: 83, expand: false}
-      - {id: HOYBVE, title: Board, data_key: boardname}
+      - {id: HOYBVE, title: Board, data_key: BoardName}
       auto_header: true
       tooltip: ''
       border: ''

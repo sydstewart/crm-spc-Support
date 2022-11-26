@@ -249,6 +249,29 @@ db_schema:
     - name: noteCol
       admin_ui: {width: 200}
       type: string
+  projects:
+    title: projects
+    client: none
+    server: full
+    columns:
+    - name: company
+      admin_ui: {width: 200}
+      type: string
+    - name: projectname
+      admin_ui: {width: 305}
+      type: string
+    - name: status
+      admin_ui: {width: 200}
+      type: string
+    - name: boardname
+      admin_ui: {width: 200}
+      type: string
+    - name: startdate
+      admin_ui: {width: 200}
+      type: date
+    - name: enddate
+      admin_ui: {width: 200}
+      type: date
   printing_problems:
     title: Printing_problems
     client: full

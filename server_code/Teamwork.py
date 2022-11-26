@@ -25,20 +25,24 @@ def listprojects():
     cur.execute(
 
                   "Select projects.projectname, companies.companyName as Company, projects.projectStatus, \
-                  projects.projectStartDate, projects.projectEndDate,\
-                  projectcategories.projectCategoryName, projects.projectCompleted,\
-                  portfolioboards.boardName as boardname, portfoliocards.boardId, portfoliocolumns.columnName\
-                 From projects Inner Join\
-                  companies On projects.companyId = companies.companyId Inner Join \
-                  projectcategories On projects.projectCategoryId = \
-                    projectcategories.projectCategoryId Inner Join \
-                  portfoliocards On projects.projectId = portfoliocards.projectId Inner Join \
-                  portfolioboards On portfoliocards.boardId = portfolioboards.boardId Inner Join \
-                  portfoliocolumns On portfoliocards.columnId = portfoliocolumns.columnId \
-                  Where companies.companyName Like '4S%'")
+                    projects.projectStartDate, projects.projectEndDate, \
+                    projectcategories.projectCategoryName, projects.projectCompleted, \
+                    portfolioboards.boardName as boardname, portfoliocards.boardId, \
+                    portfoliocolumns.columnName \
+                  From projects Inner Join \
+                    companies On projects.companyId = companies.companyId Inner Join  \
+                    projectcategories On projects.projectCategoryId = \
+                      projectcategories.projectCategoryId Inner Join \
+                    portfoliocards On projects.projectId = portfoliocards.projectId Inner Join \
+                    portfolioboards On portfoliocards.boardId = portfolioboards.boardId Inner Join \
+                    portfoliocolumns On portfoliocards.columnId = portfoliocolumns.columnId \
+                    Where companies.companyName Like '4S%' and   projects.projectStatus = 'Active' \
+                    and   projects.projectname NOT like '4s%'")
     
 #     return cur.fetchall() 
-  dicts = [{'Company': r['Company'],'Name': r['projectname'],'Start Date':r['projectStartDate'], 'End Date':r['projectEndDate'], 'Status': r['projectStatus'], 'Board Name': r['boardname']}
+  dicts = [{'Company': r['Company'],'Name': r['projectname'],'StartDate':r['projectStartDate'], 'EndDate':r['projectEndDate'], 'Status': r['projectStatus'], 'BoardName': r['boardname']}
             for r in cur.fetchall()]
+  for row in dicts:
+    app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
   total_rows = len(dicts)
   return dicts, total_rows
