@@ -33,7 +33,12 @@ def listprojects():
 #                   (invoice_cstm.newexistingormaintenance_c = 'Existing') \
 #                 Group By YM \
 #                 Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
-                  "Select * from projects where projectStatus LIKE 'active' AND projectStartDate iS NOT NULL")
+                  "Select * from projects, companies \
+                   where projectStatus LIKE 'active' AND projectStartDate iS NOT NULL AND
+                   projetcts.companyID = companies.company\
+                  From projects Inner Join \
+                  
+      ")
     
 #     return cur.fetchall() 
   dicts = [{'Name': r['projectname'],'Start Date':r['projectStartDate'], 'End Date':r['projectEndDate'], 'Status': r['projectStatus']}
