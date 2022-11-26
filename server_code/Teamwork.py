@@ -23,24 +23,20 @@ def listprojects():
   conn = connect()
   with conn.cursor() as cur:
     cur.execute(
-#                 "Select Date_Format(invoice.date_entered, '%Y/%m/%01') As YM \
-#                       , Sum(invoice.amount_usdollar) As \
-#                       NewandExisting_Invoice_total \
-#                 From invoice Inner Join \
-#                   invoice_cstm On invoice_cstm.id_c = invoice.id Inner Join \
-#                   accounts On invoice.shipping_account_id = accounts.id \
-#                 Where (invoice_cstm.newexistingormaintenance_c = 'New') Or \
-#                   (invoice_cstm.newexistingormaintenance_c = 'Existing') \
-#                 Group By YM \
-#                 Order By Date_Format(Date(invoice.date_entered), '%Y/%m')")  
-                  "Select * from projects, companies \
-                   where projectStatus LIKE 'active' AND projectStartDate iS NOT NULL AND
-                   projetcts.companyID = companies.company\
-                  From projects Inner Join \
-                  
-      ")
+
+                  "Select projects.projectname, companies.companyName as Company, projects.projectStatus, \
+                  projects.projectStartDate, projects.projectEndDate,\
+                  projectcategories.projectCategoryName, projects.projectCompleted,\
+                  portfolioboards.boardName as boardname, portfoliocards.boardId, portfoliocolumns.columnName\
+                 From projects Inner Join\
+                  companies On projects.companyId = companies.companyId Inner Join \
+                  projectcategories On projects.projectCategoryId = \
+                    projectcategories.projectCategoryId Inner Join \
+                  portfoliocards On projects.projectId = portfoliocards.projectId Inner Join \
+                  portfolioboards On portfoliocards.boardId = portfolioboards.boardId Inner Join \
+                  portfoliocolumns On portfoliocards.columnId = portfoliocolumns.columnId")
     
 #     return cur.fetchall() 
-  dicts = [{'Name': r['projectname'],'Start Date':r['projectStartDate'], 'End Date':r['projectEndDate'], 'Status': r['projectStatus']}
+  dicts = [{'Company': r['Company'],'Name': r['projectname'],'Start Date':r['projectStartDate'], 'End Date':r['projectEndDate'], 'Status': r['projectStatus'], 'Board Name': r['boardname']}
             for r in cur.fetchall()]
   return dicts

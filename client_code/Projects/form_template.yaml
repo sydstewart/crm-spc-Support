@@ -13,10 +13,12 @@ components:
     properties:
       role: null
       columns:
+      - {id: VDHIOM, title: Company, data_key: Company}
       - {id: VRSYMV, title: Project Name, data_key: Name}
       - {id: OQLSTC, title: Start Date, data_key: projectStartDate}
       - {id: GVXIYK, title: End Date, data_key: column_1}
       - {id: NXPHWU, title: Status, data_key: projectStatus}
+      - {id: HOYBVE, title: Board, data_key: boardname}
       auto_header: true
       tooltip: ''
       border: ''

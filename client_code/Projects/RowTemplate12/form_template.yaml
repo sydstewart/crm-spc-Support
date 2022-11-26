@@ -30,4 +30,16 @@ components:
   layout_properties: {column: NXPHWU}
   data_bindings:
   - {property: text, code: 'self.item[''Status'']', writeback: true}
+- type: TextBox
+  properties: {}
+  name: text_box_3
+  layout_properties: {column: HOYBVE}
+  data_bindings:
+  - {property: text, code: 'self.item[''Board Name'']', writeback: true}
+- type: TextBox
+  properties: {}
+  name: text_box_4
+  layout_properties: {column: VDHIOM}
+  data_bindings:
+  - {property: text, code: 'self.item[''Company'']', writeback: true}
 is_package: true
