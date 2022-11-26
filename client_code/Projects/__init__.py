@@ -14,6 +14,8 @@ class Projects(ProjectsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
-    projects = anvil.server.call('listprojects')
+    projects, total_rows = anvil.server.call('listprojects')
     print (projects)
+    print('Total Rows = ', total_rows)
+    self.total_rows_text.text = total_rows
     self.repeating_panel_1.items = projects

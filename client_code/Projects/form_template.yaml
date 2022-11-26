@@ -1,7 +1,22 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"FMSPSM":10,"VTSHSL":50}'}
 components:
+- type: Label
+  properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
+    visible: true, text: Total found, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+    underline: false, icon: ''}
+  name: label_1
+  layout_properties: {grid_position: 'MLVAVI,FMSPSM', full_width_row: true}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
+    background: '', bold: true, underline: false}
+  name: total_rows_text
+  layout_properties: {grid_position: 'MLVAVI,VTSHSL', full_width_row: true}
+  data_bindings: []
 - type: ColumnPanel
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
     wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
@@ -13,11 +28,11 @@ components:
     properties:
       role: null
       columns:
-      - {id: VDHIOM, title: Company, data_key: Company}
-      - {id: VRSYMV, title: Project Name, data_key: Name}
-      - {id: OQLSTC, title: Start Date, data_key: projectStartDate}
-      - {id: GVXIYK, title: End Date, data_key: column_1}
-      - {id: NXPHWU, title: Status, data_key: projectStatus}
+      - {id: VDHIOM, title: Company, data_key: Company, width: 224, expand: false}
+      - {id: VRSYMV, title: Project Name, data_key: Name, width: 253, expand: false}
+      - {id: OQLSTC, title: Start Date, data_key: projectStartDate, width: 99, expand: false}
+      - {id: GVXIYK, title: End Date, data_key: column_1, width: 103, expand: false}
+      - {id: NXPHWU, title: Status, data_key: projectStatus, width: 83, expand: false}
       - {id: HOYBVE, title: Board, data_key: boardname}
       auto_header: true
       tooltip: ''

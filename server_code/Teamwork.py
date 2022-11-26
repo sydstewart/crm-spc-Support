@@ -34,9 +34,11 @@ def listprojects():
                     projectcategories.projectCategoryId Inner Join \
                   portfoliocards On projects.projectId = portfoliocards.projectId Inner Join \
                   portfolioboards On portfoliocards.boardId = portfolioboards.boardId Inner Join \
-                  portfoliocolumns On portfoliocards.columnId = portfoliocolumns.columnId")
+                  portfoliocolumns On portfoliocards.columnId = portfoliocolumns.columnId \
+                  Where companies.companyName Like '4S%'")
     
 #     return cur.fetchall() 
   dicts = [{'Company': r['Company'],'Name': r['projectname'],'Start Date':r['projectStartDate'], 'End Date':r['projectEndDate'], 'Status': r['projectStatus'], 'Board Name': r['boardname']}
             for r in cur.fetchall()]
-  return dicts
+  total_rows = len(dicts)
+  return dicts, total_rows
