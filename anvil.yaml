@@ -24,7 +24,7 @@ services:
 - source: /runtime/services/anvil/email.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: Dropdown_View_form}
+startup: {type: form, module: Projects}
 package_name: CRM_SPC
 allow_embedding: false
 name: CRM SPC
