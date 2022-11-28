@@ -9,7 +9,7 @@ import anvil.secrets
 import anvil.server
 import plotly.graph_objects as go
 
-def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , showmeans, tablename):
+def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , showmeans, tablename, chartid):
     import pandas as pd
     import datetime
 

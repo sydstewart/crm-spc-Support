@@ -15,6 +15,7 @@ from . selection import selection
 from . selection  import selectiondate
 from . selection import selectchart
 from .selection import selection_from_change
+from .selection import selection_from_change_date
 from .changes_grid import changes_grid
 
 
@@ -80,7 +81,27 @@ class Charts_from_Changes(Charts_from_ChangesTemplate):
 
   def date_picker_1_change(self, **event_args):
     """This method is called when the selected date changes"""
-    selectiondate(self) 
+    self.chart = properties['chart']
+#     self.text_box_1.text = self.chart['tablename']
+    print( self.chart['tablename'])
+    tablename = self.chart['tablename']
+    
+    t = app_tables.charts.get(tablename= tablename)
+      
+
+    showexcluded = self.excluded_checkbox.checked 
+    tablename =t['tablename']
+    columnname = t['Measure_Column_Name']
+    chartname = t['Chart_Name'] 
+    chartid = t['chartid']
+    self.chart_selection_dropdown.selected_value = tablename
+    
+    r = getattr(app_tables, tablename).search(exclude_point=True)
+    
+   
+    self.date_picker_1.date = t['StartDate']
+    self.date_picker_2.date = t['EndDate']
+    selection_from_change_date(self,tablename, columnname, showexcluded, chartid, chartname)
     pass
 
   def date_picker_2_change(self, **event_args):

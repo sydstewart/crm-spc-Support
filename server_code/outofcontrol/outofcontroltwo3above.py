@@ -10,7 +10,7 @@ import anvil.server
 import plotly.graph_objects as go
 
 
-def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, showmeans, tablename ):
+def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, showmeans, tablename , chartid):
 
         import pandas as pd
 
@@ -55,6 +55,7 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                                 tablename= tablename,
                                 change_date= df[pointdate].iloc[i],
                                 new_mean=round(stagemean,0))
+                  
 #                         print(row['change_type'])
                     if not row:
     

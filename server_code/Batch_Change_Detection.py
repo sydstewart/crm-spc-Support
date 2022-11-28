@@ -28,6 +28,7 @@ def batch_detection():
     tablename =row['tablename']
     startdate = (row['StartDate'])
     enddate = (row['EndDate'])
+    chartid = row['chartid']
 #     print(enddate)
 #     startdate =  datetime(day=1, month=8, year=2022)
 #     enddate =  datetime.now()
@@ -85,11 +86,11 @@ def batch_detection():
 #     if total_rows > 5:
     showexcluded = False
     
-    ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded, tablename)
-    nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename )
-    down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showexcluded , tablename )
-    up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename   )
-    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded , tablename)
-    two3above,stagemeandictline = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename )
-    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded , tablename )
+    ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded, tablename,chartid)
+    nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename,chartid )
+    down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showexcluded , tablename,chartid )
+    up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename,chartid   )
+    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded , tablename,chartid)
+    two3above,stagemeandictline = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename,chartid )
+    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded , tablename,chartid )
 

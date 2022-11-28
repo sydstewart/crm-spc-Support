@@ -184,7 +184,7 @@ def get_total_rows(tablename,columnname, startdate, enddate, showexcluded):
 
 
 @anvil.server.callable
-def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
+def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded, chartid):
 #     t = app_tables.charts.get(chartid = chartid)
 #     tablename =t['Chart_Name']
 #     enddate =t['EndDate']
@@ -244,13 +244,13 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded):
 #     if total_rows > 5:
     
     
-    ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded, tablename)
-    nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename )
-    down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showexcluded , tablename )
-    up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename   )
-    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded , tablename)
-    two3above,stagemeandictline = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename )
-    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded , tablename )
+    ninebelow , mean9belowline = outofcontrol9below(df, pointdate, pointname, total_rows, Mean, SD , showexcluded, tablename, chartid)
+    nineabove, mean9aboveline = outofcontrol9above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename, chartid )
+    down6, mean6fallline  = outofcontrol6fall(df, pointdate, pointname, total_rows, Mean, SD, showexcluded , tablename, chartid )
+    up6 ,mean6riseline,   = outofcontrol6rise(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename, chartid   )
+    four5above, mean45line = outofcontrol45above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded , tablename, chartid)
+    two3above,stagemeandictline = outofcontrol23above(df, pointdate, pointname, total_rows, Mean, SD, showexcluded, tablename, chartid )
+    oneabove3 = outofcontrol1above(df, pointdate, pointname, total_rows, Mean, SD,showexcluded , tablename, chartid )
     Scatter=[
     
     go.Scatter(

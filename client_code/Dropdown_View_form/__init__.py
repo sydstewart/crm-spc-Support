@@ -20,6 +20,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+#     self.chart = properties['chart'] 
 #     tablename = properties['tablename']
 #     configure_mfa_with_form()
     anvil.users.login_with_form()
@@ -44,8 +45,9 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
 #     self.data_row_edit.visible = False
     self.column_panel_3.clear()
     self.column_panel_3.add_component(self.data_grid_1)
+#     chartname = self.chart['Chart Name']
     self.chart_selection_dropdown.items = [row['Chart_Name'] for row in app_tables.charts.search(tables.order_by("order"), Active =True)]
-    
+#     self.chart_selection_dropdown.selected_value = chartname
   
 
   def button_1_click(self, **event_args):

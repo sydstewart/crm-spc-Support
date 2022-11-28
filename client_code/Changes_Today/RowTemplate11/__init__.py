@@ -23,7 +23,7 @@ class RowTemplate11(RowTemplate11Template):
     print(self.item['tablename'])
     tablename =self.item['tablename']
 #     open_form('Dropdown_View_form')
-    open_form('Charts_from_Changes',chart=self.item )
+    open_form('Dropdown_View_form',chart=self.item )
 #     self.column_panel_1.add_component(Dropdown_View_Form)
 #     selection_from_change(self,self.item['tablename'])
 

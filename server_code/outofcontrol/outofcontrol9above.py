@@ -10,7 +10,7 @@ import anvil.server
 import plotly.graph_objects as go
 from datetime import datetime, time , date , timedelta
 
-def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, showmeans, tablename ):
+def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, showmeans, tablename, chartid ):
 
             import pandas as pd
 
