@@ -1,10 +1,4 @@
-scheduled_tasks:
-- task_name: get_4S_Waiting
-  time_spec:
-    n: 1
-    every: day
-    at: {hour: 3, minute: 0}
-  job_id: LCHVZKBR
+scheduled_tasks: []
 services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
