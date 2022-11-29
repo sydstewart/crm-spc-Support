@@ -191,10 +191,13 @@ db_schema:
     client: full
     server: full
     columns:
-    - name: change_type
+    - name: chartid
+      admin_ui: {width: 200}
+      type: number
+    - name: chartname
       admin_ui: {width: 200}
       type: string
-    - name: tablename
+    - name: change_type
       admin_ui: {width: 200}
       type: string
     - name: change_date
@@ -209,7 +212,7 @@ db_schema:
     - name: short_date
       admin_ui: {width: 200}
       type: date
-    - name: chartid
+    - name: tablename
       admin_ui: {width: 200}
       type: string
   projects_with_4s:

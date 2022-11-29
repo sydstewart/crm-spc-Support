@@ -17,6 +17,11 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
     print('Find 4 out 5 above One sd')
     print('-------------------------------------------')
     print()
+    
+    t = app_tables.charts.get(chartid = chartid)
+        
+    chartname = t['Chart_Name']
+
     outofcontrol45above = pd.DataFrame()
     for i in range(5, total_rows + 1):
         countx = 0
@@ -47,21 +52,24 @@ def outofcontrol45above(df, pointdate, pointname, total_rows, pointmean, sd , sh
             outofcontrol45above['Mean45'] = Mean45
           
             print('4 out of 5 above:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean45,0))
-                        
+            
+            
+           
+ 
             row = app_tables.changes.get(
-                        change_type="4 out of 5 above",
-                        tablename= tablename,
-                        change_date= df[pointdate].iloc[i],
-                        new_mean=round(Mean45,0))
-#                         print(row['change_type'])
-            if not row:
+                    change_type=" 4 out of 5 above",
+                    chartid = chartid,
+                    change_date= df[pointdate].iloc[i])
 
-                    row = app_tables.changes.add_row(
-                            change_type="4 out of 5 above",
-                            tablename= tablename,
-                            change_date= df[pointdate].iloc[i],
-                            new_mean=round(Mean45,0),
-                            short_date = df[pointdate].iloc[i].date())
+            if not row:
+                  row = app_tables.changes.add_row(
+                        change_type=" 4 out of 5 above",
+                        chartid = chartid,
+                        change_date= df[pointdate].iloc[i],
+                        new_mean=df[pointname].iloc[i],
+                        short_date = df[pointdate].iloc[i].date(),
+                        chartname=chartname)
+                         
             
             
             

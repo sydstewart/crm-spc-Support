@@ -10,6 +10,9 @@ import anvil.server
 import plotly.graph_objects as go
 from datetime import datetime, time , date , timedelta
 
+
+
+
 def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, showmeans, tablename, chartid ):
 
             import pandas as pd
@@ -19,7 +22,9 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
             print ('-------------------------------------------')
             print()
 #             print(df)
-
+            t = app_tables.charts.get(chartid = chartid)
+            chartname = t['Chart_Name']
+    
             outofcontrol9above = pd.DataFrame() 
             for i in range(8,total_rows):
                 countx = 0
@@ -72,19 +77,21 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
                         print(' 9 above Mean for:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean9above,0))
                         
                         row = app_tables.changes.get(
-                                change_type="9 above Mean for",
-                                tablename= tablename,
-                                change_date= df[pointdate].iloc[i],
-                                new_mean=round(Mean9above,0))
-#                         print(row['change_type'])
+                            change_type="9 above Mean",
+                            chartid = chartid,
+                            change_date= df[pointdate].iloc[i])
+
                         if not row:
-    
-                            row = app_tables.changes.add_row(
-                                    change_type="9 above Mean for",
-                                    tablename= tablename,
-                                    change_date= df[pointdate].iloc[i],
-                                    new_mean=round(Mean9above,0),
-                                    short_date = df[pointdate].iloc[i].date())
+                          row = app_tables.changes.add_row(
+                                change_type="9 above Mean",
+                                chartid = chartid,
+                                change_date= df[pointdate].iloc[i],
+                                new_mean=df[pointname].iloc[i],
+                                short_date = df[pointdate].iloc[i].date(),
+                                chartname=chartname
+                          )
+  
+  
             if outofcontrol9above.empty:
                     nineabove = go.Scatter(
                     visible='legendonly',

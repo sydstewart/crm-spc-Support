@@ -45,13 +45,14 @@ components:
     properties:
       role: null
       columns:
+      - {id: DOUNZR, title: Chart ID, data_key: chartid}
+      - {id: RNYTJK, title: Chart Name, data_key: chartname}
       - {id: YXMNNN, title: Change Type, data_key: change_type}
-      - {id: RNYTJK, title: Tablename, data_key: tablename}
       - {id: APSWRM, title: Change Date, data_key: change_date}
       - {id: CELNWR, title: New Mean, data_key: new_mean}
       - {id: GUYAFL, title: Reviewed, data_key: reviewed}
       - {id: DMNWHP, title: Short Date, data_key: short_date}
-      - {id: LUSEXX, title: Chart, data_key: column_1}
+      - {id: LUSEXX, title: See Chart, data_key: ''}
       auto_header: true
       tooltip: ''
       border: ''
@@ -64,7 +65,7 @@ components:
       spacing_below: small
       background: ''
     name: data_grid_1
-    layout_properties: {grid_position: 'GFIATG,GHIXOY', full_width_row: true}
+    layout_properties: {grid_position: 'GFIATG,KLWFRW', full_width_row: true}
     components:
     - type: RepeatingPanel
       properties: {spacing_above: none, spacing_below: none, item_template: Changes_Today.RowTemplate11}

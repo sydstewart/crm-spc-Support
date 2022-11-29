@@ -18,6 +18,10 @@ def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd, show
         print ('-------------------------------------------')
         print()
 
+        t = app_tables.charts.get(chartid = chartid)
+        
+        chartname = t['Chart_Name']
+        
         outofcontrol1above = pd.DataFrame()
         for i in range(0,total_rows +1):
             countx = 0
@@ -30,17 +34,18 @@ def outofcontrol1above(df, pointdate, pointname, total_rows, pointmean, sd, show
                         
                    row = app_tables.changes.get(
                             change_type="1 above 3 sd",
-                            tablename= tablename,
-                            change_date= df[pointdate].iloc[i],
-                            new_mean=df[pointname].iloc[i])
+                            chartid = chartid,
+                            change_date= df[pointdate].iloc[i])
 
                    if not row:
                           row = app_tables.changes.add_row(
                                 change_type="1 above 3 sd",
-                                tablename= tablename,
+                                chartid = chartid,
                                 change_date= df[pointdate].iloc[i],
                                 new_mean=df[pointname].iloc[i],
-                                short_date = df[pointdate].iloc[i].date())
+                                short_date = df[pointdate].iloc[i].date(),
+                                chartname=chartname
+                          )
 
         if outofcontrol1above.empty:
             oneabove3 = go.Scatter(

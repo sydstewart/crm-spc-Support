@@ -20,6 +20,9 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
 #             print(df)
 #             print('pointmean=',pointmean)
 #             print('total_rows=', total_rows)
+            t = app_tables.charts.get(chartid = chartid)
+            
+            chartname = t['Chart_Name']
             outofcontrol9below = pd.DataFrame()
             stagemeandict9low = pd.DataFrame() 
             for i in range(8,total_rows):
@@ -71,19 +74,19 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         print(' 9 below Mean for:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean9below,0))
                         
                         row = app_tables.changes.get(
-                                change_type="9 Below Mean for",
-                                tablename= tablename,
-                                change_date= df[pointdate].iloc[i],
-                                new_mean=round(Mean9below,0))
-#                         print(row['change_type'])
+                                  change_type="9 below mean",
+                                  chartid = chartid,
+                                  change_date= df[pointdate].iloc[i])
+      
                         if not row:
-    
-                            row = app_tables.changes.add_row(
-                                    change_type="9 Below Mean for",
-                                    tablename= tablename,
-                                    change_date= df[pointdate].iloc[i],
-                                    new_mean=round(Mean9below,0),
-                                    short_date = df[pointdate].iloc[i].date())
+                                row = app_tables.changes.add_row(
+                                      change_type="9 below mean",
+                                      chartid = chartid,
+                                      change_date= df[pointdate].iloc[i],
+                                      new_mean=df[pointname].iloc[i],
+                                      short_date = df[pointdate].iloc[i].date(),
+                                      chartname=chartname
+                                )
   
 #                         stagemean = (df[pointname].iloc[i-8] + df[pointname].iloc[i-7] + df[pointname].iloc[i-1] +
 #                                      df[pointname].iloc[i-6] + df[pointname].iloc[i-5] + df[pointname].iloc[i -4] + 

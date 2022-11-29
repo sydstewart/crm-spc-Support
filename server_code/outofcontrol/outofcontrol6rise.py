@@ -17,6 +17,9 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
             print ('Find six points rising in succession')
             print ('-------------------------------------------')
             print()
+            t = app_tables.charts.get(chartid = chartid)
+            
+            chartname = t['Chart_Name']   
             
             outofcontrol6rise = pd.DataFrame() 
             for i in range(6,total_rows ):
@@ -68,19 +71,19 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
                         print(' 6 rising' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean6rise,0))
                         
                         row = app_tables.changes.get(
-                                change_type="6 rising",
-                                tablename= tablename,
-                                change_date= df[pointdate].iloc[i],
-                                new_mean=round(Mean6rise,0))
-#                         print(row['change_type'])
+                                  change_type="6 rising",
+                                  chartid = chartid,
+                                  change_date= df[pointdate].iloc[i])
+      
                         if not row:
-    
-                            row = app_tables.changes.add_row(
-                                    change_type="6 rising",
-                                    tablename= tablename,
-                                    change_date= df[pointdate].iloc[i],
-                                    new_mean=round(Mean6rise,0),
-                                    short_date = df[pointdate].iloc[i].date())
+                                row = app_tables.changes.add_row(
+                                      change_type="6 rising",
+                                      chartid = chartid,
+                                      change_date= df[pointdate].iloc[i],
+                                      new_mean=df[pointname].iloc[i],
+                                      short_date = df[pointdate].iloc[i].date(),
+                                      chartname=chartname
+                                )
 
             if outofcontrol6rise.empty:
                 up6 = go.Scatter(

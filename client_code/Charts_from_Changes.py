@@ -53,26 +53,26 @@ class Charts_from_Changes(Charts_from_ChangesTemplate):
     
     self.chart = properties['chart']
 #     self.text_box_1.text = self.chart['tablename']
-    print( self.chart['tablename'])
-    tablename = self.chart['tablename']
+    print( self.chart['chartid'])
+    chartid= self.chart['chartid']
     
-    t = app_tables.charts.get(tablename= tablename)
-      
+    t = app_tables.charts.get(chartid=chartid)
+    tablename=t['tablename']   
 
     showexcluded = self.excluded_checkbox.checked 
-    tablename =t['tablename']
-    columnname = t['Measure_Column_Name']
-    chartname = t['Chart_Name'] 
-    chartid = t['chartid']
-    self.chart_selection_dropdown.selected_value = tablename
+#     tablename =t['tablename']
+#     columnname = t['Measure_Column_Name']
+#     chartname = t['Chart_Name'] 
+#     chartid = t['chartid']
+#     self.chart_selection_dropdown.selected_value = tablename
     
     r = getattr(app_tables, tablename).search(exclude_point=True)
     
    
     self.date_picker_1.date = t['StartDate']
     self.date_picker_2.date = t['EndDate']
-    selection_from_change(self, tablename, columnname, showexcluded, chartid, chartname)
-    
+    selection_from_change(self, chartid)
+#     selection(self)
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Charts')

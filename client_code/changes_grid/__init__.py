@@ -14,8 +14,8 @@ class changes_grid(changes_gridTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    tablename = properties['tablename']
-    self.changes_repeating_panel_1.items = app_tables.changes.search(tablename = tablename)
+    chartid = properties['chartid']
+    self.changes_repeating_panel_1.items = app_tables.changes.search(chartid = chartid)
     self.changes_repeating_panel_1.items = sorted([r for r in self.changes_repeating_panel_1.items], key = lambda x: x['change_date'], reverse=True )
 
 

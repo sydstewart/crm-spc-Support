@@ -18,7 +18,10 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
         print ('Find 2 out 3 above 2 sd')
         print ('-------------------------------------------')
         print()
-
+        
+        t = app_tables.charts.get(chartid = chartid)
+        chartname = t['Chart_Name']
+        
         outofcontrol23above = pd.DataFrame()
         stagemeandict = pd.DataFrame() 
         meanline =pd.DataFrame()
@@ -51,21 +54,19 @@ def outofcontrol23above(df, pointdate, pointname, total_rows, pointmean, sd, sho
                     print('2 out 3 above:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(stagemean,0))
                         
                     row = app_tables.changes.get(
-                                change_type="2 out 3 above",
-                                tablename= tablename,
-                                change_date= df[pointdate].iloc[i],
-                                new_mean=round(stagemean,0))
-                  
-#                         print(row['change_type'])
+                              change_type="2 out 3 above",
+                              chartid = chartid,
+                              change_date= df[pointdate].iloc[i])
+  
                     if not row:
-    
                             row = app_tables.changes.add_row(
-                                    change_type="2 out 3 above",
-                                    tablename= tablename,
-                                    change_date= df[pointdate].iloc[i],
-                                    new_mean=round(stagemean,0),
-                                    short_date = df[pointdate].iloc[i].date())
-
+                                  change_type="2 out 3 above",
+                                  chartid = chartid,
+                                  change_date= df[pointdate].iloc[i],
+                                  new_mean=df[pointname].iloc[i],
+                                  short_date = df[pointdate].iloc[i].date(),
+                                  chartname=chartname
+                            )
       
                     stagemeandict  = stagemeandict.append({pointdate: df[pointdate].iloc[i-2],pointmean:stagemean}, ignore_index=True)
                     stagemeandict = stagemeandict.append({pointdate: df[pointdate].iloc[i-1],pointmean:stagemean}, ignore_index=True)

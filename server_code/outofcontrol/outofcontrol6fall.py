@@ -17,6 +17,9 @@ def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showm
   print ('Find six points falling in succession')
   print ('-------------------------------------------')
   print()
+  t = app_tables.charts.get(chartid = chartid)
+        
+  chartname = t['Chart_Name']
 
   outofcontrol6fall = pd.DataFrame() 
   for i in range(6,total_rows):
@@ -69,20 +72,20 @@ def outofcontrol6fall(df, pointdate, pointname, total_rows, pointmean, sd, showm
               print(' 6 falling' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean6fall,0))
                         
               row = app_tables.changes.get(
-                      change_type="6 falling",
-                      tablename= tablename,
-                      change_date= df[pointdate].iloc[i],
-                      new_mean=round(Mean6fall,0))
-#                         print(row['change_type'])
-              if not row:
+                    change_type="6 falling",
+                    chartid = chartid,
+                    change_date= df[pointdate].iloc[i])
 
-                  row = app_tables.changes.add_row(
+              if not row:
+                    row = app_tables.changes.add_row(
                           change_type="6 falling",
-                          tablename= tablename,
+                          chartid = chartid,
                           change_date= df[pointdate].iloc[i],
-                          new_mean=round(Mean6fall,0),
-                          short_date = df[pointdate].iloc[i].date())
-      
+                          new_mean=df[pointname].iloc[i],
+                          short_date = df[pointdate].iloc[i].date(),
+                          chartname=chartname
+                    )
+
   if outofcontrol6fall.empty:
         down6 = go.Scatter(
         visible='legendonly')
