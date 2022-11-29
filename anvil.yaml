@@ -1,10 +1,10 @@
 scheduled_tasks:
 - task_name: batch_detection
   time_spec:
-    n: 10
+    n: 1
     every: minute
     at: {}
-  job_id: WMHYSLIY
+  job_id: OMBTRMPG
 services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
