@@ -52,7 +52,7 @@ components:
       - {id: CELNWR, title: New Mean, data_key: new_mean}
       - {id: GUYAFL, title: Reviewed, data_key: reviewed}
       - {id: DMNWHP, title: Short Date, data_key: short_date}
-      - {id: LUSEXX, title: See Chart, data_key: ''}
+      - {id: LUSEXX, title: See Chart (read only), data_key: ''}
       auto_header: true
       tooltip: ''
       border: ''
