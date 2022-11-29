@@ -1,4 +1,10 @@
-scheduled_tasks: []
+scheduled_tasks:
+- task_name: batch_detection
+  time_spec:
+    n: 10
+    every: minute
+    at: {}
+  job_id: WMHYSLIY
 services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
