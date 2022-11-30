@@ -22,7 +22,7 @@ def outofcontrol6rise(df, pointdate, pointname, total_rows, pointmean, sd, showm
             chartname = t['Chart_Name']   
             
             outofcontrol6rise = pd.DataFrame() 
-            for i in range(6,total_rows ):
+            for i in range(6,total_rows + 1 ):
                 countx = 0
                 if (df[pointname].iloc[i]  > df[pointname].iloc[i-1]):
                         countx = 1

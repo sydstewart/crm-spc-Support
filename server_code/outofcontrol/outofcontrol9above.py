@@ -26,7 +26,7 @@ def outofcontrol9above(df, pointdate, pointname, total_rows, pointmean, sd, show
             chartname = t['Chart_Name']
     
             outofcontrol9above = pd.DataFrame() 
-            for i in range(8,total_rows):
+            for i in range(8,total_rows + 1):
                 countx = 0
 #                 print('point=', df[pointname].iloc[i])
                 if (df[pointname].iloc[i]  > (pointmean)):

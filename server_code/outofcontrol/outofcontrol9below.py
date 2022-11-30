@@ -25,8 +25,10 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
             chartname = t['Chart_Name']
             outofcontrol9below = pd.DataFrame()
             stagemeandict9low = pd.DataFrame() 
-            for i in range(8,total_rows):
-                countx = 0
+          # remember ranges start at 0 index
+            countx = 0
+            for i in range(8,total_rows + 1):
+                
 #                 print(df[pointname].iloc[i],i)
                 if (df[pointname].iloc[i]  < (pointmean)):
                     countx = 1
@@ -54,11 +56,11 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         
                 if (df[pointname].iloc[i-8]  < (pointmean)):
                         countx = countx + 1
-#                 print ('countx=',countx)
+                print ('countx=',countx)
                  
                 
                 if countx == 9:
-
+                        
                         outofcontrol9below = outofcontrol9below.append({pointdate: df[pointdate].iloc[i-8],pointname:df[pointname].iloc[i-8]}, ignore_index=True)
                         outofcontrol9below = outofcontrol9below.append({pointdate: df[pointdate].iloc[i-7],pointname:df[pointname].iloc[i-7]}, ignore_index=True)
                         outofcontrol9below = outofcontrol9below.append({pointdate: df[pointdate].iloc[i-6],pointname:df[pointname].iloc[i-6]}, ignore_index=True)
@@ -140,20 +142,20 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         ))
                           ) 
 #                 if showmeans == False:
-                mean9belowline = go.Scatter(  # x=df[pointdate],
-                        # y=df[pointname],
-                        x=stagemeandict9low[pointdate],
-                        y=stagemeandict9low[Mean9below],
-                        mode='markers',
-#                         marker_symbol = 'line-ew',
-                        name='New Mean 9 below',
-                        marker=dict(
-                            color='pink',
-                            size=7,
-                            line=dict(
-                                color='black',
-                                width=2
-                            )) )
+#                 mean9belowline = go.Scatter(  # x=df[pointdate],
+#                         # y=df[pointname],
+#                         x=stagemeandict9low[pointdate],
+#                         y=stagemeandict9low[Mean9below],
+#                         mode='markers',
+# #                         marker_symbol = 'line-ew',
+#                         name='New Mean 9 below',
+#                         marker=dict(
+#                             color='pink',
+#                             size=7,
+#                             line=dict(
+#                                 color='black',
+#                                 width=2
+#                             )) )
                 
                 mean9belowline = go.Scatter(  # x=df[pointdate],
                           # y=df[pointname],
