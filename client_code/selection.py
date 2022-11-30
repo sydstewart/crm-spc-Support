@@ -105,7 +105,7 @@ def selectiondate(self, **event_args):
     print(t['Date_Column_Name'])
     
         
-    Scatter, total_rows ,total_excluded, mean, stdev, waitinglist = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded)
+    Scatter, total_rows ,total_excluded, mean, stdev, waitinglist = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded, chartid)
     print('total_rows=',total_rows)
     self.total_rows_text.text = str(total_rows)
     if total_rows <=10 or total_rows > 500:

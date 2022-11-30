@@ -54,7 +54,8 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     """This method is called when the button is clicked"""
     open_form('Charts')
     pass
-  
+
+ 
 
   def date_picker_1_change(self, **event_args):
     """This method is called when the selected date changes"""
