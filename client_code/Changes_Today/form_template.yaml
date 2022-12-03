@@ -11,6 +11,22 @@ components:
   components:
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: REturn to Main menu, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: return_to_main_menu_button
+    layout_properties: {grid_position: 'ZEVYGU,FAKULL', full_width_row: true}
+    event_bindings: {click: return_to_main_menu_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Last Working Day, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: today_button
+    layout_properties: {grid_position: 'ZEVYGU,EZQRRA', full_width_row: true}
+    event_bindings: {click: today_button_click}
+  - type: Button
+    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Last 3 Days, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
@@ -19,28 +35,12 @@ components:
     event_bindings: {click: last_three_days_button_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: TODAY, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: today_button
-    layout_properties: {grid_position: 'ZEVYGU,XJZAYX', full_width_row: true}
-    event_bindings: {click: today_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Last 7 Days, font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
     name: last_seven_days_button
     layout_properties: {grid_position: 'ZEVYGU,ACWQZM', full_width_row: true}
     event_bindings: {click: last_seven_days_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: REturn to Main menu, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: return_to_main_menu_button
-    layout_properties: {grid_position: 'ZEVYGU,OFQDEC', full_width_row: true}
-    event_bindings: {click: return_to_main_menu_button_click}
   - type: DataGrid
     properties:
       role: null

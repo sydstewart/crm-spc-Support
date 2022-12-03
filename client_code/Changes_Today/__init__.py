@@ -80,11 +80,19 @@ class Changes_Today(Changes_TodayTemplate):
   def today_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     today = date.today()
+    print('Day of Week', today.weekday())
+    if today.weekday() == 0:
+        last_working_day = (today - timedelta(days =3))
+        print (' last working day=',last_working_day)
+    else:
+        last_working_day = date.today() - timedelta(days =1)
+        print (' last working day=',last_working_day)
+
     self.last_three_days_button.background = 'White'
     self.last_seven_days_button.background = 'White'
     self.today_button.background = 'theme:Gray 300'
     
-    self.repeating_panel_1.items  = app_tables.changes.search(tables.order_by('short_date', ascending=False), short_date=today)
+    self.repeating_panel_1.items  = app_tables.changes.search(tables.order_by('short_date', ascending=False), short_date=last_working_day)
     pass
 
 
