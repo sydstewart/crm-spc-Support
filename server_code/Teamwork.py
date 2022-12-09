@@ -8,6 +8,8 @@ from anvil.tables import app_tables
 import anvil.secrets
 import anvil.server
 import pymysql
+import io
+import pandas as pd
 
 def connect():
   connection = pymysql.connect(host='51.141.236.29',
@@ -46,3 +48,13 @@ def listprojects():
     app_tables.projects.add_row(company = row['Company'], projectname= row['Name'],boardname= row['BoardName'], status = row['Status'], startdate = row['StartDate'], enddate = row['EndDate'])
   total_rows = len(dicts)
   return dicts, total_rows
+
+
+
+@anvil.server.callable
+def export_to_excel(data, columns):
+    df = pd.DataFrame(data, columns=columns)
+    content = io.BytesIO()
+    df.to_excel(content, index=False)
+    content.seek(0, 0)
+    return BlobMedia(content=content.read(), content_type="application/vnd.ms-excel")
