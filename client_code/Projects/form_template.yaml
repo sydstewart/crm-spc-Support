@@ -32,7 +32,7 @@ components:
     placeholder: None Selected
     enabled: true
     enable_select_all: true
-    items: [': DAWN AC Benchmarking', Development, Implementation of New systems with/without Interfaces and Data Migrations,
+    items: [DAWN AC Benchmarking, Development, Implementation of New systems with/without Interfaces and Data Migrations,
       Improvements, Infrastructure, 'Interfaces (Stand-alone)  and Server Move Interfaces ',
       'Maintenance Upgrades, Server Moves, Add on Modules', Sales & Marketing, Standalone Training,
       '']
@@ -42,6 +42,7 @@ components:
     multiple: true
   name: multi_select_drop_down_1
   layout_properties: {grid_position: 'MLVAVI,VBQNQS', full_width_row: true}
+  event_bindings: {change: multi_select_drop_down_1_change}
 - type: ColumnPanel
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
     wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
