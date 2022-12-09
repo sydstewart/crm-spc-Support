@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{"FMSPSM":9,"LKYIUI":8,"VBQNQS":25,"TMYEBS":8}'}
+  properties: {col_widths: '{"FMSPSM":10,"LKYIUI":6,"VBQNQS":29,"TMYEBS":9}'}
 components:
 - type: Label
   properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
@@ -54,11 +54,11 @@ components:
     properties:
       role: null
       columns:
-      - {id: VDHIOM, title: Company, data_key: Company, width: 224, expand: false}
-      - {id: VRSYMV, title: Project Name, data_key: Name, width: 253, expand: false}
-      - {id: OQLSTC, title: Start Date, data_key: projectStartDate, width: 99, expand: false}
-      - {id: GVXIYK, title: End Date, data_key: projectEndDate, width: 103, expand: false}
-      - {id: NXPHWU, title: Status, data_key: projectStatus, width: 83, expand: false}
+      - {id: VDHIOM, title: Company, data_key: Company, width: 271, expand: false}
+      - {id: VRSYMV, title: Project Name, data_key: Name, width: 436, expand: true}
+      - {id: OQLSTC, title: Start Date, data_key: projectStartDate, width: 139, expand: false}
+      - {id: GVXIYK, title: End Date, data_key: projectEndDate, width: 168, expand: false}
+      - {id: NXPHWU, title: Status, data_key: projectStatus, width: 119, expand: false}
       - {id: HOYBVE, title: Board, data_key: BoardName}
       auto_header: true
       tooltip: ''
