@@ -13,7 +13,9 @@ class Projects(ProjectsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run when the form opens.
-    projects, total_rows = anvil.server.call('listprojects')
+#     projects, total_rows = anvil.server.call('listprojects')
+    projectslist = app_tables.projects.search(boardname=self.multi_select_drop_down_1.items)
+    
     print (projects)
     print('Total Rows = ', total_rows)
     self.total_rows_text.text = total_rows

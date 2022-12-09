@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{"FMSPSM":10,"VTSHSL":50}'}
+  properties: {col_widths: '{"FMSPSM":9,"LKYIUI":8,"VBQNQS":25,"TMYEBS":8}'}
 components:
 - type: Label
   properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
@@ -15,8 +15,33 @@ components:
     font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
     background: '', bold: true, underline: false}
   name: total_rows_text
-  layout_properties: {grid_position: 'MLVAVI,VTSHSL', full_width_row: true}
+  layout_properties: {grid_position: 'MLVAVI,TMYEBS', full_width_row: true}
   data_bindings: []
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Board Filter, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_2
+  layout_properties: {grid_position: 'MLVAVI,LKYIUI', full_width_row: true}
+- type: form:C6ZZPAPN4YYF5NVJ:MultiSelectDropDown
+  properties:
+    width: ''
+    align: left
+    enable_filtering: true
+    placeholder: None Selected
+    enabled: true
+    enable_select_all: true
+    items: [': DAWN AC Benchmarking', Development, Implementation of New systems with/without Interfaces and Data Migrations,
+      Improvements, Infrastructure, 'Interfaces (Stand-alone)  and Server Move Interfaces ',
+      'Maintenance Upgrades, Server Moves, Add on Modules', Sales & Marketing, Standalone Training,
+      '']
+    visible: true
+    spacing_above: small
+    spacing_below: small
+    multiple: true
+  name: multi_select_drop_down_1
+  layout_properties: {grid_position: 'MLVAVI,VBQNQS', full_width_row: true}
 - type: ColumnPanel
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
     wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
