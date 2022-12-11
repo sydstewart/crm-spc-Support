@@ -7,6 +7,7 @@ import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
 import anvil.users
 import plotly.graph_objects as go
+# import plotly.io
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -107,6 +108,7 @@ def selectiondate(self, **event_args):
         
     Scatter, total_rows ,total_excluded, mean, stdev, waitinglist = anvil.server.call('get_Waiting_on_4S',tablename, columnname, self.date_picker_1.date,  self.date_picker_2.date, showexcluded, chartid)
     print('total_rows=',total_rows)
+    
     self.total_rows_text.text = str(total_rows)
     if total_rows <=10 or total_rows > 500:
           alert('10 or more data points and not not more than 500 - please adjust the search dates')

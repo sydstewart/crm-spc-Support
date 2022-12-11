@@ -11,6 +11,7 @@ import pymysql
 import pandas as pd
 from datetime import datetime, time , date , timedelta
 import plotly.graph_objects as go
+import plotly
 import anvil.media
 from .outofcontrol.outofcontroltwo3above import outofcontrol23above
 from .outofcontrol.outofcontrol9below  import outofcontrol9below
@@ -344,7 +345,9 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded, ch
                             )),
     two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline , mean9aboveline, mean9belowline, stagemeandictline,mean6fallline
     ]
+    json_object = plotly.io.to_html(Scatter, 'name.html')
 #     print('mean= ',Mean)
+    
     return Scatter, total_rows, total_excluded, Mean, SD, waitinglist
 
     
