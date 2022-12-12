@@ -345,10 +345,10 @@ def get_Waiting_on_4S(tablename,columnname, startdate, enddate, showexcluded, ch
                             )),
     two3above, ninebelow, nineabove, oneabove3, down6, up6, four5above, mean45line, mean6riseline , mean9aboveline, mean9belowline, stagemeandictline,mean6fallline
     ]
-    fig = dict({Scatter}) 
-    json_object = plotly.io.to_html(fig, 'name.html')
+#     fig = Scatter.to_dict()
+#     json_object = plotly.io.to_html(fig, 'name.html')
 #     print('mean= ',Mean)
-    
+    print (Scatter)
     return Scatter, total_rows, total_excluded, Mean, SD, waitinglist
 
     
