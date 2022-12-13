@@ -67,7 +67,7 @@ def selection(self, **event_args):
     
         self.plot_1.layout.title = chartname + " "  +  " created at " + datetime.now().strftime('%d %B %c %Y %H:%M')
         self.plot_1.data = Scatter
-
+        self.ppot2.figure = fig
         self.repeating_panel_1.items = waitinglist
         self.repeating_panel_1.items = sorted([r for r in self.repeating_panel_1.items], key = lambda x: x['Date_Entered'], reverse=True )
   
