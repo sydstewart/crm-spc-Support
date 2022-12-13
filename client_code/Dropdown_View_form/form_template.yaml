@@ -115,10 +115,6 @@ components:
       tooltip: '', interactive: true}
     name: plot_1
     layout_properties: {grid_position: 'DLCCLZ,ECUAEK', full_width_row: true}
-  - type: Plot
-    properties: {height: 630}
-    name: plot_2
-    layout_properties: {grid_position: 'DLCCLZ,BIWVNX', full_width_row: true}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Add New Row, font_size: null, font: '',
