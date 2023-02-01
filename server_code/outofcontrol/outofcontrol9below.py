@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, showmeans , tablename, chartid):
 
             import pandas as pd
-
+            print('pointmean',pointmean) 
             print()
             print ('Nine or more Points on low side of the mean')
             print ('-------------------------------------------')
@@ -57,7 +57,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                 if (df[pointname].iloc[i-8]  < (pointmean)):
                         countx = countx + 1
                 print ('countx=',countx)
-                 
+               
                 
                 if countx == 9:
                         
@@ -71,6 +71,7 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
                         outofcontrol9below = outofcontrol9below.append({pointdate: df[pointdate].iloc[i-1],pointname:df[pointname].iloc[i-1]}, ignore_index=True)
                         outofcontrol9below = outofcontrol9below.append({pointdate: df[pointdate].iloc[i],pointname:df[pointname].iloc[i]}, ignore_index=True)
                         Mean9below =outofcontrol9below[pointname].mean()
+#                         print('Mean9below',Mean9below)
                         outofcontrol9below['Mean9below'] = Mean9below
                         print ('outofcontrol9below', outofcontrol9below)                                              
                         print(' 9 below Mean for:' ,tablename,' at', (df[pointdate].iloc[i].strftime("%b %d, %Y")), 'with New Mean=',round(Mean9below,0))
