@@ -26,9 +26,9 @@ def outofcontrol9below(df, pointdate, pointname, total_rows, pointmean, sd, show
             outofcontrol9below = pd.DataFrame()
             stagemeandict9low = pd.DataFrame() 
           # remember ranges start at 0 index
-            countx = 0
+#             countx = 0
             for i in range(8,total_rows + 1):
-                
+                countx = 0
 #                 print(df[pointname].iloc[i],i)
                 if (df[pointname].iloc[i]  < (pointmean)):
                     countx = 1
