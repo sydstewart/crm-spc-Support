@@ -26,6 +26,7 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     anvil.users.login_with_form()
 #     mfa_login_with_form()
     loggedinuser =  anvil.users.get_user()['email']
+    print('LoggedinUser=',loggedinuser)
     self.loggedinuser.text = loggedinuser
     user_type = anvil.users.get_user()['user_type']
     
