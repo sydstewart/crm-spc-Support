@@ -1,46 +1,40 @@
-container: {type: DataRowPanel}
 components:
-- type: DatePicker
-  properties: {role: null, align: left, max_date: '', pick_time: true, tooltip: '',
-    placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
-    font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
-    min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
-  name: date_picker_1
+- data_bindings:
+  - {code: 'self.item[''startdate'']', property: date, writeback: true}
   layout_properties: {column: OQLSTC}
-  data_bindings:
-  - {property: date, code: 'self.item[''startdate'']', writeback: true}
-- type: DatePicker
-  properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-    placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
-    font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
-    min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
-  name: date_picker_2
+  name: date_picker_1
+  properties: {align: left, background: '', bold: false, border: '', date: '', enabled: true, font: '', font_size: null, foreground: '', format: YYYY-MM-DD, italic: false, max_date: '', min_date: '', pick_time: true, placeholder: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', underline: false, visible: true}
+  type: DatePicker
+- data_bindings:
+  - {code: 'self.item[''enddate'']', property: date, writeback: true}
   layout_properties: {column: GVXIYK}
-  data_bindings:
-  - {property: date, code: 'self.item[''enddate'']', writeback: true}
-- type: TextBox
-  properties: {}
-  name: text_box_2
+  name: date_picker_2
+  properties: {align: left, background: '', bold: false, border: '', date: '', enabled: true, font: '', font_size: null, foreground: '', format: YYYY-MM-DD, italic: false, max_date: '', min_date: '', pick_time: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', underline: false, visible: true}
+  type: DatePicker
+- data_bindings:
+  - {code: 'self.item[''status'']', property: text, writeback: true}
   layout_properties: {column: NXPHWU}
-  data_bindings:
-  - {property: text, code: 'self.item[''status'']', writeback: true}
-- type: TextBox
+  name: text_box_2
   properties: {}
-  name: text_box_3
+  type: TextBox
+- data_bindings:
+  - {code: 'self.item[''boardname'']', property: text, writeback: true}
   layout_properties: {column: HOYBVE}
-  data_bindings:
-  - {property: text, code: 'self.item[''boardname'']', writeback: true}
-- type: TextBox
+  name: text_box_3
   properties: {}
-  name: text_box_4
-  layout_properties: {column: VDHIOM}
-  data_bindings:
-  - {property: text, code: 'self.item[''company'']', writeback: true}
+  type: TextBox
+- data_bindings:
+  - {code: 'self.item[''company'']', property: text, writeback: true}
   event_bindings: {pressed_enter: text_box_4_pressed_enter}
-- type: TextArea
-  properties: {height: 38}
-  name: text_area_1
+  layout_properties: {column: VDHIOM}
+  name: text_box_4
+  properties: {}
+  type: TextBox
+- data_bindings:
+  - {code: 'self.item[''projectname'']', property: text, writeback: true}
   layout_properties: {column: VRSYMV}
-  data_bindings:
-  - {property: text, code: 'self.item[''projectname'']', writeback: true}
+  name: text_area_1
+  properties: {height: 38}
+  type: TextArea
+container: {type: DataRowPanel}
 is_package: true

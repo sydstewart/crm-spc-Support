@@ -1,326 +1,230 @@
-is_package: true
-container:
-  type: HtmlTemplate
-  properties: {html: '@theme:standard-page.html'}
-  event_bindings: {}
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"CEBJWB":10,"FDOEVA":5,"ASMNKA":5,"AXVZVA":4,"RQYSZR":6,"BAVCXC":6,"PMZUGQ":5,"PNCKBJ":3,"IHJKEG":8,"APXXAD":4,"FKASDG":4}'}
-  name: content_panel
-  layout_properties: {slot: default}
-  components:
-  - type: DropDown
+- components:
+  - event_bindings: {change: chart_selection_dropdown_change}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,CEBJWB'}
+    name: chart_selection_dropdown
     properties:
-      role: null
       align: left
-      tooltip: ''
-      placeholder: Select  Chart
-      border: ''
-      enabled: true
-      foreground: ''
-      items: ['']
-      visible: true
-      font_size: null
-      font: ''
-      spacing_above: small
-      spacing_below: small
-      italic: false
       background: ''
       bold: false
-      underline: false
+      border: ''
+      enabled: true
+      font: ''
+      font_size: null
+      foreground: ''
       include_placeholder: true
-    name: chart_selection_dropdown
-    layout_properties: {grid_position: 'IQDQRT,CEBJWB', full_width_row: true}
-    event_bindings: {change: chart_selection_dropdown_change}
-  - type: Label
-    properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: Start Date, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+      italic: false
+      items: ['']
+      placeholder: Select  Chart
+      role: null
+      spacing_above: small
+      spacing_below: small
+      tooltip: ''
+      underline: false
+      visible: true
+    type: DropDown
+  - layout_properties: {full_width_row: true, grid_position: 'IQDQRT,FDOEVA'}
     name: label_1
-    layout_properties: {grid_position: 'IQDQRT,FDOEVA', full_width_row: true}
-  - type: DatePicker
-    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
-      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
-      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
+    properties: {align: right, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Start Date, tooltip: '', underline: false, visible: true}
+    type: Label
+  - event_bindings: {change: date_picker_1_change}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,ASMNKA'}
     name: date_picker_1
-    layout_properties: {grid_position: 'IQDQRT,ASMNKA', full_width_row: true}
-    event_bindings: {change: date_picker_1_change}
-  - type: Label
-    properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: Finish date, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {align: left, background: '', bold: false, border: '', date: '', enabled: true, font: '', font_size: null, foreground: '', format: YYYY-MM-DD, italic: false, max_date: '', min_date: '', pick_time: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', underline: false, visible: true}
+    type: DatePicker
+  - layout_properties: {full_width_row: true, grid_position: 'IQDQRT,AXVZVA'}
     name: label_2
-    layout_properties: {grid_position: 'IQDQRT,AXVZVA', full_width_row: true}
-  - type: DatePicker
-    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
-      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
-      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
+    properties: {align: right, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Finish date, tooltip: '', underline: false, visible: true}
+    type: Label
+  - event_bindings: {change: date_picker_2_change}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,RQYSZR'}
     name: date_picker_2
-    layout_properties: {grid_position: 'IQDQRT,RQYSZR', full_width_row: true}
-    event_bindings: {change: date_picker_2_change}
-  - type: CheckBox
-    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
-      foreground: '', allow_indeterminate: false, visible: true, text: Show Excluded,
-      font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-      background: '', bold: false, checked: false, underline: false}
+    properties: {align: left, background: '', bold: false, border: '', date: '', enabled: true, font: '', font_size: null, foreground: '', format: YYYY-MM-DD, italic: false, max_date: '', min_date: '', pick_time: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', underline: false, visible: true}
+    type: DatePicker
+  - event_bindings: {change: excluded_checkbox_change}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,BAVCXC'}
     name: excluded_checkbox
-    layout_properties: {grid_position: 'IQDQRT,BAVCXC', full_width_row: true}
-    event_bindings: {change: excluded_checkbox_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Total Rows, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {align: left, allow_indeterminate: false, background: '', bold: false, border: '', checked: false, enabled: true, font: '', font_size: null, foreground: '', italic: false, role: null, spacing_above: small, spacing_below: small, text: Show Excluded, tooltip: '', underline: false, visible: true}
+    type: CheckBox
+  - layout_properties: {full_width_row: true, grid_position: 'IQDQRT,PMZUGQ'}
     name: label_3
-    layout_properties: {grid_position: 'IQDQRT,PMZUGQ', full_width_row: true}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Total Rows, tooltip: '', underline: false, visible: true}
+    type: Label
+  - event_bindings: {}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,PNCKBJ'}
     name: total_rows_text
-    layout_properties: {grid_position: 'IQDQRT,PNCKBJ', full_width_row: true}
-    event_bindings: {}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Chart ID, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+    type: TextBox
+  - layout_properties: {full_width_row: true, grid_position: 'IQDQRT,APXXAD'}
     name: label_7
-    layout_properties: {grid_position: 'IQDQRT,APXXAD', full_width_row: true}
-  - type: TextBox
-    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Chart ID, tooltip: '', underline: false, visible: true}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''chartid'']', property: text, writeback: true}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,FKASDG'}
     name: chartid_textbox
-    layout_properties: {grid_position: 'IQDQRT,FKASDG', full_width_row: true}
-    data_bindings:
-    - {property: text, code: 'self.item[''chartid'']', writeback: true}
-  - type: Button
-    properties: {role: null, align: center, tooltip: 'On changing exclude point or
-        adding or editing an annotation in table below,please click REFRESH  to refresh
-        chart', border: '', enabled: true, foreground: '', visible: true, text: Refresh,
-      font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+    type: TextBox
+  - event_bindings: {click: refresh_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,IHJKEG'}
     name: refresh_button
-    layout_properties: {grid_position: 'IQDQRT,IHJKEG', full_width_row: true}
-    event_bindings: {click: refresh_button_click}
-  - type: Plot
-    properties: {spacing_above: small, spacing_below: small, height: 628, visible: true,
-      tooltip: '', interactive: true}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Refresh, tooltip: 'On changing exclude point or adding or editing an annotation in table below,please click REFRESH  to refresh chart', underline: false, visible: true}
+    type: Button
+  - layout_properties: {full_width_row: true, grid_position: 'DLCCLZ,ECUAEK'}
     name: plot_1
-    layout_properties: {grid_position: 'DLCCLZ,ECUAEK', full_width_row: true}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Add New Row, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {height: 628, interactive: true, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
+    type: Plot
+  - event_bindings: {click: add_row_click}
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,SWOLQY'}
     name: add_row
-    layout_properties: {grid_position: 'LGILOK,SWOLQY', full_width_row: true}
-    event_bindings: {click: add_row_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Show Changes, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Add New Row, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: show_changes_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,PIKKTN'}
     name: show_changes_button
-    layout_properties: {grid_position: 'LGILOK,PIKKTN', full_width_row: true}
-    event_bindings: {click: show_changes_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Show Included List, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Show Changes, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: show_included_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,VCHTFV'}
     name: show_included_button
-    layout_properties: {grid_position: 'LGILOK,VCHTFV', full_width_row: true}
-    event_bindings: {click: show_included_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Show Excluded List, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Show Included List, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: show_excluded_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,RPPPVA'}
     name: show_excluded_button
-    layout_properties: {grid_position: 'LGILOK,RPPPVA', full_width_row: true}
-    event_bindings: {click: show_excluded_button_click}
-  - type: ColumnPanel
-    properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"CQUTQU":20,"PDXFWF":15,"QYKFEF":25}',
-      spacing_below: small, background: ''}
-    name: column_panel_2
-    layout_properties: {grid_position: 'LGILOK,GAXNHO', full_width_row: true}
-    components:
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Average, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Show Excluded List, tooltip: '', underline: false, visible: true}
+    type: Button
+  - components:
+    - layout_properties: {grid_position: 'WFIRBI,CQUTQU'}
       name: label_6
-      layout_properties: {grid_position: 'WFIRBI,CQUTQU'}
-    - type: TextBox
-      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-        font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-        background: '', bold: false, underline: false}
-      name: mean
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Average, tooltip: '', underline: false, visible: true}
+      type: Label
+    - data_bindings: []
       layout_properties: {grid_position: 'WFIRBI,PDXFWF'}
-      data_bindings: []
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Standard Deviation, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
+      name: mean
+      properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+      type: TextBox
+    - layout_properties: {grid_position: 'WFIRBI,QYKFEF'}
       name: label_5
-      layout_properties: {grid_position: 'WFIRBI,QYKFEF'}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Standard Deviation, tooltip: '', underline: false, visible: true}
+      type: Label
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,GAXNHO'}
+    name: column_panel_2
+    properties: {background: '', border: '', col_spacing: medium, col_widths: '{"CQUTQU":20,"PDXFWF":15,"QYKFEF":25}', foreground: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+    type: ColumnPanel
+  - event_bindings: {}
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,RXVZOW'}
     name: SD
-    layout_properties: {grid_position: 'LGILOK,RXVZOW', full_width_row: true}
-    event_bindings: {}
-  - type: Label
-    properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: Number excluded, font_size: 14, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+    type: TextBox
+  - layout_properties: {full_width_row: true, grid_position: 'LGILOK,NYFGNZ'}
     name: label_4
-    layout_properties: {grid_position: 'LGILOK,NYFGNZ', full_width_row: true}
-  - type: TextBox
-    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
-      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-      background: '', bold: true, underline: false}
+    properties: {align: right, background: '', bold: false, border: '', font: '', font_size: 14, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Number excluded, tooltip: '', underline: false, visible: true}
+    type: Label
+  - layout_properties: {full_width_row: true, grid_position: 'LGILOK,GUFLSX'}
     name: number_excluded
-    layout_properties: {grid_position: 'LGILOK,GUFLSX', full_width_row: true}
-  - type: ColumnPanel
-    properties: {col_widths: '{}'}
-    name: column_panel_3
-    layout_properties: {grid_position: 'GHXMJJ,ZHIALT'}
-    components:
-    - type: DataGrid
+    properties: {align: center, background: '', bold: true, border: '', enabled: true, font: '', font_size: 14, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+    type: TextBox
+  - components:
+    - components:
+      - layout_properties: {}
+        name: repeating_panel_1
+        properties: {item_template: Dropdown_View_form.RowTemplate5, spacing_above: none, spacing_below: none}
+        type: RepeatingPanel
+      layout_properties: {full_width_row: true, grid_position: 'OWZPBZ,KZVHOD'}
+      name: data_grid_1
       properties:
-        role: null
-        columns:
-        - {id: MLMLHP, title: Date Entered, data_key: Date_Entered}
-        - {id: FZMKHX, title: Measure Value, data_key: Test_Result}
-        - {id: LVRLQO, title: Exclude Point, data_key: exclude_point}
-        - {id: YFBYCD, title: Annotaion, data_key: noteCol}
         auto_header: true
-        tooltip: On changing exclude point or adding or editing an annotation please click REFRESH in top right
+        background: ''
         border: ''
+        columns:
+        - {data_key: Date_Entered, id: MLMLHP, title: Date Entered}
+        - {data_key: Test_Result, id: FZMKHX, title: Measure Value}
+        - {data_key: exclude_point, id: LVRLQO, title: Exclude Point}
+        - {data_key: noteCol, id: YFBYCD, title: Annotaion}
         foreground: ''
+        role: null
         rows_per_page: 20
-        visible: true
-        wrap_on: never
         show_page_controls: true
         spacing_above: small
         spacing_below: small
-        background: ''
-      name: data_grid_1
-      layout_properties: {grid_position: 'OWZPBZ,KZVHOD', full_width_row: true}
-      components:
-      - type: RepeatingPanel
-        properties: {spacing_above: none, spacing_below: none, item_template: Dropdown_View_form.RowTemplate5}
-        name: repeating_panel_1
-        layout_properties: {}
-- type: FlowPanel
-  properties: {}
-  name: navbar_links
-  layout_properties: {slot: nav-right}
-  components:
-  - type: TextBox
-    properties: {role: null, align: right, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 12,
-      font: '', spacing_above: small, type: text, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+        tooltip: On changing exclude point or adding or editing an annotation please click REFRESH in top right
+        visible: true
+        wrap_on: never
+      type: DataGrid
+    layout_properties: {grid_position: 'GHXMJJ,ZHIALT'}
+    name: column_panel_3
+    properties: {col_widths: '{}'}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"CEBJWB":10,"FDOEVA":5,"ASMNKA":5,"AXVZVA":4,"RQYSZR":6,"BAVCXC":6,"PMZUGQ":5,"PNCKBJ":3,"IHJKEG":8,"APXXAD":4,"FKASDG":4}'}
+  type: ColumnPanel
+- components:
+  - layout_properties: {grid_position: 'TQVVIA,MBHYTY', slot: title}
     name: loggedinuser
-    layout_properties: {slot: title, grid_position: 'TQVVIA,MBHYTY'}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: 'theme:White', visible: true, text: Log Out, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: sign_out_button
+    properties: {align: right, background: '', bold: false, border: '', enabled: true, font: '', font_size: 12, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: text, underline: false, visible: true}
+    type: TextBox
+  - event_bindings: {click: sign_out_button_click}
     layout_properties: {}
-    event_bindings: {click: sign_out_button_click}
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: column_panel_1
-  layout_properties: {slot: left-nav}
-  components:
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: CHARTS, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: button_2
+    name: sign_out_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: 'theme:White', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Log Out, tooltip: '', underline: false, visible: true}
+    type: Button
+  layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+- components:
+  - event_bindings: {click: button_2_click}
     layout_properties: {grid_position: 'PBEGZI,DYZMJQ'}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Generate Changes, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: generate_changes_button
+    name: button_2
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: CHARTS, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: generate_changes_button_click}
     layout_properties: {grid_position: 'ACOWWP,WZPDFL'}
-    event_bindings: {click: generate_changes_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Changes Today, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: batch_detection_button
+    name: generate_changes_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Generate Changes, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: batch_detection_button_click}
     layout_properties: {grid_position: 'VMUPMA,HXKCKI'}
-    event_bindings: {click: batch_detection_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Maintenance, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: main_maintenance_button
+    name: batch_detection_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Changes Today, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: main_maintenance_button_click}
     layout_properties: {grid_position: 'XOXXIF,UJVMRD'}
-    event_bindings: {click: main_maintenance_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: DropDown View, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: dropdown_view_button
+    name: main_maintenance_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Maintenance, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: dropdown_view_button_click}
     layout_properties: {grid_position: 'QMRSCR,QSRDEJ'}
-    event_bindings: {click: dropdown_view_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Button View, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: button_view_button
+    name: dropdown_view_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: DropDown View, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: button_view_button_click}
     layout_properties: {grid_position: 'YFAKGA,ANQMGL'}
-    event_bindings: {click: button_view_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Waiting on 4S, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: waiting_on_4S_button
+    name: button_view_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Button View, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: waiting_on_4S_button_click}
     layout_properties: {grid_position: 'KIXKCP,MIVNYR'}
-    event_bindings: {click: waiting_on_4S_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Cases Arriving, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: cases_arriving_button
+    name: waiting_on_4S_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Waiting on 4S, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: cases_arriving_button_click}
     layout_properties: {grid_position: 'FBKQHA,UFUHHA'}
-    event_bindings: {click: cases_arriving_button_click}
-- type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
-    text: 4S DAWN SPC, font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: '', bold: false, underline: false,
-    icon: 'data:image/png;base64,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'}
+    name: cases_arriving_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Cases Arriving, tooltip: '', underline: false, visible: true}
+    type: Button
+  layout_properties: {slot: left-nav}
+  name: column_panel_1
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+- layout_properties: {grid_position: 'BGGKGQ,GMZUFD', slot: title}
   name: label_9
-  layout_properties: {grid_position: 'BGGKGQ,GMZUFD', slot: title}
+  properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: 'data:image/png;base64,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', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: 4S DAWN SPC, tooltip: '', underline: false, visible: true}
+  type: Label
+container:
+  event_bindings: {}
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

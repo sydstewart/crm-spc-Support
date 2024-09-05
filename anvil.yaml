@@ -1,367 +1,364 @@
-scheduled_tasks: []
+allow_embedding: false
+db_schema:
+  cases_arriving:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: cases_arriving
+  changes:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: chartid
+      type: number
+    - admin_ui: {width: 200}
+      name: chartname
+      type: string
+    - admin_ui: {width: 200}
+      name: change_type
+      type: string
+    - admin_ui: {width: 200}
+      name: change_date
+      type: datetime
+    - admin_ui: {width: 200}
+      name: new_mean
+      type: number
+    - admin_ui: {width: 200}
+      name: reviewed
+      type: bool
+    - admin_ui: {width: 200}
+      name: short_date
+      type: date
+    - admin_ui: {width: 200}
+      name: tablename
+      type: string
+    server: full
+    title: changes
+  charts:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: chartid
+      type: number
+    - admin_ui: {width: 296}
+      name: Chart_Name
+      type: string
+    - admin_ui: {width: 200}
+      name: order
+      type: number
+    - admin_ui: {width: 251}
+      name: ChartSQL
+      type: string
+    - admin_ui: {width: 200}
+      name: Active
+      type: bool
+    - admin_ui: {width: 200}
+      name: StartDate
+      type: date
+    - admin_ui: {width: 200}
+      name: EndDate
+      type: date
+    - admin_ui: {width: 200}
+      name: Date_Column_Name
+      type: string
+    - admin_ui: {width: 200}
+      name: Measure_Column_Name
+      type: string
+    - admin_ui: {width: 200}
+      name: Source
+      type: string
+    - admin_ui: {width: 236}
+      name: tablename
+      type: string
+    server: full
+    title: charts
+  printing_problems:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: Printing_problems
+  problem_cases_over_3_days:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: problem_cases_over_3_days
+  problem_cases_per_week:
+    client: full
+    columns:
+    - admin_ui: {width: 313}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: problem_cases_per_week
+  problem_cases_with_4s:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: problem_cases_with_4s
+  problem_cases_with_customer:
+    client: full
+    columns:
+    - admin_ui: {width: 285}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: problem_cases_with_customer
+  problems_with_customers_over_7_days:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: problems_with_customers_over_7_days
+  projects:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: company
+      type: string
+    - admin_ui: {width: 305}
+      name: projectname
+      type: string
+    - admin_ui: {width: 200}
+      name: status
+      type: string
+    - admin_ui: {width: 200}
+      name: boardname
+      type: string
+    - admin_ui: {width: 200}
+      name: startdate
+      type: date
+    - admin_ui: {width: 200}
+      name: enddate
+      type: date
+    server: full
+    title: projects
+  projects_with_4s:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: projects_with_4s
+  projects_with_customers:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: projects_with_customers
+  test:
+    client: full
+    columns:
+    - admin_ui: {width: 324}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: Test
+  unassigned_cases:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: unassigned_cases
+  users:
+    client: full
+    columns:
+    - admin_ui: {width: 200}
+      name: email
+      type: string
+    - admin_ui: {width: 200}
+      name: user_type
+      type: string
+    - admin_ui: {width: 100}
+      name: enabled
+      type: bool
+    - admin_ui: {width: 200}
+      name: last_login
+      type: datetime
+    - admin_ui: {width: 200}
+      name: password_hash
+      type: string
+    - admin_ui: {width: 200}
+      name: confirmed_email
+      type: bool
+    - admin_ui: {width: 200}
+      name: n_password_failures
+      type: number
+    - admin_ui: {width: 200}
+      name: mfa
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: remembered_logins
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: signed_up
+      type: datetime
+    - admin_ui: {width: 200}
+      name: email_confirmation_key
+      type: string
+    server: full
+    title: Users
+  waiting_on_4s:
+    client: full
+    columns:
+    - admin_ui: {width: 327}
+      name: Date_Entered
+      type: datetime
+    - admin_ui: {width: 200}
+      name: Measure_Value
+      type: number
+    - admin_ui: {width: 200}
+      name: exclude_point
+      type: bool
+    - admin_ui: {width: 200}
+      name: noteCol
+      type: string
+    server: full
+    title: Waiting_on_4S
 dependencies:
 - app_id: C6ZZPAPN4YYF5NVJ
   version: {dev: true}
-services:
-- source: /runtime/services/anvil/secrets.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {auto_create_missing_columns: false}
-- source: /runtime/services/anvil/users.yml
-  client_config: {mfa_timeout_days: 0, email_from_address: syd@4s-dawn.com, require_secure_passwords: true,
-    share_login_status: true, allow_mfa_email_reset: false, use_email: true, allow_remember_me: true,
-    allow_signup: false, enable_automatically: true, confirm_email: true, require_mfa: true,
-    remember_me_days: 30, use_google: false}
-  server_config: {user_table: users}
-- source: /runtime/services/google.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/email.yml
-  client_config: {}
-  server_config: {}
-startup: {type: form, module: Dropdown_View_form}
-package_name: CRM_SPC
-allow_embedding: false
-name: CRM SPC
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {logo_img: 'asset:4S logo small.png'}
-db_schema:
-  waiting_on_4s:
-    title: Waiting_on_4S
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 327}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  problem_cases_per_week:
-    title: problem_cases_per_week
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 313}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  problem_cases_with_4s:
-    title: problem_cases_with_4s
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 200}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  charts:
-    title: charts
-    client: full
-    server: full
-    columns:
-    - name: chartid
-      admin_ui: {width: 200}
-      type: number
-    - name: Chart_Name
-      admin_ui: {width: 296}
-      type: string
-    - name: order
-      admin_ui: {width: 200}
-      type: number
-    - name: ChartSQL
-      admin_ui: {width: 251}
-      type: string
-    - name: Active
-      admin_ui: {width: 200}
-      type: bool
-    - name: StartDate
-      admin_ui: {width: 200}
-      type: date
-    - name: EndDate
-      admin_ui: {width: 200}
-      type: date
-    - name: Date_Column_Name
-      admin_ui: {width: 200}
-      type: string
-    - name: Measure_Column_Name
-      admin_ui: {width: 200}
-      type: string
-    - name: Source
-      admin_ui: {width: 200}
-      type: string
-    - name: tablename
-      admin_ui: {width: 236}
-      type: string
-  unassigned_cases:
-    title: unassigned_cases
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 200}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  users:
-    title: Users
-    client: full
-    server: full
-    columns:
-    - name: email
-      admin_ui: {width: 200}
-      type: string
-    - name: user_type
-      admin_ui: {width: 200}
-      type: string
-    - name: enabled
-      admin_ui: {width: 100}
-      type: bool
-    - name: last_login
-      admin_ui: {width: 200}
-      type: datetime
-    - name: password_hash
-      admin_ui: {width: 200}
-      type: string
-    - name: confirmed_email
-      admin_ui: {width: 200}
-      type: bool
-    - name: n_password_failures
-      admin_ui: {width: 200}
-      type: number
-    - name: mfa
-      admin_ui: {width: 200}
-      type: simpleObject
-    - name: remembered_logins
-      admin_ui: {width: 200}
-      type: simpleObject
-    - name: signed_up
-      admin_ui: {width: 200}
-      type: datetime
-    - name: email_confirmation_key
-      admin_ui: {width: 200}
-      type: string
-  projects_with_customers:
-    title: projects_with_customers
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 200}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  changes:
-    title: changes
-    client: full
-    server: full
-    columns:
-    - name: chartid
-      admin_ui: {width: 200}
-      type: number
-    - name: chartname
-      admin_ui: {width: 200}
-      type: string
-    - name: change_type
-      admin_ui: {width: 200}
-      type: string
-    - name: change_date
-      admin_ui: {width: 200}
-      type: datetime
-    - name: new_mean
-      admin_ui: {width: 200}
-      type: number
-    - name: reviewed
-      admin_ui: {width: 200}
-      type: bool
-    - name: short_date
-      admin_ui: {width: 200}
-      type: date
-    - name: tablename
-      admin_ui: {width: 200}
-      type: string
-  projects_with_4s:
-    title: projects_with_4s
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 200}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  problem_cases_with_customer:
-    title: problem_cases_with_customer
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 285}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  projects:
-    title: projects
-    client: full
-    server: full
-    columns:
-    - name: company
-      admin_ui: {width: 200}
-      type: string
-    - name: projectname
-      admin_ui: {width: 305}
-      type: string
-    - name: status
-      admin_ui: {width: 200}
-      type: string
-    - name: boardname
-      admin_ui: {width: 200}
-      type: string
-    - name: startdate
-      admin_ui: {width: 200}
-      type: date
-    - name: enddate
-      admin_ui: {width: 200}
-      type: date
-  printing_problems:
-    title: Printing_problems
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 200}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  problem_cases_over_3_days:
-    title: problem_cases_over_3_days
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 200}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  test:
-    title: Test
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 324}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  problems_with_customers_over_7_days:
-    title: problems_with_customers_over_7_days
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 200}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
-  cases_arriving:
-    title: cases_arriving
-    client: full
-    server: full
-    columns:
-    - name: Date_Entered
-      admin_ui: {width: 200}
-      type: datetime
-    - name: Measure_Value
-      admin_ui: {width: 200}
-      type: number
-    - name: exclude_point
-      admin_ui: {width: 200}
-      type: bool
-    - name: noteCol
-      admin_ui: {width: 200}
-      type: string
+name: CRM SPC
+package_name: CRM_SPC
+renamed: true
+runtime_options: {client_version: '3', server_spec: null, server_version: python3-full, version: 2}
+scheduled_tasks: []
 secrets:
   CRM:
-    value: {? '' : 7w87QJIpcSMHPYq7AJfsCDOcHcIi/NsD0G1G442MjaPZi9BYWIAqujQt+elxbFL6ZXxSuVUiUP+DlgxxwVgK/sxoIna/rDgecuLmmoiT5lexWZ2hsx/9X8wWBcGPpqnjeueIrtP6KINOBw==}
     type: secret
-renamed: true
+    value: {? '' : 7w87QJIpcSMHPYq7AJfsCDOcHcIi/NsD0G1G442MjaPZi9BYWIAqujQt+elxbFL6ZXxSuVUiUP+DlgxxwVgK/sxoIna/rDgecuLmmoiT5lexWZ2hsx/9X8wWBcGPpqnjeueIrtP6KINOBw==}
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/secrets.yml
+- client_config: {}
+  server_config: {auto_create_missing_columns: false}
+  source: /runtime/services/tables.yml
+- client_config: {allow_mfa_email_reset: false, allow_remember_me: true, allow_signup: false, confirm_email: true, email_from_address: syd@4s-dawn.com, enable_automatically: true, mfa_timeout_days: 0, remember_me_days: 30, require_mfa: true, require_secure_passwords: true, share_login_status: true, use_email: true, use_google: false}
+  server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/google.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/email.yml
+startup: {module: Dropdown_View_form, type: form}

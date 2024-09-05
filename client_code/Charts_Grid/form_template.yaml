@@ -1,43 +1,41 @@
-container:
-  type: ColumnPanel
-  properties: {col_widths: '{}'}
 components:
-- type: ColumnPanel
-  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
-    spacing_below: small, background: ''}
-  name: column_panel_1
-  layout_properties: {grid_position: 'BRVFFQ,WNMBBL', full_width_row: true}
-  components:
-  - type: DataGrid
+- components:
+  - components:
+    - layout_properties: {}
+      name: repeating_panel_1
+      properties: {item_template: Charts_Grid.RowTemplate8, spacing_above: none, spacing_below: none}
+      type: RepeatingPanel
+    layout_properties: {full_width_row: true, grid_position: 'JHZIAM,FMFBYM'}
+    name: data_grid_1
     properties:
-      role: null
-      columns:
-      - {id: URIBRF, title: Chartid, data_key: chartid}
-      - {id: PJFNIZ, title: Chart Name, data_key: Chart_Name}
-      - {id: RZFECT, title: Order, data_key: order}
-      - {id: NWQTBU, title: Active, data_key: Active}
-      - {id: WZRVSY, title: StartDate, data_key: StartDate}
-      - {id: DDBRYW, title: EndDate, data_key: EndDate}
-      - {id: KFQMZD, title: Date Column_Name, data_key: Date_Column_Name}
-      - {id: NFIKWR, title: Measure Column_Name, data_key: Measure_Column_Name}
-      - {id: VXSICI, title: Tablename, data_key: tablename}
       auto_header: true
-      tooltip: ''
+      background: ''
       border: ''
+      columns:
+      - {data_key: chartid, id: URIBRF, title: Chartid}
+      - {data_key: Chart_Name, id: PJFNIZ, title: Chart Name}
+      - {data_key: order, id: RZFECT, title: Order}
+      - {data_key: Active, id: NWQTBU, title: Active}
+      - {data_key: StartDate, id: WZRVSY, title: StartDate}
+      - {data_key: EndDate, id: DDBRYW, title: EndDate}
+      - {data_key: Date_Column_Name, id: KFQMZD, title: Date Column_Name}
+      - {data_key: Measure_Column_Name, id: NFIKWR, title: Measure Column_Name}
+      - {data_key: tablename, id: VXSICI, title: Tablename}
       foreground: ''
+      role: null
       rows_per_page: 20
-      visible: true
-      wrap_on: never
       show_page_controls: true
       spacing_above: small
       spacing_below: small
-      background: ''
-    name: data_grid_1
-    layout_properties: {grid_position: 'JHZIAM,FMFBYM', full_width_row: true}
-    components:
-    - type: RepeatingPanel
-      properties: {spacing_above: none, spacing_below: none, item_template: Charts_Grid.RowTemplate8}
-      name: repeating_panel_1
-      layout_properties: {}
+      tooltip: ''
+      visible: true
+      wrap_on: never
+    type: DataGrid
+  layout_properties: {full_width_row: true, grid_position: 'BRVFFQ,WNMBBL'}
+  name: column_panel_1
+  properties: {background: '', border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+  type: ColumnPanel
+container:
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
 is_package: true

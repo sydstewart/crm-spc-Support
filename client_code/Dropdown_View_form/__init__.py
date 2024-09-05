@@ -201,6 +201,10 @@ class Dropdown_View_form(Dropdown_View_formTemplate):
     anvil.server.call('batch_detection')
     pass
 
+  def button_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
 
 
 

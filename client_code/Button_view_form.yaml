@@ -1,247 +1,172 @@
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"FDOEVA":3,"ASMNKA":5,"AXVZVA":7,"RQYSZR":6,"BAVCXC":6,"PMZUGQ":5,"PNCKBJ":3,"IHJKEG":8,"APXXAD":4,"FKASDG":4}'}
-  name: content_panel
-  layout_properties: {slot: default}
-  components:
-  - type: Label
-    properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: Start Date, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+- components:
+  - layout_properties: {full_width_row: true, grid_position: 'IQDQRT,FDOEVA'}
     name: label_1
-    layout_properties: {grid_position: 'IQDQRT,FDOEVA', full_width_row: true}
-  - type: DatePicker
-    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
-      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
-      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
+    properties: {align: right, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Start Date, tooltip: '', underline: false, visible: true}
+    type: Label
+  - event_bindings: {change: date_picker_1_change}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,ASMNKA'}
     name: date_picker_1
-    layout_properties: {grid_position: 'IQDQRT,ASMNKA', full_width_row: true}
-    event_bindings: {change: date_picker_1_change}
-  - type: Label
-    properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: Finish date, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {align: left, background: '', bold: false, border: '', date: '', enabled: true, font: '', font_size: null, foreground: '', format: YYYY-MM-DD, italic: false, max_date: '', min_date: '', pick_time: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', underline: false, visible: true}
+    type: DatePicker
+  - layout_properties: {full_width_row: true, grid_position: 'IQDQRT,AXVZVA'}
     name: label_2
-    layout_properties: {grid_position: 'IQDQRT,AXVZVA', full_width_row: true}
-  - type: DatePicker
-    properties: {role: null, align: left, max_date: '', pick_time: false, tooltip: '',
-      placeholder: '', border: '', enabled: true, foreground: '', visible: true, font_size: null,
-      font: '', spacing_above: small, spacing_below: small, italic: false, date: '',
-      min_date: '', background: '', bold: false, underline: false, format: YYYY-MM-DD}
+    properties: {align: right, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Finish date, tooltip: '', underline: false, visible: true}
+    type: Label
+  - event_bindings: {change: date_picker_2_change}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,RQYSZR'}
     name: date_picker_2
-    layout_properties: {grid_position: 'IQDQRT,RQYSZR', full_width_row: true}
-    event_bindings: {change: date_picker_2_change}
-  - type: CheckBox
-    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
-      foreground: '', allow_indeterminate: false, visible: true, text: Show Excluded,
-      font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
-      background: '', bold: false, checked: false, underline: false}
+    properties: {align: left, background: '', bold: false, border: '', date: '', enabled: true, font: '', font_size: null, foreground: '', format: YYYY-MM-DD, italic: false, max_date: '', min_date: '', pick_time: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', underline: false, visible: true}
+    type: DatePicker
+  - event_bindings: {change: excluded_checkbox_change}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,BAVCXC'}
     name: excluded_checkbox
-    layout_properties: {grid_position: 'IQDQRT,BAVCXC', full_width_row: true}
-    event_bindings: {change: excluded_checkbox_change}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Total Rows, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {align: left, allow_indeterminate: false, background: '', bold: false, border: '', checked: false, enabled: true, font: '', font_size: null, foreground: '', italic: false, role: null, spacing_above: small, spacing_below: small, text: Show Excluded, tooltip: '', underline: false, visible: true}
+    type: CheckBox
+  - layout_properties: {full_width_row: true, grid_position: 'IQDQRT,PMZUGQ'}
     name: label_3
-    layout_properties: {grid_position: 'IQDQRT,PMZUGQ', full_width_row: true}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Total Rows, tooltip: '', underline: false, visible: true}
+    type: Label
+  - event_bindings: {pressed_enter: total_rows_text_pressed_enter}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,PNCKBJ'}
     name: total_rows_text
-    layout_properties: {grid_position: 'IQDQRT,PNCKBJ', full_width_row: true}
-    event_bindings: {pressed_enter: total_rows_text_pressed_enter}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Chart ID, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+    type: TextBox
+  - layout_properties: {full_width_row: true, grid_position: 'IQDQRT,APXXAD'}
     name: label_7
-    layout_properties: {grid_position: 'IQDQRT,APXXAD', full_width_row: true}
-  - type: TextBox
-    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Chart ID, tooltip: '', underline: false, visible: true}
+    type: Label
+  - data_bindings:
+    - {code: 'self.item[''chartid'']', property: text, writeback: true}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,FKASDG'}
     name: chartid_textbox
-    layout_properties: {grid_position: 'IQDQRT,FKASDG', full_width_row: true}
-    data_bindings:
-    - {property: text, code: 'self.item[''chartid'']', writeback: true}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Refresh, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+    type: TextBox
+  - event_bindings: {click: refresh_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'IQDQRT,IHJKEG'}
     name: refresh_button
-    layout_properties: {grid_position: 'IQDQRT,IHJKEG', full_width_row: true}
-    event_bindings: {click: refresh_button_click}
-  - type: Plot
-    properties: {spacing_above: small, spacing_below: small, height: 628, visible: true,
-      tooltip: '', interactive: true}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Refresh, tooltip: '', underline: false, visible: true}
+    type: Button
+  - layout_properties: {full_width_row: true, grid_position: 'DLCCLZ,ECUAEK'}
     name: plot_1
-    layout_properties: {grid_position: 'DLCCLZ,ECUAEK', full_width_row: true}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Add New Row, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {height: 628, interactive: true, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
+    type: Plot
+  - event_bindings: {click: add_row_click}
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,SWOLQY'}
     name: add_row
-    layout_properties: {grid_position: 'LGILOK,SWOLQY', full_width_row: true}
-    event_bindings: {click: add_row_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Show Included List, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Add New Row, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: show_included_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,VCHTFV'}
     name: show_included_button
-    layout_properties: {grid_position: 'LGILOK,VCHTFV', full_width_row: true}
-    event_bindings: {click: show_included_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Show Excluded List, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Show Included List, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: show_excluded_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,RPPPVA'}
     name: show_excluded_button
-    layout_properties: {grid_position: 'LGILOK,RPPPVA', full_width_row: true}
-    event_bindings: {click: show_excluded_button_click}
-  - type: ColumnPanel
-    properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"CQUTQU":20,"PDXFWF":15,"QYKFEF":25}',
-      spacing_below: small, background: ''}
-    name: column_panel_2
-    layout_properties: {grid_position: 'LGILOK,GAXNHO', full_width_row: true}
-    components:
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Average, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Show Excluded List, tooltip: '', underline: false, visible: true}
+    type: Button
+  - components:
+    - layout_properties: {grid_position: 'WFIRBI,CQUTQU'}
       name: label_6
-      layout_properties: {grid_position: 'WFIRBI,CQUTQU'}
-    - type: TextBox
-      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-        font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-        background: '', bold: false, underline: false}
-      name: mean
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Average, tooltip: '', underline: false, visible: true}
+      type: Label
+    - data_bindings: []
       layout_properties: {grid_position: 'WFIRBI,PDXFWF'}
-      data_bindings: []
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Standard Deviation, font_size: null, font: '', spacing_above: small,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
+      name: mean
+      properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+      type: TextBox
+    - layout_properties: {grid_position: 'WFIRBI,QYKFEF'}
       name: label_5
-      layout_properties: {grid_position: 'WFIRBI,QYKFEF'}
-  - type: TextBox
-    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false}
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Standard Deviation, tooltip: '', underline: false, visible: true}
+      type: Label
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,GAXNHO'}
+    name: column_panel_2
+    properties: {background: '', border: '', col_spacing: medium, col_widths: '{"CQUTQU":20,"PDXFWF":15,"QYKFEF":25}', foreground: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+    type: ColumnPanel
+  - event_bindings: {}
+    layout_properties: {full_width_row: true, grid_position: 'LGILOK,RXVZOW'}
     name: SD
-    layout_properties: {grid_position: 'LGILOK,RXVZOW', full_width_row: true}
-    event_bindings: {}
-  - type: Label
-    properties: {role: null, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: Number excluded, font_size: 14, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+    properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+    type: TextBox
+  - layout_properties: {full_width_row: true, grid_position: 'LGILOK,NYFGNZ'}
     name: label_4
-    layout_properties: {grid_position: 'LGILOK,NYFGNZ', full_width_row: true}
-  - type: TextBox
-    properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: '',
-      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: 14,
-      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
-      background: '', bold: true, underline: false}
+    properties: {align: right, background: '', bold: false, border: '', font: '', font_size: 14, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Number excluded, tooltip: '', underline: false, visible: true}
+    type: Label
+  - layout_properties: {full_width_row: true, grid_position: 'LGILOK,GUFLSX'}
     name: number_excluded
-    layout_properties: {grid_position: 'LGILOK,GUFLSX', full_width_row: true}
-  - type: ColumnPanel
-    properties: {col_widths: '{}'}
-    name: column_panel_3
-    layout_properties: {grid_position: 'GHXMJJ,ZHIALT'}
-    components:
-    - type: DataGrid
+    properties: {align: center, background: '', bold: true, border: '', enabled: true, font: '', font_size: 14, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: number, underline: false, visible: true}
+    type: TextBox
+  - components:
+    - components:
+      - layout_properties: {}
+        name: repeating_panel_1
+        properties: {item_template: Dropdown_View_form.RowTemplate5, spacing_above: none, spacing_below: none}
+        type: RepeatingPanel
+      layout_properties: {grid_position: 'OWZPBZ,KZVHOD'}
+      name: data_grid_1
       properties:
-        role: null
-        columns:
-        - {id: MLMLHP, title: Date Entered, data_key: Date_Entered}
-        - {id: FZMKHX, title: Test Result, data_key: Test_Result}
-        - {id: LVRLQO, title: Exclude Point, data_key: exclude_point}
-        - {id: YFBYCD, title: NoteCol, data_key: noteCol}
         auto_header: true
-        tooltip: ''
+        background: ''
         border: ''
+        columns:
+        - {data_key: Date_Entered, id: MLMLHP, title: Date Entered}
+        - {data_key: Test_Result, id: FZMKHX, title: Test Result}
+        - {data_key: exclude_point, id: LVRLQO, title: Exclude Point}
+        - {data_key: noteCol, id: YFBYCD, title: NoteCol}
         foreground: ''
+        role: null
         rows_per_page: 20
-        visible: true
-        wrap_on: never
         show_page_controls: true
         spacing_above: small
         spacing_below: small
-        background: ''
-      name: data_grid_1
-      layout_properties: {grid_position: 'OWZPBZ,KZVHOD'}
-      components:
-      - type: RepeatingPanel
-        properties: {spacing_above: none, spacing_below: none, item_template: Dropdown_View_form.RowTemplate5}
-        name: repeating_panel_1
-        layout_properties: {}
-- type: FlowPanel
-  properties: {}
+        tooltip: ''
+        visible: true
+        wrap_on: never
+      type: DataGrid
+    layout_properties: {grid_position: 'GHXMJJ,ZHIALT'}
+    name: column_panel_3
+    properties: {col_widths: '{}'}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{"SWOLQY":7,"VCHTFV":7,"RPPPVA":7,"GAXNHO":14,"RXVZOW":4,"NYFGNZ":4,"GUFLSX":4,"FDOEVA":3,"ASMNKA":5,"AXVZVA":7,"RQYSZR":6,"BAVCXC":6,"PMZUGQ":5,"PNCKBJ":3,"IHJKEG":8,"APXXAD":4,"FKASDG":4}'}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
   name: navbar_links
-  layout_properties: {slot: nav-right}
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: column_panel_1
-  layout_properties: {slot: left-nav}
-  components:
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Main Menu, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: button_1
+  properties: {}
+  type: FlowPanel
+- components:
+  - event_bindings: {click: button_1_click}
     layout_properties: {grid_position: 'XOXXIF,UJVMRD'}
-    event_bindings: {click: button_1_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: DropDown View, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: dropdown_view_button
+    name: button_1
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Main Menu, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: dropdown_view_button_click}
     layout_properties: {grid_position: 'QMRSCR,QSRDEJ'}
-    event_bindings: {click: dropdown_view_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Button View, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: button_view_button
+    name: dropdown_view_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: DropDown View, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: button_view_button_click}
     layout_properties: {grid_position: 'YFAKGA,ANQMGL'}
-    event_bindings: {click: button_view_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Waiting on 4S, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: waiting_on_4S_button
+    name: button_view_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Button View, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: waiting_on_4S_button_click}
     layout_properties: {grid_position: 'KIXKCP,MIVNYR'}
-    event_bindings: {click: waiting_on_4S_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Cases Arriving, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: cases_arriving_button
+    name: waiting_on_4S_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Waiting on 4S, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: cases_arriving_button_click}
     layout_properties: {grid_position: 'FBKQHA,UFUHHA'}
-    event_bindings: {click: cases_arriving_button_click}
+    name: cases_arriving_button
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Cases Arriving, tooltip: '', underline: false, visible: true}
+    type: Button
+  layout_properties: {slot: left-nav}
+  name: column_panel_1
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
 container:
-  type: HtmlTemplate
-  properties: {html: '@theme:standard-page.html'}
   event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate

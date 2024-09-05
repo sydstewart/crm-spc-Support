@@ -1,74 +1,60 @@
-container:
-  type: ColumnPanel
-  properties: {col_widths: '{}'}
 components:
-- type: ColumnPanel
-  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
-    spacing_below: small, background: ''}
-  name: column_panel_1
-  layout_properties: {grid_position: 'MGEXPB,RQBABK', full_width_row: true}
-  components:
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: REturn to Main menu, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+- components:
+  - event_bindings: {click: return_to_main_menu_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'ZEVYGU,FAKULL'}
     name: return_to_main_menu_button
-    layout_properties: {grid_position: 'ZEVYGU,FAKULL', full_width_row: true}
-    event_bindings: {click: return_to_main_menu_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Last Working Day, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: REturn to Main menu, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: today_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'ZEVYGU,EZQRRA'}
     name: today_button
-    layout_properties: {grid_position: 'ZEVYGU,EZQRRA', full_width_row: true}
-    event_bindings: {click: today_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Last 3 Days, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Last Working Day, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: last_three_days_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'ZEVYGU,LRSQTJ'}
     name: last_three_days_button
-    layout_properties: {grid_position: 'ZEVYGU,LRSQTJ', full_width_row: true}
-    event_bindings: {click: last_three_days_button_click}
-  - type: Button
-    properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Last 7 Days, font_size: null, font: '',
-      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Last 3 Days, tooltip: '', underline: false, visible: true}
+    type: Button
+  - event_bindings: {click: last_seven_days_button_click}
+    layout_properties: {full_width_row: true, grid_position: 'ZEVYGU,ACWQZM'}
     name: last_seven_days_button
-    layout_properties: {grid_position: 'ZEVYGU,ACWQZM', full_width_row: true}
-    event_bindings: {click: last_seven_days_button_click}
-  - type: DataGrid
+    properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Last 7 Days, tooltip: '', underline: false, visible: true}
+    type: Button
+  - components:
+    - layout_properties: {}
+      name: repeating_panel_1
+      properties: {item_template: Changes_Today.RowTemplate11, spacing_above: none, spacing_below: none}
+      type: RepeatingPanel
+    layout_properties: {full_width_row: true, grid_position: 'GFIATG,KLWFRW'}
+    name: data_grid_1
     properties:
-      role: null
-      columns:
-      - {id: DOUNZR, title: Chart ID, data_key: chartid}
-      - {id: RNYTJK, title: Chart Name, data_key: chartname}
-      - {id: YXMNNN, title: Change Type, data_key: change_type}
-      - {id: APSWRM, title: Change Date, data_key: change_date}
-      - {id: CELNWR, title: New Mean, data_key: new_mean}
-      - {id: GUYAFL, title: Reviewed, data_key: reviewed}
-      - {id: DMNWHP, title: Short Date, data_key: short_date}
-      - {id: LUSEXX, title: See Chart (read only), data_key: ''}
       auto_header: true
-      tooltip: ''
+      background: ''
       border: ''
+      columns:
+      - {data_key: chartid, id: DOUNZR, title: Chart ID}
+      - {data_key: chartname, id: RNYTJK, title: Chart Name}
+      - {data_key: change_type, id: YXMNNN, title: Change Type}
+      - {data_key: change_date, id: APSWRM, title: Change Date}
+      - {data_key: new_mean, id: CELNWR, title: New Mean}
+      - {data_key: reviewed, id: GUYAFL, title: Reviewed}
+      - {data_key: short_date, id: DMNWHP, title: Short Date}
+      - {data_key: '', id: LUSEXX, title: See Chart (read only)}
       foreground: ''
+      role: null
       rows_per_page: 20
-      visible: true
-      wrap_on: never
       show_page_controls: true
       spacing_above: small
       spacing_below: small
-      background: ''
-    name: data_grid_1
-    layout_properties: {grid_position: 'GFIATG,KLWFRW', full_width_row: true}
-    components:
-    - type: RepeatingPanel
-      properties: {spacing_above: none, spacing_below: none, item_template: Changes_Today.RowTemplate11}
-      name: repeating_panel_1
-      layout_properties: {}
+      tooltip: ''
+      visible: true
+      wrap_on: never
+    type: DataGrid
+  layout_properties: {full_width_row: true, grid_position: 'MGEXPB,RQBABK'}
+  name: column_panel_1
+  properties: {background: '', border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+  type: ColumnPanel
+container:
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
 is_package: true

@@ -1,55 +1,51 @@
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: content_panel
-  layout_properties: {slot: default}
-  components:
-  - type: Plot
-    properties: {spacing_above: small, spacing_below: small, height: 450, visible: true,
-      tooltip: '', interactive: true}
+- components:
+  - layout_properties: {full_width_row: true, grid_position: 'WNVLWX,RDCCCU'}
     name: plot_1
-    layout_properties: {grid_position: 'WNVLWX,RDCCCU', full_width_row: true}
-  - type: ColumnPanel
-    properties: {col_widths: '{}'}
-    name: column_panel_1
-    layout_properties: {grid_position: 'EYXCMD,OQTJZU'}
-    components:
-    - type: DataGrid
+    properties: {height: 450, interactive: true, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
+    type: Plot
+  - components:
+    - components:
+      - layout_properties: {}
+        name: repeating_panel_1
+        properties: {item_template: RowTemplate2, spacing_above: none, spacing_below: none}
+        type: RepeatingPanel
+      layout_properties: {full_width_row: true, grid_position: 'HJPWKA,CCTEUX'}
+      name: data_grid_1
       properties:
-        role: null
-        columns:
-        - {id: BQAVZQ, title: Date Entered, data_key: Date_Entered}
-        - {id: LGNNWQ, title: Cases Arriving, data_key: Cases_Arriving}
         auto_header: true
-        tooltip: ''
+        background: ''
         border: ''
+        columns:
+        - {data_key: Date_Entered, id: BQAVZQ, title: Date Entered}
+        - {data_key: Cases_Arriving, id: LGNNWQ, title: Cases Arriving}
         foreground: ''
+        role: null
         rows_per_page: 20
-        visible: true
-        wrap_on: never
         show_page_controls: true
         spacing_above: small
         spacing_below: small
-        background: ''
-      name: data_grid_1
-      layout_properties: {grid_position: 'HJPWKA,CCTEUX', full_width_row: true}
-      components:
-      - type: RepeatingPanel
-        properties: {spacing_above: none, spacing_below: none, item_template: RowTemplate2}
-        name: repeating_panel_1
-        layout_properties: {}
-- type: FlowPanel
-  properties: {}
+        tooltip: ''
+        visible: true
+        wrap_on: never
+      type: DataGrid
+    layout_properties: {grid_position: 'EYXCMD,OQTJZU'}
+    name: column_panel_1
+    properties: {col_widths: '{}'}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
   name: navbar_links
-  layout_properties: {slot: nav-right}
-- type: Button
-  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-    foreground: '', visible: true, text: Cases with 4S, font_size: null, font: '',
-    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
-    bold: false, underline: false, icon: ''}
-  name: Cases_with_4S
+  properties: {}
+  type: FlowPanel
+- event_bindings: {click: Cases_with_4S_click}
   layout_properties: {slot: left-nav}
-  event_bindings: {click: Cases_with_4S_click}
+  name: Cases_with_4S
+  properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Cases with 4S, tooltip: '', underline: false, visible: true}
+  type: Button
 container:
-  type: HtmlTemplate
   properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
