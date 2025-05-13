@@ -352,7 +352,7 @@ services:
 - client_config: {}
   server_config: {auto_create_missing_columns: false}
   source: /runtime/services/tables.yml
-- client_config: {allow_mfa_email_reset: false, allow_remember_me: true, allow_signup: false, confirm_email: true, email_from_address: syd@4s-dawn.com, enable_automatically: true, mfa_timeout_days: 0, remember_me_days: 30, require_mfa: true, require_secure_passwords: true, share_login_status: true, use_email: true, use_google: false}
+- client_config: {allow_mfa_email_reset: true, allow_remember_me: true, allow_signup: false, confirm_email: true, email_from_address: syd@4s-dawn.com, enable_automatically: true, mfa_timeout_days: 0, remember_me_days: 30, require_mfa: true, require_secure_passwords: true, share_login_status: true, use_email: true, use_google: false}
   server_config: {user_table: users}
   source: /runtime/services/anvil/users.yml
 - client_config: {}
